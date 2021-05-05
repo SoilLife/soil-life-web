@@ -1,3 +1,9 @@
+import Header from 'components/header';
+
 export default function IndexPage() {
-  return <div>New Soil Life</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
