@@ -4,23 +4,43 @@
   "description": "soillife",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:archive": "nodemon archive/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danielwang405/SoilLife.git"
+    "url": "git+https://https://github.com/SoilLife/SoilLife.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/danielwang405/SoilLife/issues"
+    "url": "https://https://github.com/SoilLife/SoilLife/issues"
   },
-  "homepage": "https://github.com/danielwang405/SoilLife#readme",
+  "homepage": "https://https://github.com/SoilLife/SoilLife#readme",
   "dependencies": {
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "next": "latest",
+    "next-seo": "^4.24.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.18.7"
+    "@tailwindcss/aspect-ratio": "^0.2.0",
+    "@tailwindcss/forms": "^0.3.2",
+    "@tailwindcss/line-clamp": "^0.2.0",
+    "@tailwindcss/typography": "^0.4.0",
+    "@types/node": "^15.0.2",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.3",
+    "autoprefixer": "^10.2.5",
+    "nodemon": "^1.19.4",
+    "postcss": "^8.2.13",
+    "postcss-import": "^14.0.1",
+    "tailwindcss": "^2.1.2",
+    "typescript": "latest"
   }
 }
