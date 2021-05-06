@@ -3,6 +3,6 @@ module.exports = {
     webpack5: true,
   },
   images: {
-    domains: process.env.NODE_ENV === 'production' ? ['thesoillife.org'] : ['localhost'],
+    domains: process.env.NODE_ENV === 'production' ? ['thesoillife.org', 'netlify.com'] : ['localhost'],
   },
 };

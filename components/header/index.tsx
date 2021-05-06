@@ -21,7 +21,7 @@ function createNavLinks() {
   });
 }
 
-export default function Header(props: {}) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <header className='relative'>
