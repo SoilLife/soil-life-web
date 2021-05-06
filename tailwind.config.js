@@ -3,7 +3,11 @@ module.exports = {
   purge: ['pages/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}'],
   darkMode: 'media',
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        'app-full': '1920px',
+      },
+    },
   },
   variants: {
     extend: {},
@@ -14,4 +18,7 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
   ],
+  corePlugins: {
+    container: false,
+  },
 };
