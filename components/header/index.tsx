@@ -1,18 +1,35 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Icon from 'components/atoms/icon';
+import { kebabCase } from 'helpers/kebab-case';
+
+const navLinks = ['soil 101', 'web of soil', 'media', 'get involved', 'about us'];
 
 export default function Header(props: {}) {
   return (
     <header>
       <nav className='container mx-auto flex items-center justify-between py-2 px-4'>
-        <Image src='/assets/logo.jpg' layout='fixed' width='40' height='40' />
-        <ul className='flex gap-8'>
-          <li>Soil 101</li>
-          <li>Web of Soil</li>
-          <li>Media</li>
-          <li>Get Involved</li>
-          <li>About Us</li>
+        <Link href='/'>
+          <Image
+            src='/assets/logo.jpg'
+            layout='fixed'
+            width='40'
+            height='40'
+            className='cursor-pointer'
+            alt='soil life logo'
+          />
+        </Link>
+        <ul className='flex gap-12'>
+          {navLinks.map((nav) => {
+            const link = kebabCase(nav);
+            return (
+              <li key={link} className='p-2 cursor-pointer'>
+                <Link href={`${link}`}>
+                  <span className='text-lg'>{nav}</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <ul className='flex gap-4'>
           <li>
