@@ -1,5 +1,12 @@
 import DefaultLayout from 'layouts/default';
+import Subheader from 'components/subheader';
+
+import { subheadings } from './subheadings';
 
 export default function Soil101Page() {
-  return <DefaultLayout>Soil 101</DefaultLayout>;
+  return (
+    <DefaultLayout>
+      <Subheader pathName='soil-101' subheadings={subheadings} />
+    </DefaultLayout>
+  );
 }

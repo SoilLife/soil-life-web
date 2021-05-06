@@ -14,7 +14,7 @@ function createNavLinks() {
     return (
       <li key={link} className='text-right px-2 py-4 md:text-center md:p-2 md:py-0 cursor-pointer'>
         <Link href={`${link}`}>
-          <span className='text-lg'>{nav}</span>
+          <a className='text-lg'>{nav}</a>
         </Link>
       </li>
     );
@@ -27,38 +27,38 @@ export default function Header(props: {}) {
     <header className='relative'>
       <nav className='container flex items-center justify-between py-2'>
         <Link href='/'>
-          <div className='grid place-items-center'>
+          <a>
             <Image
-              src='/assets/logo.jpg'
+              src='/images/logo.jpg'
               layout='fixed'
               width='40'
               height='40'
               className='cursor-pointer'
               alt='soil life logo'
             />
-          </div>
+          </a>
         </Link>
         <ul className='hidden md:flex gap-12'>{createNavLinks()}</ul>
         <ul className='hidden lg:flex gap-4'>
           <li>
             <Link href='https://www.facebook.com/TheSoilLife/'>
-              <span>
+              <a>
                 <Icon icon={['fab', 'facebook']} size='lg' className='text-red-400 cursor-pointer' />
-              </span>
+              </a>
             </Link>
           </li>
           <li>
             <Link href='https://www.instagram.com/soil.life'>
-              <span>
+              <a>
                 <Icon icon={['fab', 'instagram']} size='lg' className='text-red-400 cursor-pointer' />
-              </span>
+              </a>
             </Link>
           </li>
           <li>
             <Link href='https://twitter.com/the_Soil_Life'>
-              <span>
+              <a>
                 <Icon icon={['fab', 'twitter']} size='lg' className='text-red-400 cursor-pointer' />
-              </span>
+              </a>
             </Link>
           </li>
         </ul>
