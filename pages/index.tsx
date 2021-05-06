@@ -1,9 +1,5 @@
-import Header from 'components/header';
+import DefaultLayout from 'layouts/default';
 
 export default function IndexPage() {
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+  return <DefaultLayout></DefaultLayout>;
 }
