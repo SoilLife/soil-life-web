@@ -79,22 +79,23 @@ const colors = {
   brown,
 };
 
+function configTailwindColor(cssVar) {
+  return ({ opacityVariable }) => {
+    if (opacityVariable) {
+      return `rgba(${cssVar}, var(${opacityVariable}))`;
+    }
+    return `rgb(${cssVar})`;
+  };
+}
 Object.keys(colors).forEach((colorKey) => {
   Object.keys(colors[colorKey]).forEach((colorStep) => {
-    function configTailwindColor(cssVar) {
-      return ({ opacityVariable }) => {
-        if (opacityVariable) {
-          return `rgba(${cssVar}, var(${opacityVariable}))`;
-        }
-        return `rgb(${cssVar})`;
-      };
-    }
-
     colors[colorKey][colorStep] = configTailwindColor(colors[colorKey][colorStep]);
   });
 });
 
 colors['transparent'] = 'transparent';
 colors['currentColor'] = 'currentColor';
+colors['white'] = configTailwindColor('var(--white-rgb)');
+colors['black'] = configTailwindColor('var(--black-rgb)');
 
 module.exports = colors;

@@ -1,5 +1,11 @@
 @layer base {
   :root {
+    --white-rgb: 255, 255, 255;
+    --white: rgb(var(--white-rgb));
+
+    --black-rgb: 0, 0 0;
+    --black: rgb(var(--black-rgb));
+
     --pink-100-rgb: 252, 225, 229;
     --pink-200-rgb: 248, 195, 203;
     --pink-300-rgb: 245, 166, 176;
