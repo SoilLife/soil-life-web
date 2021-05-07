@@ -1,0 +1,126 @@
+@layer base {
+  :root {
+    --pink-100-rgb: 252, 225, 229;
+    --pink-200-rgb: 248, 195, 203;
+    --pink-300-rgb: 245, 166, 176;
+    --pink-400-rgb: 241, 136, 150;
+    --pink-500-rgb: 238, 106, 124;
+    --pink-600-rgb: 190, 85, 99;
+    --pink-700-rgb: 143, 64, 74;
+    --pink-800-rgb: 95, 42, 50;
+    --pink-900-rgb: 48, 21, 25;
+
+    --pink-100: rgb(var(--pink-100-rgb));
+    --pink-200: rgb(var(--pink-200-rgb));
+    --pink-300: rgb(var(--pink-300-rgb));
+    --pink-400: rgb(var(--pink-400-rgb));
+    --pink-500: rgb(var(--pink-500-rgb));
+    --pink-600: rgb(var(--pink-600-rgb));
+    --pink-700: rgb(var(--pink-700-rgb));
+    --pink-800: rgb(var(--pink-800-rgb));
+    --pink-900: rgb(var(--pink-900-rgb));
+
+    --orange-100-rgb: 254, 225, 214;
+    --orange-200-rgb: 253, 195, 173;
+    --orange-300-rgb: 252, 166, 133;
+    --orange-400-rgb: 251, 136, 92;
+    --orange-500-rgb: 250, 106, 51;
+    --orange-600-rgb: 200, 85, 41;
+    --orange-700-rgb: 150, 64, 31;
+    --orange-800-rgb: 100, 42, 20;
+    --orange-900-rgb: 50, 21, 10;
+
+    --orange-100: rgb(var(--orange-100-rgb));
+    --orange-200: rgb(var(--orange-200-rgb));
+    --orange-300: rgb(var(--orange-300-rgb));
+    --orange-400: rgb(var(--orange-400-rgb));
+    --orange-500: rgb(var(--orange-500-rgb));
+    --orange-600: rgb(var(--orange-600-rgb));
+    --orange-700: rgb(var(--orange-700-rgb));
+    --orange-800: rgb(var(--orange-800-rgb));
+    --orange-900: rgb(var(--orange-900-rgb));
+
+    --yellow-100-rgb: 254, 244, 209;
+    --yellow-200-rgb: 253, 233, 163;
+    --yellow-300-rgb: 252, 221, 116;
+    --yellow-400-rgb: 251, 210, 70;
+    --yellow-500-rgb: 250, 199, 24;
+    --yellow-600-rgb: 200, 159, 19;
+    --yellow-700-rgb: 150, 119, 14;
+    --yellow-800-rgb: 100, 80, 10;
+    --yellow-900-rgb: 50, 40, 5;
+
+    --yellow-100: rgb(var(--yellow-100-rgb));
+    --yellow-200: rgb(var(--yellow-200-rgb));
+    --yellow-300: rgb(var(--yellow-300-rgb));
+    --yellow-400: rgb(var(--yellow-400-rgb));
+    --yellow-500: rgb(var(--yellow-500-rgb));
+    --yellow-600: rgb(var(--yellow-600-rgb));
+    --yellow-700: rgb(var(--yellow-700-rgb));
+    --yellow-800: rgb(var(--yellow-800-rgb));
+    --yellow-900: rgb(var(--yellow-900-rgb));
+
+    --teal-100-rgb: 215, 239, 235;
+    --teal-200-rgb: 175, 223, 214;
+    --teal-300-rgb: 134, 206, 194;
+    --teal-400-rgb: 94, 190, 173;
+    --teal-500-rgb: 54, 174, 153;
+    --teal-600-rgb: 43, 139, 122;
+    --teal-700-rgb: 32, 104, 92;
+    --teal-800-rgb: 22, 70, 61;
+    --teal-900-rgb: 11, 35, 31;
+
+    --teal-100: rgb(var(--teal-100-rgb));
+    --teal-200: rgb(var(--teal-200-rgb));
+    --teal-300: rgb(var(--teal-300-rgb));
+    --teal-400: rgb(var(--teal-400-rgb));
+    --teal-500: rgb(var(--teal-500-rgb));
+    --teal-600: rgb(var(--teal-600-rgb));
+    --teal-700: rgb(var(--teal-700-rgb));
+    --teal-800: rgb(var(--teal-800-rgb));
+    --teal-900: rgb(var(--teal-900-rgb));
+
+    --blue-100-rgb: 209, 222, 237;
+    --blue-200-rgb: 163, 189, 220;
+    --blue-300-rgb: 117, 157, 202;
+    --blue-400-rgb: 71, 124, 185;
+    --blue-500-rgb: 25, 91, 167;
+    --blue-600-rgb: 20, 73, 134;
+    --blue-700-rgb: 15, 55, 100;
+    --blue-800-rgb: 10, 36, 67;
+    --blue-900-rgb: 5, 18, 33;
+
+    --blue-100: rgb(var(--blue-100-rgb));
+    --blue-200: rgb(var(--blue-200-rgb));
+    --blue-300: rgb(var(--blue-300-rgb));
+    --blue-400: rgb(var(--blue-400-rgb));
+    --blue-500: rgb(var(--blue-500-rgb));
+    --blue-600: rgb(var(--blue-600-rgb));
+    --blue-700: rgb(var(--blue-700-rgb));
+    --blue-800: rgb(var(--blue-800-rgb));
+    --blue-900: rgb(var(--blue-900-rgb));
+
+    --brown-100-rgb: 221, 219, 220;
+    --brown-200-rgb: 187, 184, 185;
+    --brown-300-rgb: 152, 148, 150;
+    --brown-400-rgb: 118, 113, 115;
+    --brown-500-rgb: 84, 77, 80;
+    --brown-600-rgb: 67, 62, 64;
+    --brown-700-rgb: 50, 46, 48;
+    --brown-800-rgb: 34, 31, 32;
+    --brown-900-rgb: 17, 15, 16;
+
+    --brown-100: rgb(var(--brown-100-rgb));
+    --brown-200: rgb(var(--brown-200-rgb));
+    --brown-300: rgb(var(--brown-300-rgb));
+    --brown-400: rgb(var(--brown-400-rgb));
+    --brown-500: rgb(var(--brown-500-rgb));
+    --brown-600: rgb(var(--brown-600-rgb));
+    --brown-700: rgb(var(--brown-700-rgb));
+    --brown-800: rgb(var(--brown-800-rgb));
+    --brown-900: rgb(var(--brown-900-rgb));
+  }
+
+  :root .dark {
+  }
+}

@@ -13,7 +13,7 @@ function createNavLinks() {
     const link = kebabCase(nav);
     return (
       <li key={link} className='text-right px-2 py-4 md:text-center md:p-2 md:py-0 cursor-pointer'>
-        <Link href={`${link}`}>
+        <Link href={`/${link}`}>
           <a className='text-lg'>{nav}</a>
         </Link>
       </li>
@@ -43,21 +43,21 @@ export default function Header() {
           <li>
             <Link href='https://www.facebook.com/TheSoilLife/'>
               <a>
-                <Icon icon={['fab', 'facebook']} size='lg' className='text-red-400 cursor-pointer' />
+                <Icon icon={['fab', 'facebook']} size='lg' className='text-pink-500 cursor-pointer' />
               </a>
             </Link>
           </li>
           <li>
             <Link href='https://www.instagram.com/soil.life'>
               <a>
-                <Icon icon={['fab', 'instagram']} size='lg' className='text-red-400 cursor-pointer' />
+                <Icon icon={['fab', 'instagram']} size='lg' className='text-pink-500 cursor-pointer' />
               </a>
             </Link>
           </li>
           <li>
             <Link href='https://twitter.com/the_Soil_Life'>
               <a>
-                <Icon icon={['fab', 'twitter']} size='lg' className='text-red-400 cursor-pointer' />
+                <Icon icon={['fab', 'twitter']} size='lg' className='text-pink-500 cursor-pointer' />
               </a>
             </Link>
           </li>
