@@ -2,7 +2,7 @@ import { SubheaderProps } from './subheader.interface';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Subheader({ pathName, subheadings, backgroundColor = 'var(--pink-500)' }: SubheaderProps) {
+export function Subheader({ pathName, subheadings, backgroundColor = 'var(--pink-500)' }: SubheaderProps) {
   return (
     <div className='container w-full' style={{ backgroundColor }}>
       <nav>

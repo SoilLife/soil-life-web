@@ -12,7 +12,7 @@ library.add(faSolids, faBrands);
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <div className='min-h-screen flex flex-col antialiased overflow-hidden'>
+      <div className='min-h-screen antialiased overflow-x-hidden'>
         <DefaultSeo
           openGraph={{
             type: 'website',
