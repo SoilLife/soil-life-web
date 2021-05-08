@@ -1,4 +1,4 @@
-const colors = require('./config/tailwind');
+const { colors, fontFamily } = require('./config/tailwind');
 
 module.exports = {
   mode: 'jit',
@@ -6,6 +6,7 @@ module.exports = {
   darkMode: 'media',
   theme: {
     colors,
+    fontFamily,
     extend: {
       maxWidth: {
         'app-full': '1920px',
