@@ -13,7 +13,7 @@ library.add(faSolids, faBrands);
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <IKContext urlEndpoint={process.env['NEXT_PUBLIC_IMAGEKIT_URL']}>
+      <IKContext urlEndpoint='https://ik.imagekit.io/bxb71jgubm'>
         <div className='min-h-screen antialiased overflow-x-hidden'>
           <DefaultSeo
             openGraph={{
