@@ -8,6 +8,7 @@ import {
   GetInvolvedSection,
   AboutUsSection,
 } from 'components/sections/home';
+import { Footer } from 'components/footer';
 
 export default function IndexPage() {
   return (
@@ -19,6 +20,7 @@ export default function IndexPage() {
       <DigDeeperSection />
       <GetInvolvedSection />
       <AboutUsSection />
+      <Footer />
     </DefaultLayout>
   );
 }

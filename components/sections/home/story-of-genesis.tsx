@@ -11,7 +11,7 @@ export function StoryOfGenesisSection() {
         </div>
         <div className='flex justify-center'>
           <Link href='/media'>
-            <Button type='primary' label='find out more' />
+            <Button as='link' size='md' type='primary' label='find out more' />
           </Link>
         </div>
       </div>

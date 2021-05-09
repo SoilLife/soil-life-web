@@ -13,7 +13,7 @@ export function DigDeeperSection() {
           <p className='text-5xl mb-6'>dig deeper</p>
           <div className='text-center'>
             <Link href='#'>
-              <Button type='secondary' label='dig in' />
+              <Button as='link' size='md' type='secondary' label='dig in' />
             </Link>
           </div>
         </div>

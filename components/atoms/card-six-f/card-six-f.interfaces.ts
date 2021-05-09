@@ -1,8 +1,11 @@
+import { ButtonProps } from 'components/atoms/button/button.interfaces';
+
 export interface CardSixFProps
   extends Pick<JSX.IntrinsicElements['div'], 'id' | 'key' | 'style' | 'className' | 'onClick'> {
   text: JSX.Element | string;
   subtext: string;
-  ctaText: string;
   icon: string;
-  color: string;
+  type: 'primary' | 'success' | 'warning' | 'danger' | 'neutral' | 'alert';
+  button: ButtonProps;
+  href: string;
 }

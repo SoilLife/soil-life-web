@@ -14,7 +14,7 @@ export function AboutUsSection() {
           </p>
           <div className='text-center'>
             <Link href='/about-us'>
-              <Button type='danger' label='find out more' />
+              <Button as='link' size='md' type='danger' label='find out more' />
             </Link>
           </div>
         </div>

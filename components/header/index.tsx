@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { IKImage } from 'imagekitio-react';
 import Link from 'next/link';
 import Icon from 'components/atoms/icon';
-
+import { SocialMediaIcons } from 'components/social-media-icons';
 import { kebabCase } from 'helpers/kebab-case';
 
 function createNavLinks() {
@@ -32,29 +32,7 @@ export function Header() {
           </a>
         </Link>
         <ul className='hidden md:flex gap-16'>{createNavLinks()}</ul>
-        <ul className='hidden lg:flex gap-4'>
-          <li>
-            <Link href='https://www.facebook.com/TheSoilLife/'>
-              <a>
-                <Icon icon={['fab', 'facebook']} size='lg' className='text-pink-500 cursor-pointer' />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href='https://www.instagram.com/soil.life'>
-              <a>
-                <Icon icon={['fab', 'instagram']} size='lg' className='text-pink-500 cursor-pointer' />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href='https://twitter.com/the_Soil_Life'>
-              <a>
-                <Icon icon={['fab', 'twitter']} size='lg' className='text-pink-500 cursor-pointer' />
-              </a>
-            </Link>
-          </li>
-        </ul>
+        <SocialMediaIcons className='hidden lg:flex gap-4' />
         <div className='relative md:hidden'>
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <Icon icon='bars' size='2x' />

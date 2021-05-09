@@ -1,11 +1,23 @@
+import { forwardRef, ForwardedRef } from 'react';
+
 import { ButtonProps } from './button.interfaces';
 
-import { buttonTypeMap } from './button.utils';
+import { buttonTypeMap, buttonSizeMap } from './button.utils';
 
-export function Button({ label, type, inverted, className = '', ...props }: ButtonProps) {
-  return (
-    <button className={`px-4 py-2 ${buttonTypeMap[type]} ${className}`} {...props}>
-      {label}
-    </button>
-  );
-}
+export const Button = forwardRef(
+  ({ as, size, label, type, inverted, className = '', ...props }: ButtonProps, ref: ForwardedRef<any>) => {
+    if (as === 'button') {
+      return (
+        <button ref={ref} className={`${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`} {...props}>
+          {label}
+        </button>
+      );
+    }
+
+    return (
+      <a ref={ref} className={`${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`} {...props}>
+        {label}
+      </a>
+    );
+  }
+);

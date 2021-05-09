@@ -1,12 +1,23 @@
+import Link from 'next/link';
+import { Button } from 'components/atoms/button';
 import { CardSixFProps } from './card-six-f.interfaces';
+import { cardSixFTypeMap } from './card-six-f.utils';
 
-export function Card6F({
-  color: _color,
-  ctaText: _ctaText,
-  icon: _icon,
-  subtext: _subtext,
-  text: _text,
-  className,
-}: CardSixFProps) {
-  return <div className={`${className}`}></div>;
+export function Card6F({ type, href, icon, subtext, text, className, button }: CardSixFProps) {
+  return (
+    <div className={`relative w-96 min-h-40 shadow-lg z-10 mx-auto bg-white ${className}`}>
+      <div
+        className={`absolute -top-1/4 left-1/2 transform -translate-x-1/2 h-16 w-16 rounded-full ${cardSixFTypeMap[type]}`}
+      >
+        <img src={icon} />
+      </div>
+      <div className='h-full text-center grid place-items-center p-6 pt-8'>
+        <p>{subtext}</p>
+        <p className='mb-8'>{text}</p>
+        <Link href={href}>
+          <Button {...button} />
+        </Link>
+      </div>
+    </div>
+  );
 }
