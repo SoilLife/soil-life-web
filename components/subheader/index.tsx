@@ -1,6 +1,5 @@
 import { SubheaderProps } from './subheader.interface';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export function Subheader({ pathName, subheadings, backgroundColor = 'var(--pink-500)' }: SubheaderProps) {
   return (
@@ -11,7 +10,7 @@ export function Subheader({ pathName, subheadings, backgroundColor = 'var(--pink
             <li key={name} className='text-white cursor-pointer'>
               <Link href={`/${pathName}/${slug}`}>
                 <a>
-                  <Image src={asset} height={50} width={50} />
+                  <img src={asset} height={50} width={50} />
                 </a>
               </Link>
             </li>
