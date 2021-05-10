@@ -13,13 +13,13 @@ library.add(faSolids, faBrands);
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <IKContext urlEndpoint='https://ik.imagekit.io/bxb71jgubm'>
+      <IKContext urlEndpoint='https://ik.imagekit.io/q9koofhilw/'>
         <div className='min-h-screen antialiased overflow-x-hidden'>
           <DefaultSeo
             openGraph={{
               type: 'website',
               locale: 'en_IE',
-              url: 'https://www.thesoillife.org/',
+              url: 'https://www.soillife.org/',
               site_name: 'Soil Life',
             }}
           />

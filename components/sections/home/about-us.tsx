@@ -1,5 +1,6 @@
 import { Button } from 'components/atoms/button';
 import Link from 'next/link';
+import { IKImage } from 'imagekitio-react';
 
 export function AboutUsSection() {
   return (
@@ -18,7 +19,7 @@ export function AboutUsSection() {
             </Link>
           </div>
         </div>
-        <img src='/images/home/grass-roots.png' width='800' height='100%' />
+        <IKImage path='/Home_Page/grass_roots_pnwdrMGcq.jpeg' lqip={{ active: true }} loading='lazy' width='800px' />
       </div>
     </section>
   );

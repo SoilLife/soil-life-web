@@ -28,7 +28,7 @@ export function Header() {
       <nav className='container flex items-center justify-between'>
         <Link href='/'>
           <a className='relative'>
-            <IKImage path='/home/logo_oZlDnyvtjC.svg' className='cursor-pointer' alt='soil life logo' />
+            <IKImage path='/logo_uQKRRnvk7wo.svg' className='cursor-pointer' alt='soil life logo' />
           </a>
         </Link>
         <ul className='hidden md:flex gap-16'>{createNavLinks()}</ul>

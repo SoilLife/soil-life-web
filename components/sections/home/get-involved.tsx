@@ -6,7 +6,7 @@ export function GetInvolvedSection() {
     <section
       className='h-screen overflow-hidden bg-cover'
       style={{
-        backgroundImage: 'url("/images/home/get-involved.jpg")',
+        backgroundImage: 'url("https://ik.imagekit.io/q9koofhilw/Home_Page/AdobeStock_144874490_6lpeJS0jbCq.jpg")',
       }}
     >
       <div className='h-full relative text-white'>

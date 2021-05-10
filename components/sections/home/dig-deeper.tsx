@@ -5,7 +5,9 @@ export function DigDeeperSection() {
   return (
     <section
       className='h-screen overflow-hidden  bg-cover'
-      style={{ backgroundImage: `url("/images/home/dig-deeper.jpg")` }}
+      style={{
+        backgroundImage: `url("https://ik.imagekit.io/q9koofhilw/Home_Page/Dig_Deeper_soil_pit_real_deal_lf55pw1nJoc.jpg")`,
+      }}
     >
       <div className='container h-full text-white z-10 relative'>
         <div className='absolute bottom-1/4 left-1/4'>
