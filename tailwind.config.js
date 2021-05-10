@@ -2,7 +2,7 @@ const { colors, fontFamily } = require('./config/tailwind');
 
 module.exports = {
   mode: 'jit',
-  purge: ['pages/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}', 'layouts/**/*.{ts,tsx}'],
+  purge: ['pages/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}', 'layouts/**/*.{ts,tsx}', 'data/**/*.{ts,tsx}'],
   darkMode: 'media',
   theme: {
     colors,
