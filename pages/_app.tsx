@@ -1,3 +1,4 @@
+import 'react-awesome-slider/dist/styles.css';
 import './_app.css';
 
 import type { AppProps } from 'next/app';

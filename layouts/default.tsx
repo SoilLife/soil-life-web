@@ -14,8 +14,10 @@ export default function DefaultLayout({ children }: React.PropsWithChildren<Reac
         <link rel='preload' href='/fonts/Acre-Semibold.otf' as='font' crossOrigin='' />
         <link rel='preload' href='/fonts/Acre-Bold.otf' as='font' crossOrigin='' />
       </Head>
-      <Header />
-      {children}
+      <div className='relative'>
+        <Header />
+        {children}
+      </div>
     </>
   );
 }

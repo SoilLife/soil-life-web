@@ -1,7 +1,6 @@
 import { CardSixFProps } from 'components/atoms/card-six-f/card-six-f.interfaces';
 
 const commonProps = {
-  className: 'top-32',
   subtext: 'soils are the fundamental to life on earth.',
   button: {
     as: 'link' as 'link',

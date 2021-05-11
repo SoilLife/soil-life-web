@@ -25,13 +25,16 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@fullpage/react-fullpage": "^0.1.19",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "imagekitio-react": "^1.0.9",
     "next": "latest",
     "next-seo": "^4.24.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-awesome-slider": "^4.1.0",
+    "react-dom": "^17.0.2",
+    "react-use": "^17.2.4"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.0",

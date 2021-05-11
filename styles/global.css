@@ -1,3 +1,23 @@
 @import './tailwind.css';
 @import './design-system/base.css';
 @import './design-system/fonts.css';
+
+.awssld__content {
+  background-color: transparent;
+}
+
+.aws-btn {
+  --slider-height-percentage: 60%;
+  --slider-transition-duration: 700ms;
+  --organic-arrow-thickness: 1px;
+  --organic-arrow-border-radius: 0px;
+  --organic-arrow-height: 15px;
+  --organic-arrow-color: var(--blue-500);
+  --control-button-width: 10%;
+  --control-button-height: 25%;
+  --control-button-background: transparent;
+  --control-bullet-color: var(--brown-500);
+  --control-bullet-active-color: var(--brown-700);
+  --loader-bar-color: var(--pink-500);
+  --loader-bar-height: 6px;
+}

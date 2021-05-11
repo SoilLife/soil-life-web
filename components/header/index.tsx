@@ -1,20 +1,29 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
-import { IKImage } from 'imagekitio-react';
-import Link from 'next/link';
-import Icon from 'components/atoms/icon';
-import { SocialMediaIcons } from 'components/social-media-icons';
+// helpers
 import { kebabCase } from 'helpers/kebab-case';
 
-function createNavLinks() {
-  const navLinks = ['soils 101', 'web of soil', 'media', 'get involved', 'about us'];
+// components
+import { IKImage } from 'imagekitio-react';
+import { SocialMediaIcons } from 'components/social-media-icons';
+import Link from 'next/link';
+import Icon from 'components/atoms/icon';
 
-  return navLinks.map((nav) => {
-    const link = kebabCase(nav);
+function createNavLinks() {
+  const navLinks = [
+    { name: 'soils 101', anchorTag: '#soil-101' },
+    { name: 'web of soil', anchorTag: '#web-of-soil' },
+    { name: 'media', anchorTag: '#media' },
+    { name: 'get involved', anchorTag: '#get-involved' },
+    { name: 'about us', anchorTag: '#about-us' },
+  ];
+
+  return navLinks.map(({ name, anchorTag: _anchorTag }) => {
+    const link = kebabCase(name);
     return (
       <li key={link} className='text-right px-2 py-4 md:text-center md:p-2 md:py-0 cursor-pointer'>
         <Link href={`/${link}`}>
-          <a className='text-xl font-acre-medium'>{nav}</a>
+          <a className='text-xl font-acre-medium'>{name}</a>
         </Link>
       </li>
     );
@@ -23,8 +32,10 @@ function createNavLinks() {
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
   return (
-    <header>
+    <header ref={headerRef} className='absolute top-0 w-full bg-white z-10'>
       <nav className='container flex items-center justify-between'>
         <Link href='/'>
           <a className='relative'>
