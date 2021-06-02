@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Icon from 'components/atoms/icon';
+import { Icon } from 'components/atoms';
 
 import { SocialMediaIconsProps } from './social-media-icons.interfaces';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';

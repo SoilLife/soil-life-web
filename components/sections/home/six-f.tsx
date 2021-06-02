@@ -1,24 +1,18 @@
 import { Card6F } from 'components/atoms/card-six-f';
 import { slides } from 'data/six-f-slides';
-import { IKImage } from 'imagekitio-react';
+import { Section, Slide, Image } from 'components/atoms';
 
 export function SixFSection() {
   return (
-    <section className='relative h-screen overflow-hidden'>
+    <Section data-anchor='six-f'>
       {slides.map(({ photoUrl, ...slide }, index) => {
         return (
-          <div key={index} className='max-h-full'>
+          <Slide className='relative' key={index}>
             <Card6F {...slide} />
-            <IKImage
-              key={index}
-              path={photoUrl}
-              loading='lazy'
-              lqip={{ active: true }}
-              className='absolute w-full top-56 left-0'
-            />
-          </div>
+            <Image key={index} url={photoUrl} className='absolute left-0 w-full top-56' />
+          </Slide>
         );
       })}
-    </section>
+    </Section>
   );
 }
