@@ -29,7 +29,7 @@ function createNavLinks() {
   });
 }
 
-export function Header({ fullpageRef, hideHeader }: { fullpageRef: React.MutableRefObject<any>; hideHeader: boolean }) {
+export function Header({ hideHeader }: { fullpageRef: React.MutableRefObject<any>; hideHeader: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
