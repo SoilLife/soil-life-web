@@ -43,14 +43,25 @@ export default function IndexPage() {
         navigation
         showActiveTooltip
         slidesNavigation
-        anchors={['', 'healthy-soils', 'six-f', 'story-of-genesis', 'dig-deeper', 'get-involved', 'about-us', 'footer']}
+        anchors={[
+          'home',
+          'healthy-soils',
+          'six-f',
+          'story-of-genesis',
+          'dig-deeper',
+          'get-involved',
+          'about-us',
+          'footer',
+        ]}
         onLeave={handleSectionLeave}
         render={({ state }: { state: any; fullpageApi: any }) => {
           if (!state.initialized) {
             return (
               <ReactFullpage.Wrapper>
                 <Section>
-                  <Loader />
+                  <div className='flex items-center justify-center min-h-screen'>
+                    <Loader />
+                  </div>
                 </Section>
                 ;
               </ReactFullpage.Wrapper>
