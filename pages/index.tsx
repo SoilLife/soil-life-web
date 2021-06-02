@@ -5,6 +5,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import DefaultLayout from 'layouts/default';
 
 // components
+import { Section, Loader } from 'components/atoms';
 import { Header, Footer } from 'components/templates';
 
 // sections
@@ -44,7 +45,18 @@ export default function IndexPage() {
         slidesNavigation
         anchors={['', 'healthy-soils', 'six-f', 'story-of-genesis', 'dig-deeper', 'get-involved', 'about-us', 'footer']}
         onLeave={handleSectionLeave}
-        render={() => {
+        render={({ state }: { state: any; fullpageApi: any }) => {
+          if (!state.initialized) {
+            return (
+              <ReactFullpage.Wrapper>
+                <Section>
+                  <Loader />
+                </Section>
+                ;
+              </ReactFullpage.Wrapper>
+            );
+          }
+
           return (
             <ReactFullpage.Wrapper>
               <HeroSection />
