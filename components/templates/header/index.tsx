@@ -1,13 +1,12 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 // helpers
 import { kebabCase } from 'helpers/kebab-case';
 
 // components
-import { IKImage } from 'imagekitio-react';
-import { SocialMediaIcons } from 'components/social-media-icons';
 import Link from 'next/link';
-import Icon from 'components/atoms/icon';
+import { SocialMediaIcons } from 'components/templates';
+import { Icon, Image } from 'components/atoms';
 
 function createNavLinks() {
   const navLinks = [
@@ -21,7 +20,7 @@ function createNavLinks() {
   return navLinks.map(({ name, anchorTag: _anchorTag }) => {
     const link = kebabCase(name);
     return (
-      <li key={link} className='text-right px-2 py-4 md:text-center md:p-2 md:py-0 cursor-pointer'>
+      <li key={link} className='px-2 py-4 text-right cursor-pointer md:text-center md:p-2 md:py-0'>
         <Link href={`/${link}`}>
           <a className='text-xl font-acre-medium'>{name}</a>
         </Link>
@@ -30,20 +29,23 @@ function createNavLinks() {
   });
 }
 
-export function Header() {
+export function Header({ hideHeader }: { fullpageRef: React.MutableRefObject<any>; hideHeader: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
 
   return (
-    <header ref={headerRef} className='absolute top-0 w-full bg-white z-10'>
+    <header
+      className={`fixed top-0 w-full bg-white z-10 transition-all ease-out transform ${
+        hideHeader ? 'translate-y-[-105%]' : ''
+      } `}
+    >
       <nav className='container flex items-center justify-between'>
         <Link href='/'>
           <a className='relative'>
-            <IKImage path='/logo_uQKRRnvk7wo.svg' className='cursor-pointer' alt='soil life logo' />
+            <Image url='/logo_uQKRRnvk7wo.svg' className='cursor-pointer' alt='soil life logo' />
           </a>
         </Link>
-        <ul className='hidden md:flex gap-16'>{createNavLinks()}</ul>
-        <SocialMediaIcons className='hidden lg:flex gap-4' />
+        <ul className='hidden gap-16 md:flex'>{createNavLinks()}</ul>
+        <SocialMediaIcons className='hidden gap-4 lg:flex' />
         <div className='relative md:hidden'>
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <Icon icon='bars' size='2x' />

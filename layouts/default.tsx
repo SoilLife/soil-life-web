@@ -1,8 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Header } from 'components/header';
-
 export default function DefaultLayout({ children }: React.PropsWithChildren<React.ReactNode>) {
   return (
     <>
@@ -14,10 +12,7 @@ export default function DefaultLayout({ children }: React.PropsWithChildren<Reac
         <link rel='preload' href='/fonts/Acre-Semibold.otf' as='font' crossOrigin='' />
         <link rel='preload' href='/fonts/Acre-Bold.otf' as='font' crossOrigin='' />
       </Head>
-      <div className='relative'>
-        <Header />
-        {children}
-      </div>
+      <div className='relative'>{children}</div>
     </>
   );
 }

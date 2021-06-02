@@ -1,5 +1,5 @@
 import DefaultLayout from 'layouts/default';
-import { Subheader } from 'components/subheader';
+import { Subheader } from 'components/templates';
 
 import { soil101Subheadings } from 'data/subheadings';
 

@@ -1,21 +1,21 @@
-import { IKImage } from 'imagekitio-react';
+import { Section } from 'components/atoms/fullpage-section';
+import { Image } from 'components/atoms';
+
 export function HeroSection() {
   return (
-    <section className='h-screen overflow-hidden'>
-      <div className='relative h-full'>
-        <IKImage path='/Home_Page/natgeo5b_H4vFWWpPA.jpg' loading='lazy' lqip={{ active: true }} className='w-full' />
-        <div className='absolute text-white text-6xl bottom-1/4 w-1/2 transform translate-x-1/2 right-1/2'>
-          <p className='mb-6 font-acre-medium'>
-            we all share <br />
-            common ground.
+    <Section data-anchor=''>
+      <Image url='/Home_Page/natgeo5b_H4vFWWpPA.jpg' />
+      <div className='absolute w-1/2 text-6xl text-white transform translate-x-1/2 bottom-1/4 right-1/2 '>
+        <p className='mb-6 font-acre-medium'>
+          we all share <br />
+          common ground.
+        </p>
+        <div className='p-1 text-xl bg-pink-500'>
+          <p>
+            <span>get dirty.</span> <span>get connected.</span>
           </p>
-          <div className='bg-pink-500 text-xl p-1'>
-            <p>
-              <span>get dirty.</span> <span>get connected.</span>
-            </p>
-          </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

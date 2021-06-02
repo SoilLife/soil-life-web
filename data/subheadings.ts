@@ -1,4 +1,4 @@
-import { SubheaderProps } from 'components/subheader/subheader.interface';
+import { SubheaderProps } from 'components/templates/subheader/subheader.interface';
 
 export const soil101Subheadings: SubheaderProps['subheadings'] = [
   {

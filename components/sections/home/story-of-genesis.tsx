@@ -1,12 +1,11 @@
-import { YoutubeEmbed } from 'components/atoms/youtube-embed';
-import { Button } from 'components/atoms/button';
+import { Section, Button, YoutubeEmbed } from 'components/atoms';
 import Link from 'next/link';
 
 export function StoryOfGenesisSection() {
   return (
-    <section className='h-screen'>
-      <div className='container h-full flex flex-col items-center justify-center'>
-        <div className='max-w-4xl mx-auto w-full mb-8'>
+    <Section data-anchor='story-of-genesis'>
+      <div className='container flex flex-col items-center justify-center h-full'>
+        <div className='w-full max-w-4xl mx-auto mb-8'>
           <YoutubeEmbed embedId='K9QEoPvM45A' />
         </div>
         <div className='flex justify-center'>
@@ -15,6 +14,6 @@ export function StoryOfGenesisSection() {
           </Link>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
