@@ -1,0 +1,78 @@
+/* Source - http://cfoucht.com/loadlab/ */
+.mesh-loader {
+  @apply w-full h-full overflow-hidden;
+}
+
+.mesh-loader .circle {
+  @apply absolute w-6 h-6 bg-pink-400 rounded-full;
+
+  margin: -12.5px;
+  -webkit-animation: mesh 3s ease-in-out infinite;
+  animation: mesh 3s ease-in-out infinite -1.5s;
+}
+
+.mesh-loader > div .circle:last-child {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.mesh-loader > div {
+  @apply absolute top-1/2 left-1/2;
+}
+
+.mesh-loader > div:last-child {
+  @apply transform rotate-90;
+}
+
+@-webkit-keyframes mesh {
+  0% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  50.00001% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes mesh {
+  0% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  50.00001% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

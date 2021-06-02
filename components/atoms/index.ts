@@ -5,3 +5,4 @@ export * from './fullpage-slide';
 export * from './icon';
 export * from './image';
 export * from './youtube-embed';
+export * from './loader';
