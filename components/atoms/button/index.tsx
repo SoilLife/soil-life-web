@@ -15,7 +15,11 @@ export const Button = forwardRef(
     }
 
     return (
-      <a ref={ref} className={` cursor-pointer ${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`} {...props}>
+      <a
+        ref={ref}
+        className={`inline-block cursor-pointer ${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`}
+        {...props}
+      >
         {label}
       </a>
     );

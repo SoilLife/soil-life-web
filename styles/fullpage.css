@@ -1,0 +1,11 @@
+#fp-nav ul li a span {
+  @apply bg-brown-200 shadow-md !important;
+}
+
+.fp-slidesNav ul {
+  @apply flex justify-center;
+}
+
+.fp-slidesNav ul li a span {
+  @apply bg-brown-200 shadow-md !important;
+}
