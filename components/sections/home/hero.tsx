@@ -10,10 +10,9 @@ export function HeroSection() {
           we all share <br />
           common ground.
         </p>
-        <div className='p-1 text-xl bg-pink-500'>
-          <p>
-            <span>get dirty.</span> <span>get connected.</span>
-          </p>
+        <div className='p-1 text-xl bg-pink-500 sm:flex sm:space-x-2'>
+          <p>get dirty.</p>
+          <p>get connected.</p>
         </div>
       </div>
     </Section>

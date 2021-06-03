@@ -54,6 +54,7 @@ export default function IndexPage() {
           'footer',
         ]}
         onLeave={handleSectionLeave}
+        recordHistory={false}
         render={({ state }: { state: any; fullpageApi: any }) => {
           if (!state.initialized) {
             return (
