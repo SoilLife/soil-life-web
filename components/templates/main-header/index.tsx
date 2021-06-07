@@ -1,12 +1,12 @@
-import { SubheaderProps } from './subheader.interface';
+import { MainHeaderProps } from './main-header.interface';
 import Link from 'next/link';
 
-export function Subheader({ pathName, subheadings, backgroundColor = 'var(--pink-500)' }: SubheaderProps) {
+export function MainHeader({ pathName, headings, backgroundColor = 'var(--pink-500)' }: MainHeaderProps) {
   return (
     <div className='container w-full' style={{ backgroundColor }}>
       <nav>
         <ul className='flex items-center justify-between h-16'>
-          {subheadings.map(({ name, slug, asset }) => (
+          {headings.map(({ name, slug, asset }) => (
             <li key={name} className='text-white cursor-pointer'>
               <Link href={`/${pathName}/${slug}`}>
                 <a>

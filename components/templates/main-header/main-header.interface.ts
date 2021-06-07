@@ -1,6 +1,6 @@
-export interface SubheaderProps {
+export interface MainHeaderProps {
   pathName: string;
-  subheadings: {
+  headings: {
     name: string;
     slug: string;
     asset: string;

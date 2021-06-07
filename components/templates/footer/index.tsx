@@ -6,7 +6,7 @@ export function Footer() {
     <Section className='fp-auto-height'>
       <footer className='container'>
         <div className='flex flex-col items-center justify-between sm:flex-row'>
-          <div className='w-full sm:w-[400px]'>
+          <div className='w-full h-full sm:w-[400px]'>
             <Image url='/soil_all_connected_Xgb0g5f3Fqm.png' />
           </div>
           <div className='w-full sm:w-1/3'>

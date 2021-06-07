@@ -6,7 +6,7 @@ import { kebabCase } from 'helpers/kebab-case';
 // components
 import Link from 'next/link';
 import { SocialMediaIcons } from 'components/templates';
-import { Icon, Image } from 'components/atoms';
+import { Icon } from 'components/atoms';
 
 function createNavLinks() {
   const navLinks = [
@@ -29,7 +29,7 @@ function createNavLinks() {
   });
 }
 
-export function Header({ hideHeader }: { fullpageRef: React.MutableRefObject<any>; hideHeader: boolean }) {
+export function HomeHeader({ hideHeader }: { fullpageRef: React.MutableRefObject<any>; hideHeader: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -38,10 +38,10 @@ export function Header({ hideHeader }: { fullpageRef: React.MutableRefObject<any
         hideHeader ? 'translate-y-[-105%]' : ''
       } `}
     >
-      <nav className='container flex items-center justify-between'>
+      <nav className='container flex items-center justify-between py-4'>
         <Link href='/'>
           <a className='relative'>
-            <Image url='/logo_uQKRRnvk7wo.svg' className='cursor-pointer' alt='soil life logo' />
+            <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />
           </a>
         </Link>
         <ul className='hidden gap-16 md:flex'>{createNavLinks()}</ul>

@@ -1,0 +1,19 @@
+import { Section, Image } from 'components/atoms';
+
+export function OurVisionSection() {
+  return (
+    <Section>
+      <div className='h-full'>
+        <Image url='/About_Us/Sunset_Yellow_Farm_Crops_Agriculture_iIMzdc_Nn8v.jpg' />
+        <div className='absolute max-w-md p-10 mx-auto space-y-10 text-center transform -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2'>
+          <h4 className='text-2xl text-orange-400 font-acre-regular'>Our Vision</h4>
+          <p className='font-acre-thin'>
+            a world in which people love and protect the soil upon which we all depend; a world where consumers value
+            products grown in healthy soils; where agriculture regenerates, rather than degrades, the soil, and
+            businesses find profitable ways to source products without external environmental costs.
+          </p>
+        </div>
+      </div>
+    </Section>
+  );
+}

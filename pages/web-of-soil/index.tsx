@@ -1,12 +1,12 @@
-import DefaultLayout from 'layouts/default';
-import { Subheader } from 'components/templates';
+import { DefaultLayout } from 'layouts';
+import { MainHeader } from 'components/templates';
 
-import { webOfSoilSubheadings } from 'data/subheadings';
+import { webOfSoilSubheadings } from 'data/main-headings';
 
 export default function WebOfSoilPage() {
   return (
     <DefaultLayout>
-      <Subheader pathName='web-of-soil' subheadings={webOfSoilSubheadings} />
+      <MainHeader pathName='web-of-soil' headings={webOfSoilSubheadings} />
     </DefaultLayout>
   );
 }
