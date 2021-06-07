@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-export default function DefaultLayout({ children }: React.PropsWithChildren<React.ReactNode>) {
+export function DefaultLayout({ children }: React.PropsWithChildren<React.ReactNode>) {
   return (
     <>
       <Head>

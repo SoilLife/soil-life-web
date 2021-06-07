@@ -1,6 +1,6 @@
-import { SubheaderProps } from 'components/templates/subheader/subheader.interface';
+import { MainHeaderProps } from 'components/templates/main-header/main-header.interface';
 
-export const soil101Subheadings: SubheaderProps['subheadings'] = [
+export const soil101Subheadings: MainHeaderProps['headings'] = [
   {
     name: 'soil genesis',
     slug: 'genesis',
@@ -33,7 +33,7 @@ export const soil101Subheadings: SubheaderProps['subheadings'] = [
   },
 ];
 
-export const webOfSoilSubheadings: SubheaderProps['subheadings'] = [
+export const webOfSoilSubheadings: MainHeaderProps['headings'] = [
   {
     name: 'food',
     slug: 'food',

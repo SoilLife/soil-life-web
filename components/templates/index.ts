@@ -1,4 +1,4 @@
 export * from './footer';
-export * from './header';
+export * from './home-header';
 export * from './social-media-icons';
-export * from './subheader';
+export * from './main-header';
