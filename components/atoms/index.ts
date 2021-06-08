@@ -6,3 +6,5 @@ export * from './icon';
 export * from './image';
 export * from './youtube-embed';
 export * from './loader';
+export * from './typography';
+export * from './card-team-member';
