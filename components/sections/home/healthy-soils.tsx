@@ -11,7 +11,7 @@ export function HealthySoilsSection() {
   const isTablet = useMedia('(min-width: 640px)');
 
   return (
-    <Section data-anchor='healthy-soils'>
+    <Section>
       <Slide>
         <div className='flex items-center justify-center h-full'>
           <div className='relative inline-flex items-center justify-center w-full h-full p-10 sm:p-20 text-brown-400'>

@@ -8,3 +8,4 @@ export * from './youtube-embed';
 export * from './loader';
 export * from './typography';
 export * from './card-team-member';
+export * from './card-flip';

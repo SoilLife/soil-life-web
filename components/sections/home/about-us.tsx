@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function AboutUsSection() {
   return (
-    <Section data-anchor='about-us'>
+    <Section>
       <div className='h-full'>
         <div className='flex flex-col-reverse items-center justify-center w-full h-full p-6 lg:space-x-8 lg:flex-row'>
           <div className='lg:max-w-sm'>

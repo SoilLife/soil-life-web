@@ -4,7 +4,7 @@ import { Section, Slide, Image } from 'components/atoms';
 
 export function SixFSection() {
   return (
-    <Section data-anchor='six-f'>
+    <Section>
       {slides.map(({ photoUrl, ...slide }, index) => {
         return (
           <Slide className='relative' key={index}>

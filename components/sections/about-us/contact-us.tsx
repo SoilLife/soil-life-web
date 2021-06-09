@@ -8,7 +8,7 @@ export function ContactUsSection() {
     <Section className='relative flex items-center'>
       <Image url='/About_Us/About_Us_Contact_Us_qr_gIU5QC.jpeg' className='absolute z-[-1] w-full h-full' />
 
-      <form className='absolute z-10 w-[30vw] p-4 flex flex-col ml-10  bg-white  md:p-8' onSubmit={handleSubmit}>
+      <form className='absolute z-10 xl:w-[30vw] p-4 flex flex-col ml-10  bg-white  md:p-8' onSubmit={handleSubmit}>
         <Typography type='subheading' className='mb-4 text-pink-400 md:mb-8'>
           Contact Us
         </Typography>
