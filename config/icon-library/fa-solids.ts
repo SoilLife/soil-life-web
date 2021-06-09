@@ -1,1 +1,1 @@
-export { faBars } from '@fortawesome/free-solid-svg-icons';
+export { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';

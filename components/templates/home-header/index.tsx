@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // helpers
 import { kebabCase } from 'helpers/kebab-case';
@@ -20,7 +20,7 @@ function createNavLinks() {
   return navLinks.map(({ name, anchorTag: _anchorTag }) => {
     const link = kebabCase(name);
     return (
-      <li key={link} className='px-2 py-4 text-right cursor-pointer md:text-center md:p-2 md:py-0'>
+      <li key={link} className='w-full px-2 py-4 text-center cursor-pointer md:text-center md:p-2 md:py-0'>
         <Link href={`/${link}`}>
           <a className='text-xl font-acre-medium'>{name}</a>
         </Link>
@@ -29,36 +29,63 @@ function createNavLinks() {
   });
 }
 
-export function HomeHeader({ hideHeader }: { fullpageRef: React.MutableRefObject<any>; hideHeader: boolean }) {
+export function HomeHeader({
+  hideHeader,
+  fullpageRef,
+}: {
+  fullpageRef: React.MutableRefObject<any | null>;
+  hideHeader: boolean;
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (fullpageRef.current) {
+      console.log(fullpageRef.current);
+      if (isMenuOpen) {
+        const navigation = document.querySelector('#fp-nav') as HTMLDivElement;
+        if (navigation) {
+          navigation.style.display = 'none';
+        }
+        fullpageRef.current.fullpageApi.setAllowScrolling(false);
+      } else {
+        const navigation = document.querySelector('#fp-nav') as HTMLDivElement;
+        if (navigation) {
+          navigation.style.display = 'block';
+        }
+        fullpageRef.current.fullpageApi.setAllowScrolling(true);
+      }
+    }
+  }, [isMenuOpen]);
+
   return (
-    <header
-      className={`fixed top-0 w-full bg-white z-10 transition-all ease-out transform ${
-        hideHeader ? 'translate-y-[-105%]' : ''
-      } `}
-    >
-      <nav className='container flex items-center justify-between py-4'>
-        <Link href='/'>
-          <a className='relative'>
-            <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />
-          </a>
-        </Link>
-        <ul className='hidden gap-16 md:flex'>{createNavLinks()}</ul>
-        <SocialMediaIcons className='hidden gap-4 lg:flex' />
-        <div className='relative md:hidden'>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <Icon icon='bars' size='2x' />
-          </button>
-        </div>
-      </nav>
+    <>
+      <header
+        className={`fixed overflow-hidden top-0 w-full bg-white z-10 transition-all ease-out transform ${
+          hideHeader ? 'translate-y-[-105%]' : ''
+        } `}
+      >
+        <nav className='container flex items-center justify-between py-4'>
+          <Link href='/'>
+            <a className='relative'>
+              <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />
+            </a>
+          </Link>
+          <ul className='hidden gap-16 md:flex'>{createNavLinks()}</ul>
+          <SocialMediaIcons className='hidden gap-4 lg:flex' />
+          <div className='w-10 h-10 md:hidden'>
+            <button className='w-full h-full' onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Icon className='w-full h-full' icon={isMenuOpen ? 'times' : 'bars'} size='2x' />
+            </button>
+          </div>
+        </nav>
+      </header>
       <ul
-        className={`absolute w-56 right-0 z-10 bg-white shadow-md transition duration-300 ease-in-out transform translate-x-full ${
-          isMenuOpen ? 'translate-x-0' : ''
-        } md:hidden `}
+        className={`absolute justify-center w-full h-full right-0 z-10 top-[88px] pt-16 bg-white shadow-md p ${
+          isMenuOpen ? 'translate-x-0' : 'hidden'
+        } md:hidden`}
       >
         {createNavLinks()}
       </ul>
-    </header>
+    </>
   );
 }
