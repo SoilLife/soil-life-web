@@ -1,12 +1,19 @@
-import { DefaultLayout } from 'layouts';
-import { MainHeader } from 'components/templates';
-
 import { soil101Subheadings } from 'data/main-headings';
+
+import { FullPage } from 'components/fullpage';
+import { Section } from 'components/atoms';
 
 export default function Soil101Page() {
   return (
-    <DefaultLayout>
-      <MainHeader pathName='soils-101' headings={soil101Subheadings} />
-    </DefaultLayout>
+    <FullPage
+      type='main'
+      mainHeaderProps={{
+        headings: soil101Subheadings,
+        pathName: 'soil-101',
+        backgroundColor: 'var(--pink-500)',
+      }}
+    >
+      <Section />
+    </FullPage>
   );
 }
