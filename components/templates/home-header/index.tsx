@@ -40,7 +40,6 @@ export function HomeHeader({
 
   useEffect(() => {
     if (fullpageRef.current) {
-      console.log(fullpageRef.current);
       if (isMenuOpen) {
         const navigation = document.querySelector('#fp-nav') as HTMLDivElement;
         if (navigation) {

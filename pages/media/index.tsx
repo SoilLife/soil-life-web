@@ -1,5 +1,10 @@
-import { DefaultLayout } from 'layouts';
+import { FullPage } from 'components/fullpage';
+import { Section } from 'components/atoms';
 
 export default function MediaPage() {
-  return <DefaultLayout>Media</DefaultLayout>;
+  return (
+    <FullPage type='home'>
+      <Section />
+    </FullPage>
+  );
 }

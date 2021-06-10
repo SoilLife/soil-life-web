@@ -1,12 +1,18 @@
-import { DefaultLayout } from 'layouts';
-import { MainHeader } from 'components/templates';
-
+import { FullPage } from 'components/fullpage';
+import { Section } from 'components/atoms';
 import { webOfSoilSubheadings } from 'data/main-headings';
 
 export default function WebOfSoilPage() {
   return (
-    <DefaultLayout>
-      <MainHeader pathName='web-of-soil' headings={webOfSoilSubheadings} />
-    </DefaultLayout>
+    <FullPage
+      type='main'
+      mainHeaderProps={{
+        headings: webOfSoilSubheadings,
+        pathName: 'web-of-soil',
+        backgroundColor: 'var(--pink-500)',
+      }}
+    >
+      <Section />
+    </FullPage>
   );
 }
