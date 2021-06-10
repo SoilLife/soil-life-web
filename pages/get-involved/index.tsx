@@ -44,10 +44,10 @@ export default function GetInvolvedPage() {
       mainHeaderProps={{
         headings: getInvolvedHeadings,
         pathName: 'get-involved',
-        backgroundColor: 'var(--pink-400)',
+        backgroundColor: 'var(--pink-500)',
       }}
     >
-      <Section className='fp-auto-height'>
+      <Section>
         <div className='grid h-full grid-cols-3 auto-rows-fr'>
           {mergedData.map(({ asset, name, slug, imageUrl = '', twBgColor = 'bg-pink-400' }) => {
             return (
