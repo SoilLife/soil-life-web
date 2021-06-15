@@ -14,6 +14,8 @@ export function FullPage({ type, mainHeaderProps, children }: FullPageProps) {
   const ref = useRef<any>(null);
   const [hideHeader, setHideHeader] = useState(false);
 
+  console.log(ref);
+
   const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
     if (direction === 'up' && hideHeader) {
       setHideHeader(false);
