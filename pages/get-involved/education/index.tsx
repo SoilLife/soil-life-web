@@ -127,7 +127,7 @@ export default function ForYourEducationPage() {
         for your education
       </Typography>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:max-w-5xl 2xl:max-w-7xl mx-auto'>
-        {cards.map(({ imageUrl, imageContain, text, links }, index) => (
+        {cards.map(({ imageUrl, imageContain, text }, index) => (
           <div key={index} className='shadow-lg p-4'>
             <div className='aspect-h-1 aspect-w-1'>
               <Image url={imageUrl} className={imageContain ? 'object-contain' : ''} />
