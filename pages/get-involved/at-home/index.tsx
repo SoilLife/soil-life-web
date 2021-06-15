@@ -68,7 +68,7 @@ export default function AtHomePage() {
         At Home
       </Typography>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:max-w-5xl 2xl:max-w-7xl mx-auto'>
-        {cards.map(({ imageUrl, text, links }, index) => (
+        {cards.map(({ imageUrl, text }, index) => (
           <div key={index} className='shadow-lg p-4'>
             <div className='aspect-h-1 aspect-w-1'>
               <Image url={imageUrl} />
