@@ -25,7 +25,7 @@ export function CardFlip({ imageUrl, order, label, content }: CardFlipProps) {
       >
         {/* Front */}
         <div className={`absolute w-full h-full ${styles['card-flip-front']}`}>
-          <Image url={imageUrl} />
+          <Image url={imageUrl} className='object-cover' />
           <div className='absolute p-2.5 inset-0 flex flex-col items-center justify-center w-full h-full'>
             <Typography type='label' className='text-white'>
               {order}

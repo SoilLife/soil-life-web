@@ -48,18 +48,19 @@ export default function GetInvolvedPage() {
       }}
     >
       <Section>
-        <div className='grid h-full grid-cols-3 auto-rows-fr'>
+        <div className='grid h-full grid-cols-2 sm:grid-cols-3 auto-rows-fr'>
           {mergedData.map(({ asset, name, slug, imageUrl = '', twBgColor = 'bg-pink-400' }) => {
             return (
               <div className='relative w-full h-full' key={name}>
-                <Image url={imageUrl} />
+                <div className='absolute bg-gradient-to-t from-pink-900 to-transparent h-full w-full' />
+                <Image url={imageUrl} className='object-cover' />
                 <Link href={`/get-involved/${slug}`}>
                   <div
-                    className={`absolute z-10 w-40 h-40 text-white transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 cursor-pointer ${twBgColor}`}
+                    className={`absolute z-10 w-16 h-16 md:w-24 md:h-24 lg:w-40 lg:h-40 text-white transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 cursor-pointer ${twBgColor}`}
                   >
                     <div className='relative w-full h-full'>
-                      <img className='h-24 mx-auto' src={asset} />
-                      <Typography type='paragraph' className='absolute w-full text-center top-20'>
+                      <img className='sm:w-24 sm:h-24 mx-auto' src={asset} />
+                      <Typography type='paragraph' className='absolute w-full text-center md:top-24 lg:top-20'>
                         {name}
                       </Typography>
                     </div>

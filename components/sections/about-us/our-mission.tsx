@@ -34,7 +34,7 @@ export function OurMissionSection() {
           </div>
         </div>
         <Image
-          className='origin-top-left transform sm:col-span-3'
+          className='origin-top-left transform sm:col-span-3 object-cover'
           url='/About_Us/About_Us_Our_mission_OIGaEwKm7.jpeg'
         />
       </div>

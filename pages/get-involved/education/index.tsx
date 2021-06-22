@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 // components
 import Link from 'next/link';
 import { Typography, Image, Button } from 'components/atoms';
@@ -59,34 +61,34 @@ const cards = [
   {
     imageUrl: '/Get_Involved/For_Your_Education/SoilsRevealed_Illustration_01_UdYobwDTI.jpeg',
     text: 'explore the soils revealed map',
-    links: ['https://soilsrevealed.org/explore'],
+    links: 'https://soilsrevealed.org/explore',
   },
   {
     imageUrl: '/Get_Involved/For_Your_Education/4_For_Your_Education_5_NRCS_Resources_NHA82T4zL.jpg',
     imageContain: true,
     text: 'browse NRCS resources',
-    links: ['https://www.nrcs.usda.gov/wps/portal/nrcs/site/national/home/'],
+    links: 'https://www.nrcs.usda.gov/wps/portal/nrcs/site/national/home/',
   },
   {
     imageUrl: '/Get_Involved/For_Your_Education/4_For_Your_Education_6_SSSA_Resources_9WPD4w1pj.jpg',
     imageContain: true,
     text: 'browse SSSA resources',
-    links: ['https://www.soils.org/discover-soils'],
+    links: 'https://www.soils.org/discover-soils',
   },
   {
     imageUrl: '/Get_Involved/For_Your_Education/Screen_Shot_2021-05-09_at_7.27.19_PM_fqeUgjfs8.png',
     text: 'explore the UCD soil health portal',
-    links: ['http://soilhealth.ucdavis.edu/'],
+    links: 'http://soilhealth.ucdavis.edu/',
   },
   {
     imageUrl: '/Get_Involved/With_Your_Legislators/ales-krivec-976-unsplash_21_hVO8UiZni.jpg',
     text: 'explore the soil health nexus',
-    links: ['https://soilhealthnexus.org/resources/'],
+    links: 'https://soilhealthnexus.org/resources/',
   },
   {
     imageUrl: '/Get_Involved/With_Your_Legislators/ales-krivec-976-unsplash_21_hVO8UiZni.jpg',
     text: 'explore "for the love of soil"',
-    links: ['https://www.fortheloveofsoil.org/educate'],
+    links: 'https://www.fortheloveofsoil.org/educate',
   },
   {
     imageUrl: '/Get_Involved/For_Your_Education/citizen_soil_science_gIIoeJIcM.jpg',
@@ -115,11 +117,19 @@ const cards = [
   {
     imageUrl: '/Get_Involved/With_Your_Legislators/ales-krivec-976-unsplash_21_hVO8UiZni.jpg',
     text: 'explore soil colors of national parks',
-    links: ['https://munsell.com/color-blog/soil-colors-national-parks-anniversary/'],
+    links: 'https://munsell.com/color-blog/soil-colors-national-parks-anniversary/',
   },
 ];
 
 export default function ForYourEducationPage() {
+  const [isOpen, setIsOpen] = useState<{ [index: number]: boolean }>({});
+
+  function handleIsLinksOpen(index: number) {
+    return () => {
+      setIsOpen((prevState) => ({ ...prevState, [index]: !prevState[index] }));
+    };
+  }
+
   return (
     <>
       <MainHeader headings={getInvolvedHeadings} backgroundColor='var(--brown-500)' pathName='get-involved' />
@@ -127,14 +137,47 @@ export default function ForYourEducationPage() {
         for your education
       </Typography>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:max-w-5xl 2xl:max-w-7xl mx-auto'>
-        {cards.map(({ imageUrl, imageContain, text }, index) => (
+        {cards.map(({ imageUrl, text, links, imageContain }, index) => (
           <div key={index} className='shadow-lg p-4'>
-            <div className='aspect-h-1 aspect-w-1'>
-              <Image url={imageUrl} className={imageContain ? 'object-contain' : ''} />
+            <div className={`relative aspect-h-1 aspect-w-1`}>
+              {isOpen[index] && (
+                <div className='absolute h-full w-full bg-gradient-to-t from-brown-900 to-transparent z-10 p-4'>
+                  {Array.isArray(links) && (
+                    <ul className='space-y-4 flex flex-col justify-end h-full'>
+                      {links.map((link, index) => {
+                        return (
+                          <li key={index} className='text-white text-center hover:text-brown-400 active:text-brown-500'>
+                            <a href={link.href} target='_blank' rel='noreferrer noopener'>
+                              {link.name}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+              )}
+              <Image url={imageUrl} className={imageContain ? 'object-contain' : 'object-cover'} />
             </div>
-            <Typography type='paragraph' className='text-brown-500 text-center pb-2 pt-4'>
+            <Typography type='paragraph' className='text-brown-500 text-center mt-4'>
               {text}
             </Typography>
+            <div className='flex items-center justify-center my-4'>
+              <Button
+                label='find out how'
+                type='neutral'
+                size='sm'
+                {...(Array.isArray(links)
+                  ? {
+                      as: 'button',
+                      onClick: handleIsLinksOpen(index),
+                    }
+                  : {
+                      as: 'link',
+                      external: links,
+                    })}
+              />
+            </div>
           </div>
         ))}
       </div>

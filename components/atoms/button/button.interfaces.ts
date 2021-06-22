@@ -11,4 +11,5 @@ export type ButtonProps = {
   className?: string;
   style?: CSSProperties;
   inverted?: boolean;
+  external?: string;
 };

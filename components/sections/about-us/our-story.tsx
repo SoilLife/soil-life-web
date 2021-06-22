@@ -4,7 +4,10 @@ export function OurStorySection() {
   return (
     <Section>
       <div className='relative h-full xl:grid xl:grid-cols-5'>
-        <Image className='h-1/2 xl:h-full xl:col-span-3' url='/About_Us/About_Us_Our_Story_BVF_XwsIqxs_V.jpeg' />
+        <Image
+          className='h-1/2 xl:h-full xl:col-span-3 object-cover'
+          url='/About_Us/About_Us_Our_Story_BVF_XwsIqxs_V.jpeg'
+        />
         <div
           className={`absolute flex flex-col items-center justify-center w-full max-w-sm p-4 mx-auto -mt-16 space-y-4 text-sm text-center transform -translate-x-1/2 -translate-y-1/2 bg-white left-1/2 top-3/4
           lg:text-2xl lg:max-w-xl xl:col-span-2

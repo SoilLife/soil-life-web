@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 // components
 import Link from 'next/link';
 import { Typography, Image, Button } from 'components/atoms';
@@ -54,17 +56,17 @@ const cards = [
     imageUrl: '/Get_Involved/Through_Donations/Screen_Shot_2021-05-09_at_8.18.55_PM_E75j_wlReSn.png',
     imageContain: true,
     text: 'support BIPOC farmers',
-    links: ['https://www.soulfirefarm.org/get-involved/reparations/'],
+    links: 'https://www.soulfirefarm.org/get-involved/reparations/',
   },
   {
     imageUrl: '/Get_Involved/Through_Donations/5_Through_Donations_Sustenance_Farmer_JycCq3NXv-U.jpg',
     text: 'support a sustenance farmer',
-    links: ['https://www.kiva.org/lend/agriculture'],
+    links: 'https://www.kiva.org/lend/agriculture',
   },
   {
     imageUrl: '/Get_Involved/Through_Donations/support_farmer_veteran_7D4Nj8bSl.jpeg',
     text: 'support veteran farmers',
-    links: ['https://farmvetco.org/'],
+    links: 'https://farmvetco.org/',
   },
   {
     imageUrl: '/Get_Involved/Through_Donations/5_Through_Donations_4_Fund_Research_InfzvDXhZ.jpg',
@@ -81,11 +83,19 @@ const cards = [
   {
     imageUrl: '/Get_Involved/Through_Donations/Support_our_Work_N2LJ-eI5lRD.png',
     text: 'support our work',
-    links: ['#'],
+    links: '#',
   },
 ];
 
 export default function DonationsPage() {
+  const [isOpen, setIsOpen] = useState<{ [index: number]: boolean }>({});
+
+  function handleIsLinksOpen(index: number) {
+    return () => {
+      setIsOpen((prevState) => ({ ...prevState, [index]: !prevState[index] }));
+    };
+  }
+
   return (
     <>
       <MainHeader headings={getInvolvedHeadings} backgroundColor='var(--orange-500)' pathName='get-involved' />
@@ -93,19 +103,55 @@ export default function DonationsPage() {
         through donations
       </Typography>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:max-w-5xl 2xl:max-w-7xl mx-auto'>
-        {cards.map(({ imageUrl, imageContain, text }, index) => (
+        {cards.map(({ imageUrl, text, links, imageContain }, index) => (
           <div key={index} className='shadow-lg p-4'>
-            <div className='aspect-h-1 aspect-w-1'>
-              <Image url={imageUrl} className={imageContain ? 'object-contain' : ''} />
+            <div className={`relative aspect-h-1 aspect-w-1`}>
+              {isOpen[index] && (
+                <div className='absolute h-full w-full bg-gradient-to-t from-orange-900 to-transparent z-10 p-4'>
+                  {Array.isArray(links) && (
+                    <ul className='space-y-4 flex flex-col justify-end h-full'>
+                      {links.map((link, index) => {
+                        return (
+                          <li
+                            key={index}
+                            className='text-white text-center hover:text-orange-400 active:text-orange-500'
+                          >
+                            <a href={link.href} target='_blank' rel='noreferrer noopener'>
+                              {link.name}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+              )}
+              <Image url={imageUrl} className={imageContain ? 'object-contain' : 'object-cover'} />
             </div>
-            <Typography type='paragraph' className='text-orange-500 text-center pb-2 pt-4'>
+            <Typography type='paragraph' className='text-orange-500 text-center mt-4'>
               {text}
             </Typography>
+            <div className='flex items-center justify-center my-4'>
+              <Button
+                label='find out how'
+                type='alert'
+                size='sm'
+                {...(Array.isArray(links)
+                  ? {
+                      as: 'button',
+                      onClick: handleIsLinksOpen(index),
+                    }
+                  : {
+                      as: 'link',
+                      external: links,
+                    })}
+              />
+            </div>
           </div>
         ))}
       </div>
 
-      <div className='relative left-1/2 transform -translate-x-1/2 inline-flex justify-center my-6'>
+      <div className='relative left-1/2 transform -translate-x-1/2 inline-flex justify-center my-8'>
         <img
           src='/images/worm.png'
           alt='illustration of an earth worm'

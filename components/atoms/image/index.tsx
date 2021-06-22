@@ -19,7 +19,7 @@ export function Image({
         active: true,
         quality: 20,
       }}
-      className={`${props.width ? '' : 'w-full'} h-full object-cover ${className}`}
+      className={`${props.width ? '' : 'w-full'} h-full ${className}`}
       {...props}
     />
   );
