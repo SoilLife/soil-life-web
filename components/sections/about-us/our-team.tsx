@@ -5,7 +5,7 @@ export function OurTeamSection() {
   return (
     <Section>
       <div className='relative h-full'>
-        <Image url='/About_Us/Our_Team_About_Us_NIPGMI969.jpg' />
+        <Image url='/About_Us/Our_Team_About_Us_NIPGMI969.jpg' className='object-cover' />
         <div className='container absolute inset-0'>
           <Typography
             type='heading'

@@ -10,7 +10,7 @@ export function SixFSection() {
           <Slide className='relative' key={index}>
             <Card6F {...slide} />
             <div className='absolute top-0 left-0 w-full h-full sm:top-1/3 '>
-              <Image key={index} url={photoUrl} />
+              <Image key={index} url={photoUrl} className='object-cover' />
             </div>
           </Slide>
         );

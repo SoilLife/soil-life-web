@@ -7,7 +7,7 @@ export function Footer() {
       <footer className='container'>
         <div className='flex flex-col items-center justify-between sm:flex-row'>
           <div className='w-full h-full sm:w-[400px]'>
-            <Image url='/soil_all_connected_Xgb0g5f3Fqm.png' />
+            <Image url='/soil_all_connected_Xgb0g5f3Fqm.png' className='object-cover' />
           </div>
           <div className='w-full sm:w-1/3'>
             <p className='p-1 mb-6 text-white bg-pink-500'>stay connected.</p>

@@ -20,7 +20,7 @@ export function AboutUsSection() {
             </div>
           </div>
           <div className='w-full lg:w-[800px]'>
-            <Image url='/Home_Page/grass_roots_pnwdrMGcq.jpeg' />
+            <Image url='/Home_Page/grass_roots_pnwdrMGcq.jpeg' className='object-cover' />
           </div>
         </div>
       </div>

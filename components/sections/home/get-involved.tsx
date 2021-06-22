@@ -4,7 +4,7 @@ import Link from 'next/link';
 export function GetInvolvedSection() {
   return (
     <Section>
-      <Image url='/Home_Page/AdobeStock_144874490_6lpeJS0jbCq.jpg' />
+      <Image url='/Home_Page/AdobeStock_144874490_6lpeJS0jbCq.jpg' className='object-cover' />
       <div className='container absolute left-0 flex flex-col items-center justify-between w-full text-white bottom-10 sm:flex-row sm:bottom-1/4'>
         <div>
           <p className='mb-6 text-3xl sm:text-4xl'>soil does so much for us,</p>

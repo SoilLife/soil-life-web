@@ -4,7 +4,7 @@ import { Image } from 'components/atoms';
 export function HeroSection() {
   return (
     <Section>
-      <Image url='/Home_Page/natgeo5b_H4vFWWpPA.jpg' />
+      <Image url='/Home_Page/natgeo5b_H4vFWWpPA.jpg' className='object-cover' />
       <div className='absolute w-1/2 text-6xl text-white transform translate-x-1/2 translate-y-1/4 bottom-1/4 right-1/2 '>
         <p className='mb-6 font-acre-medium'>
           we all share <br />

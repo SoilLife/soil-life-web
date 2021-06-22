@@ -37,7 +37,7 @@ export function HealthySoilsSection() {
               <p className='text-lg md:text-xl lg:text-3xl text-brown-400'>{content}</p>
             </div>
             <div className='col-span-2 h-[33.33%] sm:h-full'>
-              <Image url={photoUrl} loading='lazy' />
+              <Image url={photoUrl} loading='lazy' className='object-cover' />
             </div>
           </div>
         </Slide>
