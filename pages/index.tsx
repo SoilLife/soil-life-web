@@ -5,7 +5,7 @@ import {
   HeroSection,
   HealthySoilsSection,
   SixFSection,
-  StoryOfGenesisSection,
+  SoilGenesisSection,
   DigDeeperSection,
   GetInvolvedSection,
   AboutUsSection,
@@ -17,7 +17,7 @@ export default function IndexPage() {
       <HeroSection />
       <HealthySoilsSection />
       <SixFSection />
-      <StoryOfGenesisSection />
+      <SoilGenesisSection />
       <DigDeeperSection />
       <GetInvolvedSection />
       <AboutUsSection />

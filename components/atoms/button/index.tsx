@@ -5,7 +5,7 @@ import { ButtonProps } from './button.interfaces';
 import { buttonTypeMap, buttonSizeMap } from './button.utils';
 
 export const Button = forwardRef(
-  ({ as, size, label, type, inverted, className = '', external, ...props }: ButtonProps, ref: ForwardedRef<any>) => {
+  ({ as, size, label, type, inverted, className, external, ...props }: ButtonProps, ref: ForwardedRef<any>) => {
     if (as === 'button') {
       return (
         <button ref={ref} className={`${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`} {...props}>
@@ -26,3 +26,7 @@ export const Button = forwardRef(
     );
   }
 );
+
+Button.defaultProps = {
+  className: '',
+};

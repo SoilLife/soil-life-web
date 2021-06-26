@@ -7,15 +7,15 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 const links: { href: string; icon: IconProp }[] = [
   {
     href: 'https://www.facebook.com/TheSoilLife/',
-    icon: ['fab', 'facebook-square'],
+    icon: ['fab', 'facebook'],
   },
   {
     href: 'https://www.instagram.com/soil.life',
-    icon: ['fab', 'instagram-square'],
+    icon: ['fab', 'instagram'],
   },
   {
     href: 'https://twitter.com/the_Soil_Life',
-    icon: ['fab', 'twitter-square'],
+    icon: ['fab', 'twitter'],
   },
 ];
 
