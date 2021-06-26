@@ -1,1 +1,8 @@
-export { faFacebookSquare, faInstagramSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
+export {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+  faFacebookSquare,
+  faInstagramSquare,
+  faTwitterSquare,
+} from '@fortawesome/free-brands-svg-icons';

@@ -1,10 +1,13 @@
 import { Card6F } from 'components/atoms/card-six-f';
 import { slides } from 'data/six-f-slides';
-import { Section, Slide, Image } from 'components/atoms';
+import { Section, Slide, Image, CarouselArrowLeft, CarouselArrowRight } from 'components/atoms';
+import { useCarouselHandlers } from 'helpers/use-carousel-handlers';
 
-export function SixFSection() {
+export function SixFSection({ fullpageApiRef }: { fullpageApiRef?: any }) {
+  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApiRef);
+
   return (
-    <Section>
+    <Section className='relative section-home-six-f'>
       {slides.map(({ photoUrl, ...slide }, index) => {
         return (
           <Slide className='relative' key={index}>
@@ -15,6 +18,8 @@ export function SixFSection() {
           </Slide>
         );
       })}
+      <CarouselArrowLeft onClick={handlePreviousSlide} />
+      <CarouselArrowRight onClick={handleNextSlide} />
     </Section>
   );
 }

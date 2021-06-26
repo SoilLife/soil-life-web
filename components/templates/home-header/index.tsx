@@ -69,7 +69,7 @@ export function HomeHeader({
               <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />
             </a>
           </Link>
-          <ul className='hidden gap-16 md:flex'>{createNavLinks()}</ul>
+          <ul className='hidden gap-16 w-full md:flex'>{createNavLinks()}</ul>
           <SocialMediaIcons className='hidden gap-4 lg:flex' />
           <div className='w-10 h-10 md:hidden'>
             <button className='w-full h-full' onClick={() => setIsMenuOpen(!isMenuOpen)}>
