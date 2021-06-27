@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 export function MainHeader({ pathName, headings, backgroundColor = 'var(--pink-500)' }: MainHeaderProps) {
   const route = useRouter();
   return (
-    <div style={{ backgroundColor }}>
+    <div className='absolute top- w-full z-10' style={{ backgroundColor }}>
       <nav className='container'>
         <ul className='flex items-center justify-between h-16'>
           {headings.map(({ name, slug, asset }) => {

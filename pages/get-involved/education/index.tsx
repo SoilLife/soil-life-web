@@ -133,7 +133,7 @@ export default function ForYourEducationPage() {
   return (
     <>
       <MainHeader headings={getInvolvedHeadings} backgroundColor='var(--brown-500)' pathName='get-involved' />
-      <Typography type='heading' className='text-brown-500 text-center py-6'>
+      <Typography type='heading' className='text-brown-500 text-center py-24'>
         for your education
       </Typography>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:max-w-5xl 2xl:max-w-7xl mx-auto'>
@@ -189,7 +189,7 @@ export default function ForYourEducationPage() {
           width='192px'
           className='absolute -left-3/4 transform -rotate-6'
         />
-        <Link href='/get-involved'>
+        <Link href='/'>
           <Button label='Return Home' type='neutral' size='md' as='link' />
         </Link>
       </div>
