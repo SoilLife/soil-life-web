@@ -1,6 +1,7 @@
 // helpers
 import { useMedia } from 'react-use';
 import { useCarouselHandlers } from 'helpers/use-carousel-handlers';
+import { useAppContext } from 'helpers/app-context';
 
 // components
 import { Section, Slide, Button, Image, CarouselArrowLeft, CarouselArrowRight } from 'components/atoms';
@@ -8,8 +9,9 @@ import { Section, Slide, Button, Image, CarouselArrowLeft, CarouselArrowRight } 
 // data
 import { healthySoilsSlides } from 'data/healthy-soils-slides';
 
-export function HealthySoilsSection({ fullpageApiRef }: { fullpageApiRef?: any }) {
-  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApiRef);
+export function HealthySoilsSection() {
+  const { fullpage } = useAppContext();
+  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpage);
   const isTablet = useMedia('(min-width: 640px)');
 
   return (

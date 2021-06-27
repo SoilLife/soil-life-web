@@ -1,5 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import ReactFullpage from '@fullpage/react-fullpage';
+
+// helpers
+import { useAppContext } from 'helpers/app-context';
 
 // layout
 import { DefaultLayout } from 'layouts';
@@ -11,9 +14,16 @@ import { HomeHeader, MainHeader } from 'components/templates';
 import { FullPageProps } from './fullpage.interfaces';
 
 export function FullPage({ type, mainHeaderProps, children }: FullPageProps) {
+  const { setFullPage } = useAppContext();
   const fullPageRef = useRef<any>(null);
   const slideRef = useRef<NodeJS.Timeout | null>(null);
   const [hideHeader, setHideHeader] = useState(false);
+
+  useEffect(() => {
+    if (fullPageRef.current) {
+      setFullPage(fullPageRef.current);
+    }
+  }, [fullPageRef.current]);
 
   const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
     if (direction === 'up' && hideHeader) {
@@ -55,15 +65,7 @@ export function FullPage({ type, mainHeaderProps, children }: FullPageProps) {
           }
         }}
         render={() => {
-          return (
-            <ReactFullpage.Wrapper>
-              {React.Children.toArray(children).map((child) => {
-                return React.cloneElement(child as React.ReactElement<any, string | React.JSXElementConstructor<any>>, {
-                  fullpageApiRef: fullPageRef.current,
-                });
-              })}
-            </ReactFullpage.Wrapper>
-          );
+          return <ReactFullpage.Wrapper>{children}</ReactFullpage.Wrapper>;
         }}
       />
     </DefaultLayout>

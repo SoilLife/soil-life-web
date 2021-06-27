@@ -55,7 +55,7 @@ export default function OnSocialMediaPage() {
   return (
     <>
       <MainHeader headings={getInvolvedHeadings} backgroundColor='var(--blue-500)' pathName='get-involved' />
-      <Typography type='heading' className='text-blue-500 text-center py-6'>
+      <Typography type='heading' className='text-blue-500 text-center py-24'>
         on social media
       </Typography>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:max-w-5xl 2xl:max-w-7xl mx-auto'>
@@ -84,7 +84,7 @@ export default function OnSocialMediaPage() {
           width='192px'
           className='absolute -left-3/4 transform -rotate-6'
         />
-        <Link href='/get-involved'>
+        <Link href='/'>
           <Button label='Return Home' type='primary' size='md' as='link' />
         </Link>
       </div>
