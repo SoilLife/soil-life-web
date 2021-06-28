@@ -72,7 +72,7 @@ export function MainHeader({ pathName, headings, className }: MainHeaderProps) {
         <div className='flex items-center justify-between'>
           <Link href='/'>
             <a className='relative flex items-center space-x-4'>
-              <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />s
+              <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />
               <Typography type='subheading'>Soil Life</Typography>
             </a>
           </Link>
