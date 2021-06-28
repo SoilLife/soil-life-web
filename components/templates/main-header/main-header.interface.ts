@@ -5,5 +5,5 @@ export interface MainHeaderProps {
     slug: string;
     asset: string;
   }[];
-  backgroundColor?: string;
+  className?: string;
 }

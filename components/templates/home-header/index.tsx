@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { SocialMediaIcons } from 'components/templates';
 import { Icon } from 'components/atoms';
 
-function createNavLinks() {
+export function createNavLinks() {
   const navLinks = [
     { name: 'soils 101', anchorTag: '#soil-101' },
     { name: 'web of soil', anchorTag: '#web-of-soil' },

@@ -20,6 +20,18 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
     };
   }
 
+  function handleOnDesktopMouseEnter(index: number) {
+    return () => {
+      setIsOpen((prevState) => ({ ...prevState, [index]: true }));
+    };
+  }
+
+  function handleOnDesktopMouseLeave(index: number) {
+    return () => {
+      setIsOpen((prevState) => ({ ...prevState, [index]: false }));
+    };
+  }
+
   return (
     <div
       className={`shadow-lg p-4 rounded ${typeof links === 'string' ? 'cursor-pointer' : ''}`}
@@ -31,8 +43,12 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
           : undefined
       }
     >
-      <div className={`relative aspect-h-1 aspect-w-1`}>
-        {(!isMobile || isOpen[index]) && (
+      <div
+        className='relative aspect-h-1 aspect-w-1'
+        onMouseEnter={handleOnDesktopMouseEnter(index)}
+        onMouseLeave={handleOnDesktopMouseLeave(index)}
+      >
+        {isOpen[index] && (
           <div className='absolute h-full w-full to-transparent z-10'>
             {Array.isArray(links) && (
               <ul className='space-y-2 flex flex-col items-center justify-center h-full'>
