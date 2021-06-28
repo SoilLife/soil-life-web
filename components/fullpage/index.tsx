@@ -59,7 +59,7 @@ export function FullPage({ type, mainHeaderProps, children }: FullPageProps) {
         onLeave={handleSectionLeave}
         afterLoad={(_origin: any, destination: any, _direction: any) => {
           if (destination.item?.classList?.contains('section-home-six-f')) {
-            slideRef.current = setInterval(autoslide, 5000);
+            slideRef.current = setInterval(autoslide, 2000);
           } else if (slideRef.current) {
             clearInterval(slideRef.current);
           }

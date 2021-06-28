@@ -10,7 +10,7 @@ export default function Soil101Page() {
       mainHeaderProps={{
         headings: soil101Subheadings,
         pathName: 'soil-101',
-        backgroundColor: 'var(--pink-500)',
+        className: 'bg-pink-500',
       }}
     >
       <Section />

@@ -1,12 +1,14 @@
 // components
 import Link from 'next/link';
 import { Typography, CardGetInvolved, Button } from 'components/atoms';
+import { MainHeader } from 'components/templates';
 
 // helpers
 import { getColor, getButtonType } from 'helpers/get-color';
 
 // interfaces
 import { CardGetInvolvedProps } from 'components/atoms/card-get-involved/card-get-involved.interfaces';
+import { getInvolvedHeadings } from 'data/main-headings';
 
 function ReturnHomeButton({ color }: { color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'brown' }) {
   return (
@@ -36,16 +38,23 @@ export function GetInvolvedSection({
   let textColor = getColor({ color, type: 'text', state: 'idle' });
 
   return (
-    <div className='relative pt-24'>
-      <Typography type='heading' className={`text-center py-6 ${textColor}`}>
-        {title}
-      </Typography>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:max-w-5xl 2xl:max-w-7xl mx-auto'>
-        {cards.map((card, index) => (
-          <CardGetInvolved key={index} index={index} color={color} {...card} />
-        ))}
+    <>
+      <MainHeader
+        headings={getInvolvedHeadings}
+        pathName='get-involved'
+        className={getColor({ color, type: 'bg', state: 'idle' })}
+      />
+      <div className='relative pt-16'>
+        <Typography type='heading' className={`text-center py-6 ${textColor}`}>
+          {title}
+        </Typography>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:max-w-5xl 2xl:max-w-7xl mx-auto'>
+          {cards.map((card, index) => (
+            <CardGetInvolved key={index} index={index} color={color} {...card} />
+          ))}
+        </div>
+        <ReturnHomeButton color={color} />
       </div>
-      <ReturnHomeButton color={color} />
-    </div>
+    </>
   );
 }

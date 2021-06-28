@@ -9,7 +9,7 @@ export default function WebOfSoilPage() {
       mainHeaderProps={{
         headings: webOfSoilSubheadings,
         pathName: 'web-of-soil',
-        backgroundColor: 'var(--pink-500)',
+        className: 'bg-pink-500',
       }}
     >
       <Section />
