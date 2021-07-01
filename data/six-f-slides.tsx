@@ -80,7 +80,7 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'neutral',
     text: (
       <>
-        if you <span className='text-brown-500 text-xl'>live in a shelter</span> you depend on soil
+        if you <span className='text-xl'>live in a shelter</span> you depend on soil
       </>
     ),
     button: {

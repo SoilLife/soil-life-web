@@ -19,7 +19,7 @@ const mainImages = [
   },
   {
     imageUrl: '/Get_Involved/ForYourEducation_aaron-burden-236415_S2iS5IEYlhK.jpg',
-    twBgColor: 'bg-brown-500',
+    twBgColor: 'bg-gray-500',
   },
   {
     imageUrl: '/Get_Involved/fabian-blank-pElSkGRA2NU-unsplash_hUqHU3rqw.jpg',

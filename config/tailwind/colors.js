@@ -58,16 +58,16 @@ const blue = {
   900: 'var(--blue-900-rgb)',
 };
 
-const brown = {
-  100: 'var(--brown-100-rgb)',
-  200: 'var(--brown-200-rgb)',
-  300: 'var(--brown-300-rgb)',
-  400: 'var(--brown-400-rgb)',
-  500: 'var(--brown-500-rgb)',
-  600: 'var(--brown-600-rgb)',
-  700: 'var(--brown-700-rgb)',
-  800: 'var(--brown-800-rgb)',
-  900: 'var(--brown-900-rgb)',
+const gray = {
+  100: 'var(--gray-100-rgb)',
+  200: 'var(--gray-200-rgb)',
+  300: 'var(--gray-300-rgb)',
+  400: 'var(--gray-400-rgb)',
+  500: 'var(--gray-500-rgb)',
+  600: 'var(--gray-600-rgb)',
+  700: 'var(--gray-700-rgb)',
+  800: 'var(--gray-800-rgb)',
+  900: 'var(--gray-900-rgb)',
 };
 
 const colors = {
@@ -76,7 +76,7 @@ const colors = {
   yellow,
   teal,
   blue,
-  brown,
+  gray,
 };
 
 function configTailwindColor(cssVar) {

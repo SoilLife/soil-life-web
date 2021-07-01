@@ -6,6 +6,6 @@ import { getInvolvedPageData } from 'data/page-get-involved';
 
 export default function ForYourEducationPage() {
   return (
-    <GetInvolvedSection cards={getInvolvedPageData.educationSectionCards} title='for your education' color='brown' />
+    <GetInvolvedSection cards={getInvolvedPageData.educationSectionCards} title='for your education' color='gray' />
   );
 }

@@ -7,3 +7,9 @@
     @apply w-full px-2 mx-auto max-w-app-full sm:px-4 md:px-6;
   }
 }
+
+@layer base {
+  body {
+    color: var(--gray-500);
+  }
+}

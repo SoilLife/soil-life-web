@@ -1,11 +1,15 @@
 // components
 import Link from 'next/link';
 import { FullPage } from 'components/fullpage';
-import { Section, Image, Typography } from 'components/atoms';
+import { Section, Image, Typography, Icon } from 'components/atoms';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 // data
 import { getInvolvedHeadings } from 'data/main-headings';
 import { getInvolvedPageData } from 'data/page-get-involved';
+
+// assets
+import styles from './get-involved.module.css';
 
 const mergedData = getInvolvedHeadings.map((heading, index) => ({
   ...heading,
@@ -19,10 +23,23 @@ export default function GetInvolvedPage() {
       mainHeaderProps={{
         headings: getInvolvedHeadings,
         pathName: 'get-involved',
-        className: 'bg-pink-500',
+        className: 'hidden',
       }}
     >
-      <Section>
+      <Section className='overflow-hidden'>
+        <div className='absolute flex items-center justify-center top-6 left-6 h-12 w-12 z-20 rounded-full bg-pink-500 p-2'>
+          <Icon
+            icon={faArrowLeft}
+            size='lg'
+            className='text-white hover:text-pink-300 active:text-pink-600 text-lg'
+            title='back to home page'
+          />
+        </div>
+        <div
+          className={`${styles['cta-message']} absolute top-1/2 left-1/2 bg-white bg-opacity-80 px-28 py-6 z-20 text-7xl whitespace-nowrap`}
+        >
+          how would you like to get involved?
+        </div>
         <div className='grid h-full grid-cols-2 sm:grid-cols-3 auto-rows-fr'>
           {mergedData.map(({ asset, name, slug, imageUrl = '', twBgColor = 'bg-pink-400' }) => {
             return (

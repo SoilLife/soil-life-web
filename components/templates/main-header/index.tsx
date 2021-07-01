@@ -49,12 +49,12 @@ export function MainHeader({ pathName, headings, className }: MainHeaderProps) {
               return (
                 <li key={name} className='text-white cursor-pointer'>
                   <Link href={href}>
-                    <a>
+                    <a title={name}>
                       <img
                         src={asset}
                         height={50}
                         width={50}
-                        className={isActive ? 'rounded-full bg-brown-400 ring-2 ring-white' : ''}
+                        className={isActive ? 'rounded-full bg-gray-500 ring-2 ring-white' : ''}
                       />
                     </a>
                   </Link>
@@ -80,7 +80,7 @@ export function MainHeader({ pathName, headings, className }: MainHeaderProps) {
         </div>
         <ul className='mt-10 space-y-6'>{createNavLinks()}</ul>
       </div>
-      {isMenuOpen && <div className='bg-black bg-opacity-25 absolute top-0 left-0 h-full w-full z-20' />}
+      {isMenuOpen && <div className='bg-gray-900 bg-opacity-25 absolute top-0 left-0 h-full w-full z-20' />}
     </>
   );
 }
