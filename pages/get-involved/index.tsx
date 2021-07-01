@@ -27,14 +27,16 @@ export default function GetInvolvedPage() {
       }}
     >
       <Section className='overflow-hidden'>
-        <div className='absolute flex items-center justify-center top-6 left-6 h-12 w-12 z-20 rounded-full bg-pink-500 p-2'>
-          <Icon
-            icon={faArrowLeft}
-            size='lg'
-            className='text-white hover:text-pink-300 active:text-pink-600 text-lg'
-            title='back to home page'
-          />
-        </div>
+        <Link href='/'>
+          <a className='absolute flex items-center justify-center top-6 left-6 h-12 w-12 z-20 rounded-full bg-pink-500 p-2'>
+            <Icon
+              icon={faArrowLeft}
+              size='lg'
+              className='text-white hover:text-pink-300 active:text-pink-600 text-lg'
+              title='back to home page'
+            />
+          </a>
+        </Link>
         <div
           className={`${styles['cta-message']} absolute top-1/2 left-1/2 bg-white bg-opacity-80 px-28 py-6 z-20 text-7xl whitespace-nowrap`}
         >
