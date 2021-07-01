@@ -4,12 +4,12 @@ const colorMap = {
   blue: {
     text: {
       idle: 'text-blue-500',
-      hover: 'hover:text-blue-300',
+      hover: 'hover:text-blue-400',
       active: 'active:text-blue-700',
     },
     bg: {
       idle: 'bg-blue-500',
-      hover: 'hover:bg-blue-300',
+      hover: 'hover:bg-blue-400',
       active: 'active:bg-blue-700',
     },
     gradient: {
@@ -21,12 +21,12 @@ const colorMap = {
   gray: {
     text: {
       idle: 'text-gray-500',
-      hover: 'hover:text-gray-300',
+      hover: 'hover:text-gray-400',
       active: 'active:text-gray-700',
     },
     bg: {
       idle: 'bg-gray-500',
-      hover: 'hover:bg-gray-300',
+      hover: 'hover:bg-gray-400',
       active: 'active:bg-gray-700',
     },
     gradient: {
@@ -38,12 +38,12 @@ const colorMap = {
   orange: {
     text: {
       idle: 'text-orange-500',
-      hover: 'hover:text-orange-300',
+      hover: 'hover:text-orange-400',
       active: 'active:text-orange-700',
     },
     bg: {
       idle: 'bg-orange-500',
-      hover: 'hover:bg-orange-300',
+      hover: 'hover:bg-orange-400',
       active: 'active:bg-orange-700',
     },
     gradient: {
@@ -55,12 +55,12 @@ const colorMap = {
   pink: {
     text: {
       idle: 'text-pink-500',
-      hover: 'hover:text-pink-300',
+      hover: 'hover:text-pink-400',
       active: 'active:text-pink-700',
     },
     bg: {
       idle: 'bg-pink-500',
-      hover: 'hover:bg-pink-300',
+      hover: 'hover:bg-pink-400',
       active: 'active:bg-pink-700',
     },
     gradient: {
@@ -72,12 +72,12 @@ const colorMap = {
   teal: {
     text: {
       idle: 'text-teal-500',
-      hover: 'hover:text-teal-300',
+      hover: 'hover:text-teal-400',
       active: 'active:text-teal-700',
     },
     bg: {
       idle: 'bg-teal-500',
-      hover: 'hover:bg-teal-300',
+      hover: 'hover:bg-teal-400',
       active: 'active:bg-teal-700',
     },
     gradient: {
@@ -89,12 +89,12 @@ const colorMap = {
   yellow: {
     text: {
       idle: 'text-yellow-500',
-      hover: 'hover:text-yellow-300',
+      hover: 'hover:text-yellow-400',
       active: 'active:text-yellow-700',
     },
     bg: {
       idle: 'bg-yellow-500',
-      hover: 'hover:bg-yellow-300',
+      hover: 'hover:bg-yellow-400',
       active: 'active:bg-yellow-700',
     },
     gradient: {
