@@ -1,6 +1,7 @@
 import { ButtonProps } from './button.interfaces';
 
 export const buttonTypeMap: { [K in ButtonProps['type']]: string } = {
+  secondary: 'text-white ring-2 ring-white',
   primary: 'text-blue-500 ring-2 ring-blue-500',
   success: 'text-teal-500 ring-2 ring-teal-500',
   warning: 'text-yellow-500 ring-2 ring-yellow-500',
