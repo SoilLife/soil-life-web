@@ -3,7 +3,7 @@ import { MouseEvent, CSSProperties } from 'react';
 export type ButtonProps = {
   as: 'button' | 'link';
   label: string;
-  type: 'primary' | 'success' | 'warning' | 'danger' | 'neutral' | 'alert';
+  type: 'secondary' | 'primary' | 'success' | 'warning' | 'danger' | 'neutral' | 'alert';
   size: 'sm' | 'md' | 'lg';
   id?: string;
   key?: string | number;
