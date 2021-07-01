@@ -5,6 +5,6 @@ export const cardSixFTypeMap: { [K in CardSixFProps['type']]: string } = {
   danger: 'bg-pink-500',
   success: 'bg-teal-500',
   warning: 'bg-yellow-500',
-  neutral: 'bg-brown-500',
+  neutral: 'bg-gray-500',
   alert: 'bg-orange-500',
 };

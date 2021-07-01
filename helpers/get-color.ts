@@ -4,12 +4,12 @@ const colorMap = {
   blue: {
     text: {
       idle: 'text-blue-500',
-      hover: 'hover:text-blue-400',
+      hover: 'hover:text-blue-300',
       active: 'active:text-blue-700',
     },
     bg: {
       idle: 'bg-blue-500',
-      hover: 'hover:bg-blue-400',
+      hover: 'hover:bg-blue-300',
       active: 'active:bg-blue-700',
     },
     gradient: {
@@ -18,19 +18,19 @@ const colorMap = {
       active: '',
     },
   },
-  brown: {
+  gray: {
     text: {
-      idle: 'text-brown-500',
-      hover: 'hover:text-brown-400',
-      active: 'active:text-brown-700',
+      idle: 'text-gray-500',
+      hover: 'hover:text-gray-300',
+      active: 'active:text-gray-700',
     },
     bg: {
-      idle: 'bg-brown-500',
-      hover: 'hover:bg-brown-400',
-      active: 'active:bg-brown-700',
+      idle: 'bg-gray-500',
+      hover: 'hover:bg-gray-300',
+      active: 'active:bg-gray-700',
     },
     gradient: {
-      idle: 'from-brown-500',
+      idle: 'from-gray-500',
       hover: '',
       active: '',
     },
@@ -38,12 +38,12 @@ const colorMap = {
   orange: {
     text: {
       idle: 'text-orange-500',
-      hover: 'hover:text-orange-400',
+      hover: 'hover:text-orange-300',
       active: 'active:text-orange-700',
     },
     bg: {
       idle: 'bg-orange-500',
-      hover: 'hover:bg-orange-400',
+      hover: 'hover:bg-orange-300',
       active: 'active:bg-orange-700',
     },
     gradient: {
@@ -55,12 +55,12 @@ const colorMap = {
   pink: {
     text: {
       idle: 'text-pink-500',
-      hover: 'hover:text-pink-400',
+      hover: 'hover:text-pink-300',
       active: 'active:text-pink-700',
     },
     bg: {
       idle: 'bg-pink-500',
-      hover: 'hover:bg-pink-400',
+      hover: 'hover:bg-pink-300',
       active: 'active:bg-pink-700',
     },
     gradient: {
@@ -72,12 +72,12 @@ const colorMap = {
   teal: {
     text: {
       idle: 'text-teal-500',
-      hover: 'hover:text-teal-400',
+      hover: 'hover:text-teal-300',
       active: 'active:text-teal-700',
     },
     bg: {
       idle: 'bg-teal-500',
-      hover: 'hover:bg-teal-400',
+      hover: 'hover:bg-teal-300',
       active: 'active:bg-teal-700',
     },
     gradient: {
@@ -89,12 +89,12 @@ const colorMap = {
   yellow: {
     text: {
       idle: 'text-yellow-500',
-      hover: 'hover:text-yellow-400',
+      hover: 'hover:text-yellow-300',
       active: 'active:text-yellow-700',
     },
     bg: {
       idle: 'bg-yellow-500',
-      hover: 'hover:bg-yellow-400',
+      hover: 'hover:bg-yellow-300',
       active: 'active:bg-yellow-700',
     },
     gradient: {
@@ -110,18 +110,18 @@ export function getColor({
   type,
   state,
 }: {
-  color: 'blue' | 'brown' | 'orange' | 'pink' | 'teal' | 'yellow';
+  color: 'blue' | 'gray' | 'orange' | 'pink' | 'teal' | 'yellow';
   type: 'text' | 'bg' | 'gradient';
   state: 'idle' | 'hover' | 'active';
 }): string {
   return colorMap[color][type][state];
 }
 
-export function getButtonType(color: 'blue' | 'brown' | 'orange' | 'pink' | 'teal' | 'yellow'): ButtonProps['type'] {
+export function getButtonType(color: 'blue' | 'gray' | 'orange' | 'pink' | 'teal' | 'yellow'): ButtonProps['type'] {
   switch (color) {
     case 'blue':
       return 'primary';
-    case 'brown':
+    case 'gray':
       return 'neutral';
     case 'orange':
       return 'alert';

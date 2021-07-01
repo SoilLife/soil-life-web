@@ -10,7 +10,7 @@ import { getColor, getButtonType } from 'helpers/get-color';
 import { CardGetInvolvedProps } from 'components/atoms/card-get-involved/card-get-involved.interfaces';
 import { getInvolvedHeadings } from 'data/main-headings';
 
-function ReturnHomeButton({ color }: { color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'brown' }) {
+function ReturnHomeButton({ color }: { color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'gray' }) {
   return (
     <div className='relative left-1/2 transform -translate-x-1/2 inline-flex justify-center my-8'>
       <img
@@ -18,8 +18,8 @@ function ReturnHomeButton({ color }: { color: 'pink' | 'blue' | 'orange' | 'yell
         alt='illustration of an earth worm'
         className='absolute -left-1/2 md:-left-3/4 transform -rotate-6 w-32 md:w-48'
       />
-      <Link href='/'>
-        <Button label='Return Home' type={getButtonType(color)} size='md' as='link' />
+      <Link href='/get-involved'>
+        <Button label='Get Involved' type={getButtonType(color)} size='md' as='link' />
       </Link>
     </div>
   );
@@ -32,7 +32,7 @@ export function GetInvolvedSection({
 }: {
   title: string;
   cards: Omit<CardGetInvolvedProps, 'index' | 'color'>[];
-  color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'brown';
+  color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'gray';
 }) {
   let textColor = getColor({ color, type: 'text', state: 'idle' });
 

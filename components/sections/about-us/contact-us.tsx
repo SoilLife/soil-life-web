@@ -36,10 +36,10 @@ export function ContactUsSection() {
         </div>
 
         <div className='flex justify-end space-x-4'>
-          <button type='reset' className='px-8 py-2 text-white bg-brown-400'>
+          <button type='reset' className='px-8 py-2 text-white bg-gray-500'>
             Reset
           </button>
-          <button type='submit' className='px-8 py-2 text-white bg-pink-400'>
+          <button type='submit' className='px-8 py-2 text-white bg-pink-500'>
             Send
           </button>
         </div>

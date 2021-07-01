@@ -1,7 +1,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export interface CardGetInvolvedProps {
-  color: 'blue' | 'brown' | 'orange' | 'pink' | 'teal' | 'yellow';
+  color: 'blue' | 'gray' | 'orange' | 'pink' | 'teal' | 'yellow';
   index: number;
   links: string | { name: string; href: string }[];
   text: string;

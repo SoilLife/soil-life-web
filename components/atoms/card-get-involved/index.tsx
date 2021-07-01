@@ -34,7 +34,9 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
 
   return (
     <div
-      className={`shadow-lg p-4 rounded ${typeof links === 'string' ? 'cursor-pointer' : ''}`}
+      onMouseEnter={handleOnDesktopMouseEnter(index)}
+      onMouseLeave={handleOnDesktopMouseLeave(index)}
+      className={`shadow-lg p-4 rounded-[10px] ${typeof links === 'string' ? 'cursor-pointer' : ''}`}
       onClick={
         typeof links === 'string'
           ? () => {
@@ -43,11 +45,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
           : undefined
       }
     >
-      <div
-        className='relative aspect-h-1 aspect-w-1'
-        onMouseEnter={handleOnDesktopMouseEnter(index)}
-        onMouseLeave={handleOnDesktopMouseLeave(index)}
-      >
+      <div className='relative aspect-h-1 aspect-w-1'>
         {isOpen[index] && (
           <div className='absolute h-full w-full to-transparent z-10'>
             {Array.isArray(links) && (
@@ -56,7 +54,17 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                   return (
                     <li
                       key={index}
-                      className={`text-center bg-white bg-opacity-80 w-full py-1 hover:text-pink-500 active:text-pink-600`}
+                      className={`text-center bg-white bg-opacity-80 w-full py-1
+                      ${getColor({
+                        color,
+                        type: 'text',
+                        state: 'hover',
+                      })}
+                      ${getColor({
+                        color,
+                        type: 'text',
+                        state: 'active',
+                      })}`}
                     >
                       <a href={link.href} target='_blank' rel='noreferrer noopener'>
                         {link.name}
