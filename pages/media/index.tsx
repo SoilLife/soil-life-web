@@ -110,6 +110,7 @@ export default function MediaPage() {
               return rows;
             }
           }
+          return [];
         });
       if (media) {
         const videos = media.filter((medium) => medium.Category === 'Video');
