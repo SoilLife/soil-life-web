@@ -1,18 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Typography } from 'components/atoms';
+import { Typography, Icon } from 'components/atoms';
 import { HomeHeader } from 'components/templates/home-header';
+import Modal from 'react-modal';
+import { faPlay, faLink, faBinoculars, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 
 type Media = {
-  Category:
-    | null
-    | 'Video'
-    | 'Soil Profiles'
-    | 'Educational Video'
-    | 'Infographic'
-    | 'Educational Resources'
-    | 'Reports'
-    | 'Learning Environment'
-    | 'Website';
+  Category: null | string;
   'Embedding Code': null | string;
   Location: null | string;
   Organization: null | string;
@@ -20,23 +13,19 @@ type Media = {
   Tags: null | string[];
   Title: null | string;
   URL: null | string;
-  isVideo: boolean;
+  mediaType: 'video' | 'pdf' | 'link' | 'image';
   thumbnail?: string;
 };
 
 const spreadsheetId = '1SCLiaORvOlBbYYFUF-4qqMjZkfEHvB_qkHXThiYz_2g';
+Modal.setAppElement('#__next');
 
 export default function MediaPage() {
-  const [videos, setVideos] = useState<Media[]>([]);
-  const [educationalVideos, setEducationalVideos] = useState<Media[]>([]);
-  const [soilProfiles, setSoilProfiles] = useState<Media[]>([]);
-  const [educationalResources, setEducationalResources] = useState<Media[]>([]);
-  const [learningEnvironments, setLearningEnvironments] = useState<Media[]>([]);
-  const [websites, setWebsites] = useState<Media[]>([]);
+  const [media, setMedia] = useState<{ [category: string]: Media[] }>({});
 
   useEffect(() => {
     async function fetchVideos() {
-      const media = await fetch(`https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?`)
+      const data = await fetch(`https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?`)
         .then((res) => {
           if (res.ok) {
             return res.text();
@@ -84,8 +73,9 @@ export default function MediaPage() {
 
                     if (header === 'URL' && cell?.startsWith('http')) {
                       const url = new URL(cell);
+
                       if (url.hostname === 'www.youtube.com' || url.hostname === 'www.vimeo.com') {
-                        row['isVideo'] = true;
+                        row['mediaType'] = 'video';
                         if (url.hostname === 'www.youtube.com') {
                           const youtubeId = url.search
                             .substring(1)
@@ -97,6 +87,15 @@ export default function MediaPage() {
                           } else {
                             console.log(url);
                           }
+                        }
+                      } else {
+                        const pathname = url.pathname;
+                        if (/.pdf$|.png$|.gif$/i.test(pathname)) {
+                          row['mediaType'] = 'image';
+                        } else if (/.pdf$/i.test(pathname)) {
+                          row['mediaType'] = 'pdf';
+                        } else {
+                          row['mediaType'] = 'link';
                         }
                       }
                     }
@@ -112,20 +111,24 @@ export default function MediaPage() {
           }
           return [];
         });
-      if (media) {
-        const videos = media.filter((medium) => medium.Category === 'Video');
-        const educationalVideos = media.filter((medium) => medium.Category === 'Educational Video');
-        const soilProfiles = media.filter((medium) => medium.Category === 'Soil Profiles');
-        const educationalResources = media.filter((medium) => medium.Category === 'Educational Resources');
-        const learningEnvironments = media.filter((medium) => medium.Category === 'Learning Environment');
-        const websites = media.filter((medium) => medium.Category === 'Website');
 
-        setVideos(videos);
-        setEducationalVideos(educationalVideos);
-        setSoilProfiles(soilProfiles);
-        setEducationalResources(educationalResources);
-        setLearningEnvironments(learningEnvironments);
-        setWebsites(websites);
+      if (data) {
+        const mediaMap = new Map<string, Media[]>();
+        data.forEach((datum) => {
+          if (datum.Category) {
+            const categoryName = datum.Category.trim().toLowerCase();
+            const items = mediaMap.get(categoryName);
+            if (items) {
+              mediaMap.set(categoryName, [...items, datum]);
+            } else {
+              mediaMap.set(categoryName, [datum]);
+            }
+          }
+        });
+
+        const media = Object.fromEntries(mediaMap);
+
+        setMedia(media);
       }
     }
     fetchVideos();
@@ -134,141 +137,59 @@ export default function MediaPage() {
   return (
     <>
       <HomeHeader fullpageRef={{ current: null }} hideHeader={false} />
-
-      <div className='container mt-28'>
-        <Typography type='heading' className='text-pink-500'>
-          videos
-        </Typography>
-        <div className='overflow-hidden mt-6 min-h-[256px]'>
-          <div className='overflow-x-auto overflow-y-hidden flex gap-4'>
-            {videos.map((v, index) => {
-              if (v.thumbnail) {
-                return (
-                  <div className='flex flex-col transition-transform ease-in-out duration-200 transform hover:scale-105 w-64'>
-                    <div className='aspect-w-16 aspect-h-9 relative w-64'>
-                      <img key={index} src={v.thumbnail} className='absolute h-full w-full object-cover' />
-                    </div>
-                  </div>
-                );
-              }
-              return null;
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className='container mt-10'>
-        <Typography type='heading' className='text-pink-500'>
-          educational videos
-        </Typography>
-        <div className='overflow-hidden mt-6 min-h-[256px]'>
-          <div className='overflow-x-auto overflow-y-hidden flex gap-4'>
-            {educationalVideos.map((v, index) => {
-              if (v.thumbnail) {
-                return (
-                  <div className='flex flex-col transition-transform ease-in-out duration-200 transform hover:scale-105 w-64'>
-                    <div className='aspect-w-16 aspect-h-9 relative w-64'>
-                      <img key={index} src={v.thumbnail} className='absolute h-full w-full object-cover' />
-                    </div>
-                  </div>
-                );
-              }
-              return null;
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className='container mt-10'>
-        <Typography type='heading' className='text-pink-500'>
-          soil profiles videos
-        </Typography>
-        <div className='overflow-hidden mt-6 min-h-[256px]'>
-          <div className='overflow-x-auto overflow-y-hidden flex gap-4'>
-            {soilProfiles.map((v, index) => {
-              if (v.thumbnail) {
-                return (
-                  <div className='flex flex-col transition-transform ease-in-out duration-200 transform hover:scale-105 w-64'>
-                    <div className='aspect-w-16 aspect-h-9 relative w-64'>
-                      <img key={index} src={v.thumbnail} className='absolute h-full w-full object-cover' />
-                    </div>
-                  </div>
-                );
-              }
-              return null;
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className='container mt-10'>
-        <Typography type='heading' className='text-pink-500'>
-          educational resources
-        </Typography>
-        <div className='overflow-hidden mt-6 min-h-[256px]'>
-          <div className='overflow-x-auto overflow-y-hidden flex gap-4'>
-            {educationalResources.map((resource, index) => {
-              if (resource.URL) {
-                return (
-                  <a href={resource.URL} target='_blank' rel='noopener noreferrer'>
-                    <div className='flex flex-col transition-transform ease-in-out duration-200 transform hover:scale-105 w-64'>
-                      <div className='aspect-w-16 aspect-h-9 relative w-64'>
-                        <img key={index} src='/images/logo.svg' className='absolute inset-0 p-4' />
+      {Object.keys(media).map((key, index) => {
+        if (media[key]) {
+          return (
+            <div className='container mt-28' key={index}>
+              <Typography type='heading' className='text-pink-500'>
+                {key}
+              </Typography>
+              <div className='overflow-y-hidden overflow-x-auto mt-6 min-h-[320px] flex gap-4 items-center'>
+                {media[key]?.map((medium, index) => {
+                  return (
+                    <div key={index} className='relative flex flex-col group' onClick={() => {}}>
+                      <div className='relative aspect-w-16 aspect-h-9 transition-all ease-in-out duration-500 w-64 group-hover:w-96'>
+                        <img
+                          key={index}
+                          src={
+                            medium.mediaType === 'video' && medium.thumbnail
+                              ? medium.thumbnail
+                              : medium.mediaType === 'image'
+                              ? medium?.URL ?? ''
+                              : '/images/logo.svg'
+                          }
+                          className={medium.mediaType === 'video' && medium.thumbnail ? 'object-cover' : ''}
+                        />
+                        <div className='flex opacity-0 transition-all duration-200 ease absolute group-hover:opacity-100 items-center justify-center h-full w-full group-hover:bg-gradient-to-t group-hover:from-black group-hover:to-transparent'>
+                          <div className='w-10 h-10 rounded-full text-pink-600 shadow-md cursor-pointer ring-2 ring-white bg-pink-800 flex items-center justify-center'>
+                            <Icon
+                              icon={
+                                medium.mediaType === 'video'
+                                  ? faPlay
+                                  : medium.mediaType === 'link'
+                                  ? faLink
+                                  : medium.mediaType === 'pdf'
+                                  ? faFilePdf
+                                  : faBinoculars
+                              }
+                              size='lg'
+                              className={medium.mediaType === 'video' ? 'pl-1' : ''}
+                            />
+                          </div>
+                        </div>
                       </div>
+                      <p className='absolute top-[calc(105%);] transition-all ease-in duration-500 group-hover:top-auto group-hover:p-4 group-hover:bottom-0 group-hover:text-sm group-hover:text-white pointer-events-none'>
+                        {medium.Title}
+                      </p>
                     </div>
-                  </a>
-                );
-              } else return null;
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className='container mt-10'>
-        <Typography type='heading' className='text-pink-500'>
-          learning environments
-        </Typography>
-        <div className='overflow-hidden mt-6 min-h-[256px]'>
-          <div className='overflow-x-auto overflow-y-hidden flex gap-4'>
-            {learningEnvironments.map((resource, index) => {
-              if (resource.URL) {
-                return (
-                  <a href={resource.URL} target='_blank' rel='noopener noreferrer'>
-                    <div className='flex flex-col transition-transform ease-in-out duration-200 transform hover:scale-105 w-64'>
-                      <div className='aspect-w-16 aspect-h-9 relative w-64'>
-                        <img key={index} src='/images/logo.svg' className='absolute inset-0 p-4' />
-                      </div>
-                    </div>
-                  </a>
-                );
-              } else return null;
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className='container my-10'>
-        <Typography type='heading' className='text-pink-500'>
-          websites
-        </Typography>
-        <div className='overflow-hidden mt-6 min-h-[256px]'>
-          <div className='overflow-x-auto overflow-y-hidden flex gap-4'>
-            {websites.map((resource, index) => {
-              if (resource.URL) {
-                return (
-                  <a href={resource.URL} target='_blank' rel='noopener noreferrer'>
-                    <div className='flex flex-col transition-transform ease-in-out duration-200 transform hover:scale-105 w-64'>
-                      <div className='aspect-w-16 aspect-h-9 relative w-64'>
-                        <img key={index} src='/images/logo.svg' className='absolute inset-0 p-4' />
-                      </div>
-                    </div>
-                  </a>
-                );
-              } else return null;
-            })}
-          </div>
-        </div>
-      </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        }
+        return null;
+      })}
     </>
   );
 }
