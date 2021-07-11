@@ -1,9 +1,22 @@
-import { useEffect, useState } from 'react';
-import { Typography, Icon, Modal } from 'components/atoms';
+import React, { useEffect, useState } from 'react';
+
+// components
+import { Typography, Icon, Modal, Image } from 'components/atoms';
 import { HomeHeader } from 'components/templates/home-header';
-import { faPlay, faLink, faImage, faFilePdf } from '@fortawesome/free-solid-svg-icons';
-import styles from './media.module.css';
 import ReactPlayer from 'react-player';
+
+// helpers
+import { faPlay, faLink, faImage, faFilePdf, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { debounce } from 'lodash';
+
+// assets
+import styles from './media.module.css';
+import FoodSvg from 'public/images/media-hub/food.svg';
+import FiberSvg from 'public/images/media-hub/fiber.svg';
+import FilterSvg from 'public/images/media-hub/filter.svg';
+import FoundationSvg from 'public/images/media-hub/foundation.svg';
+import FarmaceuticalSvg from 'public/images/media-hub/farmaceutical.svg';
+import FunSvg from 'public/images/media-hub/fun.svg';
 
 type Media = {
   Category: null | string;
@@ -14,7 +27,7 @@ type Media = {
   Tags: null | string[];
   Title: null | string;
   URL: null | string;
-  mediaType: 'video' | 'pdf' | 'link' | 'image';
+  mediaType: 'video' | 'pdf' | 'link' | 'image' | 'imagekit';
   thumbnail?: string;
 };
 
@@ -25,6 +38,8 @@ export default function MediaPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMedia, setModalMedia] = useState<Media[]>([]);
   const [mediaIndex, setMediaIndex] = useState(0);
+  const [search, setSearch] = useState('');
+  const [filters, setFilters] = useState<string[]>([]);
 
   useEffect(() => {
     async function fetchVideos() {
@@ -91,6 +106,13 @@ export default function MediaPage() {
                             console.log(url);
                           }
                         }
+                      } else if (/imagekit.io$/i.test(url.hostname)) {
+                        row['mediaType'] = 'imagekit';
+                        const pathname = url.pathname
+                          .split('/')
+                          .filter((_, index) => index != 1)
+                          .join('/');
+                        row['URL'] = pathname;
                       } else {
                         const pathname = url.pathname;
                         if (/.pdf$|.png$|.gif$/i.test(pathname)) {
@@ -167,41 +189,183 @@ export default function MediaPage() {
     }
   }
 
-  console.log(modalMedia[mediaIndex]?.URL);
+  function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target;
+    setSearch(value);
+  }
+
+  const debouncedSearch = debounce(handleSearchChange, 250);
+
+  function handleFilterChange(filter: string) {
+    return () => {
+      const filterSet = new Set(filters);
+      const hasFilter = filterSet.has(filter);
+      if (hasFilter) {
+        filterSet.delete(filter);
+      } else {
+        filterSet.add(filter);
+      }
+
+      const newFilters = Array.from(filterSet);
+      setFilters(newFilters);
+    };
+  }
+
+  console.log(filters);
 
   return (
     <>
       <HomeHeader fullpageRef={{ current: null }} hideHeader={false} />
       <div className='my-28 space-y-16'>
+        <div className='container flex justify-between'>
+          <div className='flex items-center relative min-w-[320px]'>
+            <input
+              type='text'
+              className='border-none ring-1 ring-pink-500 rounded-full w-full placeholder-pink-300 outline-none focus:border-none focus:ring-2 focus:ring-pink-500'
+              placeholder='search by keyword'
+              onChange={debouncedSearch}
+            />
+            <Icon
+              className='absolute flex-shrink-0 right-4 top-1/2 transform -translate-y-1/2 '
+              size='lg'
+              icon={faSearch}
+            />
+          </div>
+
+          <div className='flex items-center space-x-10'>
+            <p className='text-xl text-pink-500'>filters:</p>
+            <ul className='flex space-x-8'>
+              <li>
+                <div
+                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-pink-500 hover:bg-gradient-to-tr hover:from-pink-400 hover:to-transparent ${
+                    filters.includes('food') ? 'bg-pink-200' : ''
+                  }`}
+                  onClick={handleFilterChange('food')}
+                >
+                  <FoodSvg />
+                </div>
+              </li>
+              <li>
+                <div
+                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-yellow-500 hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-transparent ${
+                    filters.includes('fiber') ? 'bg-yellow-200' : ''
+                  }`}
+                  onClick={handleFilterChange('fiber')}
+                >
+                  <FiberSvg />
+                </div>
+              </li>
+              <li>
+                <div
+                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-blue-500 hover:bg-gradient-to-tr hover:from-blue-400 hover:to-transparent ${
+                    filters.includes('filter') ? 'bg-blue-200' : ''
+                  }`}
+                  onClick={handleFilterChange('filter')}
+                >
+                  <FilterSvg />
+                </div>
+              </li>
+              <li>
+                <div
+                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-gray-500 hover:bg-gradient-to-tr hover:from-gray-400 hover:to-transparent ${
+                    filters.includes('foundations') ? 'bg-gray-200' : ''
+                  }`}
+                  onClick={handleFilterChange('foundations')}
+                >
+                  <FoundationSvg />
+                </div>
+              </li>
+              <li>
+                <div
+                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-orange-500 hover:bg-gradient-to-tr hover:from-orange-400 hover:to-transparent ${
+                    filters.includes('farmaceuticals') ? 'bg-orange-200' : ''
+                  }`}
+                  onClick={handleFilterChange('farmaceuticals')}
+                >
+                  <FarmaceuticalSvg />
+                </div>
+              </li>
+              <li>
+                <div
+                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-teal-500 hover:bg-gradient-to-tr hover:from-teal-400 hover:to-transparent ${
+                    filters.includes('fun') ? 'bg-teal-200' : ''
+                  }`}
+                  onClick={handleFilterChange('fun')}
+                >
+                  <FunSvg />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
         {Object.keys(media).map((key, index) => {
           if (media[key]) {
-            return (
-              <div className={`container`} key={index}>
-                <Typography type='heading' className='text-pink-500'>
-                  {key}
-                </Typography>
-                <div className={`overflow-y-hidden flex items-center overflow-x-auto min-h-[320px]`}>
+            const filteredMedia = media[key]?.filter((medium) => {
+              let found = false;
+              if (search && medium.Title?.toLowerCase()?.includes(search.toLowerCase())) {
+                found = true;
+              }
+              if (medium.Tags?.length) {
+                for (const tag of medium.Tags) {
+                  if (filters.includes(tag.toLowerCase())) {
+                    found = true;
+                  }
+                }
+              } else {
+                found = true;
+              }
+
+              return found;
+            });
+
+            return filteredMedia?.length ? (
+              <div key={index}>
+                <div className='w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 py-1 px-10'>
+                  <Typography type='subheading' className='text-white'>
+                    {key}
+                  </Typography>
+                </div>
+                <div
+                  className={`overflow-y-hidden flex items-center overflow-x-auto min-h-[320px] mx-10 ${styles['media-container']}`}
+                >
                   <div className={`flex gap-4 items-center ${styles['media-section']}`}>
-                    {media[key]?.map((medium, index) => {
+                    {filteredMedia?.map((medium, index) => {
                       return (
-                        <button
+                        <MediaContainer
                           key={`${medium.Title}_${index}`}
                           className='focus:ring-4 focus:ring-pink-500'
                           onClick={handleModalOpen({ key, index })}
+                          href={medium.URL}
+                          renderAs={medium.mediaType === 'link' ? 'link' : 'button'}
                         >
                           <div className='relative flex flex-col group'>
                             <div className='relative aspect-w-16 aspect-h-9 transition-all ease-in-out duration-500 w-64 group-hover:w-96'>
-                              <img
-                                key={`${medium.Title}_${index}`}
-                                src={
-                                  medium.mediaType === 'video' && medium.thumbnail
-                                    ? medium.thumbnail
-                                    : medium.mediaType === 'image'
-                                    ? medium?.URL ?? ''
-                                    : '/images/logo.svg'
-                                }
-                                className={medium.mediaType === 'video' && medium.thumbnail ? 'object-cover' : ''}
-                              />
+                              {medium.mediaType === 'imagekit' ? (
+                                <Image
+                                  url={medium.URL as string}
+                                  className='object-contain'
+                                  transformation={[{ quality: 10, width: 128 }]}
+                                />
+                              ) : (
+                                <img
+                                  key={`${medium.Title}_${index}`}
+                                  src={
+                                    medium.mediaType === 'video' && medium.thumbnail
+                                      ? medium.thumbnail
+                                      : medium.mediaType === 'image'
+                                      ? medium?.URL ?? ''
+                                      : '/images/logo.svg'
+                                  }
+                                  className={
+                                    medium.mediaType === 'video' && medium.thumbnail
+                                      ? 'object-cover'
+                                      : medium.mediaType === 'image'
+                                      ? 'object-contain'
+                                      : 'p-8'
+                                  }
+                                  loading='lazy'
+                                />
+                              )}
                               <div className='flex opacity-0 transition-all duration-200 ease absolute group-hover:opacity-100 items-center justify-center h-full w-full group-hover:bg-gradient-to-t group-hover:from-black group-hover:to-transparent'>
                                 <div className='w-10 h-10 rounded-full text-pink-600 shadow-md cursor-pointer ring-2 ring-white bg-pink-800 flex items-center justify-center'>
                                   <div>
@@ -226,13 +390,13 @@ export default function MediaPage() {
                               {medium.Title}
                             </p>
                           </div>
-                        </button>
+                        </MediaContainer>
                       );
                     })}
                   </div>
                 </div>
               </div>
-            );
+            ) : null;
           }
           return null;
         })}
@@ -247,7 +411,7 @@ export default function MediaPage() {
           handlePrevious: handlePrevious,
         }}
       >
-        {modalMedia.length > 0 && modalMedia?.[mediaIndex]?.URL && (
+        {modalMedia.length > 0 && modalMedia?.[mediaIndex]?.URL && modalMedia?.[mediaIndex]?.mediaType === 'video' ? (
           <ReactPlayer
             controls={true}
             key={`${modalMedia[mediaIndex]?.Title}_${mediaIndex}`}
@@ -255,8 +419,31 @@ export default function MediaPage() {
             width={'100%'}
             url={modalMedia[mediaIndex]?.URL as string}
           />
-        )}
+        ) : modalMedia?.[mediaIndex]?.mediaType === 'image' ? (
+          <img className={'h-full w-full object-contain'} src={modalMedia[mediaIndex]?.URL as string} loading='lazy' />
+        ) : null}
       </Modal>
     </>
   );
+}
+
+function MediaContainer({
+  renderAs,
+  href,
+  onClick,
+  ...props
+}: {
+  renderAs: 'link' | 'button';
+  href?: string | null;
+  children?: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+}) {
+  if (renderAs === 'link') {
+    return <a href={href || '#'} target='_blank' rel='noreferrer noopener' {...props} />;
+  } else if (renderAs === 'button') {
+    return <button onClick={onClick} {...props} />;
+  } else {
+    return null;
+  }
 }
