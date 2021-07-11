@@ -1,0 +1,11 @@
+.media-section > * {
+  transition: opacity 0.2s ease-in;
+}
+
+.media-section:hover > * {
+  opacity: 0.5;
+}
+
+.media-section:hover > *:hover {
+  opacity: 1;
+}

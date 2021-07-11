@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Typography, Icon } from 'components/atoms';
+import { Typography, Icon, Modal } from 'components/atoms';
 import { HomeHeader } from 'components/templates/home-header';
-import Modal from 'react-modal';
-import { faPlay, faLink, faBinoculars, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faLink, faImage, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import styles from './media.module.css';
 
 type Media = {
   Category: null | string;
@@ -18,7 +18,6 @@ type Media = {
 };
 
 const spreadsheetId = '1SCLiaORvOlBbYYFUF-4qqMjZkfEHvB_qkHXThiYz_2g';
-Modal.setAppElement('#__next');
 
 export default function MediaPage() {
   const [media, setMedia] = useState<{ [category: string]: Media[] }>({});
@@ -74,7 +73,7 @@ export default function MediaPage() {
                     if (header === 'URL' && cell?.startsWith('http')) {
                       const url = new URL(cell);
 
-                      if (url.hostname === 'www.youtube.com' || url.hostname === 'www.vimeo.com') {
+                      if (url.hostname === 'www.youtube.com' || url.hostname === 'vimeo.com') {
                         row['mediaType'] = 'video';
                         if (url.hostname === 'www.youtube.com') {
                           const youtubeId = url.search
@@ -137,14 +136,17 @@ export default function MediaPage() {
   return (
     <>
       <HomeHeader fullpageRef={{ current: null }} hideHeader={false} />
+
       {Object.keys(media).map((key, index) => {
         if (media[key]) {
           return (
-            <div className='container mt-28' key={index}>
+            <div className={`container ${index === 0 ? 'mt-28' : 'mt-10'}`} key={index}>
               <Typography type='heading' className='text-pink-500'>
                 {key}
               </Typography>
-              <div className='overflow-y-hidden overflow-x-auto mt-6 min-h-[320px] flex gap-4 items-center'>
+              <div
+                className={`overflow-y-hidden overflow-x-auto mt-6 min-h-[320px] flex gap-4 items-center ${styles['media-section']}`}
+              >
                 {media[key]?.map((medium, index) => {
                   return (
                     <div key={index} className='relative flex flex-col group' onClick={() => {}}>
@@ -162,23 +164,25 @@ export default function MediaPage() {
                         />
                         <div className='flex opacity-0 transition-all duration-200 ease absolute group-hover:opacity-100 items-center justify-center h-full w-full group-hover:bg-gradient-to-t group-hover:from-black group-hover:to-transparent'>
                           <div className='w-10 h-10 rounded-full text-pink-600 shadow-md cursor-pointer ring-2 ring-white bg-pink-800 flex items-center justify-center'>
-                            <Icon
-                              icon={
-                                medium.mediaType === 'video'
-                                  ? faPlay
-                                  : medium.mediaType === 'link'
-                                  ? faLink
-                                  : medium.mediaType === 'pdf'
-                                  ? faFilePdf
-                                  : faBinoculars
-                              }
-                              size='lg'
-                              className={medium.mediaType === 'video' ? 'pl-1' : ''}
-                            />
+                            <div>
+                              <Icon
+                                icon={
+                                  medium.mediaType === 'video'
+                                    ? faPlay
+                                    : medium.mediaType === 'link'
+                                    ? faLink
+                                    : medium.mediaType === 'pdf'
+                                    ? faFilePdf
+                                    : faImage
+                                }
+                                size='lg'
+                                className={medium.mediaType === 'video' ? 'pl-1' : ''}
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <p className='absolute top-[calc(105%);] transition-all ease-in duration-500 group-hover:top-auto group-hover:p-4 group-hover:bottom-0 group-hover:text-sm group-hover:text-white pointer-events-none'>
+                      <p className='absolute top-[calc(105%);] text-sm transition-all ease-in duration-500 group-hover:top-auto group-hover:p-4 group-hover:bottom-0 group-hover:text-xs group-hover:text-pink-500 pointer-events-none'>
                         {medium.Title}
                       </p>
                     </div>
@@ -190,6 +194,7 @@ export default function MediaPage() {
         }
         return null;
       })}
+      <Modal isOpen={false} />
     </>
   );
 }
