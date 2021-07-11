@@ -1,10 +1,14 @@
-export function CarouselArrowRight(props: { onClick: () => void }) {
+export function CarouselArrowRight({ className, ...props }: { onClick: () => void; className?: string }) {
   return (
     <button
-      className='absolute right-16 top-1/2 transition-transform ease-out duration-300 transform -translate-y-1/2 z-10 cursor-pointer hover:scale-105'
+      className={`absolute top-1/2 transition-transform ease-out duration-300 transform -translate-y-1/2 z-10 cursor-pointer hover:scale-105 ${className}`}
       {...props}
     >
-      <img src='/images/right_arrow_pink_thick.svg' className='w-full' />
+      <img src='/images/right_arrow_pink_thick.svg' className='w-full h-20' />
     </button>
   );
 }
+
+CarouselArrowRight.defaultProps = {
+  className: '',
+};
