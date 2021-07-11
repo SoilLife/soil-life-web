@@ -46,8 +46,8 @@ export function HealthySoilsSection() {
           </div>
         </Slide>
       ))}
-      <CarouselArrowLeft onClick={handlePreviousSlide} />
-      <CarouselArrowRight onClick={handleNextSlide} />
+      <CarouselArrowLeft className='left-0' onClick={handlePreviousSlide} />
+      <CarouselArrowRight className='right-8' onClick={handleNextSlide} />
     </Section>
   );
 }
