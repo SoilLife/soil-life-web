@@ -11,6 +11,7 @@ export function Image({
   loading?: 'lazy';
   alt?: string;
   className?: string;
+  transformation?: any;
 }) {
   return (
     <IKImage
@@ -19,6 +20,7 @@ export function Image({
         active: true,
         quality: 20,
       }}
+      loading='lazy'
       className={`${props.width ? '' : 'w-full'} h-full ${className}`}
       {...props}
     />
