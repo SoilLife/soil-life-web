@@ -211,33 +211,29 @@ export default function MediaPage() {
     };
   }
 
-  console.log(filters);
-
   return (
     <>
       <HomeHeader fullpageRef={{ current: null }} hideHeader={false} />
       <div className='my-28 space-y-16'>
-        <div className='container flex justify-between'>
-          <div className='flex items-center relative min-w-[320px]'>
+        <div className='container flex flex-col justify-between gap-4 xl:flex-row'>
+          <div className='flex items-center relative w-full sm:w-[480px] xl:w-[653px]'>
             <input
               type='text'
               className='border-none ring-1 ring-pink-500 rounded-full w-full placeholder-pink-300 outline-none focus:border-none focus:ring-2 focus:ring-pink-500'
               placeholder='search by keyword'
               onChange={debouncedSearch}
             />
-            <Icon
-              className='absolute flex-shrink-0 right-4 top-1/2 transform -translate-y-1/2 '
-              size='lg'
-              icon={faSearch}
-            />
+            <div className='absolute right-4 top-1/2 transform -translate-y-1/2'>
+              <Icon size='lg' icon={faSearch} />
+            </div>
           </div>
 
-          <div className='flex items-center space-x-10'>
+          <div className='flex items-center space-x-6 justify-between sm:space-x-10 sm:justify-start'>
             <p className='text-xl text-pink-500'>filters:</p>
-            <ul className='flex space-x-8'>
+            <ul className='flex space-x-6 sm:space-x-8'>
               <li>
                 <div
-                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-pink-500 hover:bg-gradient-to-tr hover:from-pink-400 hover:to-transparent ${
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-pink-500 hover:bg-gradient-to-tr hover:from-pink-400 hover:to-transparent ${
                     filters.includes('food') ? 'bg-pink-200' : ''
                   }`}
                   onClick={handleFilterChange('food')}
@@ -247,7 +243,7 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-yellow-500 hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-transparent ${
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-yellow-500 hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-transparent ${
                     filters.includes('fiber') ? 'bg-yellow-200' : ''
                   }`}
                   onClick={handleFilterChange('fiber')}
@@ -257,7 +253,7 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-blue-500 hover:bg-gradient-to-tr hover:from-blue-400 hover:to-transparent ${
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-blue-500 hover:bg-gradient-to-tr hover:from-blue-400 hover:to-transparent ${
                     filters.includes('filter') ? 'bg-blue-200' : ''
                   }`}
                   onClick={handleFilterChange('filter')}
@@ -267,7 +263,7 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-gray-500 hover:bg-gradient-to-tr hover:from-gray-400 hover:to-transparent ${
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-gray-500 hover:bg-gradient-to-tr hover:from-gray-400 hover:to-transparent ${
                     filters.includes('foundations') ? 'bg-gray-200' : ''
                   }`}
                   onClick={handleFilterChange('foundations')}
@@ -277,7 +273,7 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-orange-500 hover:bg-gradient-to-tr hover:from-orange-400 hover:to-transparent ${
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-orange-500 hover:bg-gradient-to-tr hover:from-orange-400 hover:to-transparent ${
                     filters.includes('farmaceuticals') ? 'bg-orange-200' : ''
                   }`}
                   onClick={handleFilterChange('farmaceuticals')}
@@ -287,7 +283,7 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-10 w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-teal-500 hover:bg-gradient-to-tr hover:from-teal-400 hover:to-transparent ${
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-teal-500 hover:bg-gradient-to-tr hover:from-teal-400 hover:to-transparent ${
                     filters.includes('fun') ? 'bg-teal-200' : ''
                   }`}
                   onClick={handleFilterChange('fun')}
@@ -300,23 +296,22 @@ export default function MediaPage() {
         </div>
         {Object.keys(media).map((key, index) => {
           if (media[key]) {
-            const filteredMedia = media[key]?.filter((medium) => {
-              let found = false;
-              if (search && medium.Title?.toLowerCase()?.includes(search.toLowerCase())) {
-                found = true;
-              }
-              if (medium.Tags?.length) {
-                for (const tag of medium.Tags) {
-                  if (filters.includes(tag.toLowerCase())) {
-                    found = true;
+            const filteredMedia = media[key]
+              ?.filter((medium) => (search ? medium.Title?.toLowerCase()?.includes(search.toLowerCase()) : true))
+              ?.filter((medium) => {
+                let found = false;
+                if (filters.length && medium.Tags?.length) {
+                  for (const tag of medium.Tags) {
+                    if (filters.includes(tag.toLowerCase())) {
+                      found = true;
+                    }
                   }
+                } else {
+                  found = true;
                 }
-              } else {
-                found = true;
-              }
 
-              return found;
-            });
+                return found;
+              });
 
             return filteredMedia?.length ? (
               <div key={index}>
