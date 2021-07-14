@@ -12,21 +12,15 @@ export function Image({
   alt?: string;
   className?: string;
   transformation?: any;
+  lqip?: any;
 }) {
-  return (
-    <IKImage
-      path={url}
-      lqip={{
-        active: true,
-        quality: 20,
-      }}
-      loading='lazy'
-      className={`${props.width ? '' : 'w-full'} h-full ${className}`}
-      {...props}
-    />
-  );
+  return <IKImage path={url} className={`${props.width ? '' : 'w-full'} h-full ${className}`} {...props} />;
 }
 
 Image.defaultProps = {
   className: '',
+  lqip: {
+    active: true,
+    quality: 20,
+  },
 };

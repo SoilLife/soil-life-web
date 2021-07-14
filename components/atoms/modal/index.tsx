@@ -82,8 +82,8 @@ export function Modal({
 
       {pagination && (
         <>
-          <CarouselArrowLeft className='left-1' onClick={pagination.handlePrevious}></CarouselArrowLeft>
-          <CarouselArrowRight className='right-1' onClick={pagination.handleNext}></CarouselArrowRight>
+          <CarouselArrowLeft className='left-0.5' onClick={pagination.handlePrevious}></CarouselArrowLeft>
+          <CarouselArrowRight className='right-0.5' onClick={pagination.handleNext}></CarouselArrowRight>
         </>
       )}
     </ReactModal>

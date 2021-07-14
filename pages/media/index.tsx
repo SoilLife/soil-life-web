@@ -6,7 +6,7 @@ import { HomeHeader } from 'components/templates/home-header';
 import ReactPlayer from 'react-player';
 
 // helpers
-import { faPlay, faLink, faImage, faFilePdf, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faLink, faImage, faFilePdf, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { debounce } from 'lodash';
 
 // assets
@@ -101,7 +101,7 @@ export default function MediaPage() {
                             .find((str) => str.startsWith('v='))
                             ?.split('v=')?.[1];
                           if (youtubeId) {
-                            row['thumbnail'] = `http://img.youtube.com/vi/${youtubeId}/0.jpg`;
+                            row['thumbnail'] = `https://img.youtube.com/vi/${youtubeId}/0.jpg`;
                           } else {
                             console.log(url);
                           }
@@ -211,6 +211,10 @@ export default function MediaPage() {
     };
   }
 
+  function handleClearSearch() {
+    setSearch('');
+  }
+
   return (
     <>
       <HomeHeader fullpageRef={{ current: null }} hideHeader={false} />
@@ -224,7 +228,11 @@ export default function MediaPage() {
               onChange={debouncedSearch}
             />
             <div className='absolute right-4 top-1/2 transform -translate-y-1/2'>
-              <Icon size='lg' icon={faSearch} />
+              {!search ? (
+                <Icon size='lg' icon={faSearch} />
+              ) : (
+                <Icon size='lg' icon={faTimes} className='cursor-pointer' onClick={handleClearSearch} />
+              )}
             </div>
           </div>
 
@@ -233,8 +241,8 @@ export default function MediaPage() {
             <ul className='flex space-x-6 sm:space-x-8'>
               <li>
                 <div
-                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-pink-500 hover:bg-gradient-to-tr hover:from-pink-400 hover:to-transparent ${
-                    filters.includes('food') ? 'bg-pink-200' : ''
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-pink-500 ${
+                    filters.includes('food') ? 'bg-gray-500' : ''
                   }`}
                   onClick={handleFilterChange('food')}
                 >
@@ -243,8 +251,8 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-yellow-500 hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-transparent ${
-                    filters.includes('fiber') ? 'bg-yellow-200' : ''
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-yellow-500 ${
+                    filters.includes('fiber') ? 'bg-gray-500' : ''
                   }`}
                   onClick={handleFilterChange('fiber')}
                 >
@@ -253,8 +261,8 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-blue-500 hover:bg-gradient-to-tr hover:from-blue-400 hover:to-transparent ${
-                    filters.includes('filter') ? 'bg-blue-200' : ''
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-blue-500 ${
+                    filters.includes('filter') ? 'bg-gray-500' : ''
                   }`}
                   onClick={handleFilterChange('filter')}
                 >
@@ -263,8 +271,8 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-gray-500 hover:bg-gradient-to-tr hover:from-gray-400 hover:to-transparent ${
-                    filters.includes('foundations') ? 'bg-gray-200' : ''
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-gray-500 ${
+                    filters.includes('foundations') ? 'bg-gray-500' : ''
                   }`}
                   onClick={handleFilterChange('foundations')}
                 >
@@ -273,8 +281,8 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-orange-500 hover:bg-gradient-to-tr hover:from-orange-400 hover:to-transparent ${
-                    filters.includes('farmaceuticals') ? 'bg-orange-200' : ''
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-orange-500 ${
+                    filters.includes('farmaceuticals') ? 'bg-gray-500' : ''
                   }`}
                   onClick={handleFilterChange('farmaceuticals')}
                 >
@@ -283,8 +291,8 @@ export default function MediaPage() {
               </li>
               <li>
                 <div
-                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-teal-500 hover:bg-gradient-to-tr hover:from-teal-400 hover:to-transparent ${
-                    filters.includes('fun') ? 'bg-teal-200' : ''
+                  className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-teal-500 ${
+                    filters.includes('fun') ? 'bg-gray-500' : ''
                   }`}
                   onClick={handleFilterChange('fun')}
                 >
@@ -296,7 +304,7 @@ export default function MediaPage() {
         </div>
         {Object.keys(media).map((key, index) => {
           if (media[key]) {
-            const filteredMedia = media[key]
+            let filteredMedia = media[key]
               ?.filter((medium) => (search ? medium.Title?.toLowerCase()?.includes(search.toLowerCase()) : true))
               ?.filter((medium) => {
                 let found = false;
@@ -315,9 +323,12 @@ export default function MediaPage() {
 
             return filteredMedia?.length ? (
               <div key={index}>
-                <div className='w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 py-1 px-10'>
+                <div className='flex justify-between w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 py-1 px-10'>
                   <Typography type='subheading' className='text-white'>
                     {key}
+                  </Typography>
+                  <Typography type='subheading' className='text-white'>
+                    ({filteredMedia.length})
                   </Typography>
                 </div>
                 <div
@@ -331,15 +342,24 @@ export default function MediaPage() {
                           className='focus:ring-4 focus:ring-pink-500'
                           onClick={handleModalOpen({ key, index })}
                           href={medium.URL}
-                          renderAs={medium.mediaType === 'link' ? 'link' : 'button'}
+                          renderAs={medium.mediaType === 'link' || medium.mediaType === 'pdf' ? 'link' : 'button'}
                         >
                           <div className='relative flex flex-col group'>
                             <div className='relative aspect-w-16 aspect-h-9 transition-all ease-in-out duration-500 w-64 group-hover:w-96'>
                               {medium.mediaType === 'imagekit' ? (
-                                <Image
-                                  url={medium.URL as string}
-                                  className='object-contain'
-                                  transformation={[{ quality: 10, width: 128 }]}
+                                // <Image
+                                //   url={medium.URL as string}
+                                //   className='object-cover'
+                                //   transformation={[
+                                //     { quality: 10, height: 320, width: 180, cropMode: 'extract', fo: 'top' },
+                                //   ]}
+                                //   loading='lazy'
+                                // />
+                                <img
+                                  key={`${medium.Title}_${index}`}
+                                  src={'/images/logo.svg'}
+                                  className={'p-8'}
+                                  loading='lazy'
                                 />
                               ) : (
                                 <img
@@ -416,6 +436,14 @@ export default function MediaPage() {
           />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'image' ? (
           <img className={'h-full w-full object-contain'} src={modalMedia[mediaIndex]?.URL as string} loading='lazy' />
+        ) : modalMedia?.[mediaIndex]?.mediaType === 'imagekit' ? (
+          <div className='overflow-y-auto max-h-[90%]'>
+            <Image
+              key={modalMedia[mediaIndex]?.URL}
+              url={modalMedia?.[mediaIndex]?.URL as string}
+              transformation={[{ quality: 100 }]}
+            />
+          </div>
         ) : null}
       </Modal>
     </>
