@@ -47,7 +47,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
       }
     >
       <div className='relative aspect-h-1 aspect-w-1'>
-        {(true || isOpen[index]) && (
+        {isOpen[index] && (
           <div className='absolute h-full w-full to-transparent z-10'>
             {Array.isArray(links) && (
               <ul className='space-y-6 flex flex-col justify-center h-full p-6'>
