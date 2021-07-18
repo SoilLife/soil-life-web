@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 // helpers
 import { useRouter } from 'next/router';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { createNavLinks } from '../home-header';
 
 // components

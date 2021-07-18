@@ -22,7 +22,9 @@ export function createNavLinks() {
     return (
       <li key={link} className='w-full px-2 py-4 text-center cursor-pointer md:text-center md:p-2 md:py-0'>
         <Link href={`/${link}`}>
-          <a className='text-[30px] font-acre-light hover:text-gray-300 active:text-gray-600'>{name}</a>
+          <a className='text-[30px] font-acre-light hover:text-gray-300 active:text-gray-600 whitespace-nowrap'>
+            {name}
+          </a>
         </Link>
       </li>
     );

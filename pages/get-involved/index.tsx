@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { FullPage } from 'components/fullpage';
 import { Section, Image, Typography, Icon } from 'components/atoms';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 // data
 import { getInvolvedHeadings } from 'data/main-headings';

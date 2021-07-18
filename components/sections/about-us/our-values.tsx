@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // components
-import { Section, Typography, Image } from 'components/atoms';
+import { Section, Image } from 'components/atoms';
 
 // data
 const valueCards: {

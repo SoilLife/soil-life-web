@@ -1,6 +1,6 @@
 // components
 import Link from 'next/link';
-import { Typography, CardGetInvolved, Button } from 'components/atoms';
+import { Typography, CardGetInvolved } from 'components/atoms';
 import { MainHeader } from 'components/templates';
 
 // helpers
