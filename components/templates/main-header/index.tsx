@@ -40,7 +40,7 @@ export function MainHeader({ pathName, headings, className }: MainHeaderProps) {
         <nav className='container'>
           <ul className='flex items-center justify-between h-16'>
             <li>
-              <Icon icon={faBars} size='2x' className='text-white cursor-pointer h-8 w-8' onClick={toggleMenu} />
+              <Icon icon='menu' size='2x' className='text-white cursor-pointer h-8 w-8' onClick={toggleMenu} />
             </li>
             {headings.map(({ name, slug, asset }) => {
               const href = `/${pathName}/${slug}`;
@@ -76,7 +76,7 @@ export function MainHeader({ pathName, headings, className }: MainHeaderProps) {
               <Typography type='subheading'>Soil Life</Typography>
             </a>
           </Link>
-          <Icon icon={faTimes} onClick={toggleMenu} size='2x' className='cursor-pointer h-8 w-8' />
+          <Icon icon='x' onClick={toggleMenu} size='2x' className='cursor-pointer h-8 w-8' />
         </div>
         <ul className='mt-10 space-y-6'>{createNavLinks()}</ul>
       </div>

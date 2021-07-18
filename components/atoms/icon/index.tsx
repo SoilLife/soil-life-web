@@ -1,3 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FeatherIcon from 'feather-icons-react';
 
-export const Icon = FontAwesomeIcon;
+export const Icon = FeatherIcon;

@@ -1,4 +1,4 @@
-import { Section, Image, Typography } from 'components/atoms';
+import { Section, Image } from 'components/atoms';
 
 export function ContactUsSection() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -11,28 +11,41 @@ export function ContactUsSection() {
         className='absolute z-[-1] w-full h-full object-cover'
       />
 
-      <form className='absolute z-10 xl:w-[30vw] p-4 flex flex-col ml-10  bg-white  md:p-8' onSubmit={handleSubmit}>
-        <Typography type='subheading' className='mb-4 text-pink-400 md:mb-8'>
-          Contact Us
-        </Typography>
-        <div className='mb-4 md:mb-8'>
-          <label htmlFor='name' className='block'>
-            name
-          </label>
-          <input type='text' id='name' name='name' placeholder='name' className='w-full' required />
+      <form
+        className='absolute z-10 xl:max-w-[642px] xl:max-h-[753px] h-full w-full p-4 flex flex-col ml-10  bg-white  md:p-8'
+        onSubmit={handleSubmit}
+      >
+        <h1 className='text-[70px] font-acre-regular text-pink-500 mb-4'>contact us</h1>
+        <div className='mb-4 md:mb-8 h-[54px]'>
+          <input
+            type='text'
+            id='name'
+            name='name'
+            placeholder='name'
+            className='w-full font-acre-light text-[30px]'
+            required
+          />
         </div>
-        <div className='mb-4 md:mb-8'>
-          <label htmlFor='email' className='block'>
-            email
-          </label>
-          <input type='email' id='email' name='email' placeholder='email' className='w-full' required />
+        <div className='mb-4 md:mb-8 h-[54px]'>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            placeholder='email address'
+            className='w-full  font-acre-light text-[30px]'
+            required
+          />
         </div>
 
-        <div className='mb-4 md:mb-8'>
-          <label htmlFor='message' className='block'>
-            message
-          </label>
-          <textarea id='message' name='message' placeholder='message' className='w-full' required />
+        <div className='mb-4 md:mb-8 h-full'>
+          <textarea
+            id='message'
+            name='message'
+            placeholder='message'
+            className='w-full  font-acre-light text-[30px]'
+            required
+            rows={12}
+          />
         </div>
 
         <div className='flex justify-end space-x-4'>
