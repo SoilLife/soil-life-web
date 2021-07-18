@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { FullPage } from 'components/fullpage';
 import { Section, Image, Typography, Icon } from 'components/atoms';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 // data
 import { getInvolvedHeadings } from 'data/main-headings';
@@ -30,7 +29,7 @@ export default function GetInvolvedPage() {
         <Link href='/'>
           <a className='absolute flex items-center justify-center top-6 left-6 h-12 w-12 z-20 rounded-full bg-pink-500 p-2'>
             <Icon
-              icon={faArrowLeft}
+              icon='arrow-left'
               size='lg'
               className='text-white hover:text-pink-300 active:text-pink-600 text-lg'
               title='back to home page'
@@ -38,7 +37,7 @@ export default function GetInvolvedPage() {
           </a>
         </Link>
         <div
-          className={`${styles['cta-message']} absolute top-1/2 left-1/2 bg-white bg-opacity-80 px-28 py-6 z-20 text-7xl whitespace-nowrap`}
+          className={`${styles['cta-message']} absolute top-1/2 left-1/2 bg-white bg-opacity-80 px-28 py-6 z-20 text-7xl whitespace-nowrap border border-solid border-gray-500`}
         >
           how would you like to get involved?
         </div>

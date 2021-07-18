@@ -6,16 +6,16 @@ import { cardSixFTypeMap } from './card-six-f.utils';
 export function Card6F({ type, href, icon, subtext, text, className, button }: CardSixFProps) {
   return (
     <div
-      className={`absolute top-[10%] sm:top-40 left-1/2 transform -translate-x-1/2 w-96 min-h-40 shadow-lg z-10 mx-auto bg-white 2xl:w-[600px] 2xl:min-h-[300px] 2xl:top-72 ${className}`}
+      className={`relative z-10 bg-white max-w-[824px] h-[297px] w-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-full shadow-2xl ${className}`}
     >
       <div
-        className={`absolute -top-1/4 left-1/2 transform -translate-x-1/2 h-16 w-16 rounded-full ${cardSixFTypeMap[type]}`}
+        className={`absolute bottom-[80%] left-1/2 transform -translate-x-1/2 h-[160px] w-[160px] rounded-full ${cardSixFTypeMap[type]}`}
       >
         <img src={icon} />
       </div>
-      <div className='grid h-full p-6 pt-8 text-center place-items-center'>
-        <p>{subtext}</p>
-        <p className='mb-8'>{text}</p>
+      <div className='flex flex-col h-full items-center justify-end p-6 pt-8'>
+        <p className='font-acre-medium text-[30px] leading-none text-center'>{subtext}</p>
+        <p className='font-acre-light text-[40px] leading-none text-center mb-10'>{text}</p>
         <Link href={href}>
           <Button {...button} />
         </Link>
@@ -23,3 +23,7 @@ export function Card6F({ type, href, icon, subtext, text, className, button }: C
     </div>
   );
 }
+
+Card6F.defaultProps = {
+  className: '',
+};

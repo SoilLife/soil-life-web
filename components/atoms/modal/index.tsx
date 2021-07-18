@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactModal, { Props, Styles } from 'react-modal';
 import { Icon } from 'components/atoms';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { CarouselArrowLeft } from 'components/atoms/carousel-arrow-left';
 import { CarouselArrowRight } from 'components/atoms/carousel-arrow-right';
 
@@ -59,7 +58,7 @@ export function Modal({
 
   return (
     <ReactModal
-      style={styles}
+      style={{ ...styles, ...props.style }}
       shouldCloseOnEsc={true}
       shouldFocusAfterRender={true}
       shouldReturnFocusAfterClose={true}
@@ -73,8 +72,8 @@ export function Modal({
               {slides.activeSlideIndex + 1} / {slides.count}
             </p>
           )}
-          <button>
-            <Icon icon={faTimes} size='2x' className='text-white' onClick={handleClose} />
+          <button className='h-12'>
+            <Icon icon='x' className='text-white' onClick={handleClose} />
           </button>
         </div>
         {children}

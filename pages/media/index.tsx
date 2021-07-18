@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 // components
-import { Typography, Icon, Modal, Image } from 'components/atoms';
+import { Icon, Modal, Image } from 'components/atoms';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { HomeHeader } from 'components/templates/home-header';
 import ReactPlayer from 'react-player';
 
 // helpers
-import { faPlay, faLink, faImage, faFilePdf, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faLink, faImage, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { debounce } from 'lodash';
 
 // assets
@@ -17,6 +18,12 @@ import FilterSvg from 'public/images/media-hub/filter.svg';
 import FoundationSvg from 'public/images/media-hub/foundation.svg';
 import FarmaceuticalSvg from 'public/images/media-hub/farmaceutical.svg';
 import FunSvg from 'public/images/media-hub/fun.svg';
+import FoodSvgWhite from 'public/images/web-of-soil/food_white.svg';
+import FiberSvgWhite from 'public/images/web-of-soil/fiber_white.svg';
+import FilterSvgWhite from 'public/images/web-of-soil/filter_white.svg';
+import FoundationSvgWhite from 'public/images/web-of-soil/foundation_white.svg';
+import FarmaceuticalSvgWhite from 'public/images/web-of-soil/farmaceutical_white.svg';
+import FunSvgWhite from 'public/images/web-of-soil/fun_white.svg';
 
 type Media = {
   Category: null | string;
@@ -40,6 +47,7 @@ export default function MediaPage() {
   const [mediaIndex, setMediaIndex] = useState(0);
   const [search, setSearch] = useState('');
   const [filters, setFilters] = useState<string[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     async function fetchVideos() {
@@ -213,6 +221,10 @@ export default function MediaPage() {
 
   function handleClearSearch() {
     setSearch('');
+    if (inputRef.current) {
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    }
   }
 
   return (
@@ -220,53 +232,52 @@ export default function MediaPage() {
       <HomeHeader fullpageRef={{ current: null }} hideHeader={false} />
       <div className='my-28 space-y-16'>
         <div className='container flex flex-col justify-between gap-4 xl:flex-row'>
-          <div className='flex items-center relative w-full sm:w-[480px] xl:w-[653px]'>
+          <div className='flex items-center relative h-12 w-full sm:w-[480px] xl:w-[653px]'>
             <input
+              ref={inputRef}
               type='text'
               className='border-none ring-1 ring-pink-500 rounded-full w-full placeholder-pink-300 outline-none focus:border-none focus:ring-2 focus:ring-pink-500'
               placeholder='search by keyword'
               onChange={debouncedSearch}
             />
-            <div className='absolute right-4 top-1/2 transform -translate-y-1/2'>
-              {!search ? (
-                <Icon size='lg' icon={faSearch} />
-              ) : (
-                <Icon size='lg' icon={faTimes} className='cursor-pointer' onClick={handleClearSearch} />
-              )}
-            </div>
+            <Icon
+              icon={!search ? 'search' : 'x'}
+              onClick={search ? handleClearSearch : undefined}
+              className={`absolute right-4 top-1/2 transform -translate-y-1/2 ${search ? 'cursor-pointer' : ''}`}
+            />
           </div>
 
           <div className='flex items-center space-x-6 justify-between sm:space-x-10 sm:justify-start'>
-            <p className='text-xl text-pink-500'>filters:</p>
+            <p className='text-xl font-acre-light text-pink-500'>filters:</p>
             <ul className='flex space-x-6 sm:space-x-8'>
               <li>
                 <div
                   className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-pink-500 ${
-                    filters.includes('food') ? 'bg-gray-500' : ''
+                    filters.includes('food') ? 'bg-pink-500' : ''
                   }`}
                   onClick={handleFilterChange('food')}
                 >
-                  <FoodSvg />
+                  {filters.includes('food') ? <FoodSvgWhite /> : <FoodSvg />}
                 </div>
               </li>
               <li>
                 <div
                   className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-yellow-500 ${
-                    filters.includes('fiber') ? 'bg-gray-500' : ''
+                    filters.includes('fiber') ? 'bg-yellow-500' : ''
                   }`}
                   onClick={handleFilterChange('fiber')}
                 >
-                  <FiberSvg />
+                  {filters.includes('fiber') ? <FiberSvgWhite /> : <FiberSvg />}
                 </div>
               </li>
               <li>
                 <div
                   className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-blue-500 ${
-                    filters.includes('filter') ? 'bg-gray-500' : ''
+                    filters.includes('filter') ? 'bg-blue-500' : ''
                   }`}
                   onClick={handleFilterChange('filter')}
                 >
-                  <FilterSvg />
+                  {filters.includes('filter') ? <FilterSvgWhite /> : <FilterSvg />}
                 </div>
               </li>
               <li>
@@ -276,27 +287,27 @@ export default function MediaPage() {
                   }`}
                   onClick={handleFilterChange('foundations')}
                 >
-                  <FoundationSvg />
+                  {filters.includes('foundations') ? <FoundationSvgWhite /> : <FoundationSvg />}
                 </div>
               </li>
               <li>
                 <div
                   className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-orange-500 ${
-                    filters.includes('farmaceuticals') ? 'bg-gray-500' : ''
+                    filters.includes('farmaceuticals') ? 'bg-orange-500' : ''
                   }`}
                   onClick={handleFilterChange('farmaceuticals')}
                 >
-                  <FarmaceuticalSvg />
+                  {filters.includes('farmaceuticals') ? <FarmaceuticalSvgWhite /> : <FarmaceuticalSvg />}
                 </div>
               </li>
               <li>
                 <div
                   className={`h-6 w-6 sm:h-10 sm:w-10 rounded-full cursor-pointer grid place-items-center hover:ring-2 hover:ring-teal-500 ${
-                    filters.includes('fun') ? 'bg-gray-500' : ''
+                    filters.includes('fun') ? 'bg-teal-500' : ''
                   }`}
                   onClick={handleFilterChange('fun')}
                 >
-                  <FunSvg />
+                  {filters.includes('fun') ? <FunSvgWhite /> : <FunSvg />}
                 </div>
               </li>
             </ul>
@@ -323,13 +334,9 @@ export default function MediaPage() {
 
             return filteredMedia?.length ? (
               <div key={index}>
-                <div className='flex justify-between w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 py-1 px-10'>
-                  <Typography type='subheading' className='text-white'>
-                    {key}
-                  </Typography>
-                  <Typography type='subheading' className='text-white'>
-                    ({filteredMedia.length})
-                  </Typography>
+                <div className='flex justify-between w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 py-1 px-10 text-white font-acre-regular text-[30px]'>
+                  <p>{key}</p>
+                  <p>({filteredMedia.length})</p>
                 </div>
                 <div
                   className={`overflow-y-hidden flex items-center overflow-x-auto min-h-[320px] mx-10 ${styles['media-container']}`}
@@ -384,7 +391,7 @@ export default function MediaPage() {
                               <div className='flex opacity-0 transition-all duration-200 ease absolute group-hover:opacity-100 items-center justify-center h-full w-full group-hover:bg-gradient-to-t group-hover:from-black group-hover:to-transparent'>
                                 <div className='w-10 h-10 rounded-full text-pink-600 shadow-md cursor-pointer ring-2 ring-white bg-pink-800 flex items-center justify-center'>
                                   <div>
-                                    <Icon
+                                    <FontAwesomeIcon
                                       icon={
                                         medium.mediaType === 'video'
                                           ? faPlay
@@ -431,13 +438,20 @@ export default function MediaPage() {
             controls={true}
             key={`${modalMedia[mediaIndex]?.Title}_${mediaIndex}`}
             height={'90%'}
-            width={'100%'}
+            width={'95%'}
             url={modalMedia[mediaIndex]?.URL as string}
+            style={{
+              margin: '0 auto',
+            }}
           />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'image' ? (
-          <img className={'h-full w-full object-contain'} src={modalMedia[mediaIndex]?.URL as string} loading='lazy' />
+          <img
+            className={'h-full w-full object-contain max-w-[600px] mx-auto'}
+            src={modalMedia[mediaIndex]?.URL as string}
+            loading='lazy'
+          />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'imagekit' ? (
-          <div className='overflow-y-auto max-h-[90%]'>
+          <div className='overflow-y-auto max-h-[90%] max-w-[600px] mx-auto'>
             <Image
               key={modalMedia[mediaIndex]?.URL}
               url={modalMedia?.[mediaIndex]?.URL as string}

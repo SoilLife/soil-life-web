@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // components
-import { Section, Typography, Image } from 'components/atoms';
+import { Section, Image } from 'components/atoms';
 
 // data
 const valueCards: {
@@ -11,9 +11,9 @@ const valueCards: {
 }[] = [
   {
     imageUrl: '/About_Us/Our_Values/Soilutions_values_k9HolOlaLaW.jpg',
-    label: 'solutions',
+    label: 'soilutions',
     content:
-      'there is enough fear based media out there. we value the kind of positivity and optimism that empowers people with solutions, rather than focuses on the problems. rather than fighting against broken systems, we value the creation of new models that make old paradigms obsolete.',
+      'we value positivity and optimism over fear and empowering people with solutions, rather than focusing on the problems. rather than fighting against broken systems, we strive to create new models that make old paradigms obsolete.',
   },
   {
     imageUrl: '/About_Us/Our_Values/Leaves_Hands_4otrtMnq3.jpg',
@@ -81,9 +81,7 @@ export function OurValuesSection() {
   return (
     <Section>
       <div className='flex flex-col items-center justify-center h-full p-4 mx-auto text-center sm:px-16 sm:py-8 sm:space-y-10'>
-        <Typography type='subheading' className='mb-4 text-teal-400'>
-          Our Values
-        </Typography>
+        <h1 className='font-acre-regular text-[70px] text-yellow-500'>our values</h1>
         <div className='grid w-full grid-cols-3 grid-rows-3 gap-6'>
           {valueCards.map(({ content, imageUrl, label }, index) => (
             <div
@@ -99,13 +97,12 @@ export function OurValuesSection() {
                 }`}
               >
                 {isHovered[index] ? (
-                  <Typography type='paragraph' className=' text-white'>
-                    {content}
-                  </Typography>
+                  <p className='text-[15px] font-acre-light text-white'>{content}</p>
                 ) : (
-                  <Typography type='subheading' className='text-white'>
-                    {index + 1}. {label}
-                  </Typography>
+                  <div className='text-[36px] font-acre-medium text-white'>
+                    <p>{index + 1}.</p>
+                    <p>{label}</p>
+                  </div>
                 )}
               </div>
             </div>

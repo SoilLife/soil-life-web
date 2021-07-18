@@ -28,6 +28,7 @@
     "@fullpage/react-fullpage": "^0.1.19",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "feather-icons-react": "^0.4.3",
     "imagekitio-react": "^1.0.9",
     "lodash": "^4.17.21",
     "next": "latest",

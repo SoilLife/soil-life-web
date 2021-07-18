@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
 // components
-import { Button, Typography, Image, Icon } from 'components/atoms';
+import { Button, Image } from 'components/atoms';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 // helpers
 import { getColor, getButtonType } from 'helpers/get-color';
@@ -36,7 +37,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
     <div
       onMouseEnter={handleOnDesktopMouseEnter(index)}
       onMouseLeave={handleOnDesktopMouseLeave(index)}
-      className={`shadow-lg p-4 rounded-[10px] ${typeof links === 'string' ? 'cursor-pointer' : ''}`}
+      className={`shadow-lg p-4 rounded-lg ${typeof links === 'string' ? 'cursor-pointer' : ''}`}
       onClick={
         typeof links === 'string'
           ? () => {
@@ -46,15 +47,16 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
       }
     >
       <div className='relative aspect-h-1 aspect-w-1'>
-        {isOpen[index] && (
+        {(true || isOpen[index]) && (
           <div className='absolute h-full w-full to-transparent z-10'>
             {Array.isArray(links) && (
-              <ul className='space-y-2 flex flex-col items-center justify-center h-full'>
+              <ul className='space-y-6 flex flex-col justify-center h-full p-6'>
                 {links.map((link, index) => {
                   return (
                     <li
                       key={index}
-                      className={`text-center bg-white bg-opacity-80 w-full py-1
+                      className={`flex justify-center items-center bg-white bg-opacity-[0.85] w-full py-4
+                      font-acre-medium text-[30px]
                       ${getColor({
                         color,
                         type: 'text',
@@ -66,7 +68,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                         state: 'active',
                       })}`}
                     >
-                      <a href={link.href} target='_blank' rel='noreferrer noopener'>
+                      <a href={link.href} target='_blank' rel='noreferrer noopener' className='text-center'>
                         {link.name}
                       </a>
                     </li>
@@ -82,13 +84,12 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
           <Icon icon={icon} size='10x' className='mx-auto text-blue-500' />
         ) : null}
       </div>
-      <Typography
-        type='paragraph'
-        className={`text-center mt-4
+      <p
+        className={`text-center mt-4 font-acre-regular text-[40px]
       ${getColor({ color, type: 'text', state: 'idle' })}`}
       >
         {text}
-      </Typography>
+      </p>
       {isMobile && Array.isArray(links) ? (
         <div className='flex items-center justify-center my-4'>
           <Button

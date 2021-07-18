@@ -17,6 +17,11 @@ const colorMap = {
       hover: '',
       active: '',
     },
+    border: {
+      idle: 'border border-solid border-blue-500',
+      hover: '',
+      active: '',
+    },
   },
   gray: {
     text: {
@@ -31,6 +36,11 @@ const colorMap = {
     },
     gradient: {
       idle: 'from-gray-500',
+      hover: '',
+      active: '',
+    },
+    border: {
+      idle: 'border border-solid border-gray-500',
       hover: '',
       active: '',
     },
@@ -51,6 +61,11 @@ const colorMap = {
       hover: '',
       active: '',
     },
+    border: {
+      idle: 'border border-solid border-orange-500',
+      hover: '',
+      active: '',
+    },
   },
   pink: {
     text: {
@@ -65,6 +80,11 @@ const colorMap = {
     },
     gradient: {
       idle: 'from-pink-500',
+      hover: '',
+      active: '',
+    },
+    border: {
+      idle: 'border border-solid border-pink-500',
       hover: '',
       active: '',
     },
@@ -85,6 +105,11 @@ const colorMap = {
       hover: '',
       active: '',
     },
+    border: {
+      idle: 'border border-solid border-teal-500',
+      hover: '',
+      active: '',
+    },
   },
   yellow: {
     text: {
@@ -102,6 +127,11 @@ const colorMap = {
       hover: '',
       active: '',
     },
+    border: {
+      idle: 'border border-solid border-yellow-500',
+      hover: '',
+      active: '',
+    },
   },
 };
 
@@ -111,7 +141,7 @@ export function getColor({
   state,
 }: {
   color: 'blue' | 'gray' | 'orange' | 'pink' | 'teal' | 'yellow';
-  type: 'text' | 'bg' | 'gradient';
+  type: 'text' | 'bg' | 'gradient' | 'border';
   state: 'idle' | 'hover' | 'active';
 }): string {
   return colorMap[color][type][state];
