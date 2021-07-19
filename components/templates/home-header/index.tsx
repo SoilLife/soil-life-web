@@ -75,7 +75,7 @@ export function HomeHeader({
           <SocialMediaIcons className='hidden gap-4 lg:flex' />
           <div className='w-10 h-10 md:hidden'>
             <button className='w-full h-full' onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <Icon className='w-full h-full' icon={isMenuOpen ? 'x' : 'menu'} size='2x' />
+              <Icon className='w-full h-full' icon={isMenuOpen ? 'x' : 'menu'} />
             </button>
           </div>
         </nav>

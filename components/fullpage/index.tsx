@@ -1,8 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import ReactFullpage from '@fullpage/react-fullpage';
-
-// helpers
-import { useAppContext } from 'helpers/app-context';
 
 // layout
 import { DefaultLayout } from 'layouts';
@@ -14,16 +11,9 @@ import { HomeHeader, MainHeader } from 'components/templates';
 import { FullPageProps } from './fullpage.interfaces';
 
 export function FullPage({ type, mainHeaderProps, children }: FullPageProps) {
-  const { setFullPage } = useAppContext();
   const fullPageRef = useRef<any>(null);
   const slideRef = useRef<NodeJS.Timeout | null>(null);
   const [hideHeader, setHideHeader] = useState(false);
-
-  useEffect(() => {
-    if (fullPageRef.current) {
-      setFullPage(fullPageRef.current);
-    }
-  }, [fullPageRef.current]);
 
   const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
     if (direction === 'up' && hideHeader) {

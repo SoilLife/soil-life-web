@@ -75,7 +75,7 @@ export function MainHeader({ pathName, headings, className }: MainHeaderProps) {
               <Typography type='subheading'>Soil Life</Typography>
             </a>
           </Link>
-          <Icon icon='x' onClick={toggleMenu} size='2x' className='cursor-pointer h-8 w-8' />
+          <Icon icon='x' onClick={toggleMenu} size='20' className='cursor-pointer h-8 w-8' />
         </div>
         <ul className='mt-10 space-y-6'>{createNavLinks()}</ul>
       </div>

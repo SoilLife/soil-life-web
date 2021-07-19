@@ -26,6 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@fullpage/react-fullpage": "^0.1.19",
+    "@visx/network": "^1.7.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "feather-icons-react": "^0.4.3",

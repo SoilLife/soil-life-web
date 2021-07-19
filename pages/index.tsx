@@ -21,7 +21,7 @@ export default function IndexPage() {
       <DigDeeperSection />
       <GetInvolvedSection />
       <AboutUsSection />
-      <Footer />
+      <Footer className='border-t border-solid border-gray-500' />
     </FullPage>
   );
 }

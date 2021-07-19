@@ -1,9 +1,9 @@
 import { SocialMediaIcons } from 'components/templates';
 import { Section, Image } from 'components/atoms';
 
-export function Footer() {
+export function Footer({ className }: { className?: string }) {
   return (
-    <Section className='fp-auto-height border-t border-solid border-gray-500'>
+    <Section className={`fp-auto-height ${className}`}>
       <footer className='container h-[700px] flex items-center'>
         <div className='flex flex-col items-center justify-between sm:flex-row'>
           <Image url='/soil_all_connected_Xgb0g5f3Fqm.png' className='h-[520px] ml-20 object-contain w-auto' />
@@ -20,3 +20,7 @@ export function Footer() {
     </Section>
   );
 }
+
+Footer.defaultProps = {
+  className: '',
+};
