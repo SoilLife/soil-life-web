@@ -55,7 +55,7 @@ export const webOfSoilSubheadings: MainHeaderProps['headings'] = [
     asset: '/images/web-of-soil/foundation_white.svg',
   },
   {
-    name: 'farmaceuticals',
+    name: 'farmaceutical',
     slug: 'nutrition',
     asset: '/images/web-of-soil/farmaceutical_white.svg',
   },

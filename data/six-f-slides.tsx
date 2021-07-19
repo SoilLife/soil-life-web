@@ -105,7 +105,7 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
       type: 'alert',
     },
     href: '/web-of-soil/farmaceutical',
-    photoUrl: '/6Fs/Farmaceuticals_Slide_Vw_NSlVnt.jpg',
+    photoUrl: '/6Fs/cup_of_pills_ioFvZZ0lo.png',
   },
   {
     ...commonProps,
