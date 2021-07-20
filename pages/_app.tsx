@@ -3,7 +3,7 @@ import './_app.css';
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import { IKContext } from 'imagekitio-react';
-import { AppProvider } from 'helpers/app-context';
+import { AppProvider } from 'context';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import * as faBrands from 'config/icon-library/fa-brands';

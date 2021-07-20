@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 
 // components
-import { Icon } from 'components/atoms';
-import { HomeHeader } from 'components/templates/home-header';
-import { MediaHub } from 'components/templates/media-hub';
+import { Icon } from 'design-system/atoms';
+import { HomeHeader } from 'design-system/templates/home-header';
+import { MediaHub } from 'design-system/templates/media-hub';
 
 // helpers
 import { debounce } from 'lodash';

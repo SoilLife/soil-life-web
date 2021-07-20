@@ -1,6 +1,6 @@
 import { DefaultLayout } from 'layouts';
 import Link from 'next/link';
-import { HomeHeader } from 'components/templates';
+import { HomeHeader } from 'design-system/templates';
 
 export default function NotFoundPage() {
   return (

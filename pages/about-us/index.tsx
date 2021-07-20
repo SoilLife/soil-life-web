@@ -1,4 +1,4 @@
-import { FullPage } from 'components/fullpage';
+import { FullPage } from 'design-system/components/fullpage';
 
 // sections
 import {
@@ -8,8 +8,8 @@ import {
   OurTeamSection,
   OurValuesSection,
   OurVisionSection,
-} from 'components/sections/about-us';
-import { Footer } from 'components/templates/footer';
+} from 'layouts/sections/about-us';
+import { Footer } from 'design-system/templates/footer';
 
 export default function AboutUsPage() {
   return (
