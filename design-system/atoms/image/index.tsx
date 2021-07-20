@@ -1,4 +1,5 @@
 import { IKImage } from 'imagekitio-react';
+import React from 'react';
 
 export function Image({
   url,
@@ -13,6 +14,7 @@ export function Image({
   className?: string;
   transformation?: any;
   lqip?: any;
+  onLoad?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
 }) {
   return <IKImage path={url} className={`${props.width ? '' : 'w-full'} h-full ${className}`} {...props} />;
 }
