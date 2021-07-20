@@ -33,6 +33,8 @@ function getBgColorFromActiveHeader(header: 'food' | 'fiber' | 'filter' | 'found
   }
 }
 
+const showSections = ['video', 'infographic', 'educational video'];
+
 export default function WebOfSoilPage() {
   const [activeHeader, setActiveHeader] = useState<
     'food' | 'fiber' | 'filter' | 'foundation' | 'farmaceutical' | 'fun'
@@ -176,6 +178,7 @@ export default function WebOfSoilPage() {
         loading='lazy'
         onLeave={handleSectionLeave}
         onSlideLeave={handleSlideLeave}
+        normalScrollElements={'.media-hub__scroll__container'}
         render={() => {
           return (
             <>
@@ -281,22 +284,58 @@ export default function WebOfSoilPage() {
 
               <Section>
                 <Slide>
-                  <MediaHub media={media} filters={['food']} />
+                  <MediaHub
+                    compact
+                    className='h-full flex flex-col justify-center'
+                    media={media}
+                    filters={['food']}
+                    showSections={showSections}
+                  />
                 </Slide>
                 <Slide>
-                  <MediaHub media={media} filters={['fiber']} />
+                  <MediaHub
+                    compact
+                    className='h-full flex flex-col justify-center'
+                    media={media}
+                    filters={['fiber']}
+                    showSections={showSections}
+                  />
                 </Slide>
                 <Slide>
-                  <MediaHub media={media} filters={['filter']} />
+                  <MediaHub
+                    compact
+                    className='h-full flex flex-col justify-center'
+                    media={media}
+                    filters={['filter']}
+                    showSections={showSections}
+                  />
                 </Slide>
                 <Slide>
-                  <MediaHub media={media} filters={['foundation']} />
+                  <MediaHub
+                    compact
+                    className='h-full flex flex-col justify-center'
+                    media={media}
+                    filters={['foundation']}
+                    showSections={showSections}
+                  />
                 </Slide>
                 <Slide>
-                  <MediaHub media={media} filters={['farmaceuticals']} />
+                  <MediaHub
+                    compact
+                    className='h-full flex flex-col justify-center'
+                    media={media}
+                    filters={['farmaceuticals']}
+                    showSections={showSections}
+                  />
                 </Slide>
                 <Slide>
-                  <MediaHub media={media} filters={['fun']} />
+                  <MediaHub
+                    compact
+                    className='h-full flex flex-col justify-center'
+                    media={media}
+                    filters={['fun']}
+                    showSections={showSections}
+                  />
                 </Slide>
               </Section>
 

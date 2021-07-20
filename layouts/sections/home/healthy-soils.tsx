@@ -39,8 +39,8 @@ export function HealthySoilsSection() {
           <div className='flex flex-col-reverse h-full sm:grid sm:grid-cols-3'>
             <div className='flex-grow px-10 py-4 text-center md:p-8'>
               <img src={arrowsImage} className='block mb-4' />
-              <h1 className={`text-3xl md:text-4xl lg:text-6xl mb-10 ${nameColor}`}>{name}</h1>
-              <p className='text-lg md:text-xl lg:text-3xl'>{content}</p>
+              <h1 className={`mb-10 font-acre-medium text-[60px] ${nameColor}`}>{name}</h1>
+              <p className='font-acre-light text-[40px]'>{content}</p>
             </div>
             <div className='col-span-2 h-[33.33%] sm:h-full'>
               <Image url={photoUrl} loading='lazy' className='object-cover' />

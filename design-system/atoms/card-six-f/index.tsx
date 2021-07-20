@@ -14,7 +14,7 @@ export function Card6F({ type, href, icon, subtext, text, className, button }: C
         <img src={icon} />
       </div>
       <div className='flex flex-col h-full items-center justify-end p-6 pt-8'>
-        <p className='font-acre-medium text-[30px] leading-none text-center'>{subtext}</p>
+        <p className='font-acre-medium text-[30px] leading-none text-center mb-4'>{subtext}</p>
         <p className='font-acre-light text-[40px] leading-none text-center mb-10'>{text}</p>
         <Link href={href}>
           <Button {...button} />
