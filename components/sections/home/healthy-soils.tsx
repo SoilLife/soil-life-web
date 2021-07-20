@@ -19,7 +19,7 @@ export function HealthySoilsSection() {
       <Slide>
         <div className='flex items-center justify-center h-full'>
           <div className='relative inline-flex items-center justify-center w-full h-full p-10 sm:p-20'>
-            <img className='h-full' src='/images/home/healthy-soils/healthy-soil-wheel.svg' />
+            <img className='h-full w-full object-contain' src='/images/home/healthy-soils/healthy-soil-wheel.png' />
             <div className='absolute text-center'>
               <p className='max-w-md mb-6 text-xl leading-tight text-teal-400 sm:text-5xl'>
                 we believe
