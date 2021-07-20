@@ -1,5 +1,5 @@
 // components
-import { GetInvolvedSection } from 'components/sections/get-involved';
+import { GetInvolvedSection } from 'layouts/sections/get-involved';
 
 // data
 import { getInvolvedPageData } from 'data/page-get-involved';

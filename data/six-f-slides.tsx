@@ -1,4 +1,4 @@
-import { CardSixFProps } from 'components/atoms/card-six-f/card-six-f.interfaces';
+import { CardSixFProps } from 'design-system/atoms/card-six-f/card-six-f.interfaces';
 
 const commonProps = {
   subtext: 'soils are the fundamental to life on earth.',

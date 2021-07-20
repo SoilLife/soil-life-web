@@ -1,6 +1,6 @@
 // components
-import { Footer } from 'components/templates';
-import { FullPage } from 'components/fullpage';
+import { Footer } from 'design-system/templates';
+import { FullPage } from 'design-system/components/fullpage';
 import {
   HeroSection,
   HealthySoilsSection,
@@ -9,7 +9,7 @@ import {
   DigDeeperSection,
   GetInvolvedSection,
   AboutUsSection,
-} from 'components/sections/home';
+} from 'layouts/sections/home';
 
 export default function IndexPage() {
   return (

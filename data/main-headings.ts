@@ -1,4 +1,4 @@
-import { MainHeaderProps } from 'components/templates/main-header/main-header.interface';
+import { MainHeaderProps } from 'design-system/templates/main-header/main-header.interface';
 
 export const soil101Subheadings: MainHeaderProps['headings'] = [
   {

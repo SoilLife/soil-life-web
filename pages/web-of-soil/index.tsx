@@ -3,15 +3,15 @@ import React, { useEffect, useRef, useState } from 'react';
 // components
 import ReactFullpage from '@fullpage/react-fullpage';
 import Link from 'next/link';
-import { Section, Slide, Image, Icon } from 'components/atoms';
-import { MediaHub } from 'components/templates/media-hub';
-import { Footer } from 'components/templates';
+import { Section, Slide, Image, Icon } from 'design-system/atoms';
+import { MediaHub } from 'design-system/templates/media-hub';
+import { Footer } from 'design-system/templates';
 
 // data
 import { webOfSoilSubheadings } from 'data/main-headings';
 
 // helpers
-import { createNavLinks } from 'components/templates/home-header';
+import { createNavLinks } from 'design-system/templates/home-header';
 import { DefaultLayout } from 'layouts';
 import { useMediaHub } from 'helpers/use-media-hub';
 

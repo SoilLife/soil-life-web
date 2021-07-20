@@ -1,22 +1,22 @@
 import { useCallback } from 'react';
 
-export function useCarouselHandlers(fullpageApiRef: any) {
+export function useCarouselHandlers(fullpageApi: any) {
   const handlePreviousSlide = useCallback(
     function () {
-      if (fullpageApiRef) {
-        fullpageApiRef.fullpageApi.moveSlideLeft();
+      if (fullpageApi) {
+        fullpageApi.moveSlideLeft();
       }
     },
-    [fullpageApiRef]
+    [fullpageApi]
   );
 
   const handleNextSlide = useCallback(
     function () {
-      if (fullpageApiRef) {
-        fullpageApiRef.fullpageApi.moveSlideRight();
+      if (fullpageApi) {
+        fullpageApi.moveSlideRight();
       }
     },
-    [fullpageApiRef]
+    [fullpageApi]
   );
 
   return {

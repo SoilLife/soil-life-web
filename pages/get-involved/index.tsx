@@ -1,7 +1,7 @@
 // components
 import Link from 'next/link';
-import { FullPage } from 'components/fullpage';
-import { Section, Image, Typography, Icon } from 'components/atoms';
+import { FullPage } from 'design-system/components/fullpage';
+import { Section, Image, Typography, Icon } from 'design-system/atoms';
 
 // data
 import { getInvolvedHeadings } from 'data/main-headings';
