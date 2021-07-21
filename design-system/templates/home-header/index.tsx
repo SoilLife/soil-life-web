@@ -6,7 +6,7 @@ import { kebabCase } from 'helpers/kebab-case';
 // components
 import Link from 'next/link';
 import { SocialMediaIcons } from 'design-system/templates';
-import { Icon } from 'design-system/atoms';
+import { Icon, Text } from 'design-system/atoms';
 
 export function createNavLinks() {
   const navLinks = [
@@ -20,7 +20,7 @@ export function createNavLinks() {
   return navLinks.map(({ name, anchorTag: _anchorTag }) => {
     const link = kebabCase(name);
     return (
-      <li key={link} className='w-full px-2 py-4 text-center cursor-pointer md:text-center md:p-2 md:py-0'>
+      <li key={link} className='p-10 text-center cursor-pointer xl:text-center xl:p-2 xl:py-0'>
         <Link href={`/${link}`}>
           <a className='text-[30px] font-acre-light hover:text-gray-300 active:text-gray-600 whitespace-nowrap'>
             {name}
@@ -61,29 +61,35 @@ export function HomeHeader({
   return (
     <>
       <header
-        className={`fixed overflow-hidden top-0 w-full bg-white z-10 transition-all ease-out transform ${
+        className={`fixed overflow-hidden top-0 w-full bg-white z-20 transition-all ease-out transform ${
           hideHeader ? 'translate-y-[-105%]' : ''
         } `}
       >
-        <nav className='container flex items-center justify-between py-4'>
-          <Link href='/'>
-            <a className='relative'>
-              <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />
-            </a>
-          </Link>
-          <ul className='hidden gap-16 w-full md:flex'>{createNavLinks()}</ul>
-          <SocialMediaIcons className='hidden gap-4 lg:flex' />
-          <div className='w-10 h-10 md:hidden'>
-            <button className='w-full h-full' onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <Icon className='w-full h-full' icon={isMenuOpen ? 'x' : 'menu'} />
+        <nav className='container relative flex items-center justify-center py-2 xl:py-4 xl:justify-between'>
+          <div className='absolute top-1/2 left-2 transform -translate-y-1/2 grid place-items-center xl:hidden'>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Icon size='32' icon={isMenuOpen ? 'x' : 'menu'} />
             </button>
           </div>
+          <Link href='/'>
+            <a className='flex items-center space-x-2'>
+              <Text type='h2' weight='light' className='uppercase text-[20px] xl:hidden'>
+                Soil
+              </Text>
+              <img src='/images/logo.svg' className='h-6 xl:h-[56px]' />
+              <Text type='h2' weight='light' className='uppercase text-[20px] xl:hidden'>
+                Life
+              </Text>
+            </a>
+          </Link>
+          <ul className='hidden gap-16 w-full xl:flex xl:justify-center'>{createNavLinks()}</ul>
+          <SocialMediaIcons className='absolute top-1/2 right-2 transform -translate-y-1/2 flex gap-2 md:gap-4' />
         </nav>
       </header>
       <ul
-        className={`absolute justify-center w-full h-full right-0 z-10 top-[88px] pt-16 bg-white shadow-md p ${
+        className={`fixed flex flex-col justify-center items-center w-full sm:w-auto h-full left-0 z-10 top-0 bg-white shadow-md p ${
           isMenuOpen ? 'translate-x-0' : 'hidden'
-        } md:hidden`}
+        } xl:hidden`}
       >
         {createNavLinks()}
       </ul>

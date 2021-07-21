@@ -1,6 +1,6 @@
 // components
 import Link from 'next/link';
-import { Typography, CardGetInvolved } from 'design-system/atoms';
+import { Text, CardGetInvolved } from 'design-system/atoms';
 import { MainHeader } from 'design-system/templates';
 
 // helpers
@@ -13,7 +13,7 @@ import { getInvolvedHeadings } from 'data/main-headings';
 function ReturnHomeButton({ color }: { color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'gray' }) {
   return (
     <div className='relative left-1/2 transform -translate-x-1/2 inline-flex justify-center my-20'>
-      <Link href='/'>
+      <Link href='/get-involved'>
         <a
           className={`
           ${getColor({ color, type: 'text', state: 'idle' })}
@@ -55,9 +55,9 @@ export function GetInvolvedSection({
         className={getColor({ color, type: 'bg', state: 'idle' })}
       />
       <div className='container relative pt-16'>
-        <Typography type='heading' className={`text-center py-6 ${textColor}`}>
+        <Text type='h1' weight='bold' className={`text-center py-6 ${textColor}`}>
           {title}
-        </Typography>
+        </Text>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-app-full mx-auto'>
           {cards.map((card, index) => (
             <CardGetInvolved key={index} index={index} color={color} {...card} />

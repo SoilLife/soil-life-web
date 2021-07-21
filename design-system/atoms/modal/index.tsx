@@ -13,6 +13,7 @@ const styles: Styles = {
     borderRadius: 0,
     padding: 0,
     inset: 0,
+    overflow: 'hidden',
   },
   overlay: {
     backgroundColor: 'rgba(var(--black-rgb), .5)',
