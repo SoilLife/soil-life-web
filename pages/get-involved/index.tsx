@@ -1,7 +1,7 @@
 // components
 import Link from 'next/link';
 import { FullPage } from 'design-system/components/fullpage';
-import { Section, Image, Typography, Icon } from 'design-system/atoms';
+import { Section, Image, Text, Icon } from 'design-system/atoms';
 
 // data
 import { getInvolvedHeadings } from 'data/main-headings';
@@ -37,7 +37,7 @@ export default function GetInvolvedPage() {
           </a>
         </Link>
         <div
-          className={`${styles['cta-message']} absolute top-1/2 left-1/2 bg-white bg-opacity-80 px-28 py-6 z-20 text-7xl whitespace-nowrap border border-solid border-gray-500`}
+          className={`${styles['cta-message']} hidden absolute top-1/2 left-1/2 bg-white bg-opacity-80 px-28 py-6 z-20 md:text-3xl lg:text-4xl xl:text-7xl whitespace-nowrap border border-solid border-gray-500 sm:block`}
         >
           how would you like to get involved?
         </div>
@@ -52,9 +52,9 @@ export default function GetInvolvedPage() {
                   >
                     <div className='relative w-full h-full'>
                       <img className='sm:w-24 sm:h-24 mx-auto' src={asset} />
-                      <Typography type='paragraph' className='absolute w-full text-center md:top-24 lg:top-20'>
+                      <Text type='p' weight='medium' className='absolute w-full text-center md:top-24 lg:top-20'>
                         {name}
-                      </Typography>
+                      </Text>
                     </div>
                   </div>
                 </Link>

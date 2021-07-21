@@ -26,7 +26,7 @@ export function SocialMediaIcons(props: SocialMediaIconsProps) {
         <li key={link.href}>
           <Link href={link.href}>
             <a>
-              <Icon icon={link.icon} size='2x' className='text-pink-500 cursor-pointer h-8 w-8' />
+              <Icon icon={link.icon} size='2x' className='text-pink-500 cursor-pointer h-6 w-6 sm:h-8 sm:w-8' />
             </a>
           </Link>
         </li>

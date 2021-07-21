@@ -6,7 +6,7 @@ import { createNavLinks } from '../home-header';
 
 // components
 import Link from 'next/link';
-import { Icon, Typography } from 'design-system/atoms';
+import { Icon, Text } from 'design-system/atoms';
 
 // interfaces
 import { MainHeaderProps } from './main-header.interface';
@@ -72,7 +72,9 @@ export function MainHeader({ pathName, headings, className }: MainHeaderProps) {
           <Link href='/'>
             <a className='relative flex items-center space-x-4'>
               <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />
-              <Typography type='subheading'>Soil Life</Typography>
+              <Text type='h1' weight='semibold'>
+                Soil Life
+              </Text>
             </a>
           </Link>
           <Icon icon='x' onClick={toggleMenu} size='20' className='cursor-pointer h-8 w-8' />
