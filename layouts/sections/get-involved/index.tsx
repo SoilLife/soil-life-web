@@ -1,7 +1,7 @@
 // components
 import Link from 'next/link';
 import { Text, CardGetInvolved } from 'design-system/atoms';
-import { MainHeader } from 'design-system/templates';
+import { Header } from 'design-system/templates';
 
 // helpers
 import { getColor } from 'helpers/get-color';
@@ -49,7 +49,7 @@ export function GetInvolvedSection({
 
   return (
     <>
-      <MainHeader
+      <Header.Sub
         headings={getInvolvedHeadings}
         pathName='get-involved'
         className={getColor({ color, type: 'bg', state: 'idle' })}

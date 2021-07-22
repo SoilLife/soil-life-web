@@ -5,6 +5,7 @@ import { App } from './app.interfaces';
 
 const initialState: App.State = {
   fullpageApi: null,
+  isMenuOpen: false,
 };
 
 export const [appContext, AppProvider] = createCtx(appReducer, initialState);

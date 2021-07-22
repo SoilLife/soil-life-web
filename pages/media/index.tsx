@@ -2,8 +2,7 @@ import React, { useState, useRef } from 'react';
 
 // components
 import { Icon } from 'design-system/atoms';
-import { HomeHeader } from 'design-system/templates/home-header';
-import { MediaHub } from 'design-system/templates/media-hub';
+import { Header, MediaHub } from 'design-system/templates';
 
 // helpers
 import { debounce } from 'lodash';
@@ -61,7 +60,7 @@ export default function MediaPage() {
 
   return (
     <>
-      <HomeHeader fullpageRef={{ current: null }} hideHeader={false} />
+      <Header.Main fullpageRef={{ current: null }} hideHeader={false} />
       <div className='mt-28 mb-8'>
         <div className='container flex flex-col justify-between gap-4 lg:flex-row'>
           <div className='flex items-center relative h-12 w-full sm:w-[480px] xl:w-[653px]'>

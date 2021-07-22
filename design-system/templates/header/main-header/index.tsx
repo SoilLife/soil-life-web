@@ -2,27 +2,29 @@ import { useEffect, useState } from 'react';
 
 // helpers
 import { kebabCase } from 'helpers/kebab-case';
+import { useMedia } from 'react-use';
 
 // components
 import Link from 'next/link';
 import { SocialMediaIcons } from 'design-system/templates';
 import { Icon, Text } from 'design-system/atoms';
+import { MobileNavMenu } from '../../mobile-nav-menu';
 
-export function createNavLinks() {
-  const navLinks = [
-    { name: 'soils 101', anchorTag: '#soil-101' },
-    { name: 'web of soil', anchorTag: '#web-of-soil' },
-    { name: 'media', anchorTag: '#media' },
-    { name: 'get involved', anchorTag: '#get-involved' },
-    { name: 'about us', anchorTag: '#about-us' },
-  ];
+const navLinks = [
+  { name: 'soils 101' },
+  { name: 'web of soil' },
+  { name: 'media' },
+  { name: 'get involved' },
+  { name: 'about us' },
+];
 
-  return navLinks.map(({ name, anchorTag: _anchorTag }) => {
+function createNavLinks() {
+  return navLinks.map(({ name }) => {
     const link = kebabCase(name);
     return (
-      <li key={link} className='p-10 text-center cursor-pointer xl:text-center xl:p-2 xl:py-0'>
+      <li key={link} className='text-center cursor-pointer xl:text-center xl:p-2 xl:py-0'>
         <Link href={`/${link}`}>
-          <a className='text-[30px] font-acre-light hover:text-gray-300 active:text-gray-600 whitespace-nowrap'>
+          <a className='p-4 text-[30px] font-acre-light hover:text-gray-300 active:text-gray-600 whitespace-nowrap'>
             {name}
           </a>
         </Link>
@@ -31,7 +33,7 @@ export function createNavLinks() {
   });
 }
 
-export function HomeHeader({
+export function MainHeader({
   hideHeader,
   fullpageRef,
 }: {
@@ -39,6 +41,7 @@ export function HomeHeader({
   hideHeader: boolean;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useMedia('(max-width: 639px)');
 
   useEffect(() => {
     if (fullpageRef.current) {
@@ -58,10 +61,16 @@ export function HomeHeader({
     }
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (!isMobile) {
+      setIsMenuOpen(false);
+    }
+  }, [isMobile]);
+
   return (
     <>
       <header
-        className={`fixed overflow-hidden top-0 w-full bg-white z-20 transition-all ease-out transform ${
+        className={`fixed overflow-hidden h-10 sm:h-16 top-0 w-full bg-white z-20 transition-all ease-out transform flex items-center ${
           hideHeader ? 'translate-y-[-105%]' : ''
         } `}
       >
@@ -86,13 +95,7 @@ export function HomeHeader({
           <SocialMediaIcons className='absolute top-1/2 right-2 transform -translate-y-1/2 flex gap-2 md:gap-4' />
         </nav>
       </header>
-      <ul
-        className={`fixed flex flex-col justify-center items-center w-full sm:w-auto h-full left-0 z-10 top-0 bg-white shadow-md p ${
-          isMenuOpen ? 'translate-x-0' : 'hidden'
-        } xl:hidden`}
-      >
-        {createNavLinks()}
-      </ul>
+      <MobileNavMenu isMenuOpen={isMenuOpen} />
     </>
   );
 }

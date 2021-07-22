@@ -4,7 +4,8 @@ import { useCarouselHandlers } from 'helpers/use-carousel-handlers';
 import { useAppContext } from 'context';
 
 // components
-import { Section, Slide, Button, Image, CarouselArrowLeft, CarouselArrowRight } from 'design-system/atoms';
+import Link from 'next/link';
+import { Section, Slide, Button, Image, CarouselArrowLeft, CarouselArrowRight, Text } from 'design-system/atoms';
 
 // data
 import { healthySoilsSlides } from 'data/healthy-soils-slides';
@@ -19,37 +20,56 @@ export function HealthySoilsSection() {
   return (
     <Section>
       <Slide>
-        <div className='flex items-center justify-center h-full'>
-          <div className='relative inline-flex items-center justify-center w-full h-full p-10 sm:p-20'>
-            <img className='h-full w-full object-contain' src='/images/home/healthy-soils/healthy-soil-wheel.png' />
-            <div className='absolute text-center'>
-              <p className='max-w-md mb-6 text-xl leading-tight text-teal-400 sm:text-5xl'>
+        <div className='relative container flex flex-col justify-evenly h-full'>
+          <div className='relative max-h-full max-w-full'>
+            <img
+              className='max-h-[900px] h-full w-full object-contain'
+              src='/images/home/healthy-soils/healthy-soil-wheel.png'
+            />
+            <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
+              <Text type='p' weight='light' className='text-[22px] sm:text-[40px] text-teal-500'>
                 we believe
-                <br />a healthy life starts
-                <br />
+              </Text>
+              <Text type='p' weight='light' className='text-[22px] sm:text-[40px] text-teal-500'>
+                a healthy life starts
+              </Text>
+              <Text type='p' weight='light' className='text-[22px] sm:text-[40px] text-teal-500'>
                 with healthy soil
-              </p>
-              <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
+              </Text>
+              <div className='text-center hidden sm:block sm:mt-5'>
+                <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
+              </div>
             </div>
+          </div>
+          <div className='text-center sm:hidden'>
+            <Link href='/web-of-soil'>
+              <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
+            </Link>
           </div>
         </div>
       </Slide>
+
       {healthySoilsSlides.map(({ name, content, photoUrl, arrowsImage, nameColor }) => (
         <Slide key={name}>
           <div className='flex flex-col-reverse h-full sm:grid sm:grid-cols-3'>
-            <div className='flex-grow px-10 py-4 text-center md:p-8'>
+            <div className='flex-grow py-10 sm:px-10 sm:py-4 text-center md:p-8'>
               <img src={arrowsImage} className='block mb-4' />
-              <h1 className={`mb-10 font-acre-medium text-[60px] ${nameColor}`}>{name}</h1>
-              <p className='font-acre-light text-[40px]'>{content}</p>
+              <h1 className={`mb-4 sm:mb-10 font-acre-medium text-3xl sm:text-5xl xl:text-[60px] ${nameColor}`}>
+                {name}
+              </h1>
+              <div>
+                <Image url={photoUrl} loading='lazy' className='sm:hidden object-cover' />
+              </div>
+              <p className='font-acre-light p-4 sm:p-0 sm:text-3xl xl:text-[40px]'>{content}</p>
             </div>
-            <div className='col-span-2 h-[33.33%] sm:h-full'>
+            <div className='col-span-2 hidden sm:block sm:h-full'>
               <Image url={photoUrl} loading='lazy' className='object-cover' />
             </div>
           </div>
         </Slide>
       ))}
       <CarouselArrowLeft className='left-0' onClick={handlePreviousSlide} />
-      <CarouselArrowRight className='right-8' onClick={handleNextSlide} />
+      <CarouselArrowRight className='right-0' onClick={handleNextSlide} />
     </Section>
   );
 }

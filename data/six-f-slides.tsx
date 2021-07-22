@@ -17,7 +17,8 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'danger',
     text: (
       <>
-        if you <span className='text-pink-500 text-[40px] font-acre-light'>eat food</span> you depend on soil
+        if you <span className='text-pink-500 text-[26px] sm:text-[40px] font-acre-light'>eat food</span> you depend on
+        soil
       </>
     ),
     button: {
@@ -33,7 +34,8 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'warning',
     text: (
       <>
-        if you <span className='text-warning-500 text-[40px] font-acre-light'>wear clothes</span> you depend on soil
+        if you <span className='text-warning-500 text-[26px] sm:text-[40px] font-acre-light'>wear clothes</span> you
+        depend on soil
       </>
     ),
     button: {
@@ -49,7 +51,8 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'primary',
     text: (
       <>
-        if you <span className='text-blue-500 text-[40px] font-acre-light'>drink water</span> you depend on soil
+        if you <span className='text-blue-500 text-[26px] sm:text-[40px] font-acre-light'>drink water</span> you depend
+        on soil
       </>
     ),
     button: {
@@ -65,7 +68,8 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'primary',
     text: (
       <>
-        if you <span className='text-blue-500 text-[40px] font-acre-light'>breathe air</span> you depend on soil
+        if you <span className='text-blue-500 text-[26px] sm:text-[40px] font-acre-light'>breathe air</span> you depend
+        on soil
       </>
     ),
     button: {
@@ -81,7 +85,7 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'neutral',
     text: (
       <>
-        if you <span className='text-[40px] font-acre-light'>live in a shelter</span> you depend on soil
+        if you <span className='text-[26px] sm:text-[40px] font-acre-light'>live in a shelter</span> you depend on soil
       </>
     ),
     button: {
@@ -97,7 +101,8 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'alert',
     text: (
       <>
-        if you <span className='text-orange-500 text-[40px] font-acre-light'>use medicine</span> you depend on soil
+        if you <span className='text-orange-500 text-[26px] sm:text-[40px] font-acre-light'>use medicine</span> you
+        depend on soil
       </>
     ),
     button: {
@@ -113,7 +118,8 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'success',
     text: (
       <>
-        if you <span className='text-teal-500 text-[40px] font-acre-light'>enjoy the outdoors</span> you depend on soil
+        if you <span className='text-teal-500 text-[26px] sm:text-[40px] font-acre-light'>enjoy the outdoors</span> you
+        depend on soil
       </>
     ),
     button: {
