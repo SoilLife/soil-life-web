@@ -1,6 +1,6 @@
-import { MainHeaderProps } from 'design-system/templates/main-header/main-header.interface';
+import { SubHeaderProps } from 'design-system/templates/header/sub-header/sub-header.interface';
 
-export const soil101Subheadings: MainHeaderProps['headings'] = [
+export const soil101Subheadings: SubHeaderProps['headings'] = [
   {
     name: 'soil genesis',
     slug: 'genesis',
@@ -33,7 +33,7 @@ export const soil101Subheadings: MainHeaderProps['headings'] = [
   },
 ];
 
-export const webOfSoilSubheadings: MainHeaderProps['headings'] = [
+export const webOfSoilSubheadings: SubHeaderProps['headings'] = [
   {
     name: 'food',
     slug: 'food',
@@ -66,7 +66,7 @@ export const webOfSoilSubheadings: MainHeaderProps['headings'] = [
   },
 ];
 
-export const getInvolvedHeadings: MainHeaderProps['headings'] = [
+export const getInvolvedHeadings: SubHeaderProps['headings'] = [
   {
     name: 'at home',
     slug: 'at-home',

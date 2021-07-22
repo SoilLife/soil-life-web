@@ -19,7 +19,7 @@ export default function GetInvolvedPage() {
   return (
     <FullPage
       type='main'
-      mainHeaderProps={{
+      subHeaderProps={{
         headings: getInvolvedHeadings,
         pathName: 'get-involved',
         className: 'hidden',

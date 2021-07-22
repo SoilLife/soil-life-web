@@ -15,7 +15,7 @@ export function Footer({ className }: { className?: string }) {
               stay connected.
             </Text>
             <SocialMediaIcons className='flex justify-center gap-4 mb-6 sm:justify-start' />
-            <Text type='p' weight='regular' className='text-center text-teal-500 text-[34px] lg:text-right'>
+            <Text type='p' weight='regular' className='text-center text-teal-500 sm:text-[34px] lg:text-right'>
               soil life is a PhD project based out of UC Davis in collaboration and with support from USDA-NRCS. we are
               on a mission to change the way the world looks at soil.
             </Text>

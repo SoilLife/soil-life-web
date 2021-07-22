@@ -16,14 +16,14 @@ export function SixFSection() {
         return (
           <Slide className='relative' key={index}>
             <Card6F {...slide} />
-            <div className='absolute top-0 left-0 w-full h-full sm:top-1/3 '>
+            <div className='absolute top-1/3 left-0 w-full h-full'>
               <Image key={index} url={photoUrl} className='object-cover' />
             </div>
           </Slide>
         );
       })}
       <CarouselArrowLeft className='left-0' onClick={handlePreviousSlide} />
-      <CarouselArrowRight className='right-8' onClick={handleNextSlide} />
+      <CarouselArrowRight className='right-0' onClick={handleNextSlide} />
     </Section>
   );
 }

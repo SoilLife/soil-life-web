@@ -3,18 +3,17 @@ import Graph from 'react-graph-vis';
 
 // components
 import ReactFullpage from '@fullpage/react-fullpage';
-import Link from 'next/link';
 import { Section, Slide, Image, Icon, Modal } from 'design-system/atoms';
 import { MediaHub } from 'design-system/templates/media-hub';
 import { Footer } from 'design-system/templates';
 import ReactPlayer from 'react-player';
+import { MobileNavMenu } from 'design-system/templates/mobile-nav-menu';
 
 // data
 import { webOfSoilSubheadings } from 'data/main-headings';
 import { graph } from 'data/web-of-soil/food';
 
 // helpers
-import { createNavLinks } from 'design-system/templates/home-header';
 import { DefaultLayout } from 'layouts';
 import { useMediaHub } from 'helpers/use-media-hub';
 
@@ -179,43 +178,32 @@ export default function WebOfSoilPage() {
     <>
       <DefaultLayout>
         <header
-          className={`fixed z-10 w-full transition-all ease-in-out duration-200 ${getBgColorFromActiveHeader(
+          className={`fixed z-20 w-full transition-all ease-in-out duration-200 ${getBgColorFromActiveHeader(
             activeHeader
           )} ${!hideHeader ? 'top-0' : '-top-24'}`}
         >
-          <ul className={`container h-16 flex justify-between items-center `}>
+          <ul className={`container flex justify-between items-center h-10 sm:h-16`}>
             <li>
-              <Icon icon='menu' size='20' className='text-white cursor-pointer h-8 w-8' onClick={toggleMenu} />
+              <Icon
+                icon={isMenuOpen ? 'x' : 'menu'}
+                size='20'
+                className='text-white cursor-pointer h-8 w-8'
+                onClick={toggleMenu}
+              />
             </li>
             {webOfSoilSubheadings.map(({ name, asset }) => (
               <li key={name} title={name} onClick={handleHeaderClick(name as typeof activeHeader)}>
                 <img
                   src={asset}
-                  height={50}
-                  width={50}
-                  className={name === activeHeader ? 'rounded-full bg-gray-500 ring-2 ring-white' : 'cursor-pointer'}
+                  className={`h-8 w-8 sm:h-[50px] sm:w-[50px] ${
+                    name === activeHeader ? 'rounded-full bg-gray-500 ring-2 ring-white' : 'cursor-pointer'
+                  }`}
                 />
               </li>
             ))}
           </ul>
-          <div
-            className={`fixed w-full h-full top-0 max-w-xs bg-white p-4 z-30 transition-all duration-100 ease-in-out transform shadow-lg ${
-              isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
-          >
-            <div className='flex items-center justify-between'>
-              <Link href='/'>
-                <a className='relative flex items-center space-x-4'>
-                  <img src='/images/logo.svg' className='h-[56px]' style={{ height: 56 }} />
-                  <h1 className='text-4xl font-acre-regular'>Soil Life</h1>
-                </a>
-              </Link>
-              <Icon icon='x' onClick={toggleMenu} size='20' className='cursor-pointer h-8 w-8' />
-            </div>
-            <ul className='mt-10 space-y-6'>{createNavLinks()}</ul>
-          </div>
-          {isMenuOpen && <div className='bg-gray-900 bg-opacity-25 fixed top-0 left-0 h-full w-full z-20' />}
         </header>
+        <MobileNavMenu isMenuOpen={isMenuOpen} />
         <ReactFullpage
           ref={fullPageRef}
           licenseKey={null}

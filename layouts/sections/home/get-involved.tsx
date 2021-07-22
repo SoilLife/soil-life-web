@@ -7,8 +7,8 @@ export function GetInvolvedSection() {
       <Image url='/Home_Page/AdobeStock_144874490_6lpeJS0jbCq.jpg' className='object-cover' />
       <div className='px-10 absolute bottom-10 w-full flex flex-col lg:items-center lg:flex-row 2xl:space-x-20'>
         <div className='text-white'>
-          <p className='font-acre-light text-[80px] leading-none'>soil does so much for us,</p>
-          <p className='mb-6 font-acre-bold text-[80px] leading-none'>
+          <p className='font-acre-light text-[36px] sm:text-[80px] leading-none'>soil does so much for us,</p>
+          <p className='mb-6 font-acre-bold text-[36px] sm:text-[80px] leading-none'>
             find out what you <br /> can do for soil!
           </p>
         </div>

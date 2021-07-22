@@ -1,12 +1,12 @@
-import { MainHeaderProps } from 'design-system/templates/main-header/main-header.interface';
+import { SubHeaderProps } from 'design-system/templates/header/sub-header/sub-header.interface';
 
 export type FullPageProps = React.PropsWithChildren<
   | {
       type: 'home';
-      mainHeaderProps?: never;
+      subHeaderProps?: never;
     }
   | {
       type: 'main';
-      mainHeaderProps: MainHeaderProps;
+      subHeaderProps: SubHeaderProps;
     }
 >;
