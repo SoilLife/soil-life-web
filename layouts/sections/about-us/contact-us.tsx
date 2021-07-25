@@ -1,4 +1,4 @@
-import { Section, Image } from 'design-system/atoms';
+import { Section, Image, Text, Input } from 'design-system/atoms';
 
 export function ContactUsSection() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -15,16 +15,11 @@ export function ContactUsSection() {
         className='absolute z-10 xl:max-w-[642px] xl:max-h-[753px] h-full w-full p-4 flex flex-col ml-10  bg-white  md:p-8'
         onSubmit={handleSubmit}
       >
-        <h1 className='text-[70px] font-acre-regular text-pink-500 mb-4'>contact us</h1>
+        <Text type='h1' weight='regular' size='xl' className='text-pink-500 mb-6'>
+          contact us
+        </Text>
         <div className='mb-4 md:mb-8 h-[54px]'>
-          <input
-            type='text'
-            id='name'
-            name='name'
-            placeholder='name'
-            className='w-full font-acre-light text-[30px]'
-            required
-          />
+          <Input id='name' label='name' />
         </div>
         <div className='mb-4 md:mb-8 h-[54px]'>
           <input

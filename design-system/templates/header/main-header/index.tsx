@@ -82,11 +82,11 @@ export function MainHeader({
           </div>
           <Link href='/'>
             <a className='flex items-center space-x-2'>
-              <Text type='h2' weight='light' className='uppercase text-[20px] xl:hidden'>
+              <Text type='h2' weight='light' size='md' className='uppercase xl:hidden'>
                 Soil
               </Text>
               <img src='/images/logo.svg' className='h-6 xl:h-[56px]' />
-              <Text type='h2' weight='light' className='uppercase text-[20px] xl:hidden'>
+              <Text type='h2' weight='light' size='md' className='uppercase xl:hidden'>
                 Life
               </Text>
             </a>

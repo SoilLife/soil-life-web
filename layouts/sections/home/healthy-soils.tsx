@@ -27,13 +27,13 @@ export function HealthySoilsSection() {
               src='/images/home/healthy-soils/healthy-soil-wheel.png'
             />
             <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
-              <Text type='p' weight='light' className='text-[22px] sm:text-[40px] text-teal-500'>
+              <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
                 we believe
               </Text>
-              <Text type='p' weight='light' className='text-[22px] sm:text-[40px] text-teal-500'>
+              <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
                 a healthy life starts
               </Text>
-              <Text type='p' weight='light' className='text-[22px] sm:text-[40px] text-teal-500'>
+              <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
                 with healthy soil
               </Text>
               <div className='text-center hidden sm:block sm:mt-5'>

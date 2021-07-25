@@ -1,5 +1,5 @@
 // components
-import { Section, Image, CardTeamMember } from 'design-system/atoms';
+import { Section, Image, CardTeamMember, Text } from 'design-system/atoms';
 
 export function OurTeamSection() {
   return (
@@ -7,10 +7,14 @@ export function OurTeamSection() {
       <div className='relative h-full'>
         <Image url='/About_Us/Our_Team_About_Us_NIPGMI969.jpg' className='object-cover' />
         <div className='container absolute inset-0'>
-          <h1 className='absolute w-full text-center text-white text-[70px] font-acre-regular leading-none md:w-auto md:top-20 md:left-40'>
+          <Text
+            type='h1'
+            weight='regular'
+            size='xl'
+            className='absolute w-full text-center text-white top-8 md:w-auto md:top-20 md:left-40'
+          >
             our team
-          </h1>
-
+          </Text>
           <div className='flex flex-col items-center justify-center h-full '>
             <div className='flex justify-center w-full mb-4 space-x-4 md:mb-8 md:space-x-8'>
               <CardTeamMember
