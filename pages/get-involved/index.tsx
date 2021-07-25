@@ -1,10 +1,7 @@
 // components
 import Link from 'next/link';
 import { FullPage } from 'design-system/components/fullpage';
-import { Section, Image, Text } from 'design-system/atoms';
-
-// helpers
-import { useMedia } from 'react-use';
+import { Section, Image } from 'design-system/atoms';
 
 // data
 import { getInvolvedHeadings } from 'data/main-headings';
@@ -20,10 +17,6 @@ const mergedData = getInvolvedHeadings.map((heading, index) => ({
 }));
 
 export default function GetInvolvedPage() {
-  const isMobile = useMedia('(max-width: 639px)');
-
-  console.log(isMobile);
-
   return (
     <FullPage
       type='main'
