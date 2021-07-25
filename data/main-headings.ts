@@ -66,35 +66,41 @@ export const webOfSoilSubheadings: SubHeaderProps['headings'] = [
   },
 ];
 
-export const getInvolvedHeadings: SubHeaderProps['headings'] = [
+export const getInvolvedHeadings = [
   {
     name: 'at home',
     slug: 'at-home',
     asset: '/images/get-involved/home_white.svg',
+    iconWithText: '/images/get-involved/at_home_text.svg',
   },
   {
     name: 'in your community',
     slug: 'community',
     asset: '/images/get-involved/community_white.svg',
+    iconWithText: '/images/get-involved/community_text.svg',
   },
   {
     name: 'on social media',
     slug: 'social-media',
     asset: '/images/get-involved/social_media_white.svg',
+    iconWithText: '/images/get-involved/social_media_text.svg',
   },
   {
     name: 'with your legislation',
     slug: 'legislation',
     asset: '/images/get-involved/legislation_white.svg',
+    iconWithText: '/images/get-involved/legislation_text.svg',
   },
   {
     name: 'for your education',
     slug: 'education',
     asset: '/images/get-involved/education_white.svg',
+    iconWithText: '/images/get-involved/education_text.svg',
   },
   {
     name: 'through donations',
     slug: 'donations',
     asset: '/images/get-involved/donations_white.svg',
+    iconWithText: '/images/get-involved/donations_text.svg',
   },
 ];
