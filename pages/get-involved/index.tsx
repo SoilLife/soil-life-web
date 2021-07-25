@@ -52,7 +52,12 @@ export default function GetInvolvedPage() {
                   >
                     <div className='relative w-full h-full'>
                       <img className='sm:w-24 sm:h-24 mx-auto' src={asset} />
-                      <Text type='p' weight='medium' className='absolute w-full text-center md:top-24 lg:top-20'>
+                      <Text
+                        type='p'
+                        weight='medium'
+                        size='sm'
+                        className='absolute w-full text-center md:top-24 lg:top-20'
+                      >
                         {name}
                       </Text>
                     </div>
