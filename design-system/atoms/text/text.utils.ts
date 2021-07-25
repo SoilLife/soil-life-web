@@ -5,6 +5,7 @@ export const textTypeMap: { [Type in TextProps['type']]: string } = {
   h2: 'leading-none',
   h3: 'leading-none',
   p: 'leading-none',
+  span: 'leading-none',
 };
 
 export const textFontWeightMap: { [Weight in TextProps['weight']]: string } = {

@@ -12,18 +12,24 @@ export function SixFSection() {
 
   return (
     <Section className='relative section-home-six-f'>
-      {slides.map(({ photoUrl, ...slide }, index) => {
+      {slides.map(({ photoUrl, position, ...slide }, index) => {
         return (
           <Slide className='relative' key={index}>
             <Card6F {...slide} />
             <div className='absolute top-1/3 left-0 w-full h-full'>
-              <Image key={index} url={photoUrl} className='object-cover' />
+              <Image
+                key={index}
+                url={photoUrl}
+                className={`h-2/3 object-cover ${
+                  position === 'bottom' ? 'object-bottom' : position === 'left-bottom' ? 'object-left-bottom' : ''
+                }`}
+              />
             </div>
           </Slide>
         );
       })}
-      <CarouselArrowLeft className='left-0' onClick={handlePreviousSlide} />
-      <CarouselArrowRight className='right-0' onClick={handleNextSlide} />
+      <CarouselArrowLeft className='left-1' onClick={handlePreviousSlide} />
+      <CarouselArrowRight className='right-1' onClick={handleNextSlide} />
     </Section>
   );
 }
