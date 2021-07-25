@@ -6,7 +6,7 @@ import DownArrow from 'public/images/down_arrow_white.svg';
 export function HeroSection() {
   return (
     <Section>
-      <Image url='/Home_Page/natgeo5b_H4vFWWpPA.jpg' className='mt-16 object-cover object-top' />
+      <Image url='/Home_Page/natgeo5b_H4vFWWpPA.jpg' className='mt-10 object-cover object-top' />
       <div className='absolute w-1/2 transform translate-x-1/2 bottom-40 right-1/2 '>
         <Text type='h1' weight='medium' size='2xl' className='text-white'>
           we all share <br />

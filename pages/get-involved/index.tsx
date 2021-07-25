@@ -1,13 +1,17 @@
 // components
 import Link from 'next/link';
 import { FullPage } from 'design-system/components/fullpage';
-import { Section, Image, Text, Icon } from 'design-system/atoms';
+import { Section, Image, Text } from 'design-system/atoms';
+
+// helpers
+import { useMedia } from 'react-use';
 
 // data
 import { getInvolvedHeadings } from 'data/main-headings';
 import { getInvolvedPageData } from 'data/page-get-involved';
 
 // assets
+import BackArrowSvg from 'public/images/back_arrow.svg';
 import styles from './get-involved.module.css';
 
 const mergedData = getInvolvedHeadings.map((heading, index) => ({
@@ -16,6 +20,10 @@ const mergedData = getInvolvedHeadings.map((heading, index) => ({
 }));
 
 export default function GetInvolvedPage() {
+  const isMobile = useMedia('(max-width: 639px)');
+
+  console.log(isMobile);
+
   return (
     <FullPage
       type='main'
@@ -27,13 +35,8 @@ export default function GetInvolvedPage() {
     >
       <Section className='overflow-hidden'>
         <Link href='/'>
-          <a className='absolute flex items-center justify-center top-6 left-6 h-12 w-12 z-20 rounded-full bg-pink-500 p-2'>
-            <Icon
-              icon='arrow-left'
-              size='lg'
-              className='text-white hover:text-pink-300 active:text-pink-600 text-lg'
-              title='back to home page'
-            />
+          <a className='absolute top-4 left-4 z-20'>
+            <BackArrowSvg className='h-12 w-12 sm:h-20 sm:w-20 xl:h-24 w:h-24' />
           </a>
         </Link>
         <div
@@ -42,24 +45,16 @@ export default function GetInvolvedPage() {
           how would you like to get involved?
         </div>
         <div className='grid h-full grid-cols-2 sm:grid-cols-3 auto-rows-fr'>
-          {mergedData.map(({ asset, name, slug, imageUrl = '', twBgColor = 'bg-pink-400' }) => {
+          {mergedData.map(({ name, slug, iconWithText, imageUrl = '' }) => {
             return (
               <div className='relative w-full h-full' key={name}>
-                <Image url={imageUrl} className='object-cover' />
+                <Image url={imageUrl} className={`object-cover ${slug === 'donations' ? 'object-right' : ''}`} />
                 <Link href={`/get-involved/${slug}`}>
                   <div
-                    className={`absolute z-10 w-16 h-16 md:w-24 md:h-24 lg:w-40 lg:h-40 text-white transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 cursor-pointer ${twBgColor}`}
+                    className={`absolute z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 cursor-pointer`}
                   >
                     <div className='relative w-full h-full'>
-                      <img className='sm:w-24 sm:h-24 mx-auto' src={asset} />
-                      <Text
-                        type='p'
-                        weight='medium'
-                        size='sm'
-                        className='absolute w-full text-center md:top-24 lg:top-20'
-                      >
-                        {name}
-                      </Text>
+                      <img src={iconWithText} />
                     </div>
                   </div>
                 </Link>

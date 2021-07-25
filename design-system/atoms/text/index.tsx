@@ -7,8 +7,8 @@ import { TextProps } from './text.interfaces';
 export function Text({ type, className, weight, size, ...props }: TextProps) {
   function getTextClasses() {
     return {
-      className: `${textTypeMap[type]} ${textSizeMap[size]} ${textFontWeightMap[weight]} leading-none ${className}`,
       'data-text-size': size,
+      className: `${textTypeMap[type]} ${textSizeMap[size]} ${textFontWeightMap[weight]} leading-none ${className}`,
     };
   }
   switch (type) {
