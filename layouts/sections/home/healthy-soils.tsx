@@ -27,16 +27,18 @@ export function HealthySoilsSection() {
               src='/images/home/healthy-soils/healthy-soil-wheel.png'
             />
             <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
-              <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
-                we believe
-              </Text>
-              <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
-                a healthy life starts
-              </Text>
-              <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
-                with healthy soil
-              </Text>
-              <div className='text-center hidden sm:block sm:mt-5'>
+              <div className='space-y-4'>
+                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                  we believe
+                </Text>
+                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                  a healthy life starts
+                </Text>
+                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                  with healthy soil
+                </Text>
+              </div>
+              <div className='mt-20 text-center hidden sm:block'>
                 <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
               </div>
             </div>
@@ -54,13 +56,16 @@ export function HealthySoilsSection() {
           <div className='flex flex-col-reverse h-full sm:grid sm:grid-cols-3'>
             <div className='flex-grow py-10 sm:px-10 sm:py-4 text-center md:p-8'>
               <img src={arrowsImage} className='block mb-4' />
-              <h1 className={`mb-4 sm:mb-10 font-acre-medium text-3xl sm:text-5xl xl:text-[60px] ${nameColor}`}>
+              <Text type='h1' weight='medium' size='lg' className={`mb-4 sm:mb-10 ${nameColor}`}>
                 {name}
-              </h1>
+              </Text>
+
               <div>
                 <Image url={photoUrl} loading='lazy' className='sm:hidden object-cover' />
               </div>
-              <p className='font-acre-light p-4 sm:p-0 sm:text-3xl xl:text-[40px]'>{content}</p>
+              <Text type='p' weight='light' size='md' className='p-4 sm:p-0'>
+                {content}
+              </Text>
             </div>
             <div className='col-span-2 hidden sm:block sm:h-full'>
               <Image url={photoUrl} loading='lazy' className='object-cover' />
@@ -68,8 +73,8 @@ export function HealthySoilsSection() {
           </div>
         </Slide>
       ))}
-      <CarouselArrowLeft className='left-0' onClick={handlePreviousSlide} />
-      <CarouselArrowRight className='right-0' onClick={handleNextSlide} />
+      <CarouselArrowLeft className='left-1' onClick={handlePreviousSlide} />
+      <CarouselArrowRight className='right-1' onClick={handleNextSlide} />
     </Section>
   );
 }

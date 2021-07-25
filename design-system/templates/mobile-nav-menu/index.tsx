@@ -31,7 +31,7 @@ export function MobileNavMenu({ isMenuOpen }: { isMenuOpen: boolean }) {
       <ul
         className={`
       fixed top-10 left-0 pt-10 bg-white shadow-md
-      w-full h-full z-50 space-y-10
+      w-full h-full z-50 space-y-10 min-w-[320px]
       transform transition-all duration-200 ease-in-out
       sm:top-16 sm:w-auto
       ${isMenuOpen ? '' : '-translate-x-full'}

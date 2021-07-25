@@ -8,6 +8,7 @@ export function Text({ type, className, weight, size, ...props }: TextProps) {
   function getTextClasses() {
     return {
       className: `${textTypeMap[type]} ${textSizeMap[size]} ${textFontWeightMap[weight]} leading-none ${className}`,
+      'data-text-size': size,
     };
   }
   switch (type) {
@@ -19,6 +20,10 @@ export function Text({ type, className, weight, size, ...props }: TextProps) {
       return <h3 {...getTextClasses()} {...props} />;
     case 'p':
       return <p {...getTextClasses()} {...props} />;
+    case 'span':
+      return <span {...getTextClasses()} {...props} />;
+    default:
+      throw Error('Text type not found');
   }
 }
 

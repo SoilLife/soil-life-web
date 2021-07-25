@@ -1,4 +1,5 @@
 import { CardSixFProps } from 'design-system/atoms/card-six-f/card-six-f.interfaces';
+import { Text } from 'design-system/atoms';
 
 const commonProps = {
   subtext: 'soils are the fundamental to life on earth.',
@@ -10,15 +11,18 @@ const commonProps = {
   },
 };
 
-export const slides: (CardSixFProps & { photoUrl: string })[] = [
+export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 'left-bottom' })[] = [
   {
     ...commonProps,
     icon: '/images/web-of-soil/food_white.svg',
     type: 'danger',
     text: (
       <>
-        if you <span className='text-pink-500 text-[26px] sm:text-[40px] font-acre-light'>eat food</span> you depend on
-        soil
+        if you{' '}
+        <Text type='span' weight='light' size='sm' className='text-pink-500'>
+          eat food
+        </Text>{' '}
+        you depend on soil
       </>
     ),
     button: {
@@ -34,8 +38,11 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'warning',
     text: (
       <>
-        if you <span className='text-warning-500 text-[26px] sm:text-[40px] font-acre-light'>wear clothes</span> you
-        depend on soil
+        if you{' '}
+        <Text type='span' weight='light' size='sm' className='text-yellow-500'>
+          wear clothes
+        </Text>{' '}
+        you depend on soil
       </>
     ),
     button: {
@@ -51,8 +58,11 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'primary',
     text: (
       <>
-        if you <span className='text-blue-500 text-[26px] sm:text-[40px] font-acre-light'>drink water</span> you depend
-        on soil
+        if you{' '}
+        <Text type='span' weight='light' size='sm' className='text-blue-500'>
+          drink water
+        </Text>{' '}
+        you depend on soil
       </>
     ),
     button: {
@@ -68,8 +78,11 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'primary',
     text: (
       <>
-        if you <span className='text-blue-500 text-[26px] sm:text-[40px] font-acre-light'>breathe air</span> you depend
-        on soil
+        if you{' '}
+        <Text type='span' weight='light' size='sm' className='text-blue-500'>
+          breathe air
+        </Text>{' '}
+        you depend on soil
       </>
     ),
     button: {
@@ -78,6 +91,7 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     },
     href: '/web-of-soil/filter',
     photoUrl: '/6Fs/Filter-2_qJOgH5RmKJ9.jpg',
+    position: 'bottom',
   },
   {
     ...commonProps,
@@ -85,7 +99,11 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'neutral',
     text: (
       <>
-        if you <span className='text-[26px] sm:text-[40px] font-acre-light'>live in a shelter</span> you depend on soil
+        if you{' '}
+        <Text type='span' weight='light' size='sm'>
+          live in a shelter
+        </Text>{' '}
+        you depend on soil
       </>
     ),
     button: {
@@ -101,8 +119,11 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'alert',
     text: (
       <>
-        if you <span className='text-orange-500 text-[26px] sm:text-[40px] font-acre-light'>use medicine</span> you
-        depend on soil
+        if you{' '}
+        <Text type='span' weight='light' size='sm' className='text-orange-500'>
+          use medicine
+        </Text>{' '}
+        you depend on soil
       </>
     ),
     button: {
@@ -111,6 +132,7 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     },
     href: '/web-of-soil/farmaceutical',
     photoUrl: '/6Fs/cup_of_pills_ioFvZZ0lo.png',
+    position: 'left-bottom',
   },
   {
     ...commonProps,
@@ -118,8 +140,11 @@ export const slides: (CardSixFProps & { photoUrl: string })[] = [
     type: 'success',
     text: (
       <>
-        if you <span className='text-teal-500 text-[26px] sm:text-[40px] font-acre-light'>enjoy the outdoors</span> you
-        depend on soil
+        if you{' '}
+        <Text type='span' weight='light' size='sm' className='text-teal-500'>
+          enjoy the outdoors
+        </Text>{' '}
+        you depend on soil
       </>
     ),
     button: {

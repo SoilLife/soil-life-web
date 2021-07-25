@@ -22,14 +22,7 @@ export function ContactUsSection() {
           <Input id='name' label='name' />
         </div>
         <div className='mb-4 md:mb-8 h-[54px]'>
-          <input
-            type='email'
-            id='email'
-            name='email'
-            placeholder='email address'
-            className='w-full  font-acre-light text-[30px]'
-            required
-          />
+          <Input id='email' label='email' />
         </div>
 
         <div className='mb-4 md:mb-8 h-full'>
