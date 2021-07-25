@@ -12,3 +12,4 @@ export * from './carousel-arrow-left';
 export * from './carousel-arrow-right';
 export * from './card-get-involved';
 export * from './modal';
+export * from './input';
