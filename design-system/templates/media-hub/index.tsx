@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 
 // components
-import { Modal, Image, Icon } from 'design-system/atoms';
+import { Modal, Image, Icon, Text } from 'design-system/atoms';
 import ReactPlayer from 'react-player';
 
 // helpers
@@ -86,14 +86,17 @@ export function MediaHub({
             return filteredMedia?.length ? (
               <div key={index}>
                 <div className='flex justify-between items-center'>
-                  <p
-                    className={`py-1 px-10 md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 font-acre-regular text-white ${
-                      compact ? 'text-xl' : 'text-[30px]'
-                    }`}
+                  <Text
+                    type='p'
+                    weight='regular'
+                    size='md'
+                    className='py-1 px-10 md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 text-white'
                   >
                     {key}
-                  </p>
-                  <p className='text-right text-gray-500 text-[24px] pr-10'>({filteredMedia.length})</p>
+                  </Text>
+                  <Text type='p' weight='light' size='xs' className='pr-10 text-right'>
+                    ({filteredMedia.length})
+                  </Text>
                 </div>
 
                 <div
@@ -159,9 +162,14 @@ export function MediaHub({
                                 </div>
                               </div>
                             </div>
-                            <p className='absolute top-[calc(105%);] text-sm transition-all ease-in duration-500 group-hover:top-auto group-hover:p-4 group-hover:bottom-0 group-hover:text-xs group-hover:text-pink-500 pointer-events-none'>
+                            <Text
+                              type='p'
+                              weight='light'
+                              size='xs'
+                              className='absolute top-[calc(105%);] text-sm transition-all ease-in duration-500 group-hover:top-auto group-hover:p-4 group-hover:bottom-0 group-hover:text-xs group-hover:text-pink-500 pointer-events-none'
+                            >
                               {medium.Title}
-                            </p>
+                            </Text>
                           </div>
                         </MediaContainer>
                       );

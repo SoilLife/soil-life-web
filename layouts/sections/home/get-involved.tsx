@@ -18,13 +18,7 @@ export function GetInvolvedSection() {
           </Text>
         </div>
         <Link href='/get-involved'>
-          <Button
-            as='link'
-            size='md'
-            type='secondary'
-            label='get involved'
-            className='font-acre-semibold text-[50px] h-[85px] w-max inline-flex items-center whitespace-nowrap'
-          />
+          <Button as='link' size='lg' type='secondary' label='get involved' />
         </Link>
       </div>
     </Section>

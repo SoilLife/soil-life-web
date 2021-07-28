@@ -1,4 +1,5 @@
 import { ButtonProps } from './button.interfaces';
+import { textSizeMap } from 'design-system/atoms/text/text.utils';
 
 export const buttonTypeMap: { [K in ButtonProps['type']]: string } = {
   secondary: 'text-white ring-1 ring-white',
@@ -11,7 +12,7 @@ export const buttonTypeMap: { [K in ButtonProps['type']]: string } = {
 };
 
 export const buttonSizeMap: { [K in ButtonProps['size']]: string } = {
-  sm: 'px-4 py-2 text-lg',
-  md: 'px-8 py-3 text-xl',
-  lg: 'px-12 py-4 text-2xl',
+  sm: `${textSizeMap['xs']} px-4 py-2`,
+  md: `${textSizeMap['sm']} px-4 py-2`,
+  lg: `${textSizeMap['md']} px-6 py-3`,
 };
