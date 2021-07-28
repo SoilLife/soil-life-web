@@ -1,5 +1,5 @@
 export * from './footer';
-export * from './home-header';
+export * from './header';
 export * from './social-media-icons';
-export * from './main-header';
+export * from './mobile-nav-menu';
 export * from './media-hub';

@@ -7,7 +7,7 @@ export default function Soil101Page() {
   return (
     <FullPage
       type='main'
-      mainHeaderProps={{
+      subHeaderProps={{
         headings: soil101Subheadings,
         pathName: 'soil-101',
         className: 'bg-pink-500',

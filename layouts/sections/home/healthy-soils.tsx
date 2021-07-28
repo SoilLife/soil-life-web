@@ -4,7 +4,8 @@ import { useCarouselHandlers } from 'helpers/use-carousel-handlers';
 import { useAppContext } from 'context';
 
 // components
-import { Section, Slide, Button, Image, CarouselArrowLeft, CarouselArrowRight } from 'design-system/atoms';
+import Link from 'next/link';
+import { Section, Slide, Button, Image, CarouselArrowLeft, CarouselArrowRight, Text } from 'design-system/atoms';
 
 // data
 import { healthySoilsSlides } from 'data/healthy-soils-slides';
@@ -19,37 +20,61 @@ export function HealthySoilsSection() {
   return (
     <Section>
       <Slide>
-        <div className='flex items-center justify-center h-full'>
-          <div className='relative inline-flex items-center justify-center w-full h-full p-10 sm:p-20'>
-            <img className='h-full w-full object-contain' src='/images/home/healthy-soils/healthy-soil-wheel.png' />
-            <div className='absolute text-center'>
-              <p className='max-w-md mb-6 text-xl leading-tight text-teal-400 sm:text-5xl'>
-                we believe
-                <br />a healthy life starts
-                <br />
-                with healthy soil
-              </p>
-              <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
+        <div className='relative container flex flex-col justify-evenly h-full'>
+          <div className='relative max-h-full max-w-full'>
+            <img
+              className='max-h-[900px] h-full w-full object-contain'
+              src='/images/home/healthy-soils/healthy-soil-wheel.png'
+            />
+            <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
+              <div className='space-y-4'>
+                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                  we believe
+                </Text>
+                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                  a healthy life starts
+                </Text>
+                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                  with healthy soil
+                </Text>
+              </div>
+              <div className='mt-20 text-center hidden sm:block'>
+                <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
+              </div>
             </div>
+          </div>
+          <div className='text-center sm:hidden'>
+            <Link href='/web-of-soil'>
+              <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
+            </Link>
           </div>
         </div>
       </Slide>
+
       {healthySoilsSlides.map(({ name, content, photoUrl, arrowsImage, nameColor }) => (
         <Slide key={name}>
           <div className='flex flex-col-reverse h-full sm:grid sm:grid-cols-3'>
-            <div className='flex-grow px-10 py-4 text-center md:p-8'>
+            <div className='flex-grow py-10 sm:px-10 sm:py-4 text-center md:p-8'>
               <img src={arrowsImage} className='block mb-4' />
-              <h1 className={`text-3xl md:text-4xl lg:text-6xl mb-10 ${nameColor}`}>{name}</h1>
-              <p className='text-lg md:text-xl lg:text-3xl'>{content}</p>
+              <Text type='h1' weight='medium' size='lg' className={`mb-4 sm:mb-10 ${nameColor}`}>
+                {name}
+              </Text>
+
+              <div>
+                <Image url={photoUrl} loading='lazy' className='sm:hidden object-cover' />
+              </div>
+              <Text type='p' weight='light' size='md' className='p-4 sm:p-0'>
+                {content}
+              </Text>
             </div>
-            <div className='col-span-2 h-[33.33%] sm:h-full'>
+            <div className='col-span-2 hidden sm:block sm:h-full'>
               <Image url={photoUrl} loading='lazy' className='object-cover' />
             </div>
           </div>
         </Slide>
       ))}
-      <CarouselArrowLeft className='left-0' onClick={handlePreviousSlide} />
-      <CarouselArrowRight className='right-8' onClick={handleNextSlide} />
+      <CarouselArrowLeft className='left-1' onClick={handlePreviousSlide} />
+      <CarouselArrowRight className='right-1' onClick={handleNextSlide} />
     </Section>
   );
 }

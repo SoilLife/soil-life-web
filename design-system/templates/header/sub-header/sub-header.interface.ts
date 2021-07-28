@@ -1,4 +1,4 @@
-export interface MainHeaderProps {
+export interface SubHeaderProps {
   pathName: string;
   headings: {
     name: string;

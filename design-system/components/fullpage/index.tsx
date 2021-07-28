@@ -6,12 +6,12 @@ import { useAppContext } from 'context';
 import { DefaultLayout } from 'layouts';
 
 // components
-import { HomeHeader, MainHeader } from 'design-system/templates';
+import { Header } from 'design-system/templates';
 
 // interfaces
 import { FullPageProps } from './fullpage.interfaces';
 
-export function FullPage({ type, mainHeaderProps, children }: FullPageProps) {
+export function FullPage({ type, subHeaderProps, children }: FullPageProps) {
   const { state, dispatch } = useAppContext();
 
   const fullPageRef = useRef<any>(null);
@@ -44,9 +44,9 @@ export function FullPage({ type, mainHeaderProps, children }: FullPageProps) {
   return (
     <DefaultLayout>
       {type === 'home' ? (
-        <HomeHeader fullpageRef={fullPageRef} hideHeader={hideHeader} />
+        <Header.Main fullpageRef={fullPageRef} hideHeader={hideHeader} />
       ) : (
-        mainHeaderProps && <MainHeader {...mainHeaderProps} />
+        subHeaderProps && <Header.Sub {...subHeaderProps} />
       )}
       <ReactFullpage
         ref={fullPageRef}
@@ -54,14 +54,15 @@ export function FullPage({ type, mainHeaderProps, children }: FullPageProps) {
         scrollingSpeed={500}
         controlArrows={false}
         verticalCentered={false}
-        navigation
+        navigation={false}
         showActiveTooltip
-        slidesNavigation
         loading='lazy'
         onLeave={handleSectionLeave}
         afterLoad={(_origin: any, destination: any, _direction: any) => {
           if (destination.item?.classList?.contains('section-home-six-f')) {
-            slideRef.current = setInterval(autoslide, 3000);
+            if (!slideRef.current) {
+              slideRef.current = setInterval(autoslide, 3000);
+            }
           } else if (slideRef.current) {
             clearInterval(slideRef.current);
           }

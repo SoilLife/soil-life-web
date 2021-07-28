@@ -11,9 +11,6 @@ module.exports = {
       maxWidth: {
         'app-full': '1920px',
       },
-      padding: {
-        inherit: 'inherit',
-      },
     },
   },
   variants: {

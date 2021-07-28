@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 // components
 import { Modal, Image, Icon } from 'design-system/atoms';
@@ -15,15 +15,20 @@ export function MediaHub({
   search,
   filters,
   media,
+  showSections,
+  compact,
 }: {
   media: { [key: string]: Media[] };
   className?: string;
   search?: string;
   filters?: string[];
+  showSections?: string[];
+  compact?: true;
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMedia, setModalMedia] = useState<Media[]>([]);
   const [mediaIndex, setMediaIndex] = useState(0);
+  const imageKitContainerRef = useRef<HTMLDivElement | null>(null);
 
   function handleModalOpen({ key, index }: { key: string; index: number }) {
     return () => {
@@ -59,6 +64,7 @@ export function MediaHub({
     <>
       <div className={className}>
         {Object.keys(media).map((key, index) => {
+          if (showSections?.length && !showSections.includes(key)) return;
           if (media[key]) {
             let filteredMedia = media[key]
               ?.filter((medium) => (search ? medium.Title?.toLowerCase()?.includes(search.toLowerCase()) : true))
@@ -79,12 +85,21 @@ export function MediaHub({
 
             return filteredMedia?.length ? (
               <div key={index}>
-                <div className='flex justify-between w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 py-1 px-10 text-white font-acre-regular text-[30px]'>
-                  <p>{key}</p>
-                  <p>({filteredMedia.length})</p>
+                <div className='flex justify-between items-center'>
+                  <p
+                    className={`py-1 px-10 md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 font-acre-regular text-white ${
+                      compact ? 'text-xl' : 'text-[30px]'
+                    }`}
+                  >
+                    {key}
+                  </p>
+                  <p className='text-right text-gray-500 text-[24px] pr-10'>({filteredMedia.length})</p>
                 </div>
+
                 <div
-                  className={`overflow-y-hidden flex items-center overflow-x-auto min-h-[320px] mx-10 ${styles['media-container']}`}
+                  className={`media-hub__scroll__container relative overflow-y-hidden flex items-center overflow-x-auto mx-10 ${
+                    styles['media-container']
+                  } ${compact ? 'min-h-[260px]' : ' min-h-[260px]'}`}
                 >
                   <div className={`flex gap-4 items-center ${styles['media-section']}`}>
                     {filteredMedia?.map((medium, index) => {
@@ -97,20 +112,14 @@ export function MediaHub({
                           renderAs={medium.mediaType === 'link' || medium.mediaType === 'pdf' ? 'link' : 'button'}
                         >
                           <div className='relative flex flex-col group'>
-                            <div className='relative aspect-w-16 aspect-h-9 transition-all ease-in-out duration-500 w-[262px] group-hover:w-[300px]'>
+                            <div
+                              className={`relative aspect-w-16 aspect-h-9 transition-all ease-in-out duration-500 w-[262px] group-hover:w-[300px]`}
+                            >
                               {medium.mediaType === 'imagekit' ? (
-                                // <Image
-                                //   url={medium.URL as string}
-                                //   className='object-cover'
-                                //   transformation={[
-                                //     { quality: 10, height: 320, width: 180, cropMode: 'extract', fo: 'top' },
-                                //   ]}
-                                //   loading='lazy'
-                                // />
-                                <img
-                                  key={`${medium.Title}_${index}`}
-                                  src={'/images/logo.svg'}
-                                  className={'p-8'}
+                                <Image
+                                  url={medium.URL as string}
+                                  className='object-cover'
+                                  transformation={[{ quality: 10, cropMode: 'extract', fo: 'top' }]}
                                   loading='lazy'
                                 />
                               ) : (
@@ -188,16 +197,28 @@ export function MediaHub({
           />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'image' ? (
           <img
-            className={'h-full w-full object-contain max-w-[600px] mx-auto'}
+            className={'h-full w-full object-contain max-w-[75%] mx-auto'}
             src={modalMedia[mediaIndex]?.URL as string}
             loading='lazy'
           />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'imagekit' ? (
-          <div className='overflow-y-auto max-h-[90%] max-w-[600px] mx-auto'>
+          <div className='overflow-y-auto max-h-[90%] max-w-full mx-auto' ref={imageKitContainerRef}>
             <Image
               key={modalMedia[mediaIndex]?.URL}
               url={modalMedia?.[mediaIndex]?.URL as string}
               transformation={[{ quality: 100 }]}
+              loading='lazy'
+              onLoad={(event) => {
+                const b = event.target as HTMLImageElement;
+                const ratio = b.naturalWidth / b.naturalHeight;
+                if (imageKitContainerRef.current) {
+                  if (ratio >= 1) {
+                    imageKitContainerRef.current.style.maxWidth = '80%';
+                  } else {
+                    imageKitContainerRef.current.style.maxWidth = '50%';
+                  }
+                }
+              }}
             />
           </div>
         ) : null}

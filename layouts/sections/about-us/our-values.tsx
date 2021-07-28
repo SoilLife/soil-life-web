@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
+// helpers
+import { useMedia } from 'react-use';
+
 // components
-import { Section, Image } from 'design-system/atoms';
+import { Section, Image, Text } from 'design-system/atoms';
 
 // data
 const valueCards: {
@@ -66,48 +69,82 @@ const valueCards: {
 ];
 
 export function OurValuesSection() {
-  const [isHovered, setIsHovered] = useState<{ [index: number]: boolean }>({});
+  const isMobile = useMedia('(max-width: 639px)');
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   function handleMouseEnter(index: number) {
     return (_e: React.MouseEvent<HTMLDivElement>) => {
-      setIsHovered((prevState) => ({ ...prevState, [index]: true }));
+      setActiveIndex(index);
     };
   }
-  function handleMouseLeave(index: number) {
-    return (_e: React.MouseEvent<HTMLDivElement>) => {
-      setIsHovered((prevState) => ({ ...prevState, [index]: false }));
-    };
+  function handleMouseLeave() {
+    setActiveIndex(null);
   }
   return (
     <Section>
-      <div className='flex flex-col items-center justify-center h-full p-4 mx-auto text-center sm:px-16 sm:py-8 sm:space-y-10'>
-        <h1 className='font-acre-regular text-[70px] text-yellow-500'>our values</h1>
-        <div className='grid w-full grid-cols-3 grid-rows-3 gap-6'>
-          {valueCards.map(({ content, imageUrl, label }, index) => (
-            <div
-              key={index}
-              className='relative h-40 md:h-60 lg:h-96 xl:h-52 2xl:h-64'
-              onMouseEnter={handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave(index)}
-            >
-              <Image url={imageUrl} className='object-cover' />
-              <div
-                className={`absolute inset-0 w-full h-full flex items-center justify-center p-8 ${
-                  isHovered[index] ? 'bg-gradient-to-br from-teal-600 to-transparent' : ''
-                }`}
-              >
-                {isHovered[index] ? (
-                  <p className='text-[15px] font-acre-light text-white'>{content}</p>
-                ) : (
-                  <div className='text-[36px] font-acre-medium text-white'>
-                    <p>{index + 1}.</p>
-                    <p>{label}</p>
+      <div className='container h-full flex flex-col items-center justify-center text-center'>
+        <Text type='h1' weight='regular' size='xl' className='text-yellow-500 mb-4 sm:mb-10'>
+          our values
+        </Text>
+        {
+          <div className='grid grid-cols-2 sm:grid-cols-3 grid-rows-3 gap-4'>
+            {valueCards.map(({ content, imageUrl, label }, index) => {
+              const isActive = activeIndex === index;
+              if (isMobile && isActive) {
+                return (
+                  <div className='relative col-span-full row-span-full'>
+                    <Image url={imageUrl} className='h-40' />
+                    <div
+                      className={`absolute inset-0 w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-teal-600 to-transparent text-white`}
+                    >
+                      <div className='flex space-x-2 mb-8'>
+                        <Text type='p' weight='medium' size='sm'>
+                          {index + 1}
+                        </Text>
+                        <Text type='p' weight='medium' size='sm'>
+                          {label}
+                        </Text>
+                      </div>
+                      <Text type='p' weight='light' size='xs'>
+                        {content}
+                      </Text>
+                    </div>
                   </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+                );
+              }
+              return (
+                <div
+                  key={index}
+                  className='relative h-24 sm:h-40 md:h-60 lg:h-96 xl:h-52 2xl:h-64'
+                  onMouseEnter={handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Image url={imageUrl} className='object-cover' />
+                  <div
+                    className={`absolute inset-0 w-full h-full flex items-center justify-center p-8 text-white ${
+                      isActive ? 'bg-gradient-to-br from-teal-600 to-transparent' : ''
+                    }`}
+                  >
+                    {isActive ? (
+                      <Text type='p' weight='light' size='xs'>
+                        {content}
+                      </Text>
+                    ) : (
+                      <div>
+                        <Text type='p' weight='medium' size='sm'>
+                          {index + 1}
+                        </Text>
+                        <Text type='p' weight='medium' size='sm'>
+                          {label}
+                        </Text>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        }
       </div>
     </Section>
   );
