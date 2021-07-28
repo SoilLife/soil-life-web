@@ -162,6 +162,12 @@ export const VisGraph = forwardRef<Network | undefined, NetworkGraphProps & HTML
       };
     }, [edges, initialOptions, nodes]);
 
-    return <div className='h-full' ref={container} {...props} />;
+    return (
+      <div
+        className='viz-graph relative top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 h-full w-full max-w-[90%] max-h-[90%]'
+        ref={container}
+        {...props}
+      />
+    );
   }
 );

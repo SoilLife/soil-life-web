@@ -218,11 +218,10 @@ export default function WebOfSoilPage() {
           navigation
           showActiveTooltip
           slidesNavigation
-          interlockedSlides
           loading='lazy'
           onLeave={handleSectionLeave}
           onSlideLeave={handleSlideLeave}
-          normalScrollElements={'.media-hub__scroll__container'}
+          normalScrollElements={'.media-hub__scroll__container, .viz-graph'}
           render={() => {
             return (
               <>
