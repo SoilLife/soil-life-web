@@ -1,2 +1,2 @@
 export * from './fullpage';
-export * from './viz-data';
+export * from './viz-graph';
