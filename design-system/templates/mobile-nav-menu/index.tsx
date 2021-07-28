@@ -17,14 +17,16 @@ function createNavLinks() {
     return (
       <li key={link} className='text-center cursor-pointer'>
         <Link href={link === 'home' ? '/' : `/${link}`}>
-          <Text
-            type='h3'
-            weight='light'
-            size='lg'
-            className='whitespace-nowrap hover:text-gray-300 active:text-gray-600'
-          >
-            {name}
-          </Text>
+          <a>
+            <Text
+              type='h3'
+              weight='light'
+              size='lg'
+              className='whitespace-nowrap hover:text-gray-300 active:text-gray-600'
+            >
+              {name}
+            </Text>
+          </a>
         </Link>
       </li>
     );
