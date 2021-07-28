@@ -1,13 +1,17 @@
 import { CardSixFProps } from 'design-system/atoms/card-six-f/card-six-f.interfaces';
 import { Text } from 'design-system/atoms';
+import { ButtonProps } from 'design-system/atoms/button/button.interfaces';
 
-const commonProps = {
+const commonProps: {
+  subtext: string;
+  button: ButtonProps;
+} = {
   subtext: 'soils are the fundamental to life on earth.',
   button: {
-    as: 'link' as 'link',
-    size: 'md' as 'md',
+    as: 'link',
+    size: 'md',
+    type: 'primary',
     label: 'find out how',
-    className: 'font-acre-semibold text-[24px]',
   },
 };
 

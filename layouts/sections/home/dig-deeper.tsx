@@ -21,7 +21,7 @@ export function DigDeeperSection() {
         </div>
         <div className='text-center sm:static'>
           <Link href='/soils-101'>
-            <Button as='link' size='md' type='secondary' label='dig in' className='text-[40px] py-1' />
+            <Button as='link' size='lg' type='secondary' label='dig in' />
           </Link>
         </div>
       </div>

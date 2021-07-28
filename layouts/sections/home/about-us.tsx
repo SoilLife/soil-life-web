@@ -22,7 +22,7 @@ export function AboutUsSection() {
         </Text>
         <div className='text-center'>
           <Link href='/about-us'>
-            <Button as='link' size='md' type='danger' label='learn more' className='text-[34px]' />
+            <Button as='link' size='md' type='danger' label='learn more' />
           </Link>
         </div>
       </div>

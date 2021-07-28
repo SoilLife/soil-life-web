@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // components
-import { Button, Image } from 'design-system/atoms';
+import { Button, Image, Text } from 'design-system/atoms';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 // helpers
@@ -56,7 +56,6 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                     <li
                       key={index}
                       className={`flex justify-center items-center bg-white bg-opacity-[0.85] w-full py-4
-                      font-acre-medium text-[30px]
                       ${getColor({
                         color,
                         type: 'text',
@@ -69,7 +68,9 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                       })}`}
                     >
                       <a href={link.href} target='_blank' rel='noreferrer noopener' className='text-center'>
-                        {link.name}
+                        <Text type='span' weight='medium' size='sm'>
+                          {link.name}
+                        </Text>
                       </a>
                     </li>
                   );
@@ -84,18 +85,21 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
           <Icon icon={icon} size='10x' className='mx-auto text-blue-500' />
         ) : null}
       </div>
-      <p
-        className={`text-center mt-4 font-acre-regular text-[40px]
-      ${getColor({ color, type: 'text', state: 'idle' })}`}
+      <Text
+        type='h3'
+        size='md'
+        weight='regular'
+        className={`text-center mt-4 ${getColor({ color, type: 'text', state: 'idle' })}`}
       >
         {text}
-      </p>
+      </Text>
+
       {isMobile && Array.isArray(links) ? (
         <div className='flex items-center justify-center my-4'>
           <Button
             label='find out how'
             type={getButtonType(color)}
-            size='sm'
+            size='md'
             as='button'
             onClick={handleIsLinksOpen(index)}
           />

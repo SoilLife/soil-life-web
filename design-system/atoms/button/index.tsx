@@ -8,7 +8,12 @@ export const Button = forwardRef(
   ({ as, size, label, type, inverted, className, external, ...props }: ButtonProps, ref: ForwardedRef<any>) => {
     if (as === 'button') {
       return (
-        <button ref={ref} className={`${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`} {...props}>
+        <button
+          ref={ref}
+          data-button={size}
+          className={`w-max leading-none ${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`}
+          {...props}
+        >
           {label}
         </button>
       );
@@ -17,7 +22,8 @@ export const Button = forwardRef(
     return (
       <a
         ref={ref}
-        className={`inline-block cursor-pointer ${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`}
+        data-button={size}
+        className={`w-max inline-block cursor-pointer leading-none ${buttonSizeMap[size]} ${buttonTypeMap[type]} ${className}`}
         {...(external ? { target: '_blank', rel: 'noreferrer noopener', href: external } : undefined)}
         {...props}
       >

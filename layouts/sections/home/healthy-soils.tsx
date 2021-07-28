@@ -1,5 +1,4 @@
 // helpers
-import { useMedia } from 'react-use';
 import { useCarouselHandlers } from 'helpers/use-carousel-handlers';
 import { useAppContext } from 'context';
 
@@ -15,7 +14,6 @@ export function HealthySoilsSection() {
     state: { fullpageApi },
   } = useAppContext();
   const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApi);
-  const isTablet = useMedia('(min-width: 640px)');
 
   return (
     <Section>
@@ -28,24 +26,24 @@ export function HealthySoilsSection() {
             />
             <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
               <div className='space-y-4'>
-                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                <Text type='p' weight='light' size='lg' className='text-teal-500'>
                   we believe
                 </Text>
-                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                <Text type='p' weight='light' size='lg' className='text-teal-500'>
                   a healthy life starts
                 </Text>
-                <Text type='p' weight='light' size='lg' className='text-[22px] sm:text-[40px] text-teal-500'>
+                <Text type='p' weight='light' size='lg' className='text-teal-500'>
                   with healthy soil
                 </Text>
               </div>
               <div className='mt-20 text-center hidden sm:block'>
-                <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
+                <Button as='button' label='find out how' type='neutral' size='md' />
               </div>
             </div>
           </div>
           <div className='text-center sm:hidden'>
             <Link href='/web-of-soil'>
-              <Button as='button' label='find out how' type='neutral' size={isTablet ? 'lg' : 'sm'} />
+              <Button as='button' label='find out how' type='neutral' size='md' />
             </Link>
           </div>
         </div>

@@ -30,7 +30,7 @@ export function ContactUsSection() {
             id='message'
             name='message'
             placeholder='message'
-            className='w-full  font-acre-light text-[30px]'
+            className='w-full font-acre-light text-[30px]'
             required
             rows={12}
           />

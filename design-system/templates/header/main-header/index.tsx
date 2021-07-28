@@ -24,8 +24,15 @@ function createNavLinks() {
     return (
       <li key={link} className='text-center cursor-pointer xl:text-center xl:p-2 xl:py-0'>
         <Link href={`/${link}`}>
-          <a className='p-4 text-[30px] font-acre-light hover:text-gray-300 active:text-gray-600 whitespace-nowrap'>
-            {name}
+          <a>
+            <Text
+              type='h3'
+              weight='light'
+              size='sm'
+              className='p-4 whitespace-nowrap hover:text-gray-300 active:text-gray-600'
+            >
+              {name}
+            </Text>
           </a>
         </Link>
       </li>
@@ -92,7 +99,7 @@ export function MainHeader({
             </a>
           </Link>
           <ul className='hidden gap-16 w-full xl:flex xl:justify-center'>{createNavLinks()}</ul>
-          <SocialMediaIcons className='absolute top-1/2 right-2 transform -translate-y-1/2 flex gap-2 md:gap-4' />
+          <SocialMediaIcons className='absolute top-1/2 right-2 transform -translate-y-1/2 flex gap-3 md:gap-4' />
         </nav>
       </header>
       <MobileNavMenu isMenuOpen={isMenuOpen} />

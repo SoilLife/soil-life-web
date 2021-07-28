@@ -1,4 +1,5 @@
 import { kebabCase } from 'helpers/kebab-case';
+import { Text } from 'design-system/atoms';
 import Link from 'next/link';
 
 const navLinks = [
@@ -16,9 +17,14 @@ function createNavLinks() {
     return (
       <li key={link} className='text-center cursor-pointer'>
         <Link href={link === 'home' ? '/' : `/${link}`}>
-          <a className='p-4 text-[30px] font-acre-light hover:text-gray-300 active:text-gray-600 whitespace-nowrap'>
+          <Text
+            type='h3'
+            weight='light'
+            size='lg'
+            className='whitespace-nowrap hover:text-gray-300 active:text-gray-600'
+          >
             {name}
-          </a>
+          </Text>
         </Link>
       </li>
     );
