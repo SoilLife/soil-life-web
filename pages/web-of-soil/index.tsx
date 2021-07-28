@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Graph from 'react-graph-vis';
 
 // components
 import ReactFullpage from '@fullpage/react-fullpage';

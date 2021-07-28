@@ -109,13 +109,12 @@ export function useWebOfSoils(sheetName: string) {
                 nodes: nodesCopy,
                 edges,
               };
-            } else {
-              return {
-                nodes: [],
-                edges: [],
-              };
             }
           }
+          return {
+            nodes: [],
+            edges: [],
+          };
         })
         .catch((err: any) => {
           setError(err);
