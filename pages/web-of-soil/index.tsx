@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Graph from 'react-graph-vis';
 
 // components
 import ReactFullpage from '@fullpage/react-fullpage';
@@ -8,14 +7,15 @@ import { MediaHub } from 'design-system/templates/media-hub';
 import { Footer } from 'design-system/templates';
 import ReactPlayer from 'react-player';
 import { MobileNavMenu } from 'design-system/templates/mobile-nav-menu';
+import { VisGraph } from 'design-system/components';
 
 // data
 import { webOfSoilSubheadings } from 'data/main-headings';
-import { graph } from 'data/web-of-soil/food';
 
 // helpers
 import { DefaultLayout } from 'layouts';
 import { useMediaHub } from 'helpers/use-media-hub';
+import { useWebOfSoils } from 'helpers/use-web-of-soil';
 
 const options = {
   autoResize: true,
@@ -77,6 +77,11 @@ export default function WebOfSoilPage() {
   const fullPageRef = useRef<any>(null);
   const [hideHeader, setHideHeader] = useState(false);
   const { media } = useMediaHub();
+  const { graph: foodGraph } = useWebOfSoils('food data structure');
+  const { graph: fiberGraph } = useWebOfSoils('fiber data structure');
+  const { graph: filterGraph } = useWebOfSoils('filter data structure');
+  const { graph: foundationsGraph } = useWebOfSoils('foundations data structure');
+  const { graph: farmaceuticalGraph } = useWebOfSoils('farmaceuticals data structure');
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll('.section')) as HTMLDivElement[];
@@ -341,15 +346,22 @@ export default function WebOfSoilPage() {
 
                 <Section>
                   <Slide>
-                    <Graph
-                      graph={graph}
-                      options={options}
-                      events={events}
-                      getNetwork={(network: any) => {
-                        //  if you want access to vis.js network api you can set the state in a parent component using this property
-                        console.log({ network });
-                      }}
-                    />
+                    <VisGraph graph={foodGraph} options={options} events={events} />
+                  </Slide>
+                  <Slide>
+                    <VisGraph graph={fiberGraph} options={options} events={events} />
+                  </Slide>
+                  <Slide>
+                    <VisGraph graph={filterGraph} options={options} events={events} />
+                  </Slide>
+                  <Slide>
+                    <VisGraph graph={foundationsGraph} options={options} events={events} />
+                  </Slide>
+                  <Slide>
+                    <VisGraph graph={farmaceuticalGraph} options={options} events={events} />
+                  </Slide>
+                  <Slide>
+                    <div />
                   </Slide>
                 </Section>
 
