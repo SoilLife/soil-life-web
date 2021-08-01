@@ -4,6 +4,24 @@ import { uniqBy } from 'lodash';
 
 const spreadsheetId = '1GjpYaQbXVWIEn68iYyW0XiEQKJD6sL_4WJYI0ZSbE4s';
 
+export type Node = {
+  id: string;
+  label: string;
+  description: string;
+  link: undefined | string;
+  image: undefined | string;
+  shape: 'circularImage';
+  to: string[];
+  size?: number;
+};
+
+type Edge = {
+  from: string;
+  to: string;
+  length?: number;
+  id?: string;
+};
+
 export function useWebOfSoils(
   sheetName:
     | 'food data structure'
@@ -16,17 +34,8 @@ export function useWebOfSoils(
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [graph, setGraph] = useState<{
-    nodes: {
-      id: string;
-      label: string;
-      description: string;
-      link: undefined | string;
-      image: undefined | string;
-      shape: 'circularImage';
-      to: string[];
-      size?: number;
-    }[];
-    edges: { from: string; to: string; length?: number }[];
+    nodes: Node[];
+    edges: Edge[];
   }>({
     nodes: [],
     edges: [],

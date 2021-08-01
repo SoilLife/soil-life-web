@@ -4,7 +4,7 @@ export type ButtonProps = {
   as: 'button' | 'link';
   label: string;
   type: 'secondary' | 'primary' | 'success' | 'warning' | 'danger' | 'neutral' | 'alert';
-  size: 'sm' | 'md' | 'lg';
+  size: 'sm' | 'md' | 'lg' | 'xl';
   id?: string;
   key?: string | number;
   onClick?: (e: MouseEvent) => void;
