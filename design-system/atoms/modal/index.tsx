@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import ReactModal, { Props, Styles } from 'react-modal';
+import ReactModal, { Styles } from 'react-modal';
 import { Icon } from 'design-system/atoms';
 import { CarouselArrowLeft } from 'design-system/atoms/carousel-arrow-left';
 import { CarouselArrowRight } from 'design-system/atoms/carousel-arrow-right';
+
+import { ModalProps } from './modal.interfaces';
 
 ReactModal.setAppElement('#__next');
 
@@ -21,24 +23,7 @@ const styles: Styles = {
   },
 };
 
-export function Modal({
-  handleClose,
-  children,
-  slides,
-  pagination,
-  ...props
-}: Props & {
-  handleClose: () => void;
-  slides?: {
-    count: number;
-    activeSlideIndex: number;
-  };
-  pagination?: {
-    handleNext: () => void;
-    handlePrevious: () => void;
-  };
-  children?: React.ReactNode;
-}) {
+export function Modal({ handleClose, children, slides, pagination, ...props }: ModalProps) {
   useEffect(() => {
     const body = document.querySelector('body');
     if (props.isOpen) {

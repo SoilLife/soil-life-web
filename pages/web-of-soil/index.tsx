@@ -24,19 +24,20 @@ const options = {
   },
   nodes: {
     size: 30,
+    borderWidth: 0,
+    color: {
+      border: 'rgb(91, 80, 82)',
+      background: 'rgb(91, 80, 82)',
+    },
+    font: {
+      color: 'rgb(91, 80, 82)',
+    },
   },
   edges: {
-    color: '#000000',
+    color: 'rgb(91, 80, 82)',
   },
   height: '100%',
   width: '100%',
-};
-
-const events = {
-  select: function (event: any) {
-    const { nodes, edges } = event;
-    console.log({ nodes, edges });
-  },
 };
 
 // interfaces
@@ -82,6 +83,7 @@ export default function WebOfSoilPage() {
   const { graph: filterGraph } = useWebOfSoils('filter data structure');
   const { graph: foundationsGraph } = useWebOfSoils('foundations data structure');
   const { graph: farmaceuticalGraph } = useWebOfSoils('farmaceuticals data structure');
+  const { graph: funGraph } = useWebOfSoils('fun data structure');
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll('.section')) as HTMLDivElement[];
@@ -177,6 +179,23 @@ export default function WebOfSoilPage() {
       fullPageRef.current.fullpageApi.setAllowScrolling(true);
     }
     setIsModalOpen(false);
+  }
+
+  function handleGraphEvent(type: 'food' | 'filter' | 'fiber' | 'fun' | 'farmaceutical' | 'foundation') {
+    return {
+      select({ nodes, edges }: { nodes: string[]; edges: string[] }) {
+        switch (type) {
+          case 'food':
+            const [id] = nodes;
+            if (id) {
+              const connections = foodGraph.nodes.filter((node) => node.to.includes(id));
+              console.log(connections);
+              console.log(edges);
+            }
+            break;
+        }
+      },
+    };
   }
 
   return (
@@ -345,22 +364,22 @@ export default function WebOfSoilPage() {
 
                 <Section>
                   <Slide>
-                    <VisGraph graph={foodGraph} options={options} events={events} />
+                    <VisGraph graph={foodGraph} options={options} events={handleGraphEvent('food')} />
                   </Slide>
                   <Slide>
-                    <VisGraph graph={fiberGraph} options={options} events={events} />
+                    <VisGraph graph={fiberGraph} options={options} events={handleGraphEvent('fiber')} />
                   </Slide>
                   <Slide>
-                    <VisGraph graph={filterGraph} options={options} events={events} />
+                    <VisGraph graph={filterGraph} options={options} events={handleGraphEvent('filter')} />
                   </Slide>
                   <Slide>
-                    <VisGraph graph={foundationsGraph} options={options} events={events} />
+                    <VisGraph graph={foundationsGraph} options={options} events={handleGraphEvent('foundation')} />
                   </Slide>
                   <Slide>
-                    <VisGraph graph={farmaceuticalGraph} options={options} events={events} />
+                    <VisGraph graph={farmaceuticalGraph} options={options} events={handleGraphEvent('farmaceutical')} />
                   </Slide>
                   <Slide>
-                    <div />
+                    <VisGraph graph={funGraph} options={options} events={handleGraphEvent('fun')} />
                   </Slide>
                 </Section>
 
@@ -427,7 +446,7 @@ export default function WebOfSoilPage() {
           }}
         />
       </DefaultLayout>
-      <Modal isOpen={isModalOpen} handleClose={handleCloseModal} slides={{ count: 1, activeSlideIndex: 0 }}>
+      <Modal handleClose={handleCloseModal} isOpen={isModalOpen} slides={{ count: 1, activeSlideIndex: 0 }}>
         <div className='aspect-h-9 aspect-w-16'>
           <ReactPlayer
             controls={true}

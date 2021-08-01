@@ -7,8 +7,14 @@ export function appReducer(state: App.State, action: App.Action): Readonly<App.S
         ...state,
         fullpageApi: action.payload,
       };
-
-    default:
-      throw Error(`${action.type} is not a valid action type`);
+    case 'TOGGLE_MOBILE_MENU': {
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
+      };
+    }
+    default: {
+      throw Error('No Action type defined');
+    }
   }
 }
