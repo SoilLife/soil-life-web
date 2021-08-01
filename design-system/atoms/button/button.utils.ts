@@ -12,7 +12,8 @@ export const buttonTypeMap: { [K in ButtonProps['type']]: string } = {
 };
 
 export const buttonSizeMap: { [K in ButtonProps['size']]: string } = {
-  sm: `${textSizeMap['xs']} px-4 py-2`,
-  md: `${textSizeMap['sm']} px-4 py-2`,
-  lg: `${textSizeMap['md']} px-6 py-3`,
+  sm: `${textSizeMap['xs']} px-4 py-2 xl:px-[14px] xl:py-2.5`,
+  md: `${textSizeMap['sm']} px-4 py-2 xl:px-[22px] xl:py-2.5`,
+  lg: `${textSizeMap['md']} px-2.5 py-2 xl:px-[25px] xl:py-[15px]`,
+  xl: `${textSizeMap['lg']} px-5 py-[5px]`,
 };

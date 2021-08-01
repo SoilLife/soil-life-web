@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 // components
-import ReactFullpage from '@fullpage/react-fullpage';
-import { Section, Slide, Image, Icon, Modal } from 'design-system/atoms';
-import { MediaHub } from 'design-system/templates/media-hub';
-import { Footer } from 'design-system/templates';
-import ReactPlayer from 'react-player';
-import { MobileNavMenu } from 'design-system/templates/mobile-nav-menu';
+import { Footer, MediaHub, MobileNavMenu } from 'design-system/templates';
+import { Section, Slide, Image, Icon, Modal, Text } from 'design-system/atoms';
 import { VisGraph } from 'design-system/components';
+import ReactFullpage from '@fullpage/react-fullpage';
+import ReactPlayer from 'react-player';
 
 // data
 import { webOfSoilSubheadings } from 'data/main-headings';
@@ -15,7 +13,7 @@ import { webOfSoilSubheadings } from 'data/main-headings';
 // helpers
 import { DefaultLayout } from 'layouts';
 import { useMediaHub } from 'helpers/use-media-hub';
-import { useWebOfSoils } from 'helpers/use-web-of-soil';
+import { useWebOfSoils, Node } from 'helpers/use-web-of-soil';
 
 const options = {
   autoResize: true,
@@ -41,42 +39,44 @@ const options = {
 };
 
 // interfaces
-function getBgColorFromActiveHeader(header: 'food' | 'fiber' | 'filter' | 'foundation' | 'farmaceutical' | 'fun') {
-  switch (header) {
-    case 'food':
+function getBgColorFromActiveHeader(index: number) {
+  switch (true) {
+    case index === 0:
       return 'bg-pink-500';
-    case 'fiber':
+    case index === 1:
       return 'bg-yellow-500';
-    case 'filter':
+    case index === 2:
       return 'bg-blue-500';
-    case 'foundation':
+    case index === 3:
       return 'bg-gray-500';
-    case 'farmaceutical':
+    case index === 4:
       return 'bg-orange-500';
-    case 'fun':
+    case index === 5:
       return 'bg-teal-500';
+    default:
+      return 'bg-pink-500';
   }
 }
 
 const showSections = ['video', 'infographic', 'educational video'];
-const videos = {
-  food: 'https://www.youtube.com/watch?v=z8PAU3sAtPA',
-  fiber: 'https://www.youtube.com/watch?v=QNrw3BHU_jc',
-  filter: 'https://www.youtube.com/watch?v=rzeRZ-bqC20',
-  foundation: 'https://www.youtube.com/watch?v=lu_pgydBJ74',
-  farmaceutical: 'https://www.youtube.com/watch?v=X-CiZOK4zDg',
-  fun: 'https://www.youtube.com/watch?v=CNhTMh6uZ2o',
-};
+const videos = [
+  'https://www.youtube.com/watch?v=z8PAU3sAtPA',
+  'https://www.youtube.com/watch?v=QNrw3BHU_jc',
+  'https://www.youtube.com/watch?v=rzeRZ-bqC20',
+  'https://www.youtube.com/watch?v=lu_pgydBJ74',
+  'https://www.youtube.com/watch?v=X-CiZOK4zDg',
+  'https://www.youtube.com/watch?v=CNhTMh6uZ2o',
+];
 
 export default function WebOfSoilPage() {
-  const [activeHeader, setActiveHeader] = useState<
-    'food' | 'fiber' | 'filter' | 'foundation' | 'farmaceutical' | 'fun'
-  >('food');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeHeader, setActiveHeader] = useState(0);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isWebOfSoilMModalOpen, setIsWebOfSoilModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sections, setSections] = useState<HTMLDivElement[]>([]);
   const fullPageRef = useRef<any>(null);
   const [hideHeader, setHideHeader] = useState(false);
+  const [nodeSelections, setNodeSelections] = useState<Node[]>([]);
   const { media } = useMediaHub();
   const { graph: foodGraph } = useWebOfSoils('food data structure');
   const { graph: fiberGraph } = useWebOfSoils('fiber data structure');
@@ -88,6 +88,16 @@ export default function WebOfSoilPage() {
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll('.section')) as HTMLDivElement[];
     setSections(sections);
+    const fpNav = document.querySelector('#fp-nav') as HTMLDivElement;
+    const fpSlidesNav = Array.from(document.querySelectorAll('.fp-slidesNav')) as HTMLDivElement[];
+    if (fpNav) {
+      fpNav.style.visibility = 'hidden';
+    }
+    if (fpSlidesNav.length) {
+      for (const slideNav of fpSlidesNav) {
+        slideNav.style.visibility = 'hidden';
+      }
+    }
   }, []);
 
   const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
@@ -98,38 +108,16 @@ export default function WebOfSoilPage() {
     }
   };
 
-  function handleHeaderClick(header: typeof activeHeader) {
+  function handleHeaderClick(index: number) {
     return () => {
       for (const section of sections) {
         const anchors = Array.from(section.querySelectorAll('.fp-slidesNav a')) as HTMLAnchorElement[];
         if (anchors.length) {
-          switch (header) {
-            case 'food':
-              anchors[0]?.click();
-              break;
-            case 'fiber':
-              anchors[1]?.click();
-              break;
-            case 'filter':
-              anchors[2]?.click();
-              break;
-            case 'foundation':
-              anchors[3]?.click();
-              break;
-            case 'farmaceutical':
-              anchors[4]?.click();
-              break;
-            case 'fun':
-              anchors[5]?.click();
-              break;
-            default:
-              anchors[0]?.click();
-              break;
-          }
+          anchors[index]?.click();
         }
       }
 
-      setActiveHeader(header);
+      setActiveHeader(index);
     };
   }
 
@@ -142,55 +130,78 @@ export default function WebOfSoilPage() {
 
   function handleSlideLeave(_section: any, _origin: any, destination: any, _direction: any) {
     const index = destination.index;
-    switch (true) {
-      case index === 0:
-        handleHeaderClick('food')();
-        break;
-      case index === 1:
-        handleHeaderClick('fiber')();
-        break;
-      case index === 2:
-        handleHeaderClick('filter')();
-        break;
-      case index === 3:
-        handleHeaderClick('foundation')();
-        break;
-      case index === 4:
-        handleHeaderClick('farmaceutical')();
-        break;
-      case index === 5:
-        handleHeaderClick('fun')();
-        break;
-      default:
-        handleHeaderClick('food')();
-        break;
-    }
+    handleHeaderClick(index)();
   }
 
   function handleOpenModal() {
     if (fullPageRef.current) {
       fullPageRef.current.fullpageApi.setAllowScrolling(false);
     }
-    setIsModalOpen(true);
+    setIsVideoModalOpen(true);
   }
 
-  function handleCloseModal() {
+  function handleCloseVideoModal() {
     if (fullPageRef.current) {
       fullPageRef.current.fullpageApi.setAllowScrolling(true);
     }
-    setIsModalOpen(false);
+    setIsVideoModalOpen(false);
+  }
+
+  function handleOpenWebOfSoilModal() {
+    if (fullPageRef.current) {
+      fullPageRef.current.fullpageApi.setAllowScrolling(false);
+    }
+    setIsWebOfSoilModalOpen(true);
+  }
+
+  function handleCloseWebOfSoilModal() {
+    if (fullPageRef.current) {
+      fullPageRef.current.fullpageApi.setAllowScrolling(true);
+    }
+    setNodeSelections([]);
+    setIsWebOfSoilModalOpen(false);
+  }
+
+  function moveSlideLeft() {
+    if (fullPageRef.current) {
+      fullPageRef.current.fullpageApi.moveSlideLeft();
+    }
+  }
+
+  function moveSlideRight() {
+    if (fullPageRef.current) {
+      fullPageRef.current.fullpageApi.moveSlideRight();
+    }
+  }
+
+  function SlideButtons({ leftImage, rightImage }: { leftImage: string; rightImage: string }) {
+    return (
+      <>
+        <button className='f-slide-left absolute left-0 top-1/2 transform -translate-y-1/2' onClick={moveSlideLeft}>
+          <img src={leftImage} />
+        </button>
+        <button className='f-slide-right absolute right-0 top-1/2 transform -translate-y-1/2' onClick={moveSlideRight}>
+          <img src={rightImage} />
+        </button>
+      </>
+    );
   }
 
   function handleGraphEvent(type: 'food' | 'filter' | 'fiber' | 'fun' | 'farmaceutical' | 'foundation') {
     return {
-      select({ nodes, edges }: { nodes: string[]; edges: string[] }) {
+      select({ nodes }: { nodes: string[] }) {
         switch (type) {
           case 'food':
             const [id] = nodes;
+
             if (id) {
-              const connections = foodGraph.nodes.filter((node) => node.to.includes(id));
-              console.log(connections);
-              console.log(edges);
+              const selectedNode = foodGraph.nodes.find((node) => node.id === id);
+              const connectedNodes = foodGraph.nodes.filter((node) => node.to.includes(id));
+              if (selectedNode) {
+                const nodeSelections = [selectedNode, ...connectedNodes];
+                setNodeSelections(nodeSelections);
+              }
+              handleOpenWebOfSoilModal();
             }
             break;
         }
@@ -215,12 +226,12 @@ export default function WebOfSoilPage() {
                 onClick={toggleMenu}
               />
             </li>
-            {webOfSoilSubheadings.map(({ name, asset }) => (
-              <li key={name} title={name} onClick={handleHeaderClick(name as typeof activeHeader)}>
+            {webOfSoilSubheadings.map(({ name, asset }, index) => (
+              <li key={name} title={name} onClick={handleHeaderClick(index)}>
                 <img
                   src={asset}
                   className={`h-8 w-8 sm:h-[50px] sm:w-[50px] ${
-                    name === activeHeader ? 'rounded-full bg-gray-500 ring-2 ring-white' : 'cursor-pointer'
+                    index === activeHeader ? 'rounded-full bg-gray-500 ring-2 ring-white' : 'cursor-pointer'
                   }`}
                 />
               </li>
@@ -235,8 +246,8 @@ export default function WebOfSoilPage() {
           controlArrows={false}
           verticalCentered={false}
           navigation
-          showActiveTooltip
           slidesNavigation
+          showActiveTooltip
           loading='lazy'
           onLeave={handleSectionLeave}
           onSlideLeave={handleSlideLeave}
@@ -245,14 +256,14 @@ export default function WebOfSoilPage() {
             return (
               <>
                 <Section>
-                  <Slide className='relative'>
+                  <Slide>
                     <Image className='object-cover' url='/6Fs/brooke-lark-08bOYnH_r_E-unsplash_Nsw5XgGxU.jpg' />
                     <div className='absolute top-1/2 left-1/2 transform -translate-y-1/2 max-w-[566px]'>
                       <img className='relative -left-10 h-[241px] w-[241px]' src='/images/web-of-soil/icon-food.png' />
-                      <p className='font-acre-regular text-[36px]'>
+                      <Text type='p' weight='regular' size='md'>
                         whether it is a plant that grew in it or an animal that grew from plants, 95% of all food can be
                         traced back to soil!
-                      </p>
+                      </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
                           className='bg-white shadow font-acre-regular text-[24px] text-pink-500 py-2 px-5'
@@ -262,15 +273,19 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/fun-arrow-left.png'
+                      rightImage='/images/web-of-soil/fiber-arrow-right.png'
+                    />
                   </Slide>
-                  <Slide className='relative'>
+                  <Slide>
                     <Image className='object-cover' url='/6Fs/Fiber_Slide_NkVYdxIN7-t.jpg' />
                     <div className='absolute top-1/2 right-1/2 transform -translate-y-1/2 max-w-[566px]'>
                       <img className='relative -left-10 h-[241px] w-[241px]' src='/images/web-of-soil/icon-fiber.png' />
-                      <p className='font-acre-regular text-[36px]'>
+                      <Text type='p' weight='regular' size='md'>
                         natural? synthetic? paper or plastic? from clothing to accessories to wood and oil, all that
                         warms and protects us, starts in the soil.
-                      </p>
+                      </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
                           className='bg-white shadow font-acre-regular text-[24px] text-yellow-500 py-2 px-5'
@@ -280,15 +295,19 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/food-arrow-left.png'
+                      rightImage='/images/web-of-soil/filter-arrow-right.png'
+                    />
                   </Slide>
-                  <Slide className='relative'>
+                  <Slide>
                     <Image className='object-cover' url='/6Fs/Filter_zylk3NyhU.jpg' transformation={[{ rotate: 90 }]} />
                     <div className='text-center absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 max-w-[886px]'>
                       <img className='mx-auto h-[241px] w-[241px]' src='/images/web-of-soil/icon-filter.png' />
-                      <p className='font-acre-regular text-[36px]'>
+                      <Text type='p' weight='regular' size='md'>
                         soils are the lungs and liver of the earth, removing contaminants from the air we breathe and
                         the water we drink, free of charge!
-                      </p>
+                      </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
                           className='bg-white shadow font-acre-regular text-[24px] text-blue-500 py-2 px-5'
@@ -298,16 +317,20 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/fiber-arrow-left.png'
+                      rightImage='/images/web-of-soil/foundations-arrow-right.png'
+                    />
                   </Slide>
-                  <Slide className='relative'>
+                  <Slide>
                     <Image className='object-cover' url='/6Fs/Foundation_sl5IYmaDB.jpg' />
                     <div className='flex items-center justify-center absolute w-full top-1/2 transform -translate-y-3/4'>
                       <img className='h-[241px] w-[241px]' src='/images/web-of-soil/icon-foundation.png' />
                       <div className='w-[760px]'>
-                        <p className='font-acre-regular text-[36px] text-white'>
+                        <Text type='p' weight='regular' size='md' className='text-white'>
                           the base of our economy, the base of food webs, and the physical base of our cities, soils are
                           literally the foundation for life and civilization—past and present!
-                        </p>
+                        </Text>
                         <div className='mt-10 flex justify-center'>
                           <button
                             className='bg-white shadow font-acre-regular text-[24px] text-gray-500 py-2 px-5'
@@ -318,18 +341,22 @@ export default function WebOfSoilPage() {
                         </div>
                       </div>
                     </div>
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/filter-arrow-left.png'
+                      rightImage='/images/web-of-soil/farmaceuticals-arrow-right.png'
+                    />
                   </Slide>
-                  <Slide className='relative'>
+                  <Slide>
                     <Image className='object-cover' url='/6Fs/cup_of_pills_ioFvZZ0lo.png' />
                     <div className='absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/4 max-w-[767px]'>
                       <img
                         className='relative -left-10 h-[241px] w-[241px]'
                         src='/images/web-of-soil/icon-farmaceutical.png'
                       />
-                      <p className='font-acre-regular text-[36px]'>
+                      <Text type='p' weight='regular' size='md'>
                         soils are home to the plants, fungi, & bacteria that produce most of the world’s medicine — and
                         ~98% of the microbes that inhabit it are yet to be discovered!
-                      </p>
+                      </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
                           className='bg-white shadow font-acre-regular text-[24px] text-orange-500 py-2 px-5'
@@ -339,16 +366,20 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/foundations-arrow-left.png'
+                      rightImage='/images/web-of-soil/fun-arrow-right.png'
+                    />
                   </Slide>
-                  <Slide className='relative'>
+                  <Slide>
                     <Image className='object-cover' url='/6Fs/Fun_XHWRw699s.jpg' />
-                    <div className='flex items-center justify-center absolute w-full bottom-1/4 transform'>
+                    <div className='flex justify-center absolute w-full bottom-1/4 transform'>
                       <img className='h-[241px] w-[241px]' src='/images/web-of-soil/icon-fun.png' />
                       <div className='w-[760px]'>
-                        <p className='font-acre-regular text-[36px]'>
+                        <Text type='p' weight='regular' size='md'>
                           from paints and pottery to playing fields and parks, soils provide the grounds for music,
                           sports, and art!
-                        </p>
+                        </Text>
                         <div className='mt-10 flex justify-center'>
                           <button
                             className='bg-white shadow font-acre-regular text-[24px] text-teal-500 py-2 px-5'
@@ -359,27 +390,55 @@ export default function WebOfSoilPage() {
                         </div>
                       </div>
                     </div>
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/farmaceuticals-arrow-left.png'
+                      rightImage='/images/web-of-soil/food-arrow-right.png'
+                    />
                   </Slide>
                 </Section>
 
                 <Section>
                   <Slide>
                     <VisGraph graph={foodGraph} options={options} events={handleGraphEvent('food')} />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/fun-arrow-left.png'
+                      rightImage='/images/web-of-soil/fiber-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <VisGraph graph={fiberGraph} options={options} events={handleGraphEvent('fiber')} />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/food-arrow-left.png'
+                      rightImage='/images/web-of-soil/filter-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <VisGraph graph={filterGraph} options={options} events={handleGraphEvent('filter')} />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/fiber-arrow-left.png'
+                      rightImage='/images/web-of-soil/foundations-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <VisGraph graph={foundationsGraph} options={options} events={handleGraphEvent('foundation')} />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/filter-arrow-left.png'
+                      rightImage='/images/web-of-soil/farmaceuticals-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <VisGraph graph={farmaceuticalGraph} options={options} events={handleGraphEvent('farmaceutical')} />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/foundations-arrow-left.png'
+                      rightImage='/images/web-of-soil/fun-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <VisGraph graph={funGraph} options={options} events={handleGraphEvent('fun')} />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/farmaceuticals-arrow-left.png'
+                      rightImage='/images/web-of-soil/food-arrow-right.png'
+                    />
                   </Slide>
                 </Section>
 
@@ -387,66 +446,89 @@ export default function WebOfSoilPage() {
                   <Slide>
                     <MediaHub
                       compact
-                      className='h-full flex flex-col justify-center'
+                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
                       media={media}
                       filters={['food']}
                       showSections={showSections}
                     />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/fun-arrow-left.png'
+                      rightImage='/images/web-of-soil/fiber-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <MediaHub
                       compact
-                      className='h-full flex flex-col justify-center'
+                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
                       media={media}
                       filters={['fiber']}
                       showSections={showSections}
                     />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/food-arrow-left.png'
+                      rightImage='/images/web-of-soil/filter-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <MediaHub
                       compact
-                      className='h-full flex flex-col justify-center'
+                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
                       media={media}
                       filters={['filter']}
                       showSections={showSections}
                     />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/fiber-arrow-left.png'
+                      rightImage='/images/web-of-soil/foundations-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <MediaHub
                       compact
-                      className='h-full flex flex-col justify-center'
+                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
                       media={media}
                       filters={['foundation']}
                       showSections={showSections}
                     />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/filter-arrow-left.png'
+                      rightImage='/images/web-of-soil/farmaceuticals-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <MediaHub
                       compact
-                      className='h-full flex flex-col justify-center'
+                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
                       media={media}
                       filters={['farmaceuticals']}
                       showSections={showSections}
                     />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/foundations-arrow-left.png'
+                      rightImage='/images/web-of-soil/fun-arrow-right.png'
+                    />
                   </Slide>
                   <Slide>
                     <MediaHub
                       compact
-                      className='h-full flex flex-col justify-center'
+                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
                       media={media}
                       filters={['fun']}
                       showSections={showSections}
                     />
+                    <SlideButtons
+                      leftImage='/images/web-of-soil/farmaceuticals-arrow-left.png'
+                      rightImage='/images/web-of-soil/food-arrow-right.png'
+                    />
                   </Slide>
                 </Section>
-
                 <Footer />
               </>
             );
           }}
         />
       </DefaultLayout>
-      <Modal handleClose={handleCloseModal} isOpen={isModalOpen} slides={{ count: 1, activeSlideIndex: 0 }}>
+      <Modal handleClose={handleCloseVideoModal} isOpen={isVideoModalOpen} slides={{ count: 1, activeSlideIndex: 0 }}>
         <div className='aspect-h-9 aspect-w-16'>
           <ReactPlayer
             controls={true}
@@ -458,6 +540,27 @@ export default function WebOfSoilPage() {
               margin: '0 auto',
             }}
           />
+        </div>
+      </Modal>
+      <Modal
+        handleClose={handleCloseWebOfSoilModal}
+        isOpen={isWebOfSoilMModalOpen}
+        slides={{ count: 1, activeSlideIndex: 0 }}
+      >
+        <div className='bg-white p-10 flex justify-center space-x-10 mx-auto'>
+          {nodeSelections.map((node) => (
+            <div key={node.id}>
+              <div>
+                <img src={node.image} className='h-40 w-40 object-cover rounded-full' />
+                <Text type='h2' weight='regular' size='xl'>
+                  {node.label}
+                </Text>
+                <Text type='p' weight='light' size='md'>
+                  {node.description}
+                </Text>
+              </div>
+            </div>
+          ))}
         </div>
       </Modal>
     </>

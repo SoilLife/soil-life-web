@@ -4,22 +4,38 @@ import { uniqBy } from 'lodash';
 
 const spreadsheetId = '1GjpYaQbXVWIEn68iYyW0XiEQKJD6sL_4WJYI0ZSbE4s';
 
-export function useWebOfSoils(sheetName: string) {
+export type Node = {
+  id: string;
+  label: string;
+  description: string;
+  link: undefined | string;
+  image: undefined | string;
+  shape: 'circularImage';
+  to: string[];
+  size?: number;
+};
+
+type Edge = {
+  from: string;
+  to: string;
+  length?: number;
+  id?: string;
+};
+
+export function useWebOfSoils(
+  sheetName:
+    | 'food data structure'
+    | 'filter data structure'
+    | 'foundations data structure'
+    | 'fiber data structure'
+    | 'fun data structure'
+    | 'farmaceuticals data structure'
+) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [graph, setGraph] = useState<{
-    nodes: {
-      id: string;
-      label: string;
-      description: string;
-      link: undefined | string;
-      image: undefined | string;
-      shape: 'circularImage';
-      brokenImage: string;
-      to: string[];
-      size?: number;
-    }[];
-    edges: { from: string; to: string; length?: number }[];
+    nodes: Node[];
+    edges: Edge[];
   }>({
     nodes: [],
     edges: [],
@@ -58,15 +74,18 @@ export function useWebOfSoils(sheetName: string) {
                   label: '',
                   description: '',
                   link: undefined,
-                  image: undefined,
+                  image: '/images/logo.svg',
                   shape: 'circularImage',
-                  brokenImage: '/images/logo.svg',
                   to: [],
                 };
 
                 for (const index of headerIndices) {
                   const header = headerRow['c'][index]['v']?.toLowerCase()?.trim() ?? '';
                   const cell = item.c[index]?.['v'];
+
+                  if (!cell && header === 'name') {
+                    break;
+                  }
 
                   switch (header) {
                     case 'name':
@@ -86,8 +105,6 @@ export function useWebOfSoils(sheetName: string) {
                       const regexp = new RegExp(/^https|^http/i);
                       if (regexp.test(cell)) {
                         node.image = cell;
-                      } else {
-                        node.image = '/images/logo.svg';
                       }
                       break;
                     case 'to':

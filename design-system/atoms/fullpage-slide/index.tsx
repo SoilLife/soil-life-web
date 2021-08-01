@@ -4,7 +4,7 @@ export function Slide({
   ...props
 }: React.PropsWithChildren<{ className?: string; ['data-anchor']?: string }>) {
   return (
-    <div className={`slide ${className}`} {...props}>
+    <div className={`slide relative ${className}`} {...props}>
       {children}
     </div>
   );

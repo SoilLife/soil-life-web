@@ -41,7 +41,7 @@ export default function GetInvolvedPage() {
           {mergedData.map(({ name, slug, iconWithText, imageUrl = '' }) => {
             return (
               <div className='relative w-full h-full' key={name}>
-                <Image url={imageUrl} className={`object-cover ${slug === 'donations' ? 'object-right' : ''}`} />
+                <Image url={imageUrl} className={`object-cover`} />
                 <Link href={`/get-involved/${slug}`}>
                   <div
                     className={`absolute z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 cursor-pointer`}

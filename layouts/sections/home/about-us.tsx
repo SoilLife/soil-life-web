@@ -8,7 +8,7 @@ export function AboutUsSection() {
         <Text type='h1' weight='regular' size='xl' className='text-teal-500 xl:text-left xl:w-full'>
           about us
         </Text>
-        <Text type='p' weight='light' size='sm' className='xl:text-left'>
+        <Text type='p' weight='light' size='sm' className='xl:text-left leading-normal'>
           we are on a mission to change the way the world looks at soil-digging into what’s dirty and calling into
           question what’s clean.
         </Text>
@@ -16,7 +16,7 @@ export function AboutUsSection() {
           url='/Home_Page/grass_roots_pnwdrMGcq.jpeg'
           className='w-full object-cover max-h-[320px] sm:object-contain xl:absolute xl:right-0 xl:object-cover xl:max-h-full xl:max-w-[50%]'
         />
-        <Text type='p' weight='light' size='sm' className='xl:text-left'>
+        <Text type='p' weight='light' size='sm' className='xl:text-left leading-normal'>
           we believe in change from the ground up! by starting at the root of some of our most pressing global issues,
           we aim to promote environmental and human health across the globe!
         </Text>

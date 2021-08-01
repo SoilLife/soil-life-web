@@ -98,8 +98,8 @@ export function MainHeader({
               </Text>
             </a>
           </Link>
-          <ul className='hidden gap-16 w-full xl:flex xl:justify-center'>{createNavLinks()}</ul>
-          <SocialMediaIcons className='absolute top-1/2 right-2 transform -translate-y-1/2 flex gap-3 md:gap-4' />
+          <ul className='hidden space-x-16 w-full xl:flex xl:justify-center'>{createNavLinks()}</ul>
+          <SocialMediaIcons className='absolute top-1/2 right-2 transform -translate-y-1/2 flex space-x-3 md:space-x-4' />
         </nav>
       </header>
       <MobileNavMenu isMenuOpen={isMenuOpen} />
