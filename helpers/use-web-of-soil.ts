@@ -14,6 +14,10 @@ export function useWebOfSoils(sheetName: string) {
       description: string;
       link: undefined | string;
       image: undefined | string;
+      shape: 'circularImage';
+      brokenImage: string;
+      to: string[];
+      size?: number;
     }[];
     edges: { from: string; to: string; length?: number }[];
   }>({
@@ -55,39 +59,49 @@ export function useWebOfSoils(sheetName: string) {
                   description: '',
                   link: undefined,
                   image: undefined,
+                  shape: 'circularImage',
+                  brokenImage: '/images/logo.svg',
+                  to: [],
                 };
 
                 for (const index of headerIndices) {
                   const header = headerRow['c'][index]['v']?.toLowerCase()?.trim() ?? '';
                   const cell = item.c[index]?.['v'];
 
-                  if (cell) {
-                    switch (header) {
-                      case 'name':
-                        node.id = cell.toLowerCase().trim();
-                        node.label = cell;
-                        break;
-                      case 'description':
-                        node.description = cell;
-                        break;
-                      case 'link':
-                        node.link = cell;
-                        break;
-                      case 'image':
-                        node.image = cell || '/public/images/logo.svg';
-                        break;
-                      case 'to':
-                        const toEdges = cell.split(',').map((value: string) => value.toLowerCase().trim());
+                  switch (header) {
+                    case 'name':
+                      node.id = cell.toLowerCase().trim();
+                      node.label = cell;
+                      if (cell.toLowerCase().trim() === 'soil') {
+                        node.size = 50;
+                      }
+                      break;
+                    case 'description':
+                      node.description = cell;
+                      break;
+                    case 'link':
+                      node.link = cell;
+                      break;
+                    case 'image':
+                      const regexp = new RegExp(/^https|^http/i);
+                      if (regexp.test(cell)) {
+                        node.image = cell;
+                      } else {
+                        node.image = '/images/logo.svg';
+                      }
+                      break;
+                    case 'to':
+                      const toEdges = cell?.split(',')?.map((value: string) => value.toLowerCase().trim()) ?? [];
+                      node.to = toEdges;
 
-                        for (const to of toEdges) {
-                          const edge: typeof graph['edges'][0] = {
-                            from: node.id,
-                            to,
-                          };
-                          edges.push(edge);
-                        }
-                        break;
-                    }
+                      for (const to of toEdges) {
+                        const edge: typeof graph['edges'][0] = {
+                          from: node.id,
+                          to,
+                        };
+                        edges.push(edge);
+                      }
+                      break;
                   }
                 }
 

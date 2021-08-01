@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 // components
 import { Icon } from 'design-system/atoms';
 import { Header, MediaHub } from 'design-system/templates';
+import { DefaultLayout } from 'layouts';
 
 // helpers
 import { debounce } from 'lodash';
@@ -59,7 +60,7 @@ export default function MediaPage() {
   }
 
   return (
-    <>
+    <DefaultLayout>
       <Header.Main fullpageRef={{ current: null }} hideHeader={false} />
       <div className='mt-28 mb-8'>
         <div className='container flex flex-col justify-between gap-4 lg:flex-row'>
@@ -147,6 +148,6 @@ export default function MediaPage() {
       </div>
 
       <MediaHub media={media} search={search} filters={filters} className='space-y-16 mb-16' />
-    </>
+    </DefaultLayout>
   );
 }
