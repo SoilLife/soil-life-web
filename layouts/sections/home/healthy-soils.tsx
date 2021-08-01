@@ -19,26 +19,10 @@ export function HealthySoilsSection() {
     <Section>
       <Slide>
         <div className='relative container flex flex-col justify-evenly h-full'>
-          <div className='relative max-h-full max-w-full'>
-            <img
-              className='max-h-[900px] h-full w-full object-contain'
-              src='/images/home/healthy-soils/healthy-soil-wheel.png'
-            />
-            <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
-              <div className='space-y-4'>
-                <Text type='p' weight='light' size='lg' className='text-teal-500'>
-                  we believe
-                </Text>
-                <Text type='p' weight='light' size='lg' className='text-teal-500'>
-                  a healthy life starts
-                </Text>
-                <Text type='p' weight='light' size='lg' className='text-teal-500'>
-                  with healthy soil
-                </Text>
-              </div>
-              <div className='mt-20 text-center hidden sm:block'>
-                <Button as='button' label='find out how' type='neutral' size='md' />
-              </div>
+          <div className='relative max-w-full max-h-[80%]'>
+            <img className='h-full w-full object-contain' src='/images/home/healthy-soils/healthy-soil-wheel.png' />
+            <div className='absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-full text-center'>
+              <Button as='button' label='find out how' type='neutral' size='md' />
             </div>
           </div>
           <div className='text-center sm:hidden'>

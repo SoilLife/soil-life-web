@@ -8,7 +8,7 @@ export function Text({ type, className, weight, size, ...props }: TextProps) {
   function getTextClasses() {
     return {
       'data-text-size': size,
-      className: `${textTypeMap[type]} ${textSizeMap[size]} ${textFontWeightMap[weight]} leading-none ${className}`,
+      className: `${textTypeMap[type]} ${textSizeMap[size]} ${textFontWeightMap[weight]} ${className}`,
     };
   }
   switch (type) {

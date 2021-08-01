@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 // components
 import ReactFullpage from '@fullpage/react-fullpage';
-import { Section, Slide, Image, Icon, Modal } from 'design-system/atoms';
+import { Section, Slide, Image, Icon, Modal, Text } from 'design-system/atoms';
 import { MediaHub } from 'design-system/templates/media-hub';
 import { Footer } from 'design-system/templates';
 import ReactPlayer from 'react-player';
@@ -249,10 +249,10 @@ export default function WebOfSoilPage() {
                     <Image className='object-cover' url='/6Fs/brooke-lark-08bOYnH_r_E-unsplash_Nsw5XgGxU.jpg' />
                     <div className='absolute top-1/2 left-1/2 transform -translate-y-1/2 max-w-[566px]'>
                       <img className='relative -left-10 h-[241px] w-[241px]' src='/images/web-of-soil/icon-food.png' />
-                      <p className='font-acre-regular text-[36px]'>
+                      <Text type='p' weight='regular' size='md'>
                         whether it is a plant that grew in it or an animal that grew from plants, 95% of all food can be
                         traced back to soil!
-                      </p>
+                      </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
                           className='bg-white shadow font-acre-regular text-[24px] text-pink-500 py-2 px-5'
@@ -267,10 +267,10 @@ export default function WebOfSoilPage() {
                     <Image className='object-cover' url='/6Fs/Fiber_Slide_NkVYdxIN7-t.jpg' />
                     <div className='absolute top-1/2 right-1/2 transform -translate-y-1/2 max-w-[566px]'>
                       <img className='relative -left-10 h-[241px] w-[241px]' src='/images/web-of-soil/icon-fiber.png' />
-                      <p className='font-acre-regular text-[36px]'>
+                      <Text type='p' weight='regular' size='md'>
                         natural? synthetic? paper or plastic? from clothing to accessories to wood and oil, all that
                         warms and protects us, starts in the soil.
-                      </p>
+                      </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
                           className='bg-white shadow font-acre-regular text-[24px] text-yellow-500 py-2 px-5'
@@ -285,10 +285,10 @@ export default function WebOfSoilPage() {
                     <Image className='object-cover' url='/6Fs/Filter_zylk3NyhU.jpg' transformation={[{ rotate: 90 }]} />
                     <div className='text-center absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 max-w-[886px]'>
                       <img className='mx-auto h-[241px] w-[241px]' src='/images/web-of-soil/icon-filter.png' />
-                      <p className='font-acre-regular text-[36px]'>
+                      <Text type='p' weight='regular' size='md'>
                         soils are the lungs and liver of the earth, removing contaminants from the air we breathe and
                         the water we drink, free of charge!
-                      </p>
+                      </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
                           className='bg-white shadow font-acre-regular text-[24px] text-blue-500 py-2 px-5'
@@ -304,10 +304,10 @@ export default function WebOfSoilPage() {
                     <div className='flex items-center justify-center absolute w-full top-1/2 transform -translate-y-3/4'>
                       <img className='h-[241px] w-[241px]' src='/images/web-of-soil/icon-foundation.png' />
                       <div className='w-[760px]'>
-                        <p className='font-acre-regular text-[36px] text-white'>
+                        <Text type='p' weight='regular' size='md' className='text-white'>
                           the base of our economy, the base of food webs, and the physical base of our cities, soils are
                           literally the foundation for life and civilization—past and present!
-                        </p>
+                        </Text>
                         <div className='mt-10 flex justify-center'>
                           <button
                             className='bg-white shadow font-acre-regular text-[24px] text-gray-500 py-2 px-5'
@@ -326,10 +326,10 @@ export default function WebOfSoilPage() {
                         className='relative -left-10 h-[241px] w-[241px]'
                         src='/images/web-of-soil/icon-farmaceutical.png'
                       />
-                      <p className='font-acre-regular text-[36px]'>
+                      <Text type='p' weight='regular' size='md'>
                         soils are home to the plants, fungi, & bacteria that produce most of the world’s medicine — and
                         ~98% of the microbes that inhabit it are yet to be discovered!
-                      </p>
+                      </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
                           className='bg-white shadow font-acre-regular text-[24px] text-orange-500 py-2 px-5'
@@ -342,13 +342,13 @@ export default function WebOfSoilPage() {
                   </Slide>
                   <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Fun_XHWRw699s.jpg' />
-                    <div className='flex items-center justify-center absolute w-full bottom-1/4 transform'>
+                    <div className='flex justify-center absolute w-full bottom-1/4 transform'>
                       <img className='h-[241px] w-[241px]' src='/images/web-of-soil/icon-fun.png' />
                       <div className='w-[760px]'>
-                        <p className='font-acre-regular text-[36px]'>
+                        <Text type='p' weight='regular' size='md'>
                           from paints and pottery to playing fields and parks, soils provide the grounds for music,
                           sports, and art!
-                        </p>
+                        </Text>
                         <div className='mt-10 flex justify-center'>
                           <button
                             className='bg-white shadow font-acre-regular text-[24px] text-teal-500 py-2 px-5'
