@@ -68,7 +68,7 @@ export default function MediaPage() {
             <input
               ref={inputRef}
               type='text'
-              className='border-none ring-1 ring-pink-500 rounded-full w-full placeholder-pink-300 outline-none focus:border-none focus:ring-2 focus:ring-pink-500'
+              className='border-none ring-1 ring-pink-500 rounded-full w-full placeholder-pink-300 outline-none focus:border-none focus:ring-2 focus:ring-pink-500 text-xl font-acre-light'
               placeholder='search by keyword'
               onChange={debouncedSearch}
             />

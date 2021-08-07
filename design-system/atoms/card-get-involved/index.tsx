@@ -49,7 +49,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
       <div className='relative aspect-h-1 aspect-w-1'>
         {isOpen[index] && (
           <div className='absolute h-full w-full to-transparent z-10'>
-            {Array.isArray(links) && (
+            {Array.isArray(links) ? (
               <ul className='space-y-6 flex flex-col justify-center h-full p-6'>
                 {links.map((link, index) => {
                   return (
@@ -76,6 +76,31 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                   );
                 })}
               </ul>
+            ) : (
+              <div className='p-4 w-full h-full'>
+                <div
+                  className={`flex justify-center items-center bg-white bg-opacity-[0.85] h-full w-full
+              `}
+                >
+                  <Text
+                    type='p'
+                    weight='medium'
+                    size='sm'
+                    className={`${getColor({
+                      color,
+                      type: 'text',
+                      state: 'hover',
+                    })}
+              ${getColor({
+                color,
+                type: 'text',
+                state: 'active',
+              })}`}
+                  >
+                    find out how!
+                  </Text>
+                </div>
+              </div>
             )}
           </div>
         )}

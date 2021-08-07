@@ -63,7 +63,7 @@ export function GetInvolvedSection({
         className={getColor({ color, type: 'bg', state: 'idle' })}
       />
       <div className='container relative pt-16'>
-        <Text type='h1' weight='bold' size='xl' className={`text-center py-6 ${textColor}`}>
+        <Text type='h1' weight='light' size='2xl' className={`text-center py-6 ${textColor}`}>
           {title}
         </Text>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-app-full mx-auto'>

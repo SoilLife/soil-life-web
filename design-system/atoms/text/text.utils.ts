@@ -22,7 +22,7 @@ export const textSizeMap: { [Size in TextProps['size']]: string } = {
   xs: 'text-xs lg:text-sm xl:text-[24px]',
   sm: 'lg:text-[18px] 2xl:text-[30px]',
   md: 'text-[18px] lg:text-xl xl:text-[36px]',
-  lg: 'text-[24px]  lg:text-[40px] xl:text-[40px]',
+  lg: 'text-[24px] xl:text-[40px]',
   xl: 'text-[32px] xl:text-[60px]',
   '2xl': 'text-[36px] lg:text-[40px] xl:text-[70px]',
   '3xl': 'text-[40px] lg:text-[52px] xl:text-[80px]',

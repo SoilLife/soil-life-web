@@ -8,10 +8,10 @@ export function HeroSection() {
     <Section className='text-white'>
       <Image url='/Home_Page/natgeo5b_H4vFWWpPA.jpg' className='mt-10 object-cover object-top' />
       <div className='absolute w-3/4 text-white transform translate-x-1/2 bottom-40 right-1/2 sm:w-1/2'>
-        <Text type='h1' weight='medium' size='2xl'>
+        <Text type='h1' weight='medium' size='4xl'>
           we all share
         </Text>
-        <Text type='h1' weight='medium' size='2xl'>
+        <Text type='h1' weight='medium' size='4xl'>
           common ground.
         </Text>
         <div className='mt-4 h-5 sm:h-10 w-full bg-pink-500'></div>

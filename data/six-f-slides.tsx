@@ -23,7 +23,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     text: (
       <>
         if you{' '}
-        <Text type='span' weight='light' size='sm' className='text-pink-500'>
+        <Text type='span' weight='light' size='lg' className='text-pink-500'>
           eat food
         </Text>{' '}
         you depend on soil
@@ -43,7 +43,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     text: (
       <>
         if you{' '}
-        <Text type='span' weight='light' size='sm' className='text-yellow-500'>
+        <Text type='span' weight='light' size='lg' className='text-yellow-500'>
           wear clothes
         </Text>{' '}
         you depend on soil
@@ -63,7 +63,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     text: (
       <>
         if you{' '}
-        <Text type='span' weight='light' size='sm' className='text-blue-500'>
+        <Text type='span' weight='light' size='lg' className='text-blue-500'>
           drink water
         </Text>{' '}
         you depend on soil
@@ -83,7 +83,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     text: (
       <>
         if you{' '}
-        <Text type='span' weight='light' size='sm' className='text-blue-500'>
+        <Text type='span' weight='light' size='lg' className='text-blue-500'>
           breathe air
         </Text>{' '}
         you depend on soil
@@ -104,7 +104,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     text: (
       <>
         if you{' '}
-        <Text type='span' weight='light' size='sm'>
+        <Text type='span' weight='light' size='lg'>
           live in a shelter
         </Text>{' '}
         you depend on soil
@@ -124,7 +124,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     text: (
       <>
         if you{' '}
-        <Text type='span' weight='light' size='sm' className='text-orange-500'>
+        <Text type='span' weight='light' size='lg' className='text-orange-500'>
           use medicine
         </Text>{' '}
         you depend on soil
@@ -145,7 +145,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     text: (
       <>
         if you{' '}
-        <Text type='span' weight='light' size='sm' className='text-teal-500'>
+        <Text type='span' weight='light' size='lg' className='text-teal-500'>
           enjoy the outdoors
         </Text>{' '}
         you depend on soil
