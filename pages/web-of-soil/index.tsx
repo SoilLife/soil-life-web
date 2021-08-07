@@ -13,7 +13,7 @@ import { webOfSoilSubheadings } from 'data/main-headings';
 // helpers
 import { DefaultLayout } from 'layouts';
 import { useMediaHub } from 'helpers/use-media-hub';
-import { useWebOfSoils, Node } from 'helpers/use-web-of-soil';
+import { useWebOfSoils, Node, Edge } from 'helpers/use-web-of-soil';
 
 const options = {
   autoResize: true,
@@ -196,21 +196,24 @@ export default function WebOfSoilPage() {
   function handleGraphEvent(type: 'food' | 'filter' | 'fiber' | 'fun' | 'farmaceutical' | 'foundation') {
     return {
       select({ nodes }: { nodes: string[] }) {
-        switch (type) {
-          case 'food':
-            const [id] = nodes;
-
-            if (id) {
-              const selectedNode = foodGraph.nodes.find((node) => node.id === id);
-              const connectedNodes = foodGraph.nodes.filter((node) => node.to.includes(id));
-              if (selectedNode) {
-                const nodeSelections = [selectedNode, ...connectedNodes];
-                setNodeSelections(nodeSelections);
-              }
-              handleOpenWebOfSoilModal();
-            }
-            break;
+        const graphs: { [Type in typeof type]: { nodes: Node[]; edges: Edge[] } } = {
+          farmaceutical: farmaceuticalGraph,
+          fiber: fiberGraph,
+          filter: filterGraph,
+          food: foodGraph,
+          foundation: foundationsGraph,
+          fun: funGraph,
+        };
+        const [id] = nodes;
+        if (id) {
+          const connectedNodes = graphs[type].nodes.filter((node) => node.to.includes(id));
+          const selectedNode = graphs[type].nodes.find((node) => node.id === id);
+          if (selectedNode) {
+            const nodeSelections = [selectedNode, ...connectedNodes];
+            setNodeSelections(nodeSelections);
+          }
         }
+        handleOpenWebOfSoilModal();
       },
     };
   }
