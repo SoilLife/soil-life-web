@@ -15,7 +15,7 @@ export type Node = {
   size?: number;
 };
 
-type Edge = {
+export type Edge = {
   from: string;
   to: string;
   length?: number;
