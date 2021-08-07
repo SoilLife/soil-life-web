@@ -177,10 +177,16 @@ export default function WebOfSoilPage() {
   function SlideButtons({ leftImage, rightImage }: { leftImage: string; rightImage: string }) {
     return (
       <>
-        <button className='f-slide-left absolute left-0 top-1/2 transform -translate-y-1/2' onClick={moveSlideLeft}>
+        <button
+          className='hidden absolute left-0 top-1/2 transform -translate-y-1/2 lg:inline-block'
+          onClick={moveSlideLeft}
+        >
           <img src={leftImage} />
         </button>
-        <button className='f-slide-right absolute right-0 top-1/2 transform -translate-y-1/2' onClick={moveSlideRight}>
+        <button
+          className='hidden absolute right-0 top-1/2 transform -translate-y-1/2 lg:inline-block'
+          onClick={moveSlideRight}
+        >
           <img src={rightImage} />
         </button>
       </>
@@ -257,10 +263,24 @@ export default function WebOfSoilPage() {
               <>
                 <Section>
                   <Slide>
-                    <Image className='object-cover' url='/6Fs/brooke-lark-08bOYnH_r_E-unsplash_Nsw5XgGxU.jpg' />
-                    <div className='absolute top-1/2 left-1/2 transform -translate-y-1/2 max-w-[566px]'>
-                      <img className='relative -left-10 h-[241px] w-[241px]' src='/images/web-of-soil/icon-food.png' />
-                      <Text type='p' weight='regular' size='md'>
+                    <Image
+                      className='object-cover object-center'
+                      url='/6Fs/brooke-lark-08bOYnH_r_E-unsplash_Nsw5XgGxU.jpg'
+                    />
+                    <div
+                      className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
+                     lg:block lg:p-0 lg:h-auto lg:w-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:max-w-[566px]`}
+                    >
+                      <img
+                        className='relative top-10 mx-auto h-[168px] w-[168px] lg:top-auto lg:mx-0 lg:-left-10 lg:h-[241px] lg:w-[241px]'
+                        src='/images/web-of-soil/icon-food.png'
+                      />
+                      <Text
+                        type='p'
+                        weight='regular'
+                        size='md'
+                        className='bg-white rounded-lg p-6 max-w-md lg:bg-transparent lg:p-0'
+                      >
                         whether it is a plant that grew in it or an animal that grew from plants, 95% of all food can be
                         traced back to soil!
                       </Text>
@@ -273,16 +293,23 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
-                    <SlideButtons
-                      leftImage='/images/web-of-soil/fun-arrow-left.png'
-                      rightImage='/images/web-of-soil/fiber-arrow-right.png'
-                    />
                   </Slide>
                   <Slide>
                     <Image className='object-cover' url='/6Fs/Fiber_Slide_NkVYdxIN7-t.jpg' />
-                    <div className='absolute top-1/2 right-1/2 transform -translate-y-1/2 max-w-[566px]'>
-                      <img className='relative -left-10 h-[241px] w-[241px]' src='/images/web-of-soil/icon-fiber.png' />
-                      <Text type='p' weight='regular' size='md'>
+                    <div
+                      className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
+                     lg:block lg:left-auto lg:p-0 lg:h-auto lg:w-auto lg:top-1/2 lg:right-1/2 lg:transform lg:-translate-y-1/2 lg:max-w-[566px]`}
+                    >
+                      <img
+                        className='relative top-10 mx-auto h-[168px] w-[168px] lg:mx-0 lg:top-auto lg:-left-10 lg:h-[241px] lg:w-[241px]'
+                        src='/images/web-of-soil/icon-fiber.png'
+                      />
+                      <Text
+                        type='p'
+                        weight='regular'
+                        size='md'
+                        className='bg-white rounded-lg p-6 max-w-md lg:bg-transparent lg:p-0'
+                      >
                         natural? synthetic? paper or plastic? from clothing to accessories to wood and oil, all that
                         warms and protects us, starts in the soil.
                       </Text>
@@ -295,16 +322,23 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
-                    <SlideButtons
-                      leftImage='/images/web-of-soil/food-arrow-left.png'
-                      rightImage='/images/web-of-soil/filter-arrow-right.png'
-                    />
                   </Slide>
                   <Slide>
                     <Image className='object-cover' url='/6Fs/Filter_zylk3NyhU.jpg' transformation={[{ rotate: 90 }]} />
-                    <div className='text-center absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 max-w-[886px]'>
-                      <img className='mx-auto h-[241px] w-[241px]' src='/images/web-of-soil/icon-filter.png' />
-                      <Text type='p' weight='regular' size='md'>
+                    <div
+                      className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
+                    text-center lg:p-0 lg:h-auto lg:w-auto lg:block lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/2 lg:max-w-[886px]`}
+                    >
+                      <img
+                        className='relative top-10 mx-auto h-[168px] w-[168px] lg:mx-0 lg:static lg:top-auto lg:h-[241px] lg:w-[241px]'
+                        src='/images/web-of-soil/icon-filter.png'
+                      />
+                      <Text
+                        type='p'
+                        weight='regular'
+                        size='md'
+                        className='bg-white rounded-lg p-6 max-w-md lg:bg-transparent lg:p-0'
+                      >
                         soils are the lungs and liver of the earth, removing contaminants from the air we breathe and
                         the water we drink, free of charge!
                       </Text>
@@ -317,17 +351,24 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
-                    <SlideButtons
-                      leftImage='/images/web-of-soil/fiber-arrow-left.png'
-                      rightImage='/images/web-of-soil/foundations-arrow-right.png'
-                    />
                   </Slide>
                   <Slide>
                     <Image className='object-cover' url='/6Fs/Foundation_sl5IYmaDB.jpg' />
-                    <div className='flex items-center justify-center absolute w-full top-1/2 transform -translate-y-3/4'>
-                      <img className='h-[241px] w-[241px]' src='/images/web-of-soil/icon-foundation.png' />
-                      <div className='w-[760px]'>
-                        <Text type='p' weight='regular' size='md' className='text-white'>
+                    <div
+                      className='p-6 flex flex-col h-full w-full items-center justify-center absolute top-0 left-0
+                    lg:p-0 lg:left-auto lg:flex-row lg:h-auto lg:top-1/2 lg:transform lg:-translate-y-3/4'
+                    >
+                      <img
+                        className='relative top-10 h-[168px] w-[168px] lg:static lg:top-auto lg:h-[241px] lg:w-[241px]'
+                        src='/images/web-of-soil/icon-foundation.png'
+                      />
+                      <div className='lg:w-[760px]'>
+                        <Text
+                          type='p'
+                          weight='regular'
+                          size='md'
+                          className='bg-white rounded-lg p-6 max-w-md lg:max-w-none lg:bg-transparent lg:p-0 lg:text-white'
+                        >
                           the base of our economy, the base of food webs, and the physical base of our cities, soils are
                           literally the foundation for life and civilization—past and present!
                         </Text>
@@ -341,19 +382,23 @@ export default function WebOfSoilPage() {
                         </div>
                       </div>
                     </div>
-                    <SlideButtons
-                      leftImage='/images/web-of-soil/filter-arrow-left.png'
-                      rightImage='/images/web-of-soil/farmaceuticals-arrow-right.png'
-                    />
                   </Slide>
                   <Slide>
-                    <Image className='object-cover' url='/6Fs/cup_of_pills_ioFvZZ0lo.png' />
-                    <div className='absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/4 max-w-[767px]'>
+                    <Image className='object-cover object-left' url='/6Fs/cup_of_pills_ioFvZZ0lo.png' />
+                    <div
+                      className={`p-6 flex flex-col h-full w-full items-center justify-center absolute top-0 left-0
+                    lg:p-0 lg:block lg:h-auto lg:w-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/4 lg:max-w-[767px]`}
+                    >
                       <img
-                        className='relative -left-10 h-[241px] w-[241px]'
+                        className='relative top-10 h-[168px] w-[168px] lg:-left-10 lg:top-auto lg:h-[241px] lg:w-[241px]'
                         src='/images/web-of-soil/icon-farmaceutical.png'
                       />
-                      <Text type='p' weight='regular' size='md'>
+                      <Text
+                        type='p'
+                        weight='regular'
+                        size='md'
+                        className='bg-white rounded-lg p-6 max-w-md lg:bg-transparent lg:p-0'
+                      >
                         soils are home to the plants, fungi, & bacteria that produce most of the world’s medicine — and
                         ~98% of the microbes that inhabit it are yet to be discovered!
                       </Text>
@@ -366,17 +411,24 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
-                    <SlideButtons
-                      leftImage='/images/web-of-soil/foundations-arrow-left.png'
-                      rightImage='/images/web-of-soil/fun-arrow-right.png'
-                    />
                   </Slide>
                   <Slide>
                     <Image className='object-cover' url='/6Fs/Fun_XHWRw699s.jpg' />
-                    <div className='flex justify-center absolute w-full bottom-1/4 transform'>
-                      <img className='h-[241px] w-[241px]' src='/images/web-of-soil/icon-fun.png' />
-                      <div className='w-[760px]'>
-                        <Text type='p' weight='regular' size='md'>
+                    <div
+                      className={`p-6 flex flex-col items-center justify-center h-full w-full absolute top-0 left-0
+                   lg:p-0 lg:h-auto lg:left-auto lg:top-auto lg:flex-row lg:bottom-1/4`}
+                    >
+                      <img
+                        className='relative top-10 h-[168px] w-[168px] lg:top-auto lg:h-[241px] lg:w-[241px]'
+                        src='/images/web-of-soil/icon-fun.png'
+                      />
+                      <div className='lg:w-[760px]'>
+                        <Text
+                          type='p'
+                          weight='regular'
+                          size='md'
+                          className='bg-white rounded-lg p-6 max-w-md lg:max-w-none lg:bg-transparent lg:p-0'
+                        >
                           from paints and pottery to playing fields and parks, soils provide the grounds for music,
                           sports, and art!
                         </Text>
@@ -390,10 +442,6 @@ export default function WebOfSoilPage() {
                         </div>
                       </div>
                     </div>
-                    <SlideButtons
-                      leftImage='/images/web-of-soil/farmaceuticals-arrow-left.png'
-                      rightImage='/images/web-of-soil/food-arrow-right.png'
-                    />
                   </Slide>
                 </Section>
 

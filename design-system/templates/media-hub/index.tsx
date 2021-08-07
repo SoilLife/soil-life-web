@@ -89,12 +89,12 @@ export function MediaHub({
                   <Text
                     type='p'
                     weight='regular'
-                    size='md'
+                    size='sm'
                     className='py-1 px-10 md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 text-white'
                   >
                     {key}
                   </Text>
-                  <Text type='p' weight='light' size='xs' className='pr-10 text-right'>
+                  <Text type='p' weight='light' size='xxs' className='pr-10 text-right'>
                     ({filteredMedia.length})
                   </Text>
                 </div>
@@ -102,7 +102,7 @@ export function MediaHub({
                 <div
                   className={`media-hub__scroll__container relative overflow-y-hidden flex items-center overflow-x-auto mx-10 ${
                     styles['media-container']
-                  } ${compact ? 'min-h-[260px]' : ' min-h-[260px]'}`}
+                  } ${compact ? 'min-h-[260px]' : ' min-h-[320px]'}`}
                 >
                   <div className={`flex gap-4 items-center ${styles['media-section']}`}>
                     {filteredMedia?.map((medium, index) => {
@@ -165,8 +165,8 @@ export function MediaHub({
                             <Text
                               type='p'
                               weight='light'
-                              size='xs'
-                              className='absolute top-[calc(105%);] text-sm transition-all ease-in duration-500 group-hover:top-auto group-hover:p-4 group-hover:bottom-0 group-hover:text-xs group-hover:text-pink-500 pointer-events-none'
+                              size='xxs'
+                              className='absolute top-[calc(105%);] text-sm transition-all ease-in duration-500 group-hover:top-auto group-hover:p-4 group-hover:bottom-0 group-hover:text-pink-500 pointer-events-none'
                             >
                               {medium.Title}
                             </Text>
