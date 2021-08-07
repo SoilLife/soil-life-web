@@ -45,7 +45,7 @@ export function HealthySoilsSection() {
               <div>
                 <Image url={photoUrl} loading='lazy' className='sm:hidden object-cover' />
               </div>
-              <Text type='p' weight='light' size='md' className='p-4 sm:p-0'>
+              <Text type='p' weight='light' size='md' className='p-4 sm:p-0' style={{ lineHeight: '55px' }}>
                 {content}
               </Text>
             </div>
