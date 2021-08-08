@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Footer, MediaHub, MobileNavMenu } from 'design-system/templates';
 import { Section, Slide, Image, Icon, Modal, Text } from 'design-system/atoms';
 import { VisGraph } from 'design-system/components';
+import ReactModal from 'react-modal';
 import ReactFullpage from '@fullpage/react-fullpage';
 import ReactPlayer from 'react-player';
 
@@ -76,7 +77,7 @@ export default function WebOfSoilPage() {
   const [sections, setSections] = useState<HTMLDivElement[]>([]);
   const fullPageRef = useRef<any>(null);
   const [hideHeader, setHideHeader] = useState(false);
-  const [nodeSelections, setNodeSelections] = useState<Node[]>([]);
+  const [nodeSelections, setNodeSelections] = useState<(Node & { active: boolean })[]>([]);
   const { media } = useMediaHub();
   const { graph: foodGraph } = useWebOfSoils('food data structure');
   const { graph: fiberGraph } = useWebOfSoils('fiber data structure');
@@ -206,15 +207,25 @@ export default function WebOfSoilPage() {
         };
         const [id] = nodes;
         if (id) {
-          const connectedNodes = graphs[type].nodes.filter((node) => node.to.includes(id));
+          const connectedNodes = graphs[type].nodes
+            .filter((node) => node.to.includes(id))
+            .map((node) => ({ ...node, active: false }));
           const selectedNode = graphs[type].nodes.find((node) => node.id === id);
+
           if (selectedNode) {
-            const nodeSelections = [selectedNode, ...connectedNodes];
+            const nodeSelections = [{ ...selectedNode, active: true }, ...connectedNodes];
             setNodeSelections(nodeSelections);
           }
         }
         handleOpenWebOfSoilModal();
       },
+    };
+  }
+
+  function handleWebOfSoilModalNodeClick(node: Node) {
+    return () => {
+      const nodes = nodeSelections.map((n) => ({ ...n, active: n.id === node.id }));
+      setNodeSelections(nodes);
     };
   }
 
@@ -593,27 +604,95 @@ export default function WebOfSoilPage() {
           />
         </div>
       </Modal>
-      <Modal
-        handleClose={handleCloseWebOfSoilModal}
+      <ReactModal
         isOpen={isWebOfSoilMModalOpen}
-        slides={{ count: 1, activeSlideIndex: 0 }}
+        onRequestClose={handleCloseWebOfSoilModal}
+        style={{
+          content: {
+            padding: 0,
+            inset: 20,
+          },
+        }}
       >
-        <div className='bg-white p-10 flex justify-center space-x-10 mx-auto'>
-          {nodeSelections.map((node) => (
-            <div key={node.id}>
-              <div>
-                <img src={node.image} className='h-40 w-40 object-cover rounded-full' />
-                <Text type='h2' weight='regular' size='xl'>
-                  {node.label}
-                </Text>
-                <Text type='p' weight='light' size='md'>
-                  {node.description}
-                </Text>
-              </div>
-            </div>
-          ))}
+        <div className='relative bg-white mx-auto flex flex-col p-4 sm:p-8'>
+          <div className='absolute top-2 right-2 sm:top-6 sm:right-6'>
+            <button onClick={handleCloseWebOfSoilModal}>
+              <Icon icon='x' size='32' className='text-yellow-500' />
+            </button>
+          </div>
+          <div className='flex justify-evenly items-center overflow-x-auto space-x-2 sm:space-x-10'>
+            {nodeSelections.map((node) => {
+              return (
+                <div key={node.id} className='flex-shrink-0 text-center'>
+                  <Text type='h2' weight='light' size={node.active ? 'lg' : 'sm'}>
+                    {node.label}
+                  </Text>
+                  <img
+                    src={node.image}
+                    className={`object-cover rounded-full mx-auto border-2 border-solid border-pink-500 ${
+                      node.active ? 'h-20 w-20 sm:h-40 sm:w-40' : 'h-10 w-10 sm:h-20 sm:w-20 cursor-pointer'
+                    }`}
+                    onClick={handleWebOfSoilModalNodeClick(node)}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <div className='mt-10 mx-auto'>
+            {nodeSelections.map((node) => {
+              if (node.active && !node.to.length) {
+                return (
+                  <Text type='p' weight='light' size='xs' className='max-w-3xl mx-auto'>
+                    {node.description}
+                  </Text>
+                );
+              } else if (node.active) {
+                let _connectedNodes: Node[] = [];
+
+                function findConnectedNodes(node: Node) {
+                  const graphs: { [Type in typeof activeHeader]: { nodes: Node[]; edges: Edge[] } } = {
+                    0: foodGraph,
+                    1: fiberGraph,
+                    2: filterGraph,
+                    3: foundationsGraph,
+                    4: farmaceuticalGraph,
+                    5: funGraph,
+                  };
+                  const connectedNodes = graphs?.[activeHeader]?.nodes.filter((n) => n.to.includes(node.id)) ?? [];
+                  for (const n of connectedNodes) {
+                    _connectedNodes.push(n);
+                    findConnectedNodes(n);
+                  }
+                }
+
+                findConnectedNodes(node);
+
+                return (
+                  <div className='flex flex-col space-y-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'>
+                    <div className='flex-shrink-0 space-y-6'>
+                      <img src={node.image} className='max-h-48' />
+                      <Text type='p' weight='light' size='xs' className='max-w-md mx-auto'>
+                        {node.description}
+                      </Text>
+                    </div>
+                    {_connectedNodes.map((n) => {
+                      return (
+                        <div key={n.id} className='flex-shrink-0 space-y-6'>
+                          <img src={n.image} className='max-h-48 w-full' />
+                          <Text type='p' weight='light' size='xs' className='max-w-md mx-auto'>
+                            {n.description}
+                          </Text>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
         </div>
-      </Modal>
+      </ReactModal>
     </>
   );
 }
