@@ -13,7 +13,7 @@ export function OurMissionSection() {
           sm:translate-y-0 sm:max-w-lg sm:shadow-none
           2xl:max-w-3xl`}
           >
-            <Text type='h1' weight='regular' size='xl' className={`text-pink-500 mb-4 sm:mb-10`}>
+            <Text type='h1' weight='regular' size='2xl' className={`text-pink-500 mb-4 sm:mb-10`}>
               our mission
             </Text>
             <div className='space-y-10'>
