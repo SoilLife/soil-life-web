@@ -98,10 +98,10 @@ export function OurValuesSection() {
                       className={`absolute inset-0 w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-teal-600 to-transparent text-white`}
                     >
                       <div className='flex space-x-2 mb-8'>
-                        <Text type='p' weight='medium' size='sm'>
+                        <Text type='p' weight='medium' size='md'>
                           {index + 1}
                         </Text>
-                        <Text type='p' weight='medium' size='sm'>
+                        <Text type='p' weight='medium' size='md'>
                           {label}
                         </Text>
                       </div>
@@ -126,15 +126,15 @@ export function OurValuesSection() {
                     }`}
                   >
                     {isActive ? (
-                      <Text type='p' weight='light' size='xs'>
+                      <Text type='p' weight='light' size='xxs'>
                         {content}
                       </Text>
                     ) : (
                       <div>
-                        <Text type='p' weight='medium' size='sm'>
+                        <Text type='p' weight='medium' size='md'>
                           {index + 1}
                         </Text>
-                        <Text type='p' weight='medium' size='sm'>
+                        <Text type='p' weight='medium' size='md'>
                           {label}
                         </Text>
                       </div>
