@@ -10,7 +10,7 @@ export function OurTeamSection() {
           <Text
             type='h1'
             weight='regular'
-            size='xl'
+            size='2xl'
             className='absolute w-full text-center text-white top-8 md:w-auto md:top-20 md:left-40'
           >
             our team
