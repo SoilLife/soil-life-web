@@ -333,7 +333,7 @@ export default function WebOfSoilPage() {
                     text-center lg:p-0 lg:h-auto lg:w-auto lg:block lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/2 lg:max-w-[886px]`}
                     >
                       <img
-                        className='relative top-10 mx-auto h-[168px] w-[168px] lg:mx-0 lg:static lg:top-auto lg:h-[241px] lg:w-[241px]'
+                        className='relative top-10 mx-auto h-[168px] w-[168px] lg:static lg:top-auto lg:h-[241px] lg:w-[241px]'
                         src='/images/web-of-soil/icon-filter.png'
                       />
                       <Text
