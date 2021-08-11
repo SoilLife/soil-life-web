@@ -8,7 +8,10 @@ export function GetInvolvedSection() {
       <div className='px-10 absolute bottom-10 w-full flex flex-col lg:items-center lg:flex-row lg:space-x-10 2xl:space-x-20'>
         <div className='text-white tw-space-y-6'>
           <Text type='h2' weight='light' size='3xl'>
-            soil does so much for us,
+            soil does so
+          </Text>
+          <Text type='h2' weight='light' size='3xl'>
+            much for us,
           </Text>
           <Text type='h2' weight='bold' size='3xl'>
             find out what you
