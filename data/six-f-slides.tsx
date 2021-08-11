@@ -6,7 +6,7 @@ const commonProps: {
   subtext: string;
   button: ButtonProps;
 } = {
-  subtext: 'soils are the fundamental to life on earth.',
+  subtext: 'soils are fundamental to life on earth.',
   button: {
     as: 'link',
     size: 'md',
