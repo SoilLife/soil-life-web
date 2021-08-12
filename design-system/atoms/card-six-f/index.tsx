@@ -12,7 +12,7 @@ export function Card6F({ type, subtext, href, icon, text, className, button }: C
       ${className}`}
     >
       <div
-        className={`absolute bottom-[90%] sm:bottom-[80%] left-1/2 transform -translate-x-1/2 h-24 w-24 sm:h-[160px] sm:w-[160px] rounded-full ${cardSixFTypeMap[type]}`}
+        className={`absolute left-1/2 transform -translate-x-1/2 h-24 w-24 rounded-full bottom-[90%] sm:bottom-[80%] sm:h-[160px] sm:w-[160px] ${cardSixFTypeMap[type]}`}
       >
         <img src={icon} />
       </div>
