@@ -21,6 +21,10 @@ const options = {
   layout: {
     hierarchical: false,
   },
+  interaction: {
+    dragNodes: false,
+    zoomView: false,
+  },
   nodes: {
     size: 30,
     borderWidth: 0,
@@ -34,6 +38,11 @@ const options = {
   },
   edges: {
     color: 'rgb(91, 80, 82)',
+    arrows: {
+      to: {
+        enabled: false,
+      },
+    },
   },
   height: '100%',
   width: '100%',
@@ -629,7 +638,7 @@ export default function WebOfSoilPage() {
                   </Text>
                   <img
                     src={node.image}
-                    className={`object-cover rounded-full mx-auto border-2 border-solid border-pink-500 ${
+                    className={`object-cover rounded-full mx-auto border- border-solid border-pink-500 ${
                       node.active ? 'h-20 w-20 sm:h-40 sm:w-40' : 'h-10 w-10 sm:h-20 sm:w-20 cursor-pointer'
                     }`}
                     onClick={handleWebOfSoilModalNodeClick(node)}
