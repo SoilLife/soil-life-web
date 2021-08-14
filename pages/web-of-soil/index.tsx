@@ -619,7 +619,7 @@ export default function WebOfSoilPage() {
         style={{
           content: {
             padding: 0,
-            inset: 20,
+            inset: '10%',
           },
         }}
       >
@@ -651,7 +651,7 @@ export default function WebOfSoilPage() {
             {nodeSelections.map((node) => {
               if (node.active && !node.to.length) {
                 return (
-                  <Text type='p' weight='light' size='xs' className='max-w-3xl mx-auto'>
+                  <Text key={node.label} type='p' weight='light' size='xs' className='max-w-3xl mx-auto'>
                     {node.description}
                   </Text>
                 );
@@ -677,7 +677,10 @@ export default function WebOfSoilPage() {
                 findConnectedNodes(node);
 
                 return (
-                  <div className='py-8 flex flex-col space-y-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'>
+                  <div
+                    key={node.label}
+                    className='py-8 flex flex-col space-y-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'
+                  >
                     <div className='flex-shrink-0 space-y-6'>
                       <Text type='h2' weight='regular' size='lg' className='mb-6 text-pink-500 text-center'>
                         {node.label}
