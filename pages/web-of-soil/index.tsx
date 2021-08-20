@@ -685,7 +685,7 @@ export default function WebOfSoilPage() {
                       <Text type='h2' weight='regular' size='lg' className='mb-6 text-pink-500 text-center'>
                         {node.label}
                       </Text>
-                      <img src={node.image} className='max-h-48 object-cover mx-auto my-0' />
+                      <img src={node.image} className='h-full max-h-48 object-cover mx-auto my-0' />
                       <Text type='p' weight='light' size='xs' className='max-w-md mx-auto'>
                         {node.description}
                       </Text>

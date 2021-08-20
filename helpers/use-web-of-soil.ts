@@ -104,7 +104,13 @@ export function useWebOfSoils(
                     case 'image':
                       const regexp = new RegExp(/^https|^http/i);
                       if (regexp.test(cell)) {
-                        node.image = cell;
+                        if (/imagekit.io/gim.test(cell)) {
+                          const url = new URL(cell);
+                          url.searchParams.set('tr', 'q-80,w-200,c-at_max,pr-true');
+                          node.image = url.toString();
+                        } else {
+                          node.image = cell;
+                        }
                       }
                       break;
                     case 'to':
