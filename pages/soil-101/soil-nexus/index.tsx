@@ -242,19 +242,6 @@ export default function SoilNexusPage() {
           </div>
         </div>
       </Section>
-      <Section>
-        <div className='container py-16 h-full grid grid-cols-12'>
-          <SidePanel currentSection={currentSection} onClick={handleClick} />
-
-          <div className='col-span-10 pl-10 space-y-8'>
-            <Text type='h1' weight='bold' size='2xl' className='text-pink-500'>
-              soil forming factors
-            </Text>
-
-            <SoilFormation className='h-[668px] mx-auto' />
-          </div>
-        </div>
-      </Section>
 
       <Section>
         <div className='container py-16 h-full grid grid-cols-12'>
@@ -264,8 +251,6 @@ export default function SoilNexusPage() {
             <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
               soil forming factors
             </Text>
-
-            <SoilFormation className='h-[668px] mx-auto' />
           </div>
         </div>
       </Section>
