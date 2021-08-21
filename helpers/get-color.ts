@@ -18,7 +18,7 @@ const colorMap = {
       active: '',
     },
     border: {
-      idle: 'border border-solid border-blue-500',
+      idle: 'border-blue-500',
       hover: '',
       active: '',
     },
@@ -40,7 +40,7 @@ const colorMap = {
       active: '',
     },
     border: {
-      idle: 'border border-solid border-gray-500',
+      idle: 'border-gray-500',
       hover: '',
       active: '',
     },
@@ -62,7 +62,7 @@ const colorMap = {
       active: '',
     },
     border: {
-      idle: 'border border-solid border-orange-500',
+      idle: 'border-orange-500',
       hover: '',
       active: '',
     },
@@ -84,7 +84,7 @@ const colorMap = {
       active: '',
     },
     border: {
-      idle: 'border border-solid border-pink-500',
+      idle: 'border-pink-500',
       hover: '',
       active: '',
     },
@@ -106,7 +106,7 @@ const colorMap = {
       active: '',
     },
     border: {
-      idle: 'border border-solid border-teal-500',
+      idle: 'border-teal-500',
       hover: '',
       active: '',
     },
@@ -128,7 +128,7 @@ const colorMap = {
       active: '',
     },
     border: {
-      idle: 'border border-solid border-yellow-500',
+      idle: 'border-yellow-500',
       hover: '',
       active: '',
     },
@@ -140,14 +140,14 @@ export function getColor({
   type,
   state,
 }: {
-  color: 'blue' | 'gray' | 'orange' | 'pink' | 'teal' | 'yellow';
+  color: Color;
   type: 'text' | 'bg' | 'gradient' | 'border';
   state: 'idle' | 'hover' | 'active';
 }): string {
   return colorMap[color][type][state];
 }
 
-export function getButtonType(color: 'blue' | 'gray' | 'orange' | 'pink' | 'teal' | 'yellow'): ButtonProps['type'] {
+export function getButtonType(color: Color): ButtonProps['type'] {
   switch (color) {
     case 'blue':
       return 'primary';
