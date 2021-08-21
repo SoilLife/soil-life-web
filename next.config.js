@@ -10,13 +10,4 @@ module.exports = {
 
     return config;
   },
-  async redirects() {
-    return [
-      {
-        source: '/soil-101',
-        destination: '/soil-101/soil-nexus',
-        permanent: true,
-      },
-    ];
-  },
 };
