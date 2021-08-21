@@ -11,8 +11,8 @@ import { ButtonProps } from 'design-system/atoms/button/button.interfaces';
 import { CardGetInvolvedProps } from 'design-system/atoms/card-get-involved/card-get-involved.interfaces';
 import { getInvolvedHeadings } from 'data/main-headings';
 
-function ReturnHomeButton({ color }: { color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'gray' }) {
-  function getButtonType(color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'gray'): ButtonProps['type'] {
+function ReturnHomeButton({ color }: { color: Color }) {
+  function getButtonType(color: Color): ButtonProps['type'] {
     switch (color) {
       case 'blue':
         return 'primary';
@@ -51,7 +51,7 @@ export function GetInvolvedSection({
 }: {
   title: string;
   cards: Omit<CardGetInvolvedProps, 'index' | 'color'>[];
-  color: 'pink' | 'blue' | 'orange' | 'yellow' | 'teal' | 'gray';
+  color: Color;
 }) {
   let textColor = getColor({ color, type: 'text', state: 'idle' });
 

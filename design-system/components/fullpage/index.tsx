@@ -11,11 +11,9 @@ import { Header } from 'design-system/templates';
 // interfaces
 import { FullPageProps } from './fullpage.interfaces';
 
-export function FullPage({ type, subHeaderProps, children }: FullPageProps) {
+export function FullPage({ type, subHeaderProps, children, afterLoad }: FullPageProps) {
   const { state, dispatch } = useAppContext();
-
   const fullPageRef = useRef<any>(null);
-  const slideRef = useRef<NodeJS.Timeout | null>(null);
   const [hideHeader, setHideHeader] = useState(false);
 
   useEffect(() => {
@@ -35,12 +33,6 @@ export function FullPage({ type, subHeaderProps, children }: FullPageProps) {
     }
   };
 
-  function autoslide() {
-    if (fullPageRef.current) {
-      fullPageRef.current.fullpageApi.moveSlideRight();
-    }
-  }
-
   return (
     <DefaultLayout>
       {type === 'home' ? (
@@ -58,18 +50,10 @@ export function FullPage({ type, subHeaderProps, children }: FullPageProps) {
         showActiveTooltip
         loading='lazy'
         onLeave={handleSectionLeave}
-        afterLoad={(_origin: any, destination: any, _direction: any) => {
-          if (destination.item?.classList?.contains('section-home-six-f')) {
-            if (!slideRef.current) {
-              slideRef.current = setInterval(autoslide, 3000);
-            }
-          } else if (slideRef.current) {
-            clearInterval(slideRef.current);
-          }
-        }}
         render={() => {
           return <ReactFullpage.Wrapper>{children}</ReactFullpage.Wrapper>;
         }}
+        {...(afterLoad ? { afterLoad: afterLoad(fullPageRef) } : undefined)}
       />
     </DefaultLayout>
   );
