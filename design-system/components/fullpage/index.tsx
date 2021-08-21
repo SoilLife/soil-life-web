@@ -46,7 +46,7 @@ export function FullPage({ type, subHeaderProps, children }: FullPageProps) {
       {type === 'home' ? (
         <Header.Main fullpageRef={fullPageRef} hideHeader={hideHeader} />
       ) : (
-        subHeaderProps && <Header.Sub {...subHeaderProps} />
+        subHeaderProps && <Header.Sub hideHeader={hideHeader} {...subHeaderProps} />
       )}
       <ReactFullpage
         ref={fullPageRef}

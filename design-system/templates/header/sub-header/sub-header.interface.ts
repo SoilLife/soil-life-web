@@ -6,4 +6,5 @@ export interface SubHeaderProps {
     asset: string;
   }[];
   className?: string;
+  hideHeader?: boolean;
 }

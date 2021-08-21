@@ -11,7 +11,7 @@ import { Icon, Text } from 'design-system/atoms';
 import { MobileNavMenu } from '../../mobile-nav-menu';
 
 const navLinks = [
-  { name: 'soils 101' },
+  { name: 'soil 101' },
   { name: 'web of soil' },
   { name: 'media' },
   { name: 'get involved' },

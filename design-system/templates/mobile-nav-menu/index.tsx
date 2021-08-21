@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const navLinks = [
   { name: 'home' },
-  { name: 'soils 101' },
+  { name: 'soil 101' },
   { name: 'web of soil' },
   { name: 'media' },
   { name: 'get involved' },
