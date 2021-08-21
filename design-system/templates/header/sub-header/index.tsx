@@ -11,7 +11,7 @@ import { MobileNavMenu } from '../../mobile-nav-menu';
 // interfaces
 import { SubHeaderProps } from './sub-header.interface';
 
-export function SubHeader({ pathName, headings, className }: SubHeaderProps) {
+export function SubHeader({ pathName, headings, className, hideHeader }: SubHeaderProps) {
   const route = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -35,7 +35,11 @@ export function SubHeader({ pathName, headings, className }: SubHeaderProps) {
 
   return (
     <>
-      <div className={`absolute top-0 w-full z-20 ${className}`}>
+      <header
+        className={`fixed top-0 w-full z-20 transition-all ease-out transform ${
+          hideHeader ? 'translate-y-[-105%]' : ''
+        } ${className}`}
+      >
         <nav className='container'>
           <ul className='flex items-center justify-between h-10 sm:h-16'>
             <li>
@@ -66,7 +70,7 @@ export function SubHeader({ pathName, headings, className }: SubHeaderProps) {
             })}
           </ul>
         </nav>
-      </div>
+      </header>
       <MobileNavMenu isMenuOpen={isMenuOpen} />
     </>
   );

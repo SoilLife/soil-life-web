@@ -2,34 +2,34 @@ import { SubHeaderProps } from 'design-system/templates/header/sub-header/sub-he
 
 export const soil101Subheadings: SubHeaderProps['headings'] = [
   {
-    name: 'soil genesis',
-    slug: 'genesis',
-    asset: '/images/soils-101/genesis_white.svg',
+    name: 'soil nexus',
+    slug: 'soil-nexus',
+    asset: '/images/soil-101/genesis_white.svg',
   },
   {
-    name: 'soil habitat',
-    slug: 'habitat',
-    asset: '/images/soils-101/habitat_white.svg',
+    name: 'soil environment',
+    slug: 'soil-environment',
+    asset: '/images/soil-101/habitat_white.svg',
   },
   {
     name: 'soil biology',
-    slug: 'biology',
-    asset: '/images/soils-101/biology_white.svg',
+    slug: 'soil-biology',
+    asset: '/images/soil-101/biology_white.svg',
   },
   {
-    name: 'soil chemistry',
-    slug: 'chemistry',
-    asset: '/images/soils-101/chemistry_white.svg',
+    name: 'soil functions',
+    slug: 'soil-functions',
+    asset: '/images/soil-101/chemistry_white.svg',
   },
   {
-    name: 'soil nutrition',
-    slug: 'nutrition',
-    asset: '/images/soils-101/nutrition_white.svg',
+    name: 'soil orders',
+    slug: 'soil-orders',
+    asset: '/images/soil-101/nutrition_white.svg',
   },
   {
     name: 'soil health',
-    slug: 'health',
-    asset: '/images/soils-101/health_white.svg',
+    slug: 'soil-health',
+    asset: '/images/soil-101/health_white.svg',
   },
 ];
 
