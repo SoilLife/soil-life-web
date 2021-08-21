@@ -17,10 +17,11 @@ export function SubHeader({ pathName, headings, className, hideHeader }: SubHead
 
   function toggleMenu() {
     const body = document.querySelector('body');
+    const hasFullpage = document.querySelector('#fullpage');
 
     setIsMenuOpen((isOpen) => {
       if (isOpen) {
-        if (body) {
+        if (body && !hasFullpage) {
           body.style.overflowY = 'auto';
         }
         return false;

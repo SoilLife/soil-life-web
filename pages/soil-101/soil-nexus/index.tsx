@@ -58,6 +58,20 @@ export default function SoilNexusPage() {
           } else if (destination.index === 0) {
             setShowSidePanel(false);
           }
+          switch (destination.index) {
+            case 1:
+              setCurrentSection('soil nexus');
+              break;
+            case 3:
+              setCurrentSection('rock weathering');
+              break;
+            case 6:
+              setCurrentSection('soil formation');
+              break;
+            case 8:
+              setCurrentSection('soil processes');
+              break;
+          }
         }}
       >
         <SoilNexusHeroSection />
