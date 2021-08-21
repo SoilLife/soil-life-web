@@ -20,7 +20,7 @@ export function DigDeeperSection() {
           </Text>
         </div>
         <div className='text-center sm:static'>
-          <Link href='/soil-101'>
+          <Link href='/soil-101/soil-nexus'>
             <Button as='link' size='lg' type='secondary' label='dig in' />
           </Link>
         </div>

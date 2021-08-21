@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 // helpers
-import { kebabCase } from 'helpers/kebab-case';
 import { useMedia } from 'react-use';
 
 // components
@@ -11,19 +10,18 @@ import { Icon, Text } from 'design-system/atoms';
 import { MobileNavMenu } from '../../mobile-nav-menu';
 
 const navLinks = [
-  { name: 'soil 101' },
-  { name: 'web of soil' },
-  { name: 'media' },
-  { name: 'get involved' },
-  { name: 'about us' },
+  { name: 'soil 101', slug: '/soil-101/soil-nexus' },
+  { name: 'web of soil', slug: '/web-of-soil' },
+  { name: 'media', slug: '/media' },
+  { name: 'get involved', slug: '/get-involved' },
+  { name: 'about us', slug: '/about-us' },
 ];
 
 function createNavLinks() {
-  return navLinks.map(({ name }) => {
-    const link = kebabCase(name);
+  return navLinks.map(({ name, slug }) => {
     return (
-      <li key={link} className='text-center cursor-pointer xl:text-center xl:p-2 xl:py-0'>
-        <Link href={`/${link}`}>
+      <li key={name} className='text-center cursor-pointer xl:text-center xl:p-2 xl:py-0'>
+        <Link href={slug}>
           <a>
             <Text
               type='h3'
