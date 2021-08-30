@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <AppProvider>
         <IKContext urlEndpoint='https://ik.imagekit.io/q9koofhilw/'>
-          <div className='min-h-screen antialiased overflow-x-hidden'>
+          <div className='min-h-screen antialiased'>
             <DefaultSeo
               openGraph={{
                 type: 'website',

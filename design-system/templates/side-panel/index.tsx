@@ -26,24 +26,24 @@ export function SidePanel<T extends string>({
     type: 'border',
   });
   return (
-    <aside className={`fixed inset-y-0 left-0 h-full flex items-center py-20 ${textColor}`}>
-      <ul className={`space-y-5 h-full px-6 border-r border-solid ${borderColor}`}>
-        {sections.map((section) => (
-          <li key={section}>
-            <div className='inline-block cursor-pointer' onClick={onClick(section)}>
-              <Text
-                type='h3'
-                weight='medium'
-                size='sm'
-                className={`py-2 
+    <ul
+      className={`fixed top-1/4 left-0 w-max pt-4 pb-32 space-y-5 px-6 border-r border-solid ${textColor} ${borderColor}`}
+    >
+      {sections.map((section) => (
+        <li key={section}>
+          <div className='inline-block cursor-pointer' onClick={onClick(section)}>
+            <Text
+              type='h3'
+              weight='medium'
+              size='sm'
+              className={`py-2 
                 ${section === currentSection ? `border-solid border-b ${borderColor}` : ''}`}
-              >
-                {section}
-              </Text>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </aside>
+            >
+              {section}
+            </Text>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 }
