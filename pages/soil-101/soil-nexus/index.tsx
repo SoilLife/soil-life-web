@@ -5,19 +5,21 @@ import { soil101Subheadings } from 'data/main-headings';
 // components
 // import { SidePanel } from 'design-system/templates';
 import { SubHeader } from 'design-system/templates/header/sub-header';
+import { Footer } from 'design-system/templates/footer';
+import { DefaultLayout } from 'layouts';
 
 // sections
 import {
-  SoilNexusHeroSection,
-  SoilNexusIntroSection,
+  HeroSection,
+  IntroSection,
   EcosystemServicesSection,
   ParentMaterialSection,
   PmTypesSection,
   RockWeatheringSection,
-  SoilFormationSection,
-  SoilFormingFactorsSection,
-  SoilProcessesSection,
-} from 'layouts/sections/soil-101/soil-nexus';
+  FormationSection,
+  FormingFactorsSection,
+  ProcessesSection,
+} from 'layouts/sections/soil-101/nexus';
 
 // const sections = ['soil nexus', 'rock weathering', 'soil formation', 'soil processes', 'soil services'];
 
@@ -32,20 +34,21 @@ export default function SoilNexusPage() {
   // }
 
   return (
-    <>
+    <DefaultLayout>
       <SubHeader headings={soil101Subheadings} pathName='soil-101' className='bg-pink-500' />
-      <SoilNexusHeroSection />
+      <HeroSection />
       <div className='container relative'>
         {/* <SidePanel sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' /> */}
-        <SoilNexusIntroSection ref={soilNexusRef} />
+        <IntroSection ref={soilNexusRef} />
         <EcosystemServicesSection />
         <RockWeatheringSection />
         <ParentMaterialSection />
         <PmTypesSection />
-        <SoilFormationSection />
-        <SoilFormingFactorsSection />
-        <SoilProcessesSection />
+        <FormationSection />
+        <FormingFactorsSection />
+        <ProcessesSection />
       </div>
-    </>
+      <Footer />
+    </DefaultLayout>
   );
 }

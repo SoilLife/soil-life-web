@@ -7,7 +7,7 @@ import { Text } from 'design-system/atoms';
 import AirWaterMineralOrganic from 'public/images/soil-101/nexus/air_water_mineral_organic.svg';
 import NexusIntro from 'public/images/soil-101/nexus/nexus_intro.svg';
 
-export const SoilNexusIntroSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const IntroSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
   return (
     <div ref={ref} className='py-16 h-full grid grid-cols-12'>
       <div className='col-start-3 col-span-10 '>
