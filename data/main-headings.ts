@@ -7,8 +7,8 @@ export const soil101Subheadings: SubHeaderProps['headings'] = [
     asset: '/images/soil-101/genesis_white.svg',
   },
   {
-    name: 'soil environment',
-    slug: 'soil-environment',
+    name: 'soil physics',
+    slug: 'soil-physics',
     asset: '/images/soil-101/habitat_white.svg',
   },
   {
@@ -17,13 +17,13 @@ export const soil101Subheadings: SubHeaderProps['headings'] = [
     asset: '/images/soil-101/biology_white.svg',
   },
   {
-    name: 'soil functions',
-    slug: 'soil-functions',
+    name: 'soil chemistry',
+    slug: 'soil-chemistry',
     asset: '/images/soil-101/chemistry_white.svg',
   },
   {
-    name: 'soil orders',
-    slug: 'soil-orders',
+    name: 'soil diversity',
+    slug: 'soil-diversity',
     asset: '/images/soil-101/nutrition_white.svg',
   },
   {
