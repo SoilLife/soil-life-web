@@ -4,7 +4,7 @@ import { Image } from 'design-system/atoms';
 // assets
 import DownArrow from 'public/images/down_arrow_white.svg';
 
-export function SoilNexusHeroSection() {
+export function HeroSection() {
   return (
     <div className='max-h-screen relative h-full overflow-hidden'>
       <Image

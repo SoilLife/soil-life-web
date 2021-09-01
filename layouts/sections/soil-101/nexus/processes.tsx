@@ -4,7 +4,7 @@ import { Text } from 'design-system/atoms';
 // assets
 import SoilProcesses from 'public/images/soil-101/nexus/soil_processes.svg';
 
-export function SoilProcessesSection() {
+export function ProcessesSection() {
   return (
     <div className='py-16 h-full grid grid-cols-12'>
       <div className='col-start-3 col-span-10  space-y-8'>
