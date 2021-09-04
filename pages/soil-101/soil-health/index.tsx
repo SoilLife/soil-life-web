@@ -1,19 +1,45 @@
 import { soil101Subheadings } from 'data/main-headings';
 
-import { FullPage } from 'design-system/components/fullpage';
-import { Section } from 'design-system/atoms';
+// components
+// import { SidePanel } from 'design-system/templates';
+import { SubHeader } from 'design-system/templates/header/sub-header';
+import { Footer } from 'design-system/templates/footer';
+import { DefaultLayout } from 'layouts';
 
-export default function SoilHealthPage() {
+// sections
+import {
+  HeroSection,
+  WhatIsSection,
+  PrinciplesSection,
+  ManagingSection,
+  MeasuringSection,
+  RisksSection,
+} from 'layouts/sections/soil-101/health';
+
+// const sections = ['soil nexus', 'rock weathering', 'soil formation', 'soil processes', 'soil services'];
+
+export default function SoilBiologyPage() {
+  // const [currentSection, setCurrentSection] = useState('soil nexus');
+
+  // function handleClick(section: string) {
+  //   return () => {
+  //     setCurrentSection(section);
+  //   };
+  // }
+
   return (
-    <FullPage
-      type='main'
-      subHeaderProps={{
-        headings: soil101Subheadings,
-        pathName: 'soil-101',
-        className: 'bg-blue-500',
-      }}
-    >
-      <Section></Section>
-    </FullPage>
+    <DefaultLayout>
+      <SubHeader headings={soil101Subheadings} pathName='soil-101' className='bg-blue-500' />
+      <HeroSection />
+      <div className='container relative'>
+        {/* <SidePanel sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' /> */}
+        <WhatIsSection />
+        <PrinciplesSection />
+        <ManagingSection />
+        <MeasuringSection />
+        <RisksSection />
+      </div>
+      <Footer />
+    </DefaultLayout>
   );
 }
