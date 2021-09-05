@@ -19,7 +19,7 @@ export function OurVisionSection() {
         xl:max-w-2xl xl:p-10
         2xl:max-w-5xl`}
         >
-          <Text type='h1' weight='regular' size='2xl' className='text-orange-500 mb-4 sm:mb-10'>
+          <Text type='h1' weight='regular' size='3xl' className='text-orange-500 mb-4 sm:mb-10'>
             our vision
           </Text>
           <Text type='p' weight='light' size='md'>

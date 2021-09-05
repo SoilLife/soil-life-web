@@ -83,7 +83,7 @@ export function OurValuesSection() {
   return (
     <Section>
       <div className='container h-full flex flex-col items-center justify-center text-center'>
-        <Text type='h1' weight='regular' size='2xl' className='text-yellow-500 mb-4 sm:mb-10'>
+        <Text type='h1' weight='regular' size='3xl' className='text-yellow-500 mb-4 sm:mb-10'>
           our values
         </Text>
         {

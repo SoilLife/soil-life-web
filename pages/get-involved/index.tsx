@@ -35,7 +35,7 @@ export default function GetInvolvedPage() {
         <div
           className={`${styles['cta-message']} hidden absolute top-1/2 left-1/2 bg-white bg-opacity-80 px-28 py-6 z-20 whitespace-nowrap border border-solid border-gray-500 sm:block`}
         >
-          <Text type='h1' weight='thin' size='3xl'>
+          <Text type='h1' weight='thin' size='4xl'>
             how would you like to get involved?
           </Text>
         </div>
