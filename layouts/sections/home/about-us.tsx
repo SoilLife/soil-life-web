@@ -5,7 +5,7 @@ export function AboutUsSection() {
   return (
     <Section className='container relative'>
       <div className='text-center space-y-4 flex flex-col items-center justify-center h-full xl:max-w-[615px] xl:space-y-10'>
-        <Text type='h1' weight='regular' size='3xl' className='text-teal-500 xl:text-left xl:w-full'>
+        <Text type='h1' weight='regular' size='4xl' className='text-teal-500 xl:text-left xl:w-full'>
           about us
         </Text>
         <Text type='p' weight='light' size='md' className='xl:text-left leading-normal'>

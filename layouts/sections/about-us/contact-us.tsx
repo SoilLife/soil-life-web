@@ -10,7 +10,7 @@ export function ContactUsSection() {
         <Text
           type='h1'
           weight='regular'
-          size='2xl'
+          size='3xl'
           className='absolute top-10 inset-x-0 text-center text-white sm:hidden'
         >
           contact us

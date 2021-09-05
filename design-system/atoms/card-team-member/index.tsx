@@ -15,7 +15,7 @@ export function CardTeamMember({ name, position, photo }: { name: string; positi
       <Text type='h2' weight='medium' size='sm'>
         {name}
       </Text>
-      <Text type='h3' weight='light' size='xs'>
+      <Text type='h3' weight='light' size='xxs'>
         {position}
       </Text>
     </div>
