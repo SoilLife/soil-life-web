@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 
 // components
 import { Footer, MediaHub, MobileNavMenu } from 'design-system/templates';
@@ -79,6 +80,7 @@ const videos = [
 ];
 
 export default function WebOfSoilPage() {
+  const { query } = useRouter();
   const [activeHeader, setActiveHeader] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isWebOfSoilMModalOpen, setIsWebOfSoilModalOpen] = useState(false);
@@ -109,6 +111,34 @@ export default function WebOfSoilPage() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (query?.['section'] && fullPageRef.current) {
+      const nav = Array.from(document.querySelectorAll('[data-nav]')) as HTMLLIElement[];
+      if (nav.length) {
+        switch (query['section']) {
+          case 'food':
+            nav[0]?.click();
+            break;
+          case 'fiber':
+            nav[1]?.click();
+            break;
+          case 'filter':
+            nav[2]?.click();
+            break;
+          case 'foundation':
+            nav[3]?.click();
+            break;
+          case 'farmaceutical':
+            nav[4]?.click();
+            break;
+          case 'fun':
+            nav[5]?.click();
+            break;
+        }
+      }
+    }
+  }, [query, fullPageRef.current]);
 
   const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
     if (direction === 'up' && hideHeader) {
@@ -256,7 +286,7 @@ export default function WebOfSoilPage() {
               />
             </li>
             {webOfSoilSubheadings.map(({ name, asset }, index) => (
-              <li key={name} title={name} onClick={handleHeaderClick(index)}>
+              <li key={name} title={name} data-nav={name} onClick={handleHeaderClick(index)}>
                 <img
                   src={asset}
                   className={`h-8 w-8 sm:h-[50px] sm:w-[50px] ${

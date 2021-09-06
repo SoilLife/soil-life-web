@@ -23,7 +23,7 @@ export function Card6F({ type, subtext, href, icon, text, className, button }: C
         <Text type='p' weight='light' size='lg' className='mb-4 sm:mb-10'>
           {text}
         </Text>
-        <Link href={href}>
+        <Link href={`${href}`}>
           <Button {...button} />
         </Link>
       </div>
