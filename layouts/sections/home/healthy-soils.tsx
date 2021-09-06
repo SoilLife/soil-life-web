@@ -3,7 +3,6 @@ import { useCarouselHandlers } from 'helpers/use-carousel-handlers';
 import { useAppContext } from 'context';
 
 // components
-import Link from 'next/link';
 import { Section, Slide, Button, Image, CarouselArrowLeft, CarouselArrowRight, Text } from 'design-system/atoms';
 
 // data
@@ -15,6 +14,10 @@ export function HealthySoilsSection() {
   } = useAppContext();
   const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApi);
 
+  function handleFindOutHowClick() {
+    fullpageApi.moveSlideRight();
+  }
+
   return (
     <Section>
       <Slide>
@@ -22,13 +25,11 @@ export function HealthySoilsSection() {
           <div className='relative max-w-full max-h-[80%]'>
             <img className='h-full w-full object-contain' src='/images/home/healthy-soils/healthy-soil-wheel.png' />
             <div className='absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-full text-center'>
-              <Button as='button' label='find out how' type='neutral' size='md' />
+              <Button as='button' label='find out how' type='neutral' size='md' onClick={handleFindOutHowClick} />
             </div>
           </div>
           <div className='text-center sm:hidden'>
-            <Link href='/web-of-soil'>
-              <Button as='button' label='find out how' type='neutral' size='md' />
-            </Link>
+            <Button as='button' label='find out how' type='neutral' size='md' onClick={handleFindOutHowClick} />
           </div>
         </div>
       </Slide>

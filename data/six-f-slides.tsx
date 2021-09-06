@@ -33,7 +33,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
       ...commonProps.button,
       type: 'danger',
     },
-    href: '/web-of-soil/food',
+    href: '/web-of-soil?section=food',
     photoUrl: '/6Fs/brooke-lark-08bOYnH_r_E-unsplash_Nsw5XgGxU.jpg',
   },
   {
@@ -53,7 +53,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
       ...commonProps.button,
       type: 'warning',
     },
-    href: '/web-of-soil/fiber',
+    href: '/web-of-soil?section=fiber',
     photoUrl: '/6Fs/Fiber-2-Intro_xAvzmC6CB.jpg',
   },
   {
@@ -73,7 +73,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
       ...commonProps.button,
       type: 'primary',
     },
-    href: '/web-of-soil/filter',
+    href: '/web-of-soil?section=filter',
     photoUrl: '/6Fs/Filter-3_YElVtnQWZ.jpg',
   },
   {
@@ -93,7 +93,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
       ...commonProps.button,
       type: 'primary',
     },
-    href: '/web-of-soil/filter',
+    href: '/web-of-soil?section=filter',
     photoUrl: '/6Fs/Filter-2_qJOgH5RmKJ9.jpg',
     position: 'bottom',
   },
@@ -114,7 +114,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
       ...commonProps.button,
       type: 'neutral',
     },
-    href: '/web-of-soil/foundation',
+    href: '/web-of-soil?section=foundation',
     photoUrl: '/6Fs/Foundations-3_kT7-NUBCw.jpg',
   },
   {
@@ -134,7 +134,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
       ...commonProps.button,
       type: 'alert',
     },
-    href: '/web-of-soil/farmaceutical',
+    href: '/web-of-soil?section=farmaceutical',
     photoUrl: '/6Fs/cup_of_pills_ioFvZZ0lo.png',
     position: 'left-bottom',
   },
@@ -155,7 +155,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
       ...commonProps.button,
       type: 'success',
     },
-    href: '/web-of-soil/fun',
+    href: '/web-of-soil?section=fun',
     photoUrl: '/6Fs/Fun-2_NepidzuqS.jpg',
   },
 ];
