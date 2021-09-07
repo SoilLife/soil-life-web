@@ -27,7 +27,7 @@ export function SidePanel<T extends string>({
   });
   return (
     <ul
-      className={`fixed top-1/4 left-0 w-max pt-4 pb-32 space-y-5 px-6 border-r border-solid ${textColor} ${borderColor}`}
+      className={`sticky top-1/4 transform w-max py-32 space-y-5 px-6 border-r border-solid ${textColor} ${borderColor}`}
     >
       {sections.map((section) => (
         <li key={section}>

@@ -1,13 +1,15 @@
+import { forwardRef } from 'react';
+
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import ParentMaterial from 'public/images/soil-101/nexus/parent_material.svg';
 
-export function ParentMaterialSection() {
+export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
   return (
-    <div className='py-16 h-full grid grid-cols-12'>
-      <div className='col-start-3 col-span-10  space-y-8'>
+    <div ref={ref} className='py-16'>
+      <div className='space-y-8'>
         <div className='flex items-center'>
           <Text type='h1' weight='bold' size='xl' className='text-pink-500 w-full'>
             parent material
@@ -28,4 +30,4 @@ export function ParentMaterialSection() {
       </div>
     </div>
   );
-}
+});

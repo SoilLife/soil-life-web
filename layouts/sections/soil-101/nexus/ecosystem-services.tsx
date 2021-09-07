@@ -1,12 +1,14 @@
+import { forwardRef } from 'react';
+
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import EcosystemServices from 'public/images/soil-101/nexus/ecosystem_services.svg';
 
-export function EcosystemServicesSection() {
+export const EcosystemServicesSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
   return (
-    <div className='py-16 h-full grid grid-cols-12'>
+    <div ref={ref} className='py-16'>
       <div className='col-start-3 col-span-10  space-y-8'>
         <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
           ecosystem services
@@ -25,4 +27,4 @@ export function EcosystemServicesSection() {
       </div>
     </div>
   );
-}
+});

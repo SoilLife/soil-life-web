@@ -1,10 +1,12 @@
+import { forwardRef } from 'react';
+
 // components
 import { Text, Image } from 'design-system/atoms';
 
-export function PmTypesSection() {
+export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
   return (
-    <div className='py-16 h-full grid grid-cols-12'>
-      <div className='col-start-3 col-span-10  space-y-8'>
+    <div ref={ref} className='py-16'>
+      <div className='space-y-8'>
         <div className='flex items-end pl-20 space-x-4'>
           <Text type='p' weight='light' size='lg' className='text-pink-500'>
             types
@@ -17,4 +19,4 @@ export function PmTypesSection() {
       </div>
     </div>
   );
-}
+});
