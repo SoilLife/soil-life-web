@@ -1,13 +1,15 @@
+import { forwardRef } from 'react';
+
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import SoilProcesses from 'public/images/soil-101/nexus/soil_processes.svg';
 
-export function ProcessesSection() {
+export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
   return (
-    <div className='py-16 h-full grid grid-cols-12'>
-      <div className='col-start-3 col-span-10  space-y-8'>
+    <div ref={ref} className='py-16'>
+      <div className='space-y-8'>
         <div className='grid grid-cols-2'>
           <div className='space-y-10'>
             <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
@@ -65,4 +67,4 @@ export function ProcessesSection() {
       </div>
     </div>
   );
-}
+});
