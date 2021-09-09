@@ -180,7 +180,7 @@ const socialMediaSectionCards = [
   },
   {
     imageUrl: '/Get_Involved/Social_Media/Screen_Shot_2021-05-09_at_7.55.55_PM_9efUEnG9F.png',
-    text: 'start an opeanteam hub',
+    text: 'start an openteam hub',
     links: 'https://openteam.community/hub-and-network-program/f',
   },
   {
