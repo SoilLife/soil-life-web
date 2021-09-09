@@ -121,7 +121,7 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
               {modalTypeMap[modalType].title}
             </Text>
             <Image url={modalTypeMap[modalType].imageUrl} className='object-cover max-h-[75%]' />
-            <Text type='p' weight='light' size='xxs' className='text-center'>
+            <Text type='p' weight='light' size='2xs' className='text-center'>
               {modalTypeMap[modalType].text}
             </Text>
           </div>

@@ -27,23 +27,23 @@ export function OurStorySection() {
               our story
             </Text>
             <div className='space-y-2 xl:space-y-8'>
-              <Text type='p' weight='thin' size='sm'>
+              <Text type='p' weight='thin' size='xs'>
                 in 2015, graduate students at University of California, Davis were invited to a hearing on the state
                 Healthy Soils Initiative. listening to the various stakeholders, they witnessed first hand the power of
                 storytelling to captivate an audience, but also the challenges of communicating uncertainty and nuance
                 regarding the dynamic nature of soil.
               </Text>
-              <Text type='p' weight='thin' size='sm'>
+              <Text type='p' weight='thin' size='xs'>
                 capitalizing on the momentum of the UN International Year of Soil, they started a seminar to discuss and
                 develop science communication. the seminar evolved into a campaign to raise awareness about the value
                 and importance of soil, which caught the attention of the Natural Resource Conservation Service and
                 ultimately, led to a collaboration to produce this website and the tools housed within it.
               </Text>
-              <Text type='p' weight='thin' size='sm'>
+              <Text type='p' weight='thin' size='xs'>
                 the project caught the attention of the Natural Resource Conservation Service and ultimately, led to a
                 collaboration to produce this website and the tools housed within it.
               </Text>{' '}
-              <Text type='p' weight='thin' size='sm'>
+              <Text type='p' weight='thin' size='xs'>
                 we hope you dig it!
               </Text>
             </div>

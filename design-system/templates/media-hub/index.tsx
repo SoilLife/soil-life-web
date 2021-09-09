@@ -94,7 +94,7 @@ export function MediaHub({
                   >
                     {key}
                   </Text>
-                  <Text type='p' weight='light' size='xxs' className='pr-10 text-right'>
+                  <Text type='p' weight='light' size='2xs' className='pr-10 text-right'>
                     ({filteredMedia.length})
                   </Text>
                 </div>
@@ -165,7 +165,7 @@ export function MediaHub({
                             <Text
                               type='p'
                               weight='light'
-                              size='xxs'
+                              size='2xs'
                               className='absolute top-[calc(105%);] text-sm transition-all ease-in duration-500 group-hover:top-auto group-hover:p-4 group-hover:bottom-0 group-hover:text-pink-500 pointer-events-none'
                             >
                               {medium.Title}

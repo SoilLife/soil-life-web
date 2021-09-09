@@ -126,7 +126,7 @@ export function OurValuesSection() {
                     }`}
                   >
                     {isActive ? (
-                      <Text type='p' weight='light' size='xxs'>
+                      <Text type='p' weight='light' size='2xs'>
                         {content}
                       </Text>
                     ) : (

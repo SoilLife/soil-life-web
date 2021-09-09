@@ -16,6 +16,7 @@ import { webOfSoilSubheadings } from 'data/main-headings';
 import { DefaultLayout } from 'layouts';
 import { useMediaHub } from 'helpers/use-media-hub';
 import { useWebOfSoils, Node, Edge } from 'helpers/use-web-of-soil';
+import { textSizeMap } from 'design-system/atoms/text/text.utils';
 
 const options = {
   autoResize: true,
@@ -339,7 +340,7 @@ export default function WebOfSoilPage() {
                       </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
-                          className='bg-white shadow font-acre-regular text-[24px] text-pink-500 py-2 px-5'
+                          className={`bg-white shadow font-acre-regular text-pink-500 py-2 px-5 ${textSizeMap['sm']}`}
                           onClick={handleOpenModal}
                         >
                           watch the video
@@ -368,7 +369,7 @@ export default function WebOfSoilPage() {
                       </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
-                          className='bg-white shadow font-acre-regular text-[24px] text-yellow-500 py-2 px-5'
+                          className={`bg-white shadow font-acre-regular text-yellow-500 py-2 px-5 ${textSizeMap['sm']}`}
                           onClick={handleOpenModal}
                         >
                           watch the video
@@ -397,7 +398,7 @@ export default function WebOfSoilPage() {
                       </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
-                          className='bg-white shadow font-acre-regular text-[24px] text-blue-500 py-2 px-5'
+                          className={`bg-white shadow font-acre-regular text-blue-500 py-2 px-5 ${textSizeMap['sm']}`}
                           onClick={handleOpenModal}
                         >
                           watch the video
@@ -427,7 +428,7 @@ export default function WebOfSoilPage() {
                         </Text>
                         <div className='mt-10 flex justify-center'>
                           <button
-                            className='bg-white shadow font-acre-regular text-[24px] text-gray-500 py-2 px-5'
+                            className={`bg-white shadow font-acre-regular text-gray-500 py-2 px-5 ${textSizeMap['sm']}`}
                             onClick={handleOpenModal}
                           >
                             watch the video
@@ -457,7 +458,7 @@ export default function WebOfSoilPage() {
                       </Text>
                       <div className='mt-10 flex justify-center'>
                         <button
-                          className='bg-white shadow font-acre-regular text-[24px] text-orange-500 py-2 px-5'
+                          className={`bg-white shadow font-acre-regular text-orange-500 py-2 px-5 ${textSizeMap['sm']}`}
                           onClick={handleOpenModal}
                         >
                           watch the video
@@ -487,7 +488,7 @@ export default function WebOfSoilPage() {
                         </Text>
                         <div className='mt-10 flex justify-center'>
                           <button
-                            className='bg-white shadow font-acre-regular text-[24px] text-teal-500 py-2 px-5'
+                            className={`bg-white shadow font-acre-regular text-teal-500 py-2 px-5 ${textSizeMap['sm']}`}
                             onClick={handleOpenModal}
                           >
                             watch the video
