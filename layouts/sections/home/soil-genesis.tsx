@@ -10,7 +10,7 @@ export function SoilGenesisSection() {
         </div>
         <div className='flex justify-center'>
           <Link href='/media'>
-            <Button as='link' size='lg' type='neutral' label='watch more' />
+            <Button as='link' size='md' type='neutral' label='watch more' />
           </Link>
         </div>
       </div>

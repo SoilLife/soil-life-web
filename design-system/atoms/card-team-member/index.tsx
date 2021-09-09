@@ -12,10 +12,10 @@ export function CardTeamMember({ name, position, photo }: { name: string; positi
       >
         {photo && <Image url={photo} className='absolute top-0 left-0 object-cover' />}
       </div>
-      <Text type='h2' weight='medium' size='sm'>
+      <Text type='h2' weight='medium' size='xs'>
         {name}
       </Text>
-      <Text type='h3' weight='light' size='xxs'>
+      <Text type='h3' weight='light' size='2xs'>
         {position}
       </Text>
     </div>

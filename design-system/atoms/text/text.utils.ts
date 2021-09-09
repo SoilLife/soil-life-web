@@ -18,10 +18,10 @@ export const textFontWeightMap: { [Weight in TextProps['weight']]: string } = {
 };
 
 export const textSizeMap: { [Size in TextProps['size']]: string } = {
-  xxs: 'text-[10px] md:text-xs lg:text-sm xl:text-base 2xl:text-[18px]',
-  xs: 'text-xs sm:text-base lg:text-[18px] 2xl:text-[24px]',
+  '2xs': 'text-xs md:text-sm 2xl:text-[18px]',
+  xs: 'md:text-[18px] lg:text-xl 2xl:text-[30px]',
   sm: 'md:text-[18px] lg:text-xl xl:text-[24px] 2xl:text-[30px]',
-  md: 'text-[18px] sm:text-[24px] xl:text-[30px] 2xl:text-[36px]',
+  md: 'text-[18px] sm:text-[24px] xl:text-[28px] 2xl:text-[36px]',
   lg: 'text-[24px] sm:text-[32px] xl:text-[36px] 2xl:text-[40px]',
   xl: 'text-[36px] lg:text-[40px] 2xl:text-[50px]',
   '2xl': 'text-[40px] lg:text-[48px] xl:text-[50px] 2xl:text-[60px]',

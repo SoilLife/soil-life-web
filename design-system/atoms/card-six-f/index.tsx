@@ -17,7 +17,7 @@ export function Card6F({ type, subtext, href, icon, text, className, button }: C
         <img src={icon} />
       </div>
       <div className='flex flex-col h-full items-center justify-end p-6 pt-8 text-center'>
-        <Text type='p' weight='medium' size='sm' className='mb-4'>
+        <Text type='p' weight='medium' size='md' className='mb-4'>
           {subtext}
         </Text>
         <Text type='p' weight='light' size='lg' className='mb-4 sm:mb-10'>
