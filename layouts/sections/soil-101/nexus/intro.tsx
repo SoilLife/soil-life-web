@@ -32,37 +32,40 @@ const modalTypeMap = {
   },
 };
 
+// @ts-ignore
 export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
   const [modalType, setModalType] = useState<null | 'air' | 'water' | 'mineral' | 'organic'>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!sectionRef.current) return;
     function handleOpenModal(type: typeof modalType) {
-      return (e: MouseEvent) => {
+      return (_e: MouseEvent) => {
         setModalType(type);
       };
     }
 
-    if (sectionRef.current) {
-      const sectionContainer = sectionRef.current;
-      const airSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_27') as SVGGElement | null;
-      const waterSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_28') as SVGGElement | null;
-      const mineralSvg = sectionContainer.querySelector(
-        '#air_water_mineral_organic_svg__Layer_29'
-      ) as SVGGElement | null;
-      const organicSvg = sectionContainer.querySelector(
-        '#air_water_mineral_organic_svg__Layer_30'
-      ) as SVGGElement | null;
+    const sectionContainer = sectionRef.current;
+    const airSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_27') as SVGGElement | null;
+    const waterSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_28') as SVGGElement | null;
+    const mineralSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_29') as SVGGElement | null;
+    const organicSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_30') as SVGGElement | null;
 
-      airSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-      airSvg?.addEventListener('click', handleOpenModal('air'));
-      waterSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-      waterSvg?.addEventListener('click', handleOpenModal('water'));
-      mineralSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-      mineralSvg?.addEventListener('click', handleOpenModal('mineral'));
-      organicSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-      organicSvg?.addEventListener('click', handleOpenModal('organic'));
-    }
+    airSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    airSvg?.addEventListener('click', handleOpenModal('air'));
+    waterSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    waterSvg?.addEventListener('click', handleOpenModal('water'));
+    mineralSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    mineralSvg?.addEventListener('click', handleOpenModal('mineral'));
+    organicSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    organicSvg?.addEventListener('click', handleOpenModal('organic'));
+
+    return () => {
+      airSvg?.removeEventListener('click', handleOpenModal('air'));
+      waterSvg?.removeEventListener('click', handleOpenModal('water'));
+      mineralSvg?.removeEventListener('click', handleOpenModal('mineral'));
+      organicSvg?.removeEventListener('click', handleOpenModal('organic'));
+    };
   }, []);
 
   return (
