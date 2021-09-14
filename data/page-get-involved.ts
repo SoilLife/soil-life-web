@@ -56,7 +56,7 @@ const homeSectionCards = [
     ],
   },
   {
-    imageUrl: '/Get_Involved/At_Home/1_At_Home_3_Green_Bin_EqbtOxfBZ.jpg',
+    imageUrl: '/Get_Involved/At_Home/At_Home_Compost_Your_Waste.jpg',
     text: 'compost your waste',
     links: [
       { name: 'EPA', href: 'https://www.epa.gov/recycle/composting-home' },
@@ -90,12 +90,12 @@ const homeSectionCards = [
     links: 'https://getchipdrop.com/',
   },
   {
-    imageUrl: '/Get_Involved/At_Home/Get_Involved_Plant_Veggies_AaDbAubXT.jpeg',
+    imageUrl: '/Get_Involved/At_Home/At_Home_Paint_with_Soil_0ONI0hdafWa.png',
     text: 'paint with soils',
     links: 'https://www.fortheloveofsoil.org/pigment-process',
   },
   {
-    imageUrl: '/Get_Involved/At_Home/Get_Involved_Plant_Veggies_AaDbAubXT.jpeg',
+    imageUrl: '/Get_Involved/At_Home/Find_Your_Soil_uN58w4fF_.png',
     text: 'find your soil!',
     links: 'https://casoilresource.lawr.ucdavis.edu/gmap/',
   },
@@ -146,7 +146,7 @@ const communitySectionCards = [
     links: 'https://www.alltrails.com/',
   },
   {
-    imageUrl: '/Get_Involved/In_Your_Community/Go_for_a_hike_Pl7SbQmhn.jpg',
+    imageUrl: '/Get_Involved/In_Your_Community/At_Home_Find_Park_HFdlTqdc2CO.png',
     text: 'visit a national park',
     links: 'https://findyourpark.com/',
   },
@@ -320,12 +320,13 @@ const educationSectionCards = [
     links: 'http://soilhealth.ucdavis.edu/',
   },
   {
-    imageUrl: '/Get_Involved/With_Your_Legislators/ales-krivec-976-unsplash_21_hVO8UiZni.jpg',
+    imageUrl: '/Get_Involved/For_Your_Education/soil_health_nexus_lZLOxRngB.svg',
+    imageContain: true,
     text: 'explore the soil health nexus',
     links: 'https://soilhealthnexus.org/resources/',
   },
   {
-    imageUrl: '/Get_Involved/With_Your_Legislators/ales-krivec-976-unsplash_21_hVO8UiZni.jpg',
+    imageUrl: '/Get_Involved/For_Your_Education/For_Your_Ed_Explore_For_The_Love_of_Soil_c6tWn9q_M.png',
     text: 'explore "for the love of soil"',
     links: 'https://www.fortheloveofsoil.org/educate',
   },
@@ -342,7 +343,7 @@ const educationSectionCards = [
     ],
   },
   {
-    imageUrl: '/Get_Involved/With_Your_Legislators/ales-krivec-976-unsplash_21_hVO8UiZni.jpg',
+    imageUrl: '/Get_Involved/For_Your_Education/Players_Soil_Biology_tardigrade_protozoaslide_bmxw1jrtlnE.jpg',
     text: 'learn more about soil organisms',
     links: [
       {
@@ -354,7 +355,7 @@ const educationSectionCards = [
     ],
   },
   {
-    imageUrl: '/Get_Involved/With_Your_Legislators/ales-krivec-976-unsplash_21_hVO8UiZni.jpg',
+    imageUrl: '/Get_Involved/For_Your_Education/For_Your_Education_Soil_Colors_of_National_Parks_Gb4g_qcfTq3.png',
     text: 'explore soil colors of national parks',
     links: 'https://munsell.com/color-blog/soil-colors-national-parks-anniversary/',
   },

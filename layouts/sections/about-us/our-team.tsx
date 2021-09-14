@@ -43,7 +43,7 @@ export function OurTeamSection() {
               <CardTeamMember
                 name='elisa massenzio'
                 position='lead designer'
-                photo='/About_Us/Our_Team/Sinead_Santich_Videographer_kGo84M7li2s.jpg'
+                photo='About_Us/Our_Team/Elisa_Massenzio'
               />
             </div>
 
