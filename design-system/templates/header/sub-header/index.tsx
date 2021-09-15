@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 // helpers
 import { useRouter } from 'next/router';
+import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 
 // components
 import Link from 'next/link';
@@ -14,6 +15,8 @@ import { SubHeaderProps } from './sub-header.interface';
 export function SubHeader({ pathName, headings, className, hideHeader }: SubHeaderProps) {
   const route = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useFullpageOverflow();
 
   function toggleMenu() {
     const body = document.querySelector('body');

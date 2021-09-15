@@ -1,9 +1,10 @@
-import { forwardRef } from 'react';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, forwardRef } from 'react';
+import { useOrientation, useMedia } from 'react-use';
+import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
 // components
-import { Text, Image } from 'design-system/atoms';
+import { Text, Image, Icon } from 'design-system/atoms';
 
 // assets
 import AirWaterMineralOrganic from 'public/images/soil-101/nexus/air_water_mineral_organic.svg';
@@ -34,6 +35,10 @@ const modalTypeMap = {
 
 // @ts-ignore
 export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
+  useFullpageOverflow();
+  const orientation = useOrientation();
+  const isMobile = useMedia('(max-width: 640px)');
+  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | 'air' | 'water' | 'mineral' | 'organic'>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -41,6 +46,10 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
     if (!sectionRef.current) return;
     function handleOpenModal(type: typeof modalType) {
       return (_e: MouseEvent) => {
+        const body = document.querySelector('body');
+        if (body) {
+          body.style.overflow = 'hidden';
+        }
         setModalType(type);
       };
     }
@@ -68,16 +77,25 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
     };
   }, []);
 
+  function handleCloseModal() {
+    setModalType(null);
+    const body = document.querySelector('body');
+    if (body) {
+      body.style.overflow = 'auto';
+    }
+  }
+
+  const squareModal = isLandscape ? '80vh' : '80vw';
+
   return (
     <>
       <div
         ref={(el) => {
-          ref = {
-            current: el,
-          };
+          // @ts-ignore
+          ref(el);
           sectionRef.current = el;
         }}
-        className='py-16'
+        className='py-8 sm:py-16'
       >
         <div className='space-y-8'>
           <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
@@ -98,7 +116,7 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
             </Text>{' '}
             — filled with either air or water.
           </Text>
-          <div className='flex space-x-10 p-6'>
+          <div className='space-y-6 sm:space-y-0 sm:flex sm:space-x-10 sm:p-6'>
             <NexusIntro />
             <AirWaterMineralOrganic />
           </div>
@@ -112,18 +130,24 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
           style={{
             content: {
               padding: 32,
-              inset: '10%',
+              height: isMobile ? '100%' : squareModal,
+              width: isMobile ? '100%' : squareModal,
+              left: isMobile ? 0 : '50%',
+              top: isMobile ? '40px' : '50%',
+              transform: isMobile ? undefined : 'translate(-50%, -50%)',
             },
           }}
-          onRequestClose={() => {
-            setModalType(null);
-          }}
+          onRequestClose={handleCloseModal}
         >
-          <div className='space-y-6 h-full'>
+          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
+            <Icon icon='x' size={32} className='text-gray-500' />
+          </button>
+          <div className='space-y-4'>
             <Text type='h1' weight='bold' size='2xl' className='text-pink-500 text-center'>
               {modalTypeMap[modalType].title}
             </Text>
-            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover max-h-[75%]' />
+
+            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto' />
             <Text type='p' weight='light' size='2xs' className='text-center'>
               {modalTypeMap[modalType].text}
             </Text>

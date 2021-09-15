@@ -65,9 +65,9 @@ export default function SoilNexusPage() {
 
   function handleClick(section: string) {
     return () => {
-      setCurrentSection(section);
       if (refs.current[section]) {
         refs.current[section]?.scrollIntoView({ behavior: 'smooth' });
+        setCurrentSection(section);
       }
     };
   }
@@ -76,11 +76,11 @@ export default function SoilNexusPage() {
     <DefaultLayout>
       <SubHeader headings={soil101Subheadings} pathName='soil-101' className='bg-pink-500' />
       <HeroSection />
-      <div className='container grid grid-cols-12'>
-        <div className='relative col-span-3'>
+      <div className='container sm:grid sm:grid-cols-12'>
+        <div className='bg-white sticky top-10 sm:relative sm:top-auto sm:col-span-3'>
           <SidePanel sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' />
         </div>
-        <div className='col-span-9'>
+        <div className='sm:col-span-9'>
           <IntroSection ref={assignRefs('soil nexus')} />
           <EcosystemServicesSection ref={assignRefs('soil services')} />
           <RockWeatheringSection ref={assignRefs('rock weathering')} />
