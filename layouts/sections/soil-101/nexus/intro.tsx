@@ -12,28 +12,27 @@ import NexusIntro from 'public/images/soil-101/nexus/nexus_intro.svg';
 
 const modalTypeMap = {
   air: {
-    title: 'Air',
+    title: 'air',
     imageUrl: 'Soil_101/Soil_Nexus/air_climate.jpg',
     text: 'the invisible, gaseous substance that blankets the earth, allowing us to breathe and keeping us just the right temperature. mainly a mix of oxygen and nitrogen with small amounts of CO2 , argon, other trace gases, and water vapor.',
   },
   mineral: {
-    title: 'Mineral',
+    title: 'mineral',
     imageUrl: 'Soil_101/Soil_Nexus/mineral.png',
     text: 'minerals are the non-living, chemical material (in-organic) that makes up the earth’s crust. they consist of diverse combinations of natural elements in consistent structures and form the rocks that eventually break down to form soil!',
   },
   water: {
-    title: 'Water',
+    title: 'water',
     imageUrl: 'Soil_101/Soil_Nexus/Water.jpg',
     text: 'the transparent combination of hydrogen and oxygen, vital to life, as we know it. the universal solvent, capable of dissolving more substances than any other liquid. produced during formation of organic macromolecules, consumed during the breakdown.',
   },
   organic: {
-    title: 'Organic',
+    title: 'organic',
     imageUrl: 'Soil_101/Soil_Nexus/Organic.jpeg',
     text: 'organic means related to or containing the carbon compounds on which all life on earth is based. a combination of carbon from the air, hydrogen and oxygen from water and mineral matter forms all living matter. ',
   },
 };
 
-// @ts-ignore
 export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
   useFullpageOverflow();
   const orientation = useOrientation();
@@ -129,7 +128,7 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
           shouldCloseOnEsc
           style={{
             content: {
-              padding: 32,
+              padding: 40,
               height: isMobile ? '100%' : squareModal,
               width: isMobile ? '100%' : squareModal,
               left: isMobile ? 0 : '50%',
