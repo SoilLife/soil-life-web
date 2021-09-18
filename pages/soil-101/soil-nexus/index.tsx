@@ -3,9 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import { soil101Subheadings } from 'data/main-headings';
 
 // components
-import { SidePanel } from 'design-system/templates';
-import { SubHeader } from 'design-system/templates/header/sub-header';
-import { Footer } from 'design-system/templates/footer';
+import { SectionsNavBar, Header, Footer } from 'design-system/templates';
 import { DefaultLayout } from 'layouts';
 
 // sections
@@ -74,13 +72,11 @@ export default function SoilNexusPage() {
 
   return (
     <DefaultLayout>
-      <SubHeader headings={soil101Subheadings} pathName='soil-101' className='bg-pink-500' />
+      <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-pink-500' />
       <HeroSection />
-      <div className='container sm:grid sm:grid-cols-12'>
-        <div className='bg-white sticky top-10 sm:relative sm:top-auto sm:col-span-3'>
-          <SidePanel sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' />
-        </div>
-        <div className='sm:col-span-9'>
+      <div className='container'>
+        <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' />
+        <div className='space-y-16 mb-10 sm:space-y-32'>
           <IntroSection ref={assignRefs('soil nexus')} />
           <EcosystemServicesSection ref={assignRefs('soil services')} />
           <RockWeatheringSection ref={assignRefs('rock weathering')} />

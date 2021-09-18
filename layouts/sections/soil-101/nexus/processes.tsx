@@ -130,7 +130,6 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
           ref(el);
           sectionRef.current = el;
         }}
-        className='py-8 sm:py-16'
       >
         <Text type='h1' weight='bold' size='3xl' className='text-pink-500 mb-10'>
           soil processes

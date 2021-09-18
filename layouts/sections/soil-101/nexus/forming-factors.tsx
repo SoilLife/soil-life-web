@@ -44,7 +44,7 @@ export const FormingFactorsSection = forwardRef<HTMLDivElement, {}>(function (_,
     };
   }
   return (
-    <div ref={ref} className='py-8 sm:py-16'>
+    <div ref={ref}>
       <div className='space-y-4 mb-8'>
         <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
           soil forming factors

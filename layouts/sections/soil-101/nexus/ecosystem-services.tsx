@@ -151,7 +151,6 @@ export const EcosystemServicesSection = forwardRef<HTMLDivElement, {}>(function 
           ref(el);
           sectionRef.current = el;
         }}
-        className='py-8 sm:py-16'
       >
         <div className='space-y-8'>
           <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
