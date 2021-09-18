@@ -13,10 +13,6 @@ import { Text, Icon } from 'design-system/atoms';
 // assets
 import RockWeathering from 'public/images/soil-101/nexus/rock_weathering.svg';
 import RockWeatheringTable from 'public/images/soil-101/nexus/rock_weathering_table.svg';
-import CarbonicAcidSvg from 'public/images/soil-101/nexus/carbonic_acid.svg';
-import DissolutionSvg from 'public/images/soil-101/nexus/dissolution.svg';
-import HydrolysisSvg from 'public/images/soil-101/nexus/hydrolysis.svg';
-import OxidationReductionSvg from 'public/images/soil-101/nexus/oxidation_reduction.svg';
 
 const modalTypeMap = {
   'freeze/thaw': {
