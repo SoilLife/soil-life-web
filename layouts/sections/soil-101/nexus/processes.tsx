@@ -6,7 +6,7 @@ import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 
 // components
 import ReactModal from 'react-modal';
-import { Text, Icon, Button } from 'design-system/atoms';
+import { Text, Icon } from 'design-system/atoms';
 
 // assets
 import LeftArrow from 'public/images/left_arrow_pink_thick.svg';
