@@ -131,9 +131,9 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
 
   return (
     <>
-      <div ref={sectionRef} className='py-16'>
+      <div ref={sectionRef} className='py-8 sm:py-16'>
         <div className='space-y-8'>
-          <div className='flex items-end pl-20 space-x-4'>
+          <div className='flex items-end space-x-4 sm:pl-20'>
             <Text type='p' weight='light' size='lg' className='text-pink-500'>
               types
             </Text>

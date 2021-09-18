@@ -129,44 +129,42 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
           ref(el);
           sectionRef.current = el;
         }}
-        className='py-16'
+        className='py-8 sm:py-16'
       >
-        <div className='space-y-8'>
-          <div className='grid grid-cols-2'>
-            <div className='space-y-10'>
-              <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
-                soil processes
-              </Text>
-              <ul className='space-y-10'>
-                {processes.map((process) => (
-                  <li key={process.title}>
-                    <div
-                      className='inline-block'
-                      onClick={() => {
-                        setModalType(process.title as typeof modalType);
-                      }}
+        <div className='grid sm:grid-cols-2'>
+          <div className='space-y-10 mb-10 sm:mb-0'>
+            <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
+              soil processes
+            </Text>
+            <ul className='grid grid-cols-2 gap-4 sm:grid-cols-none sm:gap-8'>
+              {processes.map((process) => (
+                <li key={process.title}>
+                  <div
+                    className='inline-block'
+                    onClick={() => {
+                      setModalType(process.title as typeof modalType);
+                    }}
+                  >
+                    <Text
+                      type='p'
+                      weight='medium'
+                      size='lg'
+                      className={`${process.textColor} hover:underline hover:cursor-pointer`}
                     >
-                      <Text
-                        type='p'
-                        weight='medium'
-                        size='lg'
-                        className={`${process.textColor} hover:underline hover:cursor-pointer`}
-                      >
-                        {process.title}:
-                      </Text>
-                    </div>
-                    <Text type='p' weight='medium' size='md'>
-                      {process.text1}
+                      {process.title}:
                     </Text>
-                    <Text type='p' weight='medium' size='md'>
-                      {process.text2}
-                    </Text>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <SoilProcessesSvg />
+                  </div>
+                  <Text type='p' weight='medium' size='md'>
+                    {process.text1}
+                  </Text>
+                  <Text type='p' weight='medium' size='md'>
+                    {process.text2}
+                  </Text>
+                </li>
+              ))}
+            </ul>
           </div>
+          <SoilProcessesSvg />
         </div>
       </div>
       {modalType && (
@@ -177,7 +175,9 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
           style={{
             content: {
               padding: 40,
-              inset: '10%',
+              inset: isMobile ? undefined : '10%',
+              top: isMobile ? 40 : undefined,
+              height: isMobile ? '100%' : undefined,
             },
           }}
           onRequestClose={handleCloseModal}
@@ -186,9 +186,9 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
             <Icon icon='x' size={32} className='text-pink-500' />
           </button>
           <div>
-            <ul className='flex mb-10'>
+            <ul className='flex flex-wrap mb-10 sm:flex-nowrap'>
               {processes.map((process) => (
-                <li key={process.title} className='flex-grow w-full'>
+                <li key={process.title} className='sm:flex-grow sm:w-full'>
                   <button
                     className={`${process.title === modalType ? 'bg-teal-700' : 'bg-teal-500'} w-full text-white p-2 `}
                     onClick={() => {
