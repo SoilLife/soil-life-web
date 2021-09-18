@@ -58,9 +58,9 @@ export const FormingFactorsSection = forwardRef<HTMLDivElement, {}>(function (_,
         </Text>
       </div>
       <div className='border border-solid border-gray-500'>
-        <ul className='flex'>
+        <ul className='flex flex-wrap sm:flex-nowrap'>
           {factors.map((factor) => (
-            <li key={factor} className='flex-grow w-full'>
+            <li key={factor} className='sm:flex-grow sm:w-full'>
               <button
                 className={`${factor === activeFactor ? 'bg-gray-700' : 'bg-gray-500'} w-full text-white p-2`}
                 onClick={handleFactorClick(factor)}
