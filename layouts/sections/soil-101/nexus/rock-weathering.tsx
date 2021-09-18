@@ -189,7 +189,6 @@ export const RockWeatheringSection = forwardRef<HTMLDivElement, {}>(function (_,
           ref(el);
           sectionRef.current = el;
         }}
-        className='py-8 sm:py-16'
       >
         <div className='space-y-8'>
           <div className='flex'>

@@ -4,7 +4,7 @@ import { Text } from 'design-system/atoms';
 // helpers
 import { getColor } from 'helpers/get-color';
 
-export function SidePanel<T extends string>({
+export function SectionsNavBar<T extends string>({
   currentSection,
   sections,
   onClick,
@@ -26,10 +26,8 @@ export function SidePanel<T extends string>({
     type: 'border',
   });
   return (
-    <div className='py-4 overflow-auto sm:sticky sm:top-1/4 sm:py-32'>
-      <ul
-        className={`flex sm:block w-max space-x-5 px-6 sm:space-y-5 sm:space-x-0 sm:border-r sm:border-solid ${textColor} ${borderColor}`}
-      >
+    <div className='sticky top-10 bg-white py-4 overflow-auto sm:top-16'>
+      <ul className={`w-max flex mx-auto space-x-5 px-6 ${textColor} ${borderColor}`}>
         {sections.map((section) => (
           <li key={section}>
             <div className='inline-block cursor-pointer' onClick={onClick(section)}>
@@ -38,7 +36,8 @@ export function SidePanel<T extends string>({
                 weight='medium'
                 size='sm'
                 className={`py-2 
-                ${section === currentSection ? `border-solid border-b ${borderColor}` : ''}`}
+                ${section === currentSection ? `border-solid border-b ${borderColor}` : ''}
+                `}
               >
                 {section}
               </Text>

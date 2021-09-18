@@ -126,11 +126,9 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
     }
   }
 
-  const squareModal = isLandscape ? '80vh' : '80vw';
-
   return (
     <>
-      <div ref={sectionRef} className='py-8 sm:py-16'>
+      <div ref={sectionRef}>
         <div className='space-y-8'>
           <div className='flex items-end space-x-4 sm:pl-20'>
             <Text type='p' weight='light' size='lg' className='text-pink-500'>
@@ -151,8 +149,8 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : squareModal,
-              width: isMobile ? '100%' : squareModal,
+              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
+              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
               left: isMobile ? 0 : '50%',
               top: isMobile ? '40px' : '50%',
               transform: isMobile ? undefined : 'translate(-50%, -50%)',

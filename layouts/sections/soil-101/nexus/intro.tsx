@@ -84,8 +84,6 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
     }
   }
 
-  const squareModal = isLandscape ? '80vh' : '80vw';
-
   return (
     <>
       <div
@@ -94,7 +92,6 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
           ref(el);
           sectionRef.current = el;
         }}
-        className='py-8 sm:py-16'
       >
         <div className='space-y-8'>
           <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
@@ -129,8 +126,8 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : squareModal,
-              width: isMobile ? '100%' : squareModal,
+              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
+              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
               left: isMobile ? 0 : '50%',
               top: isMobile ? '40px' : '50%',
               transform: isMobile ? undefined : 'translate(-50%, -50%)',
