@@ -24,7 +24,7 @@ export function HealthySoilsSection() {
         <div className='relative container flex flex-col justify-evenly h-full'>
           <div className='relative max-w-full max-h-[80%]'>
             <img className='h-full w-full object-contain' src='/images/home/healthy-soils/healthy-soil-wheel.png' />
-            <div className='absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-full text-center'>
+            <div className='hidden absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-full text-center sm:block'>
               <Button as='button' label='find out how' type='neutral' size='md' onClick={handleFindOutHowClick} />
             </div>
           </div>
