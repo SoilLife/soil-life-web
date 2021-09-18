@@ -41,6 +41,8 @@ export const FormingFactorsSection = forwardRef<HTMLDivElement, {}>(function (_,
     return () => {
       if (factor !== activeFactor) {
         setActiveFactor(factor);
+      } else {
+        setActiveFactor(null);
       }
     };
   }
