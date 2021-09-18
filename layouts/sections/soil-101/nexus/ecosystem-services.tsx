@@ -62,18 +62,7 @@ const modalTypeMap = {
 export const EcosystemServicesSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
   useFullpageOverflow();
   const isMobile = useMedia('(max-width: 640px)');
-  const [modalType, setModalType] = useState<
-    | null
-    | 'climate regulation'
-    | 'plant growth'
-    | 'water filtration'
-    | 'nutrient cycling'
-    | 'water storage'
-    | 'historical record'
-    | 'biodiversity'
-    | 'carbon storage'
-    | 'engineering'
-  >(null);
+  const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {

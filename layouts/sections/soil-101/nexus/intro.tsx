@@ -38,7 +38,7 @@ export const IntroSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
   const isLandscape = orientation.type.includes('landscape');
-  const [modalType, setModalType] = useState<null | 'air' | 'water' | 'mineral' | 'organic'>(null);
+  const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
