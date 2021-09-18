@@ -4,7 +4,6 @@ import { forwardRef, useState } from 'react';
 import { Text } from 'design-system/atoms';
 
 // assets
-import SoilFormingFactorsMain from 'public/images/soil-101/nexus/soil_forming_factors.svg';
 import ParentMaterialSvg from 'public/images/soil-101/nexus/clorpt_pm.svg';
 import ClimateSvg from 'public/images/soil-101/nexus/clorpt_climate.svg';
 import TopographySvg from 'public/images/soil-101/nexus/clorpt_topography.svg';
@@ -35,14 +34,12 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
 };
 
 export const FormingFactorsSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
-  const [activeFactor, setActiveFactor] = useState<string | null>(null);
+  const [activeFactor, setActiveFactor] = useState('parent material');
 
   function handleFactorClick(factor: string) {
     return () => {
       if (factor !== activeFactor) {
         setActiveFactor(factor);
-      } else {
-        setActiveFactor(null);
       }
     };
   }
@@ -70,9 +67,7 @@ export const FormingFactorsSection = forwardRef<HTMLDivElement, {}>(function (_,
             </li>
           ))}
         </ul>
-        <div className='grid place-items-center min-h-[500px] p-4'>
-          {activeFactor ? factorSvgMap[activeFactor] : <SoilFormingFactorsMain />}
-        </div>
+        <div className='grid place-items-center min-h-[500px] p-4'>{factorSvgMap[activeFactor]}</div>
       </div>
     </div>
   );

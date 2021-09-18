@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState, forwardRef } from 'react';
 import { useOrientation, useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import {} from 'react-dom/server';
 import ReactModal from 'react-modal';
 
 // components
@@ -141,7 +140,7 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
               - rocks are composed of different types of minerals that weather at different rates
             </Text>
           </div>
-          {svgTable && <div dangerouslySetInnerHTML={{ __html: svgTable }} />}
+          {/* {svgTable && <div dangerouslySetInnerHTML={{ __html: svgTable }} />} */}
         </div>
       </div>
       {modalType && (

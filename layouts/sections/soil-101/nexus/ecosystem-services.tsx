@@ -178,11 +178,15 @@ export const EcosystemServicesSection = forwardRef<HTMLDivElement, {}>(function 
           style={{
             content: {
               padding: 40,
-              height: '200px',
-              width: isMobile ? '100%' : '500px',
+              height: isMobile ? 'auto' : '200px',
+              width: isMobile ? '60%' : '500px',
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             },
           }}
           onRequestClose={handleCloseModal}
