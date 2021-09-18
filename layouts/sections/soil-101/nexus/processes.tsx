@@ -15,6 +15,7 @@ import SoilProcessesSvg from 'public/images/soil-101/nexus/soil_processes.svg';
 import AdditionsSvg from 'public/images/soil-101/nexus/additions.svg';
 import LossesSvg from 'public/images/soil-101/nexus/losses.svg';
 import TransformationsSvg from 'public/images/soil-101/nexus/transformations.svg';
+import TranslocationsSvg from 'public/images/soil-101/nexus/translocations.svg';
 
 const processes = [
   {
@@ -44,10 +45,10 @@ const processes = [
 ];
 
 const modalTypeMap = {
-  additions: <AdditionsSvg />,
-  losses: <LossesSvg />,
-  transformations: <TransformationsSvg />,
-  translocations: null,
+  additions: <AdditionsSvg className='w-full' />,
+  losses: <LossesSvg className='w-full' />,
+  transformations: <TransformationsSvg className='w-full' />,
+  translocations: <TranslocationsSvg className='w-full' />,
 };
 
 export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
@@ -131,11 +132,11 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
         }}
         className='py-8 sm:py-16'
       >
-        <div className='grid sm:grid-cols-2'>
-          <div className='space-y-10 mb-10 sm:mb-0'>
-            <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
-              soil processes
-            </Text>
+        <Text type='h1' weight='bold' size='3xl' className='text-pink-500 mb-10'>
+          soil processes
+        </Text>
+        <div className='grid gap-10 sm:grid-cols-2'>
+          <div className='row-start-2 space-y-10 sm:row-start-auto'>
             <ul className='grid grid-cols-2 gap-4 sm:grid-cols-none sm:gap-8'>
               {processes.map((process) => (
                 <li key={process.title}>
@@ -164,7 +165,7 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
               ))}
             </ul>
           </div>
-          <SoilProcessesSvg />
+          <SoilProcessesSvg className='row-start-1 sm:row-start-auto' />
         </div>
       </div>
       {modalType && (
@@ -175,9 +176,11 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
           style={{
             content: {
               padding: 40,
-              inset: isMobile ? undefined : '10%',
-              top: isMobile ? 40 : undefined,
-              height: isMobile ? '100%' : undefined,
+              inset: isMobile ? '40px 0 0 0' : '10%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             },
           }}
           onRequestClose={handleCloseModal}
@@ -185,25 +188,24 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-pink-500' />
           </button>
-          <div>
-            <ul className='flex flex-wrap mb-10 sm:flex-nowrap'>
-              {processes.map((process) => (
-                <li key={process.title} className='sm:flex-grow sm:w-full'>
-                  <button
-                    className={`${process.title === modalType ? 'bg-teal-700' : 'bg-teal-500'} w-full text-white p-2 `}
-                    onClick={() => {
-                      if (modalType !== process.title) {
-                        setModalType(process.title as typeof modalType);
-                      }
-                    }}
-                  >
-                    {process.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-            {modalTypeMap[modalType]}
-          </div>
+          <ul className='w-full flex flex-wrap mb-10 sm:flex-nowrap'>
+            {processes.map((process) => (
+              <li key={process.title} className='sm:flex-grow sm:w-full'>
+                <button
+                  className={`${process.title === modalType ? 'bg-teal-700' : 'bg-teal-500'} w-full text-white p-2 `}
+                  onClick={() => {
+                    if (modalType !== process.title) {
+                      setModalType(process.title as typeof modalType);
+                    }
+                  }}
+                >
+                  {process.title}
+                </button>
+              </li>
+            ))}
+          </ul>
+          {modalTypeMap[modalType]}
+
           <LeftArrow
             className='absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer'
             height={40}

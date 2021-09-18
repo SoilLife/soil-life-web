@@ -159,6 +159,10 @@ export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_,
               left: isMobile ? 0 : '50%',
               top: isMobile ? '40px' : '50%',
               transform: isMobile ? undefined : 'translate(-50%, -50%)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
             },
           }}
           onRequestClose={handleCloseModal}
@@ -171,7 +175,7 @@ export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_,
               {modalTypeMap[modalType].title}
             </Text>
 
-            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto' />
+            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto h-auto' />
             <Text type='p' weight='light' size='2xs' className='text-center'>
               {modalTypeMap[modalType].text}
             </Text>
