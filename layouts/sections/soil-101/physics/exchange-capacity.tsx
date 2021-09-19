@@ -9,10 +9,11 @@ import { Text, Icon } from 'design-system/atoms';
 // assets
 import ClaySvg from 'public/images/soil-101/physics/exchange_capacity_clay.svg';
 import OrganicMatterSvg from 'public/images/soil-101/physics/exchange_capacity_organic_matter.svg';
-import MetalOxideSvg from 'public/images/soil-101/physics/exchange_capacity_metal_oxide.svg';
+import MetalOxideSvg from 'public/images/soil-101/physics/exchange_capacity_metal_oxides.svg';
 
 import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
 import AnionExchangeSvg from 'public/images/soil-101/physics/anion_exchange_capacity.svg';
+import MetalOxideExchangeSvg from 'public/images/soil-101/physics/metal_oxides_exchange_capacity.svg';
 
 const modalTypeMap = {
   'cation exchange': {
@@ -26,9 +27,9 @@ const modalTypeMap = {
     text: 'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions.',
   },
   'metal oxide exchange': {
-    title: 'metal oxide exchange',
-    image: <CationExchangeSvg className='h-full w-full' />,
-    text: 'iron, aluminum, and manganese',
+    title: '',
+    image: <MetalOxideExchangeSvg className='h-full w-full' />,
+    text: '',
   },
 };
 
@@ -65,9 +66,16 @@ export const ExchangeCapacitySection = forwardRef<HTMLDivElement, {}>((_, _ref) 
     anionExchangeSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     anionExchangeSvg?.addEventListener('click', handleOpenModal('anion exchange'));
 
+    const metalOxideSvg = sectionContainer.querySelector(
+      '#exchange_capacity_metal_oxides_svg__Layer_72'
+    ) as SVGGElement | null;
+    metalOxideSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    metalOxideSvg?.addEventListener('click', handleOpenModal('metal oxide exchange'));
+
     return () => {
       cationExchangeSvg?.removeEventListener('click', handleOpenModal('cation exchange'));
       anionExchangeSvg?.removeEventListener('click', handleOpenModal('anion exchange'));
+      metalOxideSvg?.removeEventListener('click', handleOpenModal('metal oxide exchange'));
     };
   }, []);
 
@@ -85,10 +93,28 @@ export const ExchangeCapacitySection = forwardRef<HTMLDivElement, {}>((_, _ref) 
         <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-20'>
           exchange capacity
         </Text>
-        <div className='space-y-4 sm:space-y-8'>
-          <ClaySvg />
-          <OrganicMatterSvg />
-          <MetalOxideSvg />
+        <div className='space-y-8'>
+          <div className='flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0'>
+            <ClaySvg className='sm:w-1/2' />
+            <Text type='p' weight='light' size='md' className='sm:w-1/2'>
+              the large, negatively charged surface area of clays holds on to important plant nutrients, called cations,
+              preserving them against losses to gravity.
+            </Text>
+          </div>
+          <div className='flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16'>
+            <Text type='p' weight='light' size='md' className='sm:w-1/2'>
+              som also has high surface area and charge, holding on to both positive and negatively charged ions
+              (depending on pH) and contributing significantly to water holding capacity.
+            </Text>
+            <OrganicMatterSvg className='mb-4 sm:mb-0 sm:w-1/2' />
+          </div>
+          <div className='flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0'>
+            <MetalOxideSvg className='sm:w-1/2' />
+            <Text type='p' weight='light' size='md' className='sm:w-1/2'>
+              iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
+              capacity (i.e. NO3-, BO3-, Cl-).
+            </Text>
+          </div>
         </div>
       </div>
       {modalType && (
@@ -112,11 +138,11 @@ export const ExchangeCapacitySection = forwardRef<HTMLDivElement, {}>((_, _ref) 
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
           <div className='space-y-4'>
-            <Text type='h1' weight='bold' size='2xl' className='text-pink-500 text-center'>
+            <Text type='h1' weight='thin' size='2xl' className='text-pink-500 text-center'>
               {modalTypeMap[modalType].title}
             </Text>
 
-            <Text type='p' weight='light' size='2xs' className='text-center'>
+            <Text type='p' weight='light' size='md' className='text-center'>
               {modalTypeMap[modalType].text}
             </Text>
 
