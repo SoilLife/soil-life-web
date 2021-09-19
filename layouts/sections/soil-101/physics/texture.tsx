@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, forwardRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useOrientation, useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
@@ -27,7 +27,7 @@ const modalTypeMap = {
   },
 };
 
-export const TextureSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
@@ -79,8 +79,7 @@ export const TextureSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
     <>
       <div
         ref={(el) => {
-          // @ts-ignore
-          ref(el);
+          props.assignRef(el);
           sectionRef.current = el;
         }}
       >
@@ -151,4 +150,4 @@ export const TextureSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       )}
     </>
   );
-});
+};

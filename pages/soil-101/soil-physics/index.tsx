@@ -80,17 +80,17 @@ export default function SoilPhysicsPage() {
       <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='yellow' />
-        <div className='space-y-16 mb-10 sm:space-y-32'>
-          <TextureSection ref={assignRefs('texture')} />
+        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-10'>
+          <TextureSection assignRef={assignRefs('texture')} />
           <TexturalClassSection />
           <SurfaceAreaSection />
           <WaterDynamicsSection />
           <OrganicMatterSection />
           <ExchangeCapacitySection />
-          <AggregatesSection ref={assignRefs('aggregation')} />
+          <AggregatesSection assignRef={assignRefs('aggregation')} />
           <AggregateFormationSection />
-          <StructureSection ref={assignRefs('structure')} />
-          <PoreSpaceSection ref={assignRefs('pore space')} />
+          <StructureSection assignRef={assignRefs('structure')} />
+          <PoreSpaceSection assignRef={assignRefs('pore space')} />
           <HealthyStructureSection ref={assignRefs('healthy structure')} />
         </div>
       </div>
