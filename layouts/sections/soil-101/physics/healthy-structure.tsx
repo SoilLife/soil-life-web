@@ -1,5 +1,3 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
@@ -8,9 +6,9 @@ import AggregationSvg from 'public/images/soil-101/physics/healthy_structure_agg
 import RootsSvg from 'public/images/soil-101/physics/healthy_structure_roots.svg';
 import MicrobesSvg from 'public/images/soil-101/physics/healthy_structure_microbes.svg';
 
-export const HealthyStructureSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const HealthyStructureSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
-    <div ref={ref}>
+    <div ref={props.assignRef}>
       <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-20'>
         healthy structure
       </Text>
@@ -19,4 +17,4 @@ export const HealthyStructureSection = forwardRef<HTMLDivElement, {}>((_, ref) =
       <MicrobesSvg />
     </div>
   );
-});
+};

@@ -1,4 +1,4 @@
-import { forwardRef, useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 // helpers
 import { useMedia } from 'react-use';
@@ -59,7 +59,7 @@ const modalTypeMap = {
   },
 };
 
-export const EcosystemServicesSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
+export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const isMobile = useMedia('(max-width: 640px)');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
@@ -136,8 +136,7 @@ export const EcosystemServicesSection = forwardRef<HTMLDivElement, {}>(function 
     <>
       <div
         ref={(el) => {
-          // @ts-ignore
-          ref(el);
+          props.assignRef(el);
           sectionRef.current = el;
         }}
       >
@@ -194,4 +193,4 @@ export const EcosystemServicesSection = forwardRef<HTMLDivElement, {}>(function 
       )}
     </>
   );
-});
+};
