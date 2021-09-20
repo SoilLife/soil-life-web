@@ -91,7 +91,7 @@ export default function SoilPhysicsPage() {
           <AggregateFormationSection />
           <StructureSection assignRef={assignRefs('structure')} />
           <PoreSpaceSection assignRef={assignRefs('pore space')} />
-          <HealthyStructureSection ref={assignRefs('healthy structure')} />
+          <HealthyStructureSection assignRef={assignRefs('healthy structure')} />
         </div>
       </div>
       <Footer />

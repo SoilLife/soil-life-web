@@ -1,4 +1,4 @@
-import { forwardRef, useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 // helpers
 import { useMedia } from 'react-use';
@@ -83,7 +83,7 @@ const modalTypeMap = {
   },
 };
 
-export const RockWeatheringSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
+export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const isMobile = useMedia('(max-width: 640px)');
   const [modalType, setModalType] = useState<
@@ -185,8 +185,7 @@ export const RockWeatheringSection = forwardRef<HTMLDivElement, {}>(function (_,
     <>
       <div
         ref={(el) => {
-          // @ts-ignore
-          ref(el);
+          props.assignRef(el);
           sectionRef.current = el;
         }}
       >
@@ -246,4 +245,4 @@ export const RockWeatheringSection = forwardRef<HTMLDivElement, {}>(function (_,
       )}
     </>
   );
-});
+};

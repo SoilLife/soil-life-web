@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 // helpers
 import { useMedia } from 'react-use';
@@ -51,7 +51,7 @@ const modalTypeMap = {
   translocations: <TranslocationsSvg className='w-full' />,
 };
 
-export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref) {
+export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const isMobile = useMedia('(max-width: 640px)');
   const [modalType, setModalType] = useState<null | 'additions' | 'losses' | 'transformations' | 'translocations'>(
@@ -126,8 +126,7 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
     <>
       <div
         ref={(el) => {
-          // @ts-ignore
-          ref(el);
+          props.assignRef(el);
           sectionRef.current = el;
         }}
       >
@@ -219,4 +218,4 @@ export const ProcessesSection = forwardRef<HTMLDivElement, {}>(function (_, ref)
       )}
     </>
   );
-});
+};

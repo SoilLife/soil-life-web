@@ -77,14 +77,14 @@ export default function SoilNexusPage() {
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' />
         <div className='space-y-16 mb-10 sm:space-y-32 sm:px-10'>
-          <IntroSection ref={assignRefs('soil nexus')} />
-          <EcosystemServicesSection ref={assignRefs('soil services')} />
-          <RockWeatheringSection ref={assignRefs('rock weathering')} />
+          <IntroSection assignRef={assignRefs('soil nexus')} />
+          <EcosystemServicesSection assignRef={assignRefs('soil services')} />
+          <RockWeatheringSection assignRef={assignRefs('rock weathering')} />
           <ParentMaterialSection />
           <PmTypesSection />
-          <FormationSection ref={assignRefs('soil formation')} />
+          <FormationSection assignRef={assignRefs('soil formation')} />
           <FormingFactorsSection />
-          <ProcessesSection ref={assignRefs('soil processes')} />
+          <ProcessesSection assignRef={assignRefs('soil processes')} />
         </div>
       </div>
       <Footer />
