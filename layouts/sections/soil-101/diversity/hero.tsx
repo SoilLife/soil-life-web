@@ -6,12 +6,12 @@ import DownArrow from 'public/images/down_arrow_white.svg';
 
 export function HeroSection() {
   return (
-    <div className='max-h-screen relative h-full overflow-hidden'>
+    <div className='max-h-screen min-h-screen relative overflow-hidden'>
       <div className='absolute pt-16 top-1/2 transform -translate-y-1/2 text-center text-white w-full'>
-        <Text type='h1' weight='semibold' size='4xl'>
+        <Text type='h1' weight='light' size='4xl'>
           digging into the diversity:
         </Text>
-        <Text type='h1' weight='semibold' size='4xl'>
+        <Text type='h1' weight='bold' size='4xl'>
           soil orders
         </Text>
       </div>
@@ -29,7 +29,7 @@ export function HeroSection() {
         <Image url='Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_9_8sT5dxppd.jpeg' className='object-cover' />
         <Image url='Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_11_UvZP_6LA0B.jpeg' className='object-cover' />
       </div>
-      <DownArrow height={60} className='absolute bottom-4 left-1/2 transform -translate-x-1/2' />
+      <DownArrow height={30} className='absolute bottom-4 left-1/2 transform -translate-x-1/2' />
     </div>
   );
 }

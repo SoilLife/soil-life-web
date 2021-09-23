@@ -8,10 +8,10 @@ export function HeroSection() {
   return (
     <div className='max-h-screen relative min-h-screen overflow-hidden'>
       <div className='absolute top-1/2 transform -translate-y-1/2 text-center text-white w-full z-10'>
-        <Text type='h1' weight='semibold' size='4xl'>
+        <Text type='h1' weight='light' size='4xl'>
           setting the stage:
         </Text>
-        <Text type='h1' weight='semibold' size='4xl'>
+        <Text type='h1' weight='bold' size='4xl'>
           the soil environment
         </Text>
       </div>
@@ -19,7 +19,7 @@ export function HeroSection() {
         url='Soil_101/Soil_Physics/Soil_Habitat_a4f2tAtMH.jpg?updatedAt=1630509120158'
         className='absolute object-cover'
       />
-      <DownArrow height={60} className='absolute bottom-4 left-1/2 transform -translate-x-1/2' />
+      <DownArrow height={30} className='absolute bottom-4 left-1/2 transform -translate-x-1/2' />
     </div>
   );
 }

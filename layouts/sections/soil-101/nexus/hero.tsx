@@ -11,7 +11,7 @@ export function HeroSection() {
         url='/Soil_101/nexus_header__2__841SmxC6D.png?updatedAt=1630389360286'
         className='min-h-screen object-cover'
       />
-      <DownArrow height={60} className='absolute bottom-4 left-1/2 transform -translate-x-1/2' />
+      <DownArrow height={30} className='absolute bottom-4 left-1/2 transform -translate-x-1/2' />
     </div>
   );
 }

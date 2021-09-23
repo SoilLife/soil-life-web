@@ -10,58 +10,55 @@ import SomFunctionsSvg from 'public/images/soil-101/health/SOM_functions.svg';
 
 export const WhatIsSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
   return (
-    <div ref={ref} className='py-16 h-full grid grid-cols-12'>
-      <div className='col-start-3 col-span-10'>
-        <Text type='h1' weight='light' size='2xl' className='text-blue-500 mb-20'>
-          what is soil health?
-        </Text>
-        <Text type='p' weight='light' size='sm'>
-          soil health is the capacity of soil to{' '}
-          <Text type='span' weight='bold' size='sm'>
-            function as a vital, living ecosystem
-          </Text>{' '}
-          that sustains plants, animals, and humans. many soil properties are inherent and can’t change on a human time
-          scale (i.e. texture). others are dynamic and directly influenced by management (i.e structure, organic
-          matter).
-        </Text>
-        <WhatIsSoilHealthSvg />
-        <Text type='p' weight='light' size='sm'>
-          just like our{' '}
-          <Text type='span' weight='bold' size='sm' className='text-blue-500'>
-            organs
-          </Text>{' '}
-          provide services that keep us healthy, healthy soil provides important{' '}
-          <Text type='span' weight='bold' size='sm' className='text-blue-500'>
-            ecosystem services
-          </Text>{' '}
-          to life on earth!
-        </Text>
-        <SoilHumanProfileSvg />
+    <div ref={ref}>
+      <Text type='h1' weight='light' size='2xl' className='text-blue-500 mb-20'>
+        what is soil health?
+      </Text>
+      <Text type='p' weight='light' size='sm'>
+        soil health is the capacity of soil to{' '}
+        <Text type='span' weight='bold' size='sm'>
+          function as a vital, living ecosystem
+        </Text>{' '}
+        that sustains plants, animals, and humans. many soil properties are inherent and can’t change on a human time
+        scale (i.e. texture). others are dynamic and directly influenced by management (i.e structure, organic matter).
+      </Text>
+      <WhatIsSoilHealthSvg />
+      <Text type='p' weight='light' size='sm'>
+        just like our{' '}
+        <Text type='span' weight='bold' size='sm' className='text-blue-500'>
+          organs
+        </Text>{' '}
+        provide services that keep us healthy, healthy soil provides important{' '}
+        <Text type='span' weight='bold' size='sm' className='text-blue-500'>
+          ecosystem services
+        </Text>{' '}
+        to life on earth!
+      </Text>
+      <SoilHumanProfileSvg />
 
-        <Text type='p' weight='light' size='sm'>
-          organic matter (SOM) is key to soil health, as it greatly improves most soil functions. whether sandy or
-          clayey, SOM improves structure, which may be the real{' '}
-          <Text type='span' weight='bold' size='sm'>
-            secret to soil health
-          </Text>
-          . while many conservation practices can improve soil structure, the ability to build and store SOM varies from
-          soil to soil.
+      <Text type='p' weight='light' size='sm'>
+        organic matter (SOM) is key to soil health, as it greatly improves most soil functions. whether sandy or clayey,
+        SOM improves structure, which may be the real{' '}
+        <Text type='span' weight='bold' size='sm'>
+          secret to soil health
         </Text>
-        <SomFunctionsSvg />
+        . while many conservation practices can improve soil structure, the ability to build and store SOM varies from
+        soil to soil.
+      </Text>
+      <SomFunctionsSvg />
 
-        <Text type='p' weight='light' size='sm'>
-          in order to build SOM, microbes must{' '}
-          <Text type='span' weight='bold' size='sm'>
-            store more of the carbon
-          </Text>{' '}
-          they consume (as living biomass){' '}
-          <Text type='span' weight='bold' size='sm'>
-            than they respire as CO2
-          </Text>
-          . this requires a healthy living environment (good structure!) that optimizes their health and overall
-          efficiency.
+      <Text type='p' weight='light' size='sm'>
+        in order to build SOM, microbes must{' '}
+        <Text type='span' weight='bold' size='sm'>
+          store more of the carbon
+        </Text>{' '}
+        they consume (as living biomass){' '}
+        <Text type='span' weight='bold' size='sm'>
+          than they respire as CO2
         </Text>
-      </div>
+        . this requires a healthy living environment (good structure!) that optimizes their health and overall
+        efficiency.
+      </Text>
     </div>
   );
 });
