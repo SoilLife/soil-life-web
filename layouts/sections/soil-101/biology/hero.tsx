@@ -6,7 +6,7 @@ import DownArrow from 'public/images/down_arrow_white.svg';
 
 export function HeroSection() {
   return (
-    <div className='max-h-screen relative h-full overflow-hidden'>
+    <div className='max-h-screen min-h-screen relative overflow-hidden'>
       <div className='absolute top-1/2 transform -translate-y-1/2 text-center text-white w-full'>
         <Text type='h1' weight='semibold' size='4xl'>
           meet the cast:

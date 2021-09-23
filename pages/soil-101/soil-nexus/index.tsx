@@ -76,7 +76,7 @@ export default function SoilNexusPage() {
       <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' />
-        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-10'>
+        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-32'>
           <IntroSection assignRef={assignRefs('soil nexus')} />
           <EcosystemServicesSection assignRef={assignRefs('soil services')} />
           <RockWeatheringSection assignRef={assignRefs('rock weathering')} />
