@@ -6,7 +6,7 @@ import Biocycling from 'public/images/soil-101/biology/biocycling.svg';
 
 export const BiocyclingSection = () => {
   return (
-    <div>
+    <div className='space-y-4 sm:space-y-8'>
       <Text type='h1' weight='light' size='2xl' className='text-teal-500 mb-20'>
         biocycling
       </Text>

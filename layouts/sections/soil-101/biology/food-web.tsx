@@ -8,30 +8,22 @@ import { Text, Icon } from 'design-system/atoms';
 
 // assets
 import FoodWebSvg from 'public/images/soil-101/biology/food_web.svg';
+import InvertebrateSvg from 'public/images/soil-101/biology/invertebrate.svg';
+import BacteriaSvg from 'public/images/soil-101/biology/bacteria.svg';
+import EarthwormSvg from 'public/images/soil-101/biology/earthworm.svg';
+import FungiSvg from 'public/images/soil-101/biology/fungi.svg';
+import NematodeSvg from 'public/images/soil-101/biology/nematode.svg';
+import DungPatSvg from 'public/images/soil-101/biology/dung_pat.svg';
+import ProtozoaSvg from 'public/images/soil-101/biology/protozoa.svg';
 
 const modalTypeMap = {
-  insects: {
-    title: {
-      image: '',
-      text: 'the shredders:',
-      subtext: 'insects',
-      floatingText: '   ',
-      color: 'text-yellow-500',
-    },
-    image: '',
-    text: {
-      body: 'on the prowl for bacteria, fungi, and other little critters to eat, insects inadvertently ingest and dhred up plant matter. microbes hitching a ride in their guts break it down. like a bioreactor they convert organic residues in to plant-available nutrients.',
-      footer: (
-        <Text type='p' weight='light' size='sm'>
-          a single square yard of soil contains{' '}
-          <Text type='span' weight='bold' size='sm'>
-            500 to 200,000
-          </Text>{' '}
-          individual arthopods
-        </Text>
-      ),
-    },
-  },
+  invertebrate: <InvertebrateSvg />,
+  bacteria: <BacteriaSvg />,
+  earthworm: <EarthwormSvg />,
+  fungi: <FungiSvg />,
+  nematode: <NematodeSvg />,
+  dungPat: <DungPatSvg />,
+  protozoa: <ProtozoaSvg />,
 };
 
 export const FoodWebSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
@@ -55,12 +47,37 @@ export const FoodWebSection = (props: { assignRef: (el: null | HTMLDivElement) =
     }
 
     const sectionContainer = sectionRef.current;
-    const cationExchangeSvg = sectionContainer.querySelector('#food_web_svg__Layer_20') as SVGGElement | null;
-    cationExchangeSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    cationExchangeSvg?.addEventListener('click', handleOpenModal('insects'));
+    const invertebrateSvg = sectionContainer.querySelector('#food_web_svg__Layer_20') as SVGGElement | null;
+    invertebrateSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    invertebrateSvg?.addEventListener('click', handleOpenModal('invertebrate'));
+
+    const fungiSvg = sectionContainer.querySelector('#food_web_svg__Layer_21') as SVGGElement | null;
+    fungiSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    fungiSvg?.addEventListener('click', handleOpenModal('fungi'));
+
+    const dungPatSvg = sectionContainer.querySelector('#food_web_svg__Layer_22') as SVGGElement | null;
+    dungPatSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    dungPatSvg?.addEventListener('click', handleOpenModal('dungPat'));
+
+    const protozoaSvg = sectionContainer.querySelector('#food_web_svg__Layer_24') as SVGGElement | null;
+    protozoaSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    protozoaSvg?.addEventListener('click', handleOpenModal('protozoa'));
+
+    const earthwormSvg = sectionContainer.querySelector('#food_web_svg__Layer_18') as SVGGElement | null;
+    earthwormSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    earthwormSvg?.addEventListener('click', handleOpenModal('earthworm'));
+
+    const bacteriaSvg = sectionContainer.querySelector('#food_web_svg__Layer_25') as SVGGElement | null;
+    bacteriaSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    bacteriaSvg?.addEventListener('click', handleOpenModal('bacteria'));
 
     return () => {
-      cationExchangeSvg?.removeEventListener('click', handleOpenModal('insects'));
+      invertebrateSvg?.removeEventListener('click', handleOpenModal('invertebrate'));
+      fungiSvg?.removeEventListener('click', handleOpenModal('fungi'));
+      dungPatSvg?.removeEventListener('click', handleOpenModal('dungPat'));
+      protozoaSvg?.removeEventListener('click', handleOpenModal('protozoa'));
+      bacteriaSvg?.removeEventListener('click', handleOpenModal('bacteria'));
+      earthwormSvg?.removeEventListener('click', handleOpenModal('earthworm'));
     };
   }, []);
 
@@ -105,27 +122,7 @@ export const FoodWebSection = (props: { assignRef: (el: null | HTMLDivElement) =
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div>
-            <Text type='h1' weight='thin' size='md' className={`text-center ${modalTypeMap[modalType].title.color}`}>
-              {modalTypeMap[modalType].title.text}
-            </Text>
-            <Text
-              type='h2'
-              weight='bold'
-              size='md'
-              className={`text-center pb-4 mb-4 border-b border-solid border-gray-500 ${modalTypeMap[modalType].title.color}`}
-            >
-              {modalTypeMap[modalType].title.subtext}
-            </Text>
-
-            <Text type='p' weight='light' size='sm' className='text-center'>
-              {modalTypeMap[modalType].text.body}
-            </Text>
-
-            <Text type='p' weight='light' size='sm' className='text-center'>
-              {modalTypeMap[modalType].text.footer}
-            </Text>
-          </div>
+          <div>{modalTypeMap[modalType]}</div>
         </ReactModal>
       )}
     </>
