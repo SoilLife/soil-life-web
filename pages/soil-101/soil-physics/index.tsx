@@ -80,7 +80,7 @@ export default function SoilPhysicsPage() {
       <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='yellow' />
-        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-10'>
+        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-32'>
           <TextureSection assignRef={assignRefs('texture')} />
           <TexturalClassSection />
           <SurfaceAreaSection />
