@@ -1,5 +1,3 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
@@ -8,9 +6,9 @@ import AnimalInputs1Svg from 'public/images/soil-101/chemistry/animal_inputs_1.s
 import AnimalInputs2Svg from 'public/images/soil-101/chemistry/animal_inputs_2.svg';
 import AnimalInputs3Svg from 'public/images/soil-101/chemistry/animal_inputs_3.svg';
 
-export const AnimalInputsSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const AnimalInputsSection = () => {
   return (
-    <div ref={ref}>
+    <div>
       <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
         animal inputs
       </Text>
@@ -32,4 +30,4 @@ export const AnimalInputsSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       </Text>
     </div>
   );
-});
+};

@@ -1,14 +1,12 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import NutrientAvailabilitySvg from 'public/images/soil-101/chemistry/nutrient_availability.svg';
 
-export const NutrientAvailabilitySection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const NutrientAvailabilitySection = () => {
   return (
-    <div ref={ref}>
+    <div>
       <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
         ph & nutrient availability
       </Text>
@@ -19,4 +17,4 @@ export const NutrientAvailabilitySection = forwardRef<HTMLDivElement, {}>((_, re
       <NutrientAvailabilitySvg />
     </div>
   );
-});
+};

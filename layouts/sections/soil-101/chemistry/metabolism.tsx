@@ -1,14 +1,12 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import MetabolismSvg from 'public/images/soil-101/chemistry/metabolism.svg';
 
-export const MetabolismSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const MetabolismSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
-    <div ref={ref}>
+    <div ref={props.assignRef}>
       <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
         metabolism
       </Text>
@@ -19,4 +17,4 @@ export const MetabolismSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       </Text>
     </div>
   );
-});
+};

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { soil101Subheadings } from 'data/main-headings';
 
@@ -27,10 +27,50 @@ const sections = ['plant growth', 'metabolism', 'nutrient cycling', 'cation exch
 
 export default function SoilChemistryPage() {
   const [currentSection, setCurrentSection] = useState('plant growth');
+  const refs = useRef<{ [key: string]: HTMLDivElement }>({});
+
+  useEffect(() => {
+    const keys = Object.keys(refs.current);
+    function handleIntersectionChange(entries: IntersectionObserverEntry[]) {
+      for (const entry of entries) {
+        if (keys.length && entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          for (const key of keys) {
+            if (entry.target === refs.current[key]) {
+              setCurrentSection(key);
+            }
+          }
+        }
+      }
+    }
+    const intersectionObserver = new IntersectionObserver(handleIntersectionChange, {
+      threshold: 1,
+    });
+
+    if (keys.length) {
+      for (const key of keys) {
+        intersectionObserver.observe(refs.current[key] as HTMLDivElement);
+      }
+    }
+
+    return () => {
+      intersectionObserver.disconnect();
+    };
+  }, [refs.current]);
+
+  function assignRefs(section: string) {
+    return (el: null | HTMLDivElement) => {
+      if (el) {
+        refs.current[section] = el;
+      }
+    };
+  }
 
   function handleClick(section: string) {
     return () => {
-      setCurrentSection(section);
+      if (refs.current[section]) {
+        refs.current[section]?.scrollIntoView({ behavior: 'smooth' });
+        setCurrentSection(section);
+      }
     };
   }
 
@@ -42,14 +82,14 @@ export default function SoilChemistryPage() {
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='orange' />
         <div className='space-y-16 mb-10 sm:space-y-32 sm:px-32'>
           <CircleOfLifeSection />
-          <SeedGerminationSection />
+          <SeedGerminationSection assignRef={assignRefs('plant growth')} />
           <PhotosynthesisSection />
           <NutrientUptakeSection />
-          <NutrientCyclingSection />
+          <NutrientCyclingSection assignRef={assignRefs('nutrient cycling')} />
           <CarbonicAcidSection />
-          <RootIonExchangeSection />
+          <RootIonExchangeSection assignRef={assignRefs('cation exchange capacity')} />
           <NutrientAvailabilitySection />
-          <MetabolismSection />
+          <MetabolismSection assignRef={assignRefs('metabolism')} />
           <DecompositionSection />
           <MicrobialWeatheringSection />
           <AnimalInputsSection />
