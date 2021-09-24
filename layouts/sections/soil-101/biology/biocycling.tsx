@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 
 // components
-import { Text, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
 
 // assets
 import Biocycling from 'public/images/soil-101/biology/biocycling.svg';
@@ -48,7 +48,7 @@ export const BiocyclingSection = () => {
     decomposition: false,
     bioperturbation: false,
   });
-  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  const [, setIsImagePopupOpen] = useState(false);
   const svgContainerRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
@@ -105,8 +105,6 @@ export const BiocyclingSection = () => {
       imagePopupSvg?.removeEventListener('click', handleImagePopup);
     };
   }, []);
-
-  console.log(popups);
 
   return (
     <>
