@@ -1,11 +1,9 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text, Image } from 'design-system/atoms';
 
-export const EntisolsSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const EntisolsSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
-    <div ref={ref}>
+    <div ref={props.assignRef}>
       <Text type='h1' weight='light' size='2xl' className='text-gray-500 mb-20'>
         entisols
       </Text>
@@ -21,4 +19,4 @@ export const EntisolsSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       </div>
     </div>
   );
-});
+};

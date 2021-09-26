@@ -1,11 +1,9 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
-export const DiversitySection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const DiversitySection = () => {
   return (
-    <div ref={ref}>
+    <div>
       <Text type='h1' weight='light' size='2xl' className='text-gray-500 mb-20'>
         soil diversity
       </Text>
@@ -34,4 +32,4 @@ export const DiversitySection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       <img src='/images/soil-101/diversity/soil-diversity.png' className='w-full' />
     </div>
   );
-});
+};

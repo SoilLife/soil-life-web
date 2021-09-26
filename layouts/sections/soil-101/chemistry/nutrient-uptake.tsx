@@ -81,7 +81,9 @@ export const NutrientUptakeSection = () => {
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <DissolutionChemistrySvg />
+          <div className='h-full w-full grid place-items-center'>
+            <DissolutionChemistrySvg />
+          </div>
         </ReactModal>
       )}
     </>

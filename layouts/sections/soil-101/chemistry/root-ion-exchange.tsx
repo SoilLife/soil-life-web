@@ -47,7 +47,13 @@ export const RootIonExchangeSection = (props: { assignRef: (el: null | HTMLDivEl
   }
   return (
     <>
-      <div ref={props.assignRef} className='space-y-4 sm:space-y-8'>
+      <div
+        ref={(el) => {
+          props.assignRef(el);
+          sectionRef.current = el;
+        }}
+        className='space-y-4 sm:space-y-8'
+      >
         <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
           root ion exchange
         </Text>
@@ -77,7 +83,9 @@ export const RootIonExchangeSection = (props: { assignRef: (el: null | HTMLDivEl
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <RootCloseUpSvg />
+          <div className='h-full w-full grid place-items-center'>
+            <RootCloseUpSvg />
+          </div>
         </ReactModal>
       )}
     </>
