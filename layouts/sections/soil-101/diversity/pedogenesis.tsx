@@ -1,14 +1,12 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import PedogenesisSvg from 'public/images/soil-101/diversity/pedogenesis.svg';
 
-export const PedogenesisSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const PedogenesisSection = () => {
   return (
-    <div ref={ref}>
+    <div>
       <Text type='h1' weight='light' size='2xl' className='text-gray-500 mb-20'>
         pedogenesis
       </Text>
@@ -19,4 +17,4 @@ export const PedogenesisSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       <PedogenesisSvg />
     </div>
   );
-});
+};

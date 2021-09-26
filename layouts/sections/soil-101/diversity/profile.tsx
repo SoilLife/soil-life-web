@@ -1,14 +1,12 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import ProfileSvg from 'public/images/soil-101/diversity/soil_profile.svg';
 
-export const ProfileSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
-    <div ref={ref}>
+    <div ref={props.assignRef}>
       <Text type='h1' weight='light' size='2xl' className='text-gray-500 mb-20'>
         soil profile
       </Text>
@@ -36,4 +34,4 @@ export const ProfileSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       </div>
     </div>
   );
-});
+};

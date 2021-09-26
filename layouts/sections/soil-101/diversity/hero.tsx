@@ -21,7 +21,10 @@ export function HeroSection() {
         <Image url='Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_3_Bjnn6JzY0.jpeg' className='object-cover' />
         <Image url='Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_4_nwPY1ltoO3W.jpeg' className='object-cover' />
         <Image url='Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_5_APOZdIgOH.jpeg' className='object-cover' />
-        <Image url='Soil_101/soil_chemistry/soil_chemistry_hero.JPG?updatedAt=1630600714426' className='object-cover' />
+        <Image
+          url='Soil_101/Diversity_-_Soil_Profiles/Diversity_Last_Soil_Profile_2-nPmWgRG.png'
+          className='object-cover'
+        />
         <Image url='Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_6_1F5dQkSdrP.jpeg' className='object-cover' />
         <Image url='Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_10_KXOyznfWU4ad.jpeg' className='object-cover' />
         <Image url='Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_7_1a-MPWo2Kh9W.jpeg' className='object-cover' />

@@ -77,7 +77,9 @@ export const CarbonicAcidSection = () => {
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <RootCloseUpSvg />
+          <div className='h-full w-full grid place-items-center'>
+            <RootCloseUpSvg />
+          </div>
         </ReactModal>
       )}
     </>

@@ -8,7 +8,7 @@ import { Text, Icon } from 'design-system/atoms';
 
 // assets
 import NutrientCyclingSvg from 'public/images/soil-101/chemistry/nutrient_cycling.svg';
-import DissolutionChemistrySvg from 'public/images/soil-101/chemistry/dissolution_chemistry.svg';
+import PlantNutrientSupplySvg from 'public/images/soil-101/chemistry/plant_nutrient_supply.svg';
 
 export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
@@ -29,7 +29,7 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
     }
 
     const sectionContainer = sectionRef.current;
-    const nutrientUptake = sectionContainer.querySelector('#nutrient_uptake_svg__Layer_29') as SVGGElement | null;
+    const nutrientUptake = sectionContainer.querySelector('#nutrient_cycling_svg__nut_cycling') as SVGGElement | null;
     nutrientUptake?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     nutrientUptake?.addEventListener('click', handleOpenModal);
 
@@ -83,7 +83,9 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <DissolutionChemistrySvg />
+          <div className='h-full grid place-items-center'>
+            <PlantNutrientSupplySvg />
+          </div>
         </ReactModal>
       )}
     </>
