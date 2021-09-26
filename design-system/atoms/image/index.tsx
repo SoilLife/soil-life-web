@@ -14,6 +14,7 @@ export function Image({
   className?: string;
   transformation?: any;
   lqip?: any;
+  onClick?: () => void;
   onLoad?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
 }) {
   return <IKImage path={url} className={`${props.width ? '' : 'w-full'} h-full ${className}`} {...props} />;

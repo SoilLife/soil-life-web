@@ -16,3 +16,4 @@ export * from './oxisol';
 export * from './histosol';
 export * from './anthrosol';
 export * from './diversity';
+export * from './soil-orders';
