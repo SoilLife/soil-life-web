@@ -48,10 +48,10 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
     if (!svgContainerRef.current) return;
     function handleOpenPopup(type: keyof typeof popups) {
       return () => {
-        setPopups({
+        setPopups((prevState) => ({
           ...popups,
-          [type]: !popups[type],
-        });
+          [type]: !prevState[type],
+        }));
       };
     }
 
@@ -95,8 +95,8 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
       <Text type='h1' weight='light' size='4xl' className='text-gray-500 mb-20'>
         soil profile
       </Text>
-      <div className='flex items-center'>
-        <Text type='p' weight='light' size='md' className='w-1/2 text-center'>
+      <div className='flex flex-col gap-4 h-full w-full items-center sm:flex-row sm:gap-8'>
+        <Text type='p' weight='light' size='md' className='text-center sm:w-1/2'>
           the distinct layers that develop are called{' '}
           <Text type='span' weight='bold' size='md'>
             horizons
@@ -115,14 +115,16 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
           </Text>{' '}
           based on these similar layers, features, and behaviors.
         </Text>
-        <div ref={svgContainerRef} className='relative w-1/2'>
-          <ProfileSvg />
-          {popups['organic'] && <Popup {...popupMap['organic']} className='left-[80%] top-0' />}
-          {popups['topsoil'] && <Popup {...popupMap['topsoil']} className='left-[80%] top-[5%]' />}
-          {popups['eluviated zone'] && <Popup {...popupMap['eluviated zone']} className='left-[80%] top-[20%]' />}
-          {popups['accumulation zone'] && <Popup {...popupMap['accumulation zone']} className='left-[80%] top-[30%]' />}
-          {popups['parent material'] && <Popup {...popupMap['parent material']} className='left-[80%] top-[60%]' />}
-          {popups['bedrock'] && <Popup {...popupMap['bedrock']} className='left-[80%] bottom-0' />}
+        <div ref={svgContainerRef} className='relative w-full h-full sm:w-1/2'>
+          <ProfileSvg className='h-full w-full' />
+          {popups['organic'] && <Popup {...popupMap['organic']} className='sm:left-[70%] top-0' />}
+          {popups['topsoil'] && <Popup {...popupMap['topsoil']} className='sm:left-[70%] top-[5%]' />}
+          {popups['eluviated zone'] && <Popup {...popupMap['eluviated zone']} className='sm:left-[70%] top-[20%]' />}
+          {popups['accumulation zone'] && (
+            <Popup {...popupMap['accumulation zone']} className='sm:left-[70%] top-[30%]' />
+          )}
+          {popups['parent material'] && <Popup {...popupMap['parent material']} className='sm:left-[70%] top-[60%]' />}
+          {popups['bedrock'] && <Popup {...popupMap['bedrock']} className='sm:left-[70%] bottom-0' />}
         </div>
       </div>
     </div>
