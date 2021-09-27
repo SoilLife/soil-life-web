@@ -10,7 +10,6 @@ export const PedogenicProcessesSection = (props: { assignRef: (el: null | HTMLDi
       <Text type='h1' weight='light' size='4xl' className='text-gray-500 mb-20'>
         pedogenic processes
       </Text>
-
       <PedogenicProcessesSvg />
     </div>
   );

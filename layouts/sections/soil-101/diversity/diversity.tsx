@@ -1,9 +1,9 @@
 // components
-import { Text } from 'design-system/atoms';
+import { Text, Image } from 'design-system/atoms';
 
 export const DiversitySection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
-    <div ref={props.assignRef}>
+    <div ref={props.assignRef} className='space-y-4 sm:space-y-8'>
       <Text type='h1' weight='light' size='4xl' className='text-gray-500 mb-20'>
         soil diversity
       </Text>
@@ -28,8 +28,9 @@ export const DiversitySection = (props: { assignRef: (el: null | HTMLDivElement)
         <Text type='span' weight='bold' size='md'>
           it's all connected
         </Text>
+        .
       </Text>
-      <img src='/images/soil-101/diversity/soil-diversity.png' className='w-full' />
+      <Image url='Soil_101/Diversity_-_Soil_Profiles/soil_diversity_1_QomzKR0K5.png' className='object-fit' />
     </div>
   );
 };
