@@ -1,14 +1,12 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import MeasuringSvg from 'public/images/soil-101/health/measuring_soil_health.svg';
 
-export const MeasuringSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const MeasuringSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
-    <div ref={ref}>
+    <div ref={props.assignRef}>
       <Text type='h1' weight='light' size='2xl' className='text-blue-500 mb-20'>
         measuring soil health
       </Text>
@@ -19,4 +17,4 @@ export const MeasuringSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       <MeasuringSvg />
     </div>
   );
-});
+};

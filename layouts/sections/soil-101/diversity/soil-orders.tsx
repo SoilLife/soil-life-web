@@ -16,7 +16,7 @@ export const SoilOrdersSection = () => {
         <Text type='span' weight='bold' size='md'>
           pedogenic processes
         </Text>{' '}
-        give rise to a diversity of soils, which are classified into 12 distinct groups called
+        give rise to a diversity of soils, which are classified into 12 distinct groups called{' '}
         <Text type='span' weight='bold' size='md'>
           soil orders
         </Text>
