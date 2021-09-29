@@ -10,7 +10,7 @@ import { Text, Icon } from 'design-system/atoms';
 
 // assets
 import WhatIsSoilHealthSvg from 'public/images/soil-101/health/what_is_soil_health.svg';
-import SomFunctionsSvg from 'public/images/soil-101/health/SOM_functions.svg';
+import CarbonSequestSvg from 'public/images/soil-101/health/carbon_sequest.svg';
 import HumanProfileSvg from 'public/images/soil-101/health/human_profile.svg';
 import SoilProfileSvg from 'public/images/soil-101/health/soil_profile.svg';
 import ProtectionSvg from 'public/images/soil-101/health/protection.svg';
@@ -19,6 +19,7 @@ import PhysicalSvg from 'public/images/soil-101/health/physical.svg';
 import CirculationSvg from 'public/images/soil-101/health/circulation.svg';
 import FiltrationSvg from 'public/images/soil-101/health/filtration.svg';
 import BiodegradationSvg from 'public/images/soil-101/health/biodegradation.svg';
+import CarbonSanDiegoSvg from 'public/images/soil-101/health/carbon_san_diego.svg';
 
 const modalTypeMap = {
   protection: <ProtectionSvg />,
@@ -37,7 +38,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
   const orientation = useOrientation();
   const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
-  useFullpageOverflow();
+  const [isSomModalOpen, setIsSomModalOpen] = useState(false);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
@@ -111,6 +112,13 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
       modalType: 'physical',
     });
 
+    function toggleSomModal() {
+      setIsSomModalOpen((prevState) => !prevState);
+    }
+    const somSvg = sectionContainer.querySelector('#SOM_functions_svg__Layer_2');
+    somSvg?.classList?.add(...interactiveClassNames);
+    somSvg?.addEventListener('click', toggleSomModal);
+
     return () => {
       humanProfileProtectionSvg?.removeEventListener('click', handleOpenModal('protection'));
       soilProfileProtectionSvg?.removeEventListener('click', handleOpenModal('protection'));
@@ -129,11 +137,14 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
 
       humanProfilePhysicalSvg?.removeEventListener('click', handleOpenModal('physical'));
       soilProfilePhysicalSvg?.removeEventListener('click', handleOpenModal('physical'));
+
+      somSvg?.removeEventListener('click', toggleSomModal);
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
+    setIsSomModalOpen(false);
     const body = document.querySelector('body');
     if (body) {
       body.style.overflow = 'auto';
@@ -149,10 +160,10 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         }}
         className='space-y-4 sm:space-y-8'
       >
-        <Text type='h1' weight='light' size='4xl' className='text-blue-500 mb-20'>
+        <Text type='h1' weight='bold' size='4xl' className='text-blue-500 mb-8 sm:mb-20'>
           what is soil health?
         </Text>
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className='text-center'>
           soil health is the capacity of soil to{' '}
           <Text type='span' weight='bold' size='md'>
             function as a vital, living ecosystem
@@ -162,7 +173,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           matter).
         </Text>
         <WhatIsSoilHealthSvg />
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className='text-center'>
           just like our{' '}
           <Text type='span' weight='bold' size='md' className='text-blue-500'>
             organs
@@ -177,7 +188,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         <div className='grid grid-cols-2 grid-rows-2 gap-4 sm:flex sm:items-center sm:gap-0 sm:space-x-8'>
           <HumanProfileSvg className='mx-auto h-[50vh] sm:h-auto' />
 
-          <Text type='p' weight='light' size='md' className='row-start-2 col-span-2 sm:row-start-auto'>
+          <Text type='p' weight='light' size='md' className='text-center row-start-2 col-span-2 sm:row-start-auto'>
             just like we inherit{' '}
             <Text type='span' weight='bold' size='md'>
               genetic material
@@ -197,7 +208,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <SoilProfileSvg className='mx-auto col-start-2 h-[50vh] sm:col-start-auto sm:h-auto' />
         </div>
 
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className='text-center'>
           organic matter (SOM) is key to soil health, as it greatly improves most soil functions. whether sandy or
           clayey, SOM improves structure, which may be the real{' '}
           <Text type='span' weight='bold' size='md'>
@@ -206,9 +217,9 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           . while many conservation practices can improve soil structure, the ability to build and store SOM varies from
           soil to soil.
         </Text>
-        <SomFunctionsSvg />
+        <CarbonSequestSvg />
 
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className='text-center'>
           in order to build SOM, microbes must{' '}
           <Text type='span' weight='bold' size='md'>
             store more of the carbon
@@ -241,7 +252,33 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-pink-500' />
           </button>
-          {modalTypeMap[modalType]}
+          <div className='h-full grid place-items-center'>{modalTypeMap[modalType]}</div>
+        </ReactModal>
+      )}
+
+      {isSomModalOpen && (
+        <ReactModal
+          isOpen
+          shouldCloseOnOverlayClick
+          shouldCloseOnEsc
+          style={{
+            content: {
+              padding: 40,
+              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
+              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
+              left: isMobile ? 0 : '50%',
+              top: isMobile ? '40px' : '50%',
+              transform: isMobile ? undefined : 'translate(-50%, -50%)',
+            },
+          }}
+          onRequestClose={handleCloseModal}
+        >
+          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
+            <Icon icon='x' size={32} className='text-pink-500' />
+          </button>
+          <div className='h-full grid place-items-center'>
+            <CarbonSanDiegoSvg />
+          </div>
         </ReactModal>
       )}
     </>
