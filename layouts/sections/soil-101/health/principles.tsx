@@ -1,13 +1,11 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 
-export const PrinciplesSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
-    <div ref={ref}>
+    <div ref={props.assignRef}>
       <Text type='h1' weight='light' size='2xl' className='text-blue-500 mb-20'>
         principles of soil health
       </Text>
@@ -16,4 +14,4 @@ export const PrinciplesSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       </Text>
     </div>
   );
-});
+};
