@@ -99,11 +99,11 @@ export default function SoilDiversityPage() {
           <MollisolSection />
           <VertisolSection />
           <GelisolSection />
+          <HistosolSection />
           <AfisolSection />
           <SpodosolSection />
           <UltisolSection />
           <OxisolSection />
-          <HistosolSection />
           <AnthrosolSection />
           <DiversitySection assignRef={assignRefs('soil diversity')} />
         </div>
