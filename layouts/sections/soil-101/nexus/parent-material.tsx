@@ -162,6 +162,9 @@ export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_,
               alignItems: 'center',
               justifyContent: 'center',
             },
+            overlay: {
+              zIndex: 2,
+            },
           }}
           onRequestClose={handleCloseModal}
         >

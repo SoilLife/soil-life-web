@@ -130,6 +130,9 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
               alignItems: 'center',
               justifyContent: 'center',
             },
+            overlay: {
+              zIndex: 2,
+            },
           }}
           onRequestClose={handleCloseModal}
         >
