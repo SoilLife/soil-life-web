@@ -35,7 +35,7 @@ export const ManagingSection = (props: { assignRef: (el: null | HTMLDivElement) 
         managing for soil health
       </Text>
       <div className='overflow-x-auto overflow-y-hidden'>
-        <ul className='flex flex-nowrap items-center py-3 space-x-4 sm:space-x-8'>
+        <ul className='flex flex-nowrap items-center py-3 space-x-4 sm:justify-center sm:space-x-8'>
           {headers.map((header) => (
             <li
               key={header}

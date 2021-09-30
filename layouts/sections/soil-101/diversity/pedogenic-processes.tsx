@@ -21,68 +21,68 @@ export const PedogenicProcessesSection = (props: { assignRef: (el: null | HTMLDi
       };
     }
 
-    const pedoturbationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-17');
+    const pedoturbationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_33');
     const pedoturbationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_38');
     pedoturbationPopupSvg?.classList?.toggle('hidden');
     pedoturbationLabelSvg?.classList?.add(...interactiveClassNames);
     pedoturbationLabelSvg?.addEventListener('click', togglePopup(pedoturbationPopupSvg));
 
-    const lessivageLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-29');
+    const lessivageLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_14');
     const lessivagePopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_43');
     lessivagePopupSvg?.classList?.toggle('hidden');
     lessivageLabelSvg?.classList?.add(...interactiveClassNames);
     lessivageLabelSvg?.addEventListener('click', togglePopup(lessivagePopupSvg));
 
-    const illuviationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-33');
+    const illuviationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_52');
     const illuviationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_42');
     illuviationPopupSvg?.classList?.toggle('hidden');
     illuviationLabelSvg?.classList?.add(...interactiveClassNames);
     illuviationLabelSvg?.addEventListener('click', togglePopup(illuviationPopupSvg));
 
-    const gleizationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-18');
+    const gleizationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_18');
     const gleizationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_47');
     gleizationPopupSvg?.classList?.toggle('hidden');
     gleizationLabelSvg?.classList?.add(...interactiveClassNames);
     gleizationLabelSvg?.addEventListener('click', togglePopup(gleizationPopupSvg));
 
-    const salinizationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-33');
+    const salinizationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_17');
     const salinizationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_40');
     salinizationPopupSvg?.classList?.toggle('hidden');
     salinizationLabelSvg?.classList?.add(...interactiveClassNames);
     salinizationLabelSvg?.addEventListener('click', togglePopup(salinizationPopupSvg));
 
-    const bioturbationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-33');
+    const bioturbationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_37');
     const bioturbationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_46');
     bioturbationPopupSvg?.classList?.toggle('hidden');
     bioturbationLabelSvg?.classList?.add(...interactiveClassNames);
     bioturbationLabelSvg?.addEventListener('click', togglePopup(bioturbationPopupSvg));
 
-    const calcificationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-33');
+    const calcificationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_15');
     const calcificationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_44');
     calcificationPopupSvg?.classList?.toggle('hidden');
     calcificationLabelSvg?.classList?.add(...interactiveClassNames);
     calcificationLabelSvg?.addEventListener('click', togglePopup(calcificationPopupSvg));
 
-    const melanizationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-33');
+    const melanizationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_34');
     const melanizationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_48');
     melanizationPopupSvg?.classList?.toggle('hidden');
     melanizationLabelSvg?.classList?.add(...interactiveClassNames);
     melanizationLabelSvg?.addEventListener('click', togglePopup(melanizationPopupSvg));
 
-    const elluviationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-29');
+    const elluviationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_35');
     const elluviationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_41');
     elluviationPopupSvg?.classList?.toggle('hidden');
     elluviationLabelSvg?.classList?.add(...interactiveClassNames);
     elluviationLabelSvg?.addEventListener('click', togglePopup(elluviationPopupSvg));
 
-    const podzolizationLabelSvg = el.querySelector('.pedogenic_processes_svg__cls-29');
+    const podzolizationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_16');
     const podzolizationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_45');
     podzolizationPopupSvg?.classList?.toggle('hidden');
     podzolizationLabelSvg?.classList?.add(...interactiveClassNames);
     podzolizationLabelSvg?.addEventListener('click', togglePopup(podzolizationPopupSvg));
 
-    const desilicationLabelSvg = el.querySelector('.a');
-    const desilicationPopupSvg = el.querySelector('#a');
+    const desilicationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_32');
+    const desilicationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_49');
     desilicationPopupSvg?.classList?.toggle('hidden');
     desilicationLabelSvg?.classList?.add(...interactiveClassNames);
     desilicationLabelSvg?.addEventListener('click', togglePopup(desilicationPopupSvg));

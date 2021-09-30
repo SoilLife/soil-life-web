@@ -225,6 +225,9 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
               alignItems: 'center',
               justifyContent: 'center',
             },
+            overlay: {
+              zIndex: 2,
+            },
           }}
           onRequestClose={handleCloseModal}
         >

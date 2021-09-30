@@ -26,7 +26,7 @@ export function SectionsNavBar<T extends string>({
     type: 'border',
   });
   return (
-    <div className='sticky top-10 bg-white py-4 overflow-auto sm:top-16'>
+    <div className='sticky top-10 bg-white py-4 overflow-auto z-[1] sm:top-16'>
       <ul className={`w-max flex mx-auto space-x-5 px-6 sm:space-x-16 ${textColor} ${borderColor}`}>
         {sections.map((section) => (
           <li key={section}>

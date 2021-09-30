@@ -185,10 +185,10 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           to life on earth!
         </Text>
 
-        <div className='grid grid-cols-2 grid-rows-2 gap-4 sm:flex sm:items-center sm:gap-0 sm:space-x-8'>
-          <HumanProfileSvg className='mx-auto h-[50vh] sm:h-auto' />
+        <div className='grid grid-cols-2 grid-rows-3 gap-4 sm:flex sm:items-center sm:gap-0 sm:space-x-8'>
+          <HumanProfileSvg className='mx-auto row-span-2 h-[50vh] sm:h-auto' />
 
-          <Text type='p' weight='light' size='md' className='text-center row-start-2 col-span-2 sm:row-start-auto'>
+          <Text type='p' weight='light' size='md' className='text-center row-start-3 col-span-2 sm:row-start-auto'>
             just like we inherit{' '}
             <Text type='span' weight='bold' size='md'>
               genetic material
@@ -205,7 +205,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
             major impact on soil organic matter, soil structure, and overall soil health!
           </Text>
 
-          <SoilProfileSvg className='mx-auto col-start-2 h-[50vh] sm:col-start-auto sm:h-auto' />
+          <SoilProfileSvg className='mx-auto row-span-2 col-start-2 h-[50vh] sm:col-start-auto sm:h-auto' />
         </div>
 
         <Text type='p' weight='light' size='md' className='text-center'>
@@ -245,6 +245,9 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
               left: isMobile ? 0 : '50%',
               top: isMobile ? '40px' : '50%',
               transform: isMobile ? undefined : 'translate(-50%, -50%)',
+            },
+            overlay: {
+              zIndex: 2,
             },
           }}
           onRequestClose={handleCloseModal}

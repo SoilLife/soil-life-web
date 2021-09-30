@@ -72,6 +72,9 @@ export const PhotosynthesisSection = () => {
               top: isMobile ? '40px' : '50%',
               transform: isMobile ? undefined : 'translate(-50%, -50%)',
             },
+            overlay: {
+              zIndex: 2,
+            },
           }}
           onRequestClose={handleCloseModal}
         >

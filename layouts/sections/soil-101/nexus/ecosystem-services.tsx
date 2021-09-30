@@ -175,6 +175,9 @@ export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDiv
               alignItems: 'center',
               justifyContent: 'center',
             },
+            overlay: {
+              zIndex: 2,
+            },
           }}
           onRequestClose={handleCloseModal}
         >

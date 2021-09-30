@@ -21,7 +21,7 @@ const imageUrls = [
 
 export function HeroSection() {
   return (
-    <div className='max-h-screen min-h-screen relative overflow-hidden'>
+    <div className='relative h-screen overflow-hidden'>
       <div className='absolute pt-16 top-1/2 transform -translate-y-1/2 text-center text-white w-full z-10'>
         <Text type='h1' weight='light' size='4xl'>
           digging into the diversity:

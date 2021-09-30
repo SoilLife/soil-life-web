@@ -10,7 +10,6 @@ export const SeedGerminationSection = (props: { assignRef: (el: null | HTMLDivEl
       <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
         seed germination
       </Text>
-
       <SeedGerminationSvg />
     </div>
   );
