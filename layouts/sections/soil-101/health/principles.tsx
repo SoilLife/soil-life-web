@@ -191,7 +191,7 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
             - its the circle of life
           </Text>
         </Text>
-        <ul className='sm:w-3/4 mx-auto flex items-center justify-between'>
+        <ul className='flex items-center justify-center py-3 space-x-10 sm:space-x-20'>
           {integrateAnimalsHeadings.map((heading) => (
             <li
               key={heading}

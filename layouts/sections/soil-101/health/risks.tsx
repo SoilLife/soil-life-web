@@ -16,7 +16,7 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
         food supply and the global economy. there is a great opportunity to improve soil health and provide solutions to
         global challenges.
       </Text>
-      <RisksSvg />
+      <RisksSvg className='mx-auto sm:w-1/2' />
     </div>
   );
 };
