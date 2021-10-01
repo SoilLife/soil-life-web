@@ -74,7 +74,7 @@ export function useWebOfSoils(
                   label: '',
                   description: '',
                   link: undefined,
-                  image: '/images/logo.svg',
+                  image: '/images/logo.png',
                   shape: 'circularImage',
                   to: [],
                 };

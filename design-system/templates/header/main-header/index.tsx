@@ -90,7 +90,7 @@ export function MainHeader({
               <Text type='h2' weight='light' size='md' className='uppercase xl:hidden'>
                 Soil
               </Text>
-              <img src='/images/logo.svg' className='h-6 xl:h-[56px]' />
+              <img src='/images/logo.png' className='h-6 xl:h-[56px]' />
               <Text type='h2' weight='light' size='md' className='uppercase xl:hidden'>
                 Life
               </Text>
