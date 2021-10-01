@@ -24,7 +24,6 @@ export function Footer({ className }: { className?: string }) {
           </div>
         </div>
       </footer>
-      s
     </Section>
   );
 }
