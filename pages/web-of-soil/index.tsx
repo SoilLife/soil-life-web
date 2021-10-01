@@ -222,13 +222,13 @@ export default function WebOfSoilPage() {
           className='hidden absolute left-0 top-1/2 transform -translate-y-1/2 lg:inline-block'
           onClick={moveSlideLeft}
         >
-          <img src={leftImage} />
+          <img src={leftImage} className='h-20 2xl:h-auto' />
         </button>
         <button
           className='hidden absolute right-0 top-1/2 transform -translate-y-1/2 lg:inline-block'
           onClick={moveSlideRight}
         >
-          <img src={rightImage} />
+          <img src={rightImage} className='h-20 2xl:h-auto' />
         </button>
       </>
     );
