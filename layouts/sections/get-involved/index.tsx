@@ -30,14 +30,14 @@ function ReturnHomeButton({ color }: { color: Color }) {
   }
   return (
     <div className='relative left-1/2 transform -translate-x-1/2 inline-flex justify-center my-20'>
-      <div className='relative max-w-[200px]'>
+      <div className='relative'>
         <img
           src='/images/worm.png'
           alt='illustration of an earth worm'
           className='absolute top-1/2 right-[80%] transform -rotate-6 -translate-y-1/2 w-[200px]'
         />
         <Link href='/get-involved'>
-          <Button as='link' size='lg' type={getButtonType(color)} label='return' className='w-auto' />
+          <Button as='link' size='lg' type={getButtonType(color)} label='explore more' />
         </Link>
       </div>
     </div>

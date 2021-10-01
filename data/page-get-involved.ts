@@ -57,7 +57,7 @@ const homeSectionCards = [
   },
   {
     imageUrl: '/Get_Involved/At_Home/At_Home_Compost_Your_Waste.jpg',
-    text: 'compost your waste',
+    text: 'start a compost pile',
     links: [
       { name: 'EPA', href: 'https://www.epa.gov/recycle/composting-home' },
       { name: 'NPR', href: 'https://www.npr.org/2020/04/07/828918397/how-to-compost-at-home' },
@@ -86,17 +86,17 @@ const homeSectionCards = [
   },
   {
     imageUrl: '/Get_Involved/At_Home/1_At_Home_7_Mulch_DtuGIfUMS.jpg',
-    text: 'mulch your plants',
+    text: 'mulch!',
     links: 'https://getchipdrop.com/',
   },
   {
     imageUrl: '/Get_Involved/At_Home/At_Home_Paint_with_Soil_0ONI0hdafWa.png',
-    text: 'paint with soils',
+    text: 'make your own soil paints',
     links: 'https://www.fortheloveofsoil.org/pigment-process',
   },
   {
     imageUrl: '/Get_Involved/At_Home/Find_Your_Soil_uN58w4fF_.png',
-    text: 'find your soil!',
+    text: 'learn what soil is under your feet',
     links: 'https://casoilresource.lawr.ucdavis.edu/gmap/',
   },
 ];
@@ -147,7 +147,7 @@ const communitySectionCards = [
   },
   {
     imageUrl: '/Get_Involved/In_Your_Community/At_Home_Find_Park_HFdlTqdc2CO.png',
-    text: 'visit a national park',
+    text: 'find your park!',
     links: 'https://findyourpark.com/',
   },
 ];
@@ -170,7 +170,7 @@ const socialMediaSectionCards = [
   },
   {
     imageUrl: '/Get_Involved/Social_Media/Screen_Shot_2021-05-10_at_1.31.51_AM_OT8btMgFB.png',
-    text: 'play the game',
+    text: 'get the game: starting with soil',
     links: 'https://www.ecoliteracy.org/download/starting-soil',
   },
   {
@@ -225,13 +225,13 @@ const legislationSectionCards = [
   },
   {
     imageUrl: '/Get_Involved/With_Your_Legislators/3_With_Your_Legislators_4_Cap_and_Trade_WDBr6qc7U.jpg',
-    text: 'learn more about Land Core',
+    text: 'follow Land Core',
     links: 'https://landcore.org/',
   },
   {
     imageUrl:
       '/Get_Involved/With_Your_Legislators/3_With_Your_Legislators_5_Resource_Conservation_District_E3qlosWp8Dc.jpg',
-    text: 'increase funding for technical assistance',
+    text: "support RCD's",
     links: 'https://www.nacdnet.org/about-nacd/about-districts/',
   },
   {
@@ -253,7 +253,7 @@ const educationSectionCards = [
     text: 'watch',
     links: [
       { name: 'Symphony of the Soil', href: 'http://www.symphonyofthesoil.com/' },
-      { name: 'Soil Solutions: Narrated by Michael Pollan', href: 'https://www.youtube.com/watch?v=NxqBzrx9yIE' },
+      { name: 'Soil Solutions', href: 'https://www.youtube.com/watch?v=NxqBzrx9yIE' },
       {
         name: 'Dirt: The Movie',
         href: 'https://www.youtube.com/watch?v=uHhhHpohglg',
@@ -265,23 +265,19 @@ const educationSectionCards = [
     text: 'read',
     links: [
       {
-        name: 'Growing a Revolution: Bringing our Soil Back to Life by David Montgomery',
+        name: 'Growing a Revolution',
         href: 'https://www.amazon.com/Growing-Revolution-Bringing-Soil-Back/dp/0393608328',
       },
       {
-        name: 'Out of the Earth by Daniel Health',
+        name: 'Out of the Earth',
         href: 'https://www.amazon.com/Out-Earth-Civilization-Life-Soil/dp/0520080807/ref=sr_1_1?s=books&ie=UTF8&qid=1535611642&sr=1-1&keywords=out+of+the+earth',
       },
       {
-        name: 'Dirt: The Erosion of Civilizations by Jared Diamond',
-        href: 'https://www.amazon.com/Out-Earth-Civilization-Life-Soil/dp/0520080807/ref=sr_1_1?s=books&ie=UTF8&qid=1535611642&sr=1-1&keywords=out+of+the+earth',
-      },
-      {
-        name: 'Know Soil, Know Life by David Lindbo',
+        name: 'Know Soil, Know Life',
         href: 'https://www.amazon.com/Know-Soil-Life-David-Lindbo/dp/0891189548/ref=pd_sim_14_24?_encoding=UTF8&pd_rd_i=0891189548&pd_rd_r=1c60d90f-ac20-11e8-b11d-915b29cfa4b3&pd_rd_w=YTtrW&pd_rd_wg=zj0yF&pf_rd_i=desktop-dp-sims&pf_rd_m=ATVPDKIKX0DER&pf_rd_p=a180fdfb-b54e-4904-85ba-d852197d6c09&pf_rd_r=EY1RZJR2SHDJ17WQ6YST&pf_rd_s=desktop-dp-sims&pf_rd_t=40701&psc=1&refRID=EY1RZJR2SHDJ17WQ6YST',
       },
       {
-        name: 'An Agricultural Testament by Sir Albert Howard',
+        name: 'An Agricultural Testament',
         href: 'https://www.amazon.com/Agricultural-Testament-Sir-Albert-Howard/dp/1388187485/ref=pd_cp_14_1?pf_rd_m=ATVPDKIKX0DER&pf_rd_p=fcaa6d12-8b2b-4ad7-b277-864b2da79f6e&pf_rd_r=VGHHJHTBKSYH6DMHK010&pd_rd_wg=pvOHU&pf_rd_s=desktop-dp-sims&pf_rd_t=40701&pd_rd_w=Kc2jH&pf_rd_i=desktop-dp-sims&pd_rd_r=9fe4e879-ac20-11e8-ad5d-f9d1f1abea37&pd_rd_i=1388187485&psc=1&refRID=VGHHJHTBKSYH6DMHK010',
       },
     ],
@@ -295,11 +291,12 @@ const educationSectionCards = [
         href: 'https://www.edx.org/learn/soil',
       },
       { name: 'Cooperative Extension', href: 'https://mastergardener.extension.org/contact-us/find-a-program/' },
+      { name: 'Coursera', href: 'https://www.coursera.org/courses?query=soil ' },
     ],
   },
   {
     imageUrl: '/Get_Involved/For_Your_Education/SoilsRevealed_Illustration_01_UdYobwDTI.jpeg',
-    text: 'explore the soils revealed map',
+    text: 'explore the map',
     links: 'https://soilsrevealed.org/explore',
   },
   {
@@ -332,7 +329,7 @@ const educationSectionCards = [
   },
   {
     imageUrl: '/Get_Involved/For_Your_Education/citizen_soil_science_gIIoeJIcM.jpg',
-    text: 'participate in citizen science',
+    text: 'submit soil to citizen science',
     links: [
       {
         name: "What's in your Backyard?",
@@ -347,7 +344,7 @@ const educationSectionCards = [
     text: 'learn more about soil organisms',
     links: [
       {
-        name: 'Global Soil Biodiversity Atlas',
+        name: 'Soil Biodiversity Atlas',
         href: 'https://www.globalsoilbiodiversity.org/atlas-introduction',
       },
       { name: 'Chaos of Delight', href: 'https://www.chaosofdelight.org/' },
@@ -388,7 +385,7 @@ const donationsSectionCards = [
         name: '4H',
         href: 'https://4-h.org/get-involved/donate/',
       },
-      { name: 'Future Farmers of America (FFA)', href: 'https://ffa.givingfuel.com/ffadonate' },
+      { name: 'Future Farmers of America (FFA)', href: 'https://www.ffa.org/ways-to-give/' },
       {
         name: 'National Young Farmers Coalition',
         href: 'https://connect.clickandpledge.com/w/Form/66f36e19-c320-4903-9c88-aa4f2ca5b7f0',
@@ -397,7 +394,7 @@ const donationsSectionCards = [
   },
   {
     imageUrl: '/Get_Involved/Through_Donations/5_Through_Donations_3_Community_Gardening_2FmqLN8Aajo.jpg',
-    text: 'support community garden projects',
+    text: 'support community projects',
     links: [
       { name: 'Barnraiser', href: 'https://www.barnraiser.us/' },
       { name: 'Insight Gardens', href: 'http://insightgardenprogram.org/donate/' },
