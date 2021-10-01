@@ -22,12 +22,12 @@ import BiodegradationSvg from 'public/images/soil-101/health/biodegradation.svg'
 import CarbonSanDiegoSvg from 'public/images/soil-101/health/carbon_san_diego.svg';
 
 const modalTypeMap = {
-  protection: <ProtectionSvg />,
-  respiration: <RespirationSvg />,
-  physical: <PhysicalSvg />,
-  circulation: <CirculationSvg />,
-  filtration: <FiltrationSvg />,
-  biodegradation: <BiodegradationSvg />,
+  protection: <ProtectionSvg className='h-full w-full' />,
+  respiration: <RespirationSvg className='h-full w-full' />,
+  physical: <PhysicalSvg className='h-full w-full' />,
+  circulation: <CirculationSvg className='h-full w-full' />,
+  filtration: <FiltrationSvg className='h-full w-full' />,
+  biodegradation: <BiodegradationSvg className='h-full w-full' />,
 };
 
 const interactiveClassNames = ['cursor-pointer', 'hover:opacity-50', 'active:opacity-100'];
@@ -62,7 +62,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
       return interactiveSvg;
     }
     const humanProfileProtectionSvg = addSvgInteractivity({
-      element: '#human_profile_svg__Layer_39',
+      element: '#human_profile_svg__Layer_40',
       modalType: 'protection',
     });
     const soilProfileProtectionSvg = addSvgInteractivity({
@@ -88,7 +88,10 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
       modalType: 'filtration',
     });
 
-    const humanProfileCirculationSvg = addSvgInteractivity({ element: '#a', modalType: 'circulation' });
+    const humanProfileCirculationSvg = addSvgInteractivity({
+      element: '#human_profile_svg__Layer_35',
+      modalType: 'circulation',
+    });
     const soilProfileCirculationSvg = addSvgInteractivity({
       element: '#soil_profile_svg__Layer_26',
       modalType: 'circulation',
@@ -104,7 +107,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
     });
 
     const humanProfilePhysicalSvg = addSvgInteractivity({
-      element: '#human_profile_svg__Layer_35',
+      element: '#human_profile_svg__Layer_85',
       modalType: 'physical',
     });
     const soilProfilePhysicalSvg = addSvgInteractivity({
@@ -113,9 +116,15 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
     });
 
     function toggleSomModal() {
-      setIsSomModalOpen((prevState) => !prevState);
+      setIsSomModalOpen((prevState) => {
+        const body = document.querySelector('body');
+        if (body) {
+          body.style.overflow = 'hidden';
+        }
+        return !prevState;
+      });
     }
-    const somSvg = sectionContainer.querySelector('#SOM_functions_svg__Layer_2');
+    const somSvg = sectionContainer.querySelector('#carbon_sequest_svg__Layer_2');
     somSvg?.classList?.add(...interactiveClassNames);
     somSvg?.addEventListener('click', toggleSomModal);
 
@@ -172,7 +181,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           scale (i.e. texture). others are dynamic and directly influenced by management (i.e structure, organic
           matter).
         </Text>
-        <WhatIsSoilHealthSvg />
+        <WhatIsSoilHealthSvg className='mx-auto sm:w-3/4' />
         <Text type='p' weight='light' size='md' className='text-center'>
           just like our{' '}
           <Text type='span' weight='bold' size='md' className='text-blue-500'>
@@ -273,6 +282,9 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
               top: isMobile ? '40px' : '50%',
               transform: isMobile ? undefined : 'translate(-50%, -50%)',
             },
+            overlay: {
+              zIndex: 2,
+            },
           }}
           onRequestClose={handleCloseModal}
         >
@@ -280,7 +292,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
             <Icon icon='x' size={32} className='text-pink-500' />
           </button>
           <div className='h-full grid place-items-center'>
-            <CarbonSanDiegoSvg />
+            <CarbonSanDiegoSvg className='h-full w-full' />
           </div>
         </ReactModal>
       )}
