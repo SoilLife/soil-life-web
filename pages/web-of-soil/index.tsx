@@ -323,10 +323,10 @@ export default function WebOfSoilPage() {
                     />
                     <div
                       className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
-                     lg:block lg:p-0 lg:h-auto lg:w-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:max-w-[566px]`}
+                     lg:block lg:p-0 lg:h-auto lg:w-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:max-w-[644px]`}
                     >
                       <img
-                        className='relative top-10 mx-auto h-[168px] w-[168px] lg:top-auto lg:mx-0 lg:-left-10 lg:h-[241px] lg:w-[241px]'
+                        className='relative top-10 mx-auto h-[168px] w-[168px] lg:top-auto lg:-left-10 lg:h-[241px] lg:w-[241px]'
                         src='/images/web-of-soil/icon-food.png'
                       />
                       <Text
@@ -338,7 +338,7 @@ export default function WebOfSoilPage() {
                         whether it is a plant that grew in it or an animal that grew from plants, 95% of all food can be
                         traced back to soil!
                       </Text>
-                      <div className='mt-[20%] flex justify-center sm:mt-10'>
+                      <div className='mt-[15%] flex justify-center sm:mt-10'>
                         <button
                           className={`bg-white shadow font-acre-regular text-pink-500 py-2 px-5 ${textSizeMap['lg']}`}
                           onClick={handleOpenModal}
@@ -352,7 +352,7 @@ export default function WebOfSoilPage() {
                     <Image className='object-cover' url='/6Fs/Fiber_Slide_NkVYdxIN7-t.jpg' />
                     <div
                       className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
-                     lg:block lg:left-auto lg:p-0 lg:h-auto lg:w-auto lg:top-1/2 lg:right-1/2 lg:transform lg:-translate-y-1/2 lg:max-w-[566px]`}
+                     lg:block lg:left-auto lg:p-0 lg:h-auto lg:w-auto lg:top-1/2 lg:right-1/2 lg:transform lg:-translate-y-1/2 lg:max-w-[608px]`}
                     >
                       <img
                         className='relative top-10 mx-auto h-[168px] w-[168px] lg:mx-0 lg:top-auto lg:-left-10 lg:h-[241px] lg:w-[241px]'
@@ -367,7 +367,7 @@ export default function WebOfSoilPage() {
                         natural? synthetic? paper or plastic? from clothing to accessories to wood and oil, all that
                         warms and protects us, starts in the soil.
                       </Text>
-                      <div className='mt-[20%] flex justify-center sm:mt-10'>
+                      <div className='mt-[15%] flex justify-center sm:mt-10'>
                         <button
                           className={`bg-white shadow font-acre-regular text-yellow-500 py-2 px-5 ${textSizeMap['lg']}`}
                           onClick={handleOpenModal}
@@ -381,7 +381,7 @@ export default function WebOfSoilPage() {
                     <Image className='object-cover' url='/6Fs/Filter_zylk3NyhU.jpg' transformation={[{ rotate: 90 }]} />
                     <div
                       className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
-                    text-center lg:p-0 lg:h-auto lg:w-auto lg:block lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/2 lg:max-w-[886px]`}
+                    text-center lg:p-0 lg:h-auto lg:block lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/2 lg:max-w-[950px]`}
                     >
                       <img
                         className='relative top-10 mx-auto h-[168px] w-[168px] lg:static lg:top-auto lg:h-[241px] lg:w-[241px]'
@@ -391,12 +391,12 @@ export default function WebOfSoilPage() {
                         type='p'
                         weight='light'
                         size='lg'
-                        className='leading-9 bg-white rounded-lg p-6 max-w-md lg:bg-transparent lg:p-0'
+                        className='leading-9 bg-white rounded-lg p-6 lg:bg-transparent lg:p-0'
                       >
                         soils are the lungs and liver of the earth, removing contaminants from the air we breathe and
                         the water we drink, free of charge!
                       </Text>
-                      <div className='mt-[20%] flex justify-center sm:mt-10'>
+                      <div className='mt-[15%] flex justify-center sm:mt-10'>
                         <button
                           className={`bg-white shadow font-acre-regular text-blue-500 py-2 px-5 ${textSizeMap['lg']}`}
                           onClick={handleOpenModal}
@@ -426,7 +426,7 @@ export default function WebOfSoilPage() {
                           the base of our economy, the base of food webs, and the physical base of our cities, soils are
                           literally the foundation for life and civilization—past and present!
                         </Text>
-                        <div className='mt-[20%] flex justify-center sm:mt-10'>
+                        <div className='mt-[15%] flex justify-center sm:mt-10'>
                           <button
                             className={`bg-white shadow font-acre-regular text-gray-500 py-2 px-5 ${textSizeMap['lg']}`}
                             onClick={handleOpenModal}
@@ -441,7 +441,7 @@ export default function WebOfSoilPage() {
                     <Image className='object-cover object-left' url='/6Fs/cup_of_pills_ioFvZZ0lo.png' />
                     <div
                       className={`p-6 flex flex-col h-full w-full items-center justify-center absolute top-0 left-0
-                    lg:p-0 lg:block lg:h-auto lg:w-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/4 lg:max-w-[767px]`}
+                    lg:p-0 lg:block lg:h-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/4 lg:max-w-[828px]`}
                     >
                       <img
                         className='relative top-10 h-[168px] w-[168px] lg:-left-10 lg:top-auto lg:h-[241px] lg:w-[241px]'
@@ -451,7 +451,7 @@ export default function WebOfSoilPage() {
                         type='p'
                         weight='light'
                         size='lg'
-                        className='bg-white rounded-lg p-6 max-w-md lg:bg-transparent lg:p-0'
+                        className='bg-white rounded-lg p-6 lg:bg-transparent lg:p-0'
                         style={{
                           lineHeight: '35px',
                         }}
@@ -459,7 +459,7 @@ export default function WebOfSoilPage() {
                         soils are home to the plants, fungi, & bacteria that produce most of the world’s medicine — and
                         ~98% of the microbes that inhabit it are yet to be discovered!
                       </Text>
-                      <div className='mt-[20%] flex justify-center sm:mt-10'>
+                      <div className='mt-[15%] flex justify-center sm:mt-10'>
                         <button
                           className={`bg-white shadow font-acre-regular text-orange-500 py-2 px-5 ${textSizeMap['lg']}`}
                           onClick={handleOpenModal}
@@ -492,7 +492,7 @@ export default function WebOfSoilPage() {
                           from paints and pottery to playing fields and parks, soils provide the grounds for music,
                           sports, and art!
                         </Text>
-                        <div className='mt-[20%] flex justify-center sm:mt-10'>
+                        <div className='mt-[15%] flex justify-center sm:mt-10'>
                           <button
                             className={`bg-white shadow font-acre-regular text-teal-500 py-2 px-5 ${textSizeMap['lg']}`}
                             onClick={handleOpenModal}
