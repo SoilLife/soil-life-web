@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { Text } from 'design-system/atoms';
 
 // assets
-import WellFedTopSvg from 'public/images/soil-101/health/wellfed_top.svg';
-import WellFedMiddleSvg from 'public/images/soil-101/health/wellfed_middle.svg';
-import WellFedBottomSvg from 'public/images/soil-101/health/wellfed_bottom.svg';
+// import WellFedTopSvg from 'public/images/soil-101/health/wellfed_top.svg';
+// import WellFedMiddleSvg from 'public/images/soil-101/health/wellfed_middle.svg';
+// import WellFedBottomSvg from 'public/images/soil-101/health/wellfed_bottom.svg';
+import WellFedFinalSvg from 'public/images/soil-101/health/wellfed_final.svg';
 
-import DiversifiedTopSvg from 'public/images/soil-101/health/diversified_top.svg';
-import DiversifiedMiddleSvg from 'public/images/soil-101/health/diversified_middle.svg';
-import DiversifiedBottomSvg from 'public/images/soil-101/health/diversified_bottom.svg';
+// import DiversifiedTopSvg from 'public/images/soil-101/health/diversified_top.svg';
+// import DiversifiedMiddleSvg from 'public/images/soil-101/health/diversified_middle.svg';
+// import DiversifiedBottomSvg from 'public/images/soil-101/health/diversified_bottom.svg';
+import DiversifiedFinalSvg from 'public/images/soil-101/health/diversified_final.svg';
 
 import BalancedTopSvg from 'public/images/soil-101/health/balanced_top.svg';
 import BalancedMiddleSvg from 'public/images/soil-101/health/balanced_middle.svg';
@@ -47,24 +49,28 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
         <Text type='p' weight='bold' size='2xl' className='text-pink-500'>
           keep it active and well-fed!
         </Text>
+        <WellFedFinalSvg />
 
-        <WellFedTopSvg />
-
-        <Text type='p' weight='light' size='lg'>
-          ground year round and capitalize off all that free solar energy!
-        </Text>
+        {/* <div className='relative'>
+          <WellFedTopSvg />
+          <Text type='p' weight='light' size='lg' className='w-3/4 mx-auto'>
+            instead of leaving ﬁelds to rest or lay "fallow," keep plants in the ground year round and capitalize off
+            all that free solar energy!
+          </Text>
+        </div>
 
         <WellFedMiddleSvg className='sm:w-1/2 mx-auto' />
 
         <Text type='p' weight='light' size='lg'>
-          resident microbes, keeping them active & happy.
+          this provides a steady stream of fuel to power up your resident microbes, keeping them active & happy.
         </Text>
 
-        <WellFedBottomSvg />
+        <WellFedBottomSvg /> */}
       </div>
 
       <div className='space-y-8'>
-        <div className='inline-block relative mt-8 sm:mt-20'>
+        <DiversifiedFinalSvg />
+        {/* <div className='inline-block relative mt-8 sm:mt-20'>
           <DiversifiedTopSvg className='mx-auto h-20 sm:absolute sm:top-0 sm:-right-32 sm:h-32' />
           <Text type='p' weight='bold' size='2xl' className='text-pink-500'>
             keep it diversified!
@@ -100,7 +106,7 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
           of soil organic matter.
         </Text>
 
-        <DiversifiedBottomSvg />
+        <DiversifiedBottomSvg /> */}
       </div>
 
       <div className='space-y-8'>
