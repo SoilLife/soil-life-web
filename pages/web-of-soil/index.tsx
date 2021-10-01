@@ -72,12 +72,12 @@ function getBgColorFromActiveHeader(index: number) {
 
 const showSections = ['video', 'infographic', 'educational video'];
 const videos = [
-  'https://www.youtube.com/watch?v=z8PAU3sAtPA',
-  'https://www.youtube.com/watch?v=QNrw3BHU_jc',
-  'https://www.youtube.com/watch?v=rzeRZ-bqC20',
-  'https://www.youtube.com/watch?v=lu_pgydBJ74',
-  'https://www.youtube.com/watch?v=X-CiZOK4zDg',
-  'https://www.youtube.com/watch?v=CNhTMh6uZ2o',
+  'https://www.youtube.com/watch?v=GqNmbgfDTGE',
+  'https://www.youtube.com/watch?v=q6qtZhrKgU4',
+  'https://www.youtube.com/watch?v=Rl18Ss4dOdI',
+  'https://www.youtube.com/watch?v=6T9AMtKEAY8',
+  'https://www.youtube.com/watch?v=XA7aeMwTCks',
+  'https://www.youtube.com/watch?v=rkOQ5PfQe1k',
 ];
 
 export default function WebOfSoilPage() {
