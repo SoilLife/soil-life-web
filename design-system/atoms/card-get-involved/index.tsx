@@ -68,7 +68,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                       })}`}
                     >
                       <a href={link.href} target='_blank' rel='noreferrer noopener' className='text-center'>
-                        <Text type='span' weight='medium' size='md'>
+                        <Text type='span' weight='medium' size='sm'>
                           {link.name}
                         </Text>
                       </a>
@@ -85,7 +85,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                   <Text
                     type='p'
                     weight='medium'
-                    size='md'
+                    size='sm'
                     className={`${getColor({
                       color,
                       type: 'text',
@@ -112,7 +112,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
       </div>
       <Text
         type='h3'
-        size='md'
+        size='lg'
         weight='regular'
         className={`text-center mt-4 ${getColor({ color, type: 'text', state: 'idle' })}`}
       >
