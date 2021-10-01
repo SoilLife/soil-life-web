@@ -30,7 +30,7 @@ export function HeroSection() {
           soil orders
         </Text>
       </div>
-      <div className='max-h-screen min-h-screen grid grid-cols-2 sm:pt-20 sm:pb-4 sm:px-8 sm:grid-cols-6 sm:grid-rows-2 sm:gap-4'>
+      <div className='max-h-screen min-h-screen grid grid-cols-2 sm:pt-20 sm:pb-4 sm:px-8 sm:grid-cols-6 sm:grid-rows-2 sm:gap-2'>
         {imageUrls.map((imageUrl) => (
           <div key={imageUrl} className='overflow-hidden h-[calc(100vh/6)] sm:h-full'>
             <Image url={imageUrl} className='object-cover object-top sm:object-center' />
