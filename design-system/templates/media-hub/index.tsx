@@ -133,7 +133,7 @@ export function MediaHub({
                                       ? medium.thumbnail
                                       : medium.mediaType === 'image'
                                       ? medium?.URL ?? ''
-                                      : '/images/logo.svg'
+                                      : '/images/logo.png'
                                   }
                                   className={
                                     medium.mediaType === 'video' && medium.thumbnail
