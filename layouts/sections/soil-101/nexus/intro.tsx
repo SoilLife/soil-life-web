@@ -93,7 +93,7 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
         }}
       >
         <div className='space-y-8'>
-          <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
+          <Text type='h1' weight='bold' size='4xl' className='text-pink-500'>
             soil: the nexus
           </Text>
           <Text type='p' weight='light' size='md'>

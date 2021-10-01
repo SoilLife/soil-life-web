@@ -125,16 +125,12 @@ export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_,
     <>
       <div ref={sectionRef}>
         <div className='space-y-8'>
-          <div className='flex items-center'>
-            <Text type='h1' weight='bold' size='xl' className='text-pink-500 w-full'>
-              parent material
-            </Text>
-            <div className='w-full'>
-              <img src='/images/soil-101/nexus/mountains.png' />
-            </div>
-          </div>
-          <div className='flex items-end space-x-4 sm:pl-20'>
-            <Text type='p' weight='light' size='lg' className='text-pink-500'>
+          <Text type='h1' weight='regular' size='2xl' className='text-pink-500 w-full'>
+            parent material
+          </Text>
+
+          <div className='flex flex-col space-x-4 sm:flex-row sm:items-end sm:pl-20'>
+            <Text type='p' weight='light' size='xl' className='text-pink-500'>
               source
             </Text>
             <Text type='p' weight='thin' size='xs'>
