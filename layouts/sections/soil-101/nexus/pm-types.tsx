@@ -5,6 +5,7 @@ import ReactModal from 'react-modal';
 
 // components
 import { Text, Image, Icon } from 'design-system/atoms';
+import PmTypesSvg from 'public/images/soil-101/nexus/pm_types.svg';
 
 const modalTypeMap = {
   'coarse-mafic': {
@@ -44,34 +45,11 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
   const isLandscape = orientation.type.includes('landscape');
-  const [svgTable, setSvgTable] = useState<null | string>(null);
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
-    async function fetchSvg() {
-      const image = await fetch(
-        'https://ik.imagekit.io/q9koofhilw/Soil_101/Soil_Nexus/pm_types_ptw5coXfG.svg?updatedAt=1629529482197'
-      )
-        .then((res) => {
-          if (res.ok && res.status === 200) {
-            return res.text();
-          } else {
-            throw Error('Something went wrong');
-          }
-        })
-        .then((svg) => {
-          setSvgTable(svg);
-        });
-
-      return image;
-    }
-
-    fetchSvg();
-  }, []);
-
-  useEffect(() => {
-    if (!sectionRef.current || !svgTable) return;
+    if (!sectionRef.current) return;
     function handleOpenModal(type: typeof modalType) {
       return (_e: MouseEvent) => {
         const body = document.querySelector('body');
@@ -84,27 +62,27 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
 
     const sectionContainer = sectionRef.current;
 
-    const coarseMaficSvg = sectionContainer.querySelector('#Layer_69') as SVGGElement | null;
+    const coarseMaficSvg = sectionContainer.querySelector('#pm_types_svg__Layer_31') as SVGGElement | null;
     coarseMaficSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     coarseMaficSvg?.addEventListener('click', handleOpenModal('coarse-mafic'));
 
-    const coarseIntermediate = sectionContainer.querySelector('#Layer_68') as SVGGElement | null;
+    const coarseIntermediate = sectionContainer.querySelector('#pm_types_svg__Layer_33') as SVGGElement | null;
     coarseIntermediate?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     coarseIntermediate?.addEventListener('click', handleOpenModal('coarse-intermediate'));
 
-    const coarseFelsic = sectionContainer.querySelector('#Layer_67') as SVGGElement | null;
+    const coarseFelsic = sectionContainer.querySelector('#pm_types_svg__Layer_34') as SVGGElement | null;
     coarseFelsic?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     coarseFelsic?.addEventListener('click', handleOpenModal('coarse-felsic'));
 
-    const fineMafic = sectionContainer.querySelector('#Layer_72') as SVGGElement | null;
+    const fineMafic = sectionContainer.querySelector('#pm_types_svg__Layer_30') as SVGGElement | null;
     fineMafic?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     fineMafic?.addEventListener('click', handleOpenModal('fine-mafic'));
 
-    const fineIntermediate = sectionContainer.querySelector('#Layer_71') as SVGGElement | null;
+    const fineIntermediate = sectionContainer.querySelector('#pm_types_svg__Layer_29') as SVGGElement | null;
     fineIntermediate?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     fineIntermediate?.addEventListener('click', handleOpenModal('fine-intermediate'));
 
-    const fineFelsic = sectionContainer.querySelector('#Layer_70') as SVGGElement | null;
+    const fineFelsic = sectionContainer.querySelector('#pm_types_svg__Layer_28') as SVGGElement | null;
     fineFelsic?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     fineFelsic?.addEventListener('click', handleOpenModal('fine-felsic'));
 
@@ -116,7 +94,7 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
       fineIntermediate?.removeEventListener('click', handleOpenModal('fine-intermediate'));
       fineFelsic?.removeEventListener('click', handleOpenModal('fine-felsic'));
     };
-  }, [svgTable]);
+  }, []);
 
   function handleCloseModal() {
     setModalType(null);
@@ -130,15 +108,15 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
     <>
       <div ref={sectionRef}>
         <div className='space-y-8'>
-          <div className='flex items-end space-x-4 sm:pl-20'>
-            <Text type='p' weight='light' size='lg' className='text-pink-500'>
+          <div className='flex flex-col space-x-4 sm:flex-row sm:items-end sm:pl-20'>
+            <Text type='p' weight='light' size='2xl' className='text-pink-500'>
               types
             </Text>
             <Text type='p' weight='thin' size='xs'>
               - rocks are composed of different types of minerals that weather at different rates
             </Text>
           </div>
-          {/* {svgTable && <div dangerouslySetInnerHTML={{ __html: svgTable }} />} */}
+          <PmTypesSvg className='mx-auto h-full max-h-[683px]' />
         </div>
       </div>
       {modalType && (

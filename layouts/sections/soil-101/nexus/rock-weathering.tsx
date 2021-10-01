@@ -188,22 +188,21 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className='space-y-8'
       >
-        <div className='space-y-8'>
-          <div className='flex'>
-            <div className='space-y-4'>
-              <Text type='h1' weight='bold' size='3xl' className='text-pink-500'>
-                rock weathering
-              </Text>
-              <Text type='p' weight='light' size='md'>
-                over time, through a combination of physical, biological, and chemical processes, rocks break down into
-                smaller and smaller pieces.
-              </Text>
-            </div>
-            <RockWeathering height='189px' />
+        <div className='grid gap-4 sm:grid-cols-4'>
+          <Text type='h1' weight='bold' size='4xl' className='text-pink-500 sm:col-span-3'>
+            rock weathering
+          </Text>
+          <div className='sm:row-span-2'>
+            <RockWeathering className='mx-auto h-[189px]' />
           </div>
-          <RockWeatheringTable />
+          <Text type='p' weight='light' size='md' className='sm:col-span-3'>
+            over time, through a combination of physical, biological, and chemical processes, rocks break down into
+            smaller and smaller pieces.
+          </Text>
         </div>
+        <RockWeatheringTable />
       </div>
       {modalType && (
         <ReactModal

@@ -4,11 +4,11 @@ import { Section, Image, Text } from 'design-system/atoms';
 export function Footer({ className }: { className?: string }) {
   return (
     <Section className={`fp-auto-height ${className}`}>
-      <footer className='container h-full flex items-center h-max-[700px] pb-10 sm:pb-0'>
+      <footer className='container h-full flex items-center h-max-[612px] pb-10 sm:pb-0'>
         <div className='flex flex-col items-center justify-between lg:flex-row'>
           <Image
             url='/soil_all_connected_Xgb0g5f3Fqm.png'
-            className='h-full ml-0 object-contain w-auto max-h-[200px] sm:max-h-[520px] lg:ml-20'
+            className='h-full ml-0 object-contain w-auto max-h-[200px] sm:max-h-[382px] lg:ml-20'
           />
           <div className='w-full lg:w-1/3'>
             <Text type='p' weight='bold' size='xs' className='p-1 mb-6 text-white bg-pink-500'>
@@ -24,7 +24,6 @@ export function Footer({ className }: { className?: string }) {
           </div>
         </div>
       </footer>
-      s
     </Section>
   );
 }
