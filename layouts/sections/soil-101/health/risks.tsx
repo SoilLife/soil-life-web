@@ -6,6 +6,8 @@ import ReactModal from 'react-modal';
 // components
 import { Text, Image, Icon } from 'design-system/atoms';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   desertification: {
     imageUrl: 'Soil_101/Soil_Health/Soils_at_Risk_xa3jFk-qG.jpg',
@@ -60,11 +62,11 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
 
   return (
     <>
-      <div ref={props.assignRef} className='space-y-4 sm:space-y-8'>
-        <Text type='h1' weight='bold' size='3xl' className='text-blue-500 mb-8 sm:mb-20'>
+      <div ref={props.assignRef} className={styles['section']}>
+        <Text type='h1' weight='bold' size='3xl' color='blue' className={styles['heading']}>
           soils at risk
         </Text>
-        <Text type='p' weight='light' size='sm' className='text-center'>
+        <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
           a soccer field of soil is eroded every 5 seconds, an area the size of new york is sealed up every day, and 33%
           of the world’s soils are considered moderately to highly degraded. this poses an existential threat -- to our
           food supply and the global economy. there is a great opportunity to improve soil health and provide solutions
@@ -78,7 +80,7 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
                 className='w-full py-2 bg-teal-500 text-center sm:py-8'
                 onClick={handleButtonClick(type as typeof modalType)}
               >
-                <Text type='span' weight='light' size='lg' className='text-white'>
+                <Text type='span' weight='light' size='lg' color='white'>
                   {type}
                 </Text>
               </button>
@@ -114,7 +116,7 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
           <div className='space-y-4'>
-            <Text type='h1' weight='bold' size='2xl' className='text-blue-500 text-center'>
+            <Text type='h1' weight='bold' size='2xl' color='blue' className='text-center'>
               {modalType}
             </Text>
 

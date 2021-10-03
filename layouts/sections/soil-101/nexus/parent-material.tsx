@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, forwardRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useOrientation, useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
@@ -8,6 +8,7 @@ import { Text, Image, Icon } from 'design-system/atoms';
 
 // assets
 import ParentMaterial from 'public/images/soil-101/nexus/parent_material.svg';
+import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   colluvium: {
@@ -47,7 +48,7 @@ const modalTypeMap = {
   },
 };
 
-export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) {
+export const ParentMaterialSection = () => {
   useFullpageOverflow();
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
@@ -123,22 +124,20 @@ export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_,
 
   return (
     <>
-      <div ref={sectionRef}>
-        <div className='space-y-8'>
-          <Text type='h1' weight='regular' size='2xl' className='text-pink-500 w-full'>
-            parent material
-          </Text>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='regular' size='2xl' color='pink' className={`w-full ${styles['heading']}`}>
+          parent material
+        </Text>
 
-          <div className='flex flex-col space-x-4 sm:flex-row sm:items-end sm:pl-20'>
-            <Text type='p' weight='light' size='xl' className='text-pink-500'>
-              source
-            </Text>
-            <Text type='p' weight='thin' size='xs'>
-              - rocks weather in place or are deposited in one of the following ways
-            </Text>
-          </div>
-          <ParentMaterial className='mx-auto max-h-[700px]' />
+        <div className='flex flex-col space-x-4 sm:flex-row sm:items-center sm:pl-20'>
+          <Text type='p' weight='light' size='xl' color='pink'>
+            source
+          </Text>
+          <Text type='p' weight='thin' size='xs' className={styles['p-60']}>
+            - rocks weather in place or are deposited in one of the following ways
+          </Text>
         </div>
+        <ParentMaterial className='mx-auto max-h-[700px]' />
       </div>
       {modalType && (
         <ReactModal
@@ -167,13 +166,13 @@ export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_,
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4'>
-            <Text type='h1' weight='bold' size='2xl' className='text-pink-500 text-center'>
+          <div className='space-y-4 text-center'>
+            <Text type='h1' weight='bold' size='2xl' color='pink'>
               {modalTypeMap[modalType].title}
             </Text>
 
             <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto h-auto' />
-            <Text type='p' weight='light' size='2xs' className='text-center'>
+            <Text type='p' weight='light' size='2xs'>
               {modalTypeMap[modalType].text}
             </Text>
           </div>
@@ -181,4 +180,4 @@ export const ParentMaterialSection = forwardRef<HTMLDivElement, {}>(function (_,
       )}
     </>
   );
-});
+};

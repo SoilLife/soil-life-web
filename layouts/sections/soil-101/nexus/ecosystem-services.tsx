@@ -10,6 +10,7 @@ import { Text, Icon } from 'design-system/atoms';
 
 // assets
 import EcosystemServices from 'public/images/soil-101/nexus/ecosystem_services.svg';
+import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   'climate regulation': {
@@ -139,19 +140,20 @@ export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDiv
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className={styles['section']}
       >
-        <div>
-          <Text type='h1' weight='bold' size='4xl' className='text-pink-500 mb-8'>
-            ecosystem services
-          </Text>
-          <Text type='p' weight='light' size='md' className='text-center'>
+        <Text type='h1' weight='bold' size='4xl' color='pink' className={styles['heading']}>
+          ecosystem services
+        </Text>
+        <div className={`text-center ${styles['p-50']}`}>
+          <Text type='p' weight='light' size='md'>
             soils are the foundation of nearly every ecosystem on the planet. soil functions and processes provide
             ecosystem services that give rise to healthy plants, healthy people, and a healthy planet!
           </Text>
           <div className='my-8 sm:my-20' style={{ height: 'fit-content' }}>
             <EcosystemServices className='h-full mx-auto max-h-[500px] object-contain' />
           </div>
-          <Text type='p' weight='regular' size='md' className='text-center text-teal-500'>
+          <Text type='p' weight='regular' size='md' color='teal'>
             "essentially, all life depends upon the soil... there can be no life without soil and no soil without life;
             they have evolved together." -charles kellogg
           </Text>

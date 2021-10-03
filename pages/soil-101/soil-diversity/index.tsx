@@ -13,24 +13,13 @@ import {
   PedogenesisSection,
   ProfileSection,
   PedogenicProcessesSection,
-  EntisolsSection,
-  InceptisolsSection,
-  AridisolSection,
-  AndisolSection,
-  MollisolSection,
-  VertisolSection,
-  GelisolSection,
-  AfisolSection,
-  SpodosolSection,
-  UltisolSection,
-  OxisolSection,
-  HistosolSection,
-  AnthrosolSection,
   DiversitySection,
   SoilOrdersSection,
 } from 'layouts/sections/soil-101/diversity';
 
-const sections = ['pedogenesis', 'soil profile', 'pedogenesis processes', 'soil diversity'];
+import styles from '../soil-101.module.css';
+
+const sections = ['pedogenesis', 'soil profile', 'pedogenesis processes', 'soil orders', 'soil diversity'];
 
 export default function SoilDiversityPage() {
   const [currentSection, setCurrentSection] = useState('pedogenesis');
@@ -87,24 +76,11 @@ export default function SoilDiversityPage() {
       <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='gray' />
-        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-32'>
+        <div className={styles['sections-container']}>
           <PedogenesisSection assignRef={assignRefs('pedogenesis')} />
           <ProfileSection assignRef={assignRefs('soil profile')} />
           <PedogenicProcessesSection assignRef={assignRefs('pedogenesis processes')} />
-          <SoilOrdersSection />
-          <EntisolsSection />
-          <InceptisolsSection />
-          <AridisolSection />
-          <AndisolSection />
-          <MollisolSection />
-          <VertisolSection />
-          <GelisolSection />
-          <HistosolSection />
-          <AfisolSection />
-          <SpodosolSection />
-          <UltisolSection />
-          <OxisolSection />
-          <AnthrosolSection />
+          <SoilOrdersSection assignRef={assignRefs('soil orders')} />
           <DiversitySection assignRef={assignRefs('soil diversity')} />
         </div>
       </div>

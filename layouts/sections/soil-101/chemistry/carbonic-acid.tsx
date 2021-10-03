@@ -10,6 +10,8 @@ import { Text, Icon } from 'design-system/atoms';
 import CarbonicAcidSvg from 'public/images/soil-101/chemistry/carbonic_acid.svg';
 import RootCloseUpSvg from 'public/images/soil-101/chemistry/root_closeup_carbonic_acid.svg';
 
+import styles from '../soil-101.module.css';
+
 export const CarbonicAcidSection = () => {
   useFullpageOverflow();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,12 +49,12 @@ export const CarbonicAcidSection = () => {
   }
   return (
     <>
-      <div ref={sectionRef} className='space-y-4 sm:space-y-8'>
-        <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='regular' size='4xl' color='orange' className={styles['heading']}>
           carbonic acid
         </Text>
         <CarbonicAcidSvg />
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           plant roots respire some carbon as CO2 out of their roots. leading to production of carbonic acid and
           increased mineral weathering.
         </Text>

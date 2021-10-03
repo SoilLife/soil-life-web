@@ -6,6 +6,8 @@ import { Text } from 'design-system/atoms';
 // assets
 import ProfileSvg from 'public/images/soil-101/diversity/soil_profile.svg';
 
+import styles from '../soil-101.module.css';
+
 const popupMap = {
   organic: {
     title: 'O horizon',
@@ -91,12 +93,12 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
   }, []);
 
   return (
-    <div ref={props.assignRef}>
-      <Text type='h1' weight='light' size='4xl' className='text-gray-500 mb-20'>
+    <div ref={props.assignRef} className={styles['section']}>
+      <Text type='h1' weight='bold' size='4xl' className={styles['heading']}>
         soil profile
       </Text>
       <div className='flex flex-col gap-4 h-full w-full items-center sm:flex-row sm:gap-8'>
-        <Text type='p' weight='light' size='md' className='text-center sm:w-1/2'>
+        <Text type='p' weight='light' size='md' className={`text-center sm:w-1/2 ${styles['p-70']}`}>
           the distinct layers that develop are called{' '}
           <Text type='span' weight='bold' size='md'>
             horizons

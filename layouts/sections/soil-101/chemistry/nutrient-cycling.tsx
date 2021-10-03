@@ -10,6 +10,8 @@ import { Text, Icon } from 'design-system/atoms';
 import NutrientCyclingSvg from 'public/images/soil-101/chemistry/nutrient_cycling.svg';
 import PlantNutrientSupplySvg from 'public/images/soil-101/chemistry/plant_nutrient_supply.svg';
 
+import styles from '../soil-101.module.css';
+
 export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,11 +55,12 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className={styles['section']}
       >
-        <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
+        <Text type='h1' weight='bold' size='4xl' color='orange' className={styles['heading']}>
           nutrient cycling
         </Text>
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>
           some nutrients are more reliable than others, making it easier for plants to access and take theme up
         </Text>
 

@@ -16,6 +16,8 @@ import {
   RisksSection,
 } from 'layouts/sections/soil-101/health';
 
+import styles from '../soil-101.module.css';
+
 const sections = ['what is soil health?', 'principles', 'management', 'measurement', 'soils at risk'];
 
 export default function SoilBiologyPage() {
@@ -73,7 +75,7 @@ export default function SoilBiologyPage() {
       <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='blue' />
-        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-32'>
+        <div className={styles['sections-container']}>
           <WhatIsSection assignRef={assignRefs('what is soil health?')} />
           <PrinciplesSection assignRef={assignRefs('principles')} />
           <ManagingSection assignRef={assignRefs('management')} />

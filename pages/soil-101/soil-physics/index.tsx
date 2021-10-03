@@ -12,7 +12,7 @@ import {
   HeroSection,
   TextureSection,
   TexturalClassSection,
-  SurfaceAreaSection,
+  SurfaceChargeSection,
   WaterDynamicsSection,
   OrganicMatterSection,
   ExchangeCapacitySection,
@@ -23,7 +23,9 @@ import {
   HealthyStructureSection,
 } from 'layouts/sections/soil-101/physics';
 
-const sections = ['texture', 'aggregation', 'structure', 'pore space', 'healthy structure'];
+import styles from '../soil-101.module.css';
+
+const sections = ['texture', 'charge', 'aggregation', 'structure', 'pore space', 'healthy structure'];
 
 export default function SoilPhysicsPage() {
   const [currentSection, setCurrentSection] = useState('texture');
@@ -80,10 +82,10 @@ export default function SoilPhysicsPage() {
       <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='yellow' />
-        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-32'>
+        <div className={styles['sections-container']}>
           <TextureSection assignRef={assignRefs('texture')} />
           <TexturalClassSection />
-          <SurfaceAreaSection />
+          <SurfaceChargeSection assignRef={assignRefs('charge')} />
           <WaterDynamicsSection />
           <OrganicMatterSection />
           <ExchangeCapacitySection />

@@ -10,7 +10,9 @@ import { Text, Icon } from 'design-system/atoms';
 import RootIonExchangeSvg from 'public/images/soil-101/chemistry/root_ion.svg';
 import RootCloseUpSvg from 'public/images/soil-101/chemistry/root_closeup_proton.svg';
 
-export const RootIonExchangeSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
+import styles from '../soil-101.module.css';
+
+export const RootIonExchangeSection = () => {
   useFullpageOverflow();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const orientation = useOrientation();
@@ -47,18 +49,12 @@ export const RootIonExchangeSection = (props: { assignRef: (el: null | HTMLDivEl
   }
   return (
     <>
-      <div
-        ref={(el) => {
-          props.assignRef(el);
-          sectionRef.current = el;
-        }}
-        className='space-y-4 sm:space-y-8'
-      >
-        <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='regular' size='4xl' color='orange' className={styles['heading']}>
           root ion exchange
         </Text>
         <RootIonExchangeSvg />
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           plant roots also release H+, or protons, which can replace other positively charged cations on clays, making
           them available for plant uptake.
         </Text>

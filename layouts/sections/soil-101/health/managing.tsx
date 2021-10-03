@@ -10,6 +10,8 @@ import HedgerowsSvg from 'public/images/soil-101/health/management_hedgerows.svg
 import NutrientSvg from 'public/images/soil-101/health/management_nutrient.svg';
 import OrganicSvg from 'public/images/soil-101/health/management_organic.svg';
 
+import styles from '../soil-101.module.css';
+
 const headerSvgMap = {
   'no-tillage': <NoTillageSvg />,
   'cover cropping': <CoverCroppingSvg />,
@@ -30,8 +32,8 @@ export const ManagingSection = (props: { assignRef: (el: null | HTMLDivElement) 
   const [activeHeader, setActiveHeader] = useState<keyof typeof headerSvgMap>('no-tillage');
 
   return (
-    <div ref={props.assignRef} className='space-y-4 sm:space-y-8'>
-      <Text type='h1' weight='bold' size='4xl' className='text-blue-500 mb-8 sm:mb-20'>
+    <div ref={props.assignRef} className={styles['section']}>
+      <Text type='h1' weight='bold' size='4xl' color='blue' className={styles['heading']}>
         managing for soil health
       </Text>
       <div className='overflow-x-auto overflow-y-hidden'>
@@ -45,11 +47,9 @@ export const ManagingSection = (props: { assignRef: (el: null | HTMLDivElement) 
             >
               <Text
                 type='p'
-                weight='light'
+                weight={header === activeHeader ? 'bold' : 'regular'}
                 size='sm'
-                className={`whitespace-nowrap ${
-                  header === activeHeader ? 'underline cursor-default' : 'cursor-pointer'
-                }`}
+                className={`whitespace-nowrap ${header === activeHeader ? 'cursor-default' : 'cursor-pointer'}`}
               >
                 {header}
               </Text>

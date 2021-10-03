@@ -1,11 +1,11 @@
 import { TextProps } from './text.interfaces';
 
 export const textTypeMap: { [Type in TextProps['type']]: string } = {
-  h1: 'leading-tight sm:leading-tight lg:leading-tight xl:leading-tight 2xl:leading-tight',
-  h2: 'leading-tight sm:leading-tight lg:leading-tight xl:leading-tight 2xl:leading-tight',
-  h3: 'leading-tight sm:leading-tight lg:leading-tight xl:leading-tight 2xl:leading-tight',
-  p: 'leading-tight sm:leading-tight lg:leading-tight xl:leading-tight 2xl:leading-tight',
-  span: 'leading-tight sm:leading-tight lg:leading-tight xl:leading-tight 2xl:leading-tight',
+  h1: 'leading-tight',
+  h2: 'leading-tight',
+  h3: 'leading-tight',
+  p: 'leading-tight',
+  span: 'leading-tight',
 };
 
 export const textFontWeightMap: { [Weight in TextProps['weight']]: string } = {
@@ -28,4 +28,15 @@ export const textSizeMap: { [Size in TextProps['size']]: string } = {
   '3xl': 'text-[48px] lg:text-[54px] xl:text-[60px] 2xl:text-[70px]',
   '4xl': 'text-[54px] lg:text-[60px] xl:-text-[70px] 2xl:text-[80px]',
   '5xl': 'text-[60px] lg:text-[70px] xl:text-[80px] 2xl:text-[90px]',
+};
+
+export const textColorMap: { [Color in Required<TextProps>['color']]: string } = {
+  blue: 'text-blue-500',
+  gray: 'text-gray-500',
+  orange: 'text-orange-500',
+  pink: 'text-pink-500',
+  teal: 'text-teal-500',
+  yellow: 'text-yellow-500',
+  white: 'text-white',
+  current: 'text-currentColor',
 };

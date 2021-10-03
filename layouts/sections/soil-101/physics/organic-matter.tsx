@@ -11,6 +11,8 @@ import OrganicMatterSvg from 'public/images/soil-101/physics/organic_matter.svg'
 import CarbonInputsSvg from 'public/images/soil-101/physics/carbon_inputs.svg';
 import MicrobialFilterSvg from 'public/images/soil-101/physics/microbial_filter.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   'carbon inputs': {
     title: 'carbon-based inputs',
@@ -78,11 +80,11 @@ export const OrganicMatterSection = () => {
 
   return (
     <>
-      <div ref={sectionRef}>
-        <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-10'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
           organic matter
         </Text>
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='thin' size='md' className={`text-center ${styles['p-48']}`}>
           supramolecular aggregation of plant, animal, and microbially-based compounds in varying stages of
           decomposition. stable organic matter can last in the soil for 100s to 1000s of years.
         </Text>
@@ -112,7 +114,7 @@ export const OrganicMatterSection = () => {
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
           <div className='space-y-8'>
-            <Text type='h1' weight='light' size='xl' className='text-teal-500 text-center'>
+            <Text type='h1' weight='light' size='xl' color='teal' className='text-center'>
               {modalTypeMap[modalType].title}
             </Text>
             {modalTypeMap[modalType].image}

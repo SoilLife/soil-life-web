@@ -8,6 +8,8 @@ import PedogenicProcessesSvg from 'public/images/soil-101/diversity/pedogenic_pr
 
 const interactiveClassNames = ['cursor-pointer', 'hover:opacity-50', 'active:opacity-100'];
 
+import styles from '../soil-101.module.css';
+
 export const PedogenicProcessesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   const sectionContainerRef = useRef<null | HTMLDivElement>(null);
 
@@ -108,8 +110,9 @@ export const PedogenicProcessesSection = (props: { assignRef: (el: null | HTMLDi
         props.assignRef(el);
         sectionContainerRef.current = el;
       }}
+      className={styles['section']}
     >
-      <Text type='h1' weight='light' size='4xl' className='text-gray-500 mb-20'>
+      <Text type='h1' weight='bold' size='4xl' className={styles['heading']}>
         pedogenic processes
       </Text>
       <PedogenicProcessesSvg />

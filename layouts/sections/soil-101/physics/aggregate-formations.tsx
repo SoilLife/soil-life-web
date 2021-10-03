@@ -1,18 +1,18 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import AggregateFormationsSvg from 'public/images/soil-101/physics/aggregate_formations.svg';
 
-export const AggregateFormationSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+import styles from '../soil-101.module.css';
+
+export const AggregateFormationSection = () => {
   return (
-    <div ref={ref}>
-      <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-20'>
+    <div className={styles['section']}>
+      <Text type='h1' weight='light' size='3xl' color='yellow' className={styles['heading']}>
         aggregate formations
       </Text>
       <AggregateFormationsSvg />
     </div>
   );
-});
+};

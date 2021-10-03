@@ -1,0 +1,61 @@
+.section {
+  @apply space-y-8;
+}
+
+.heading {
+  line-height: 1;
+
+  @apply sm:leading-tight;
+}
+
+.diversity-subheading {
+  @apply text-center px-6 pb-2 border-solid border-b-2 border-pink-500 inline-block;
+}
+
+.p-80 {
+  @apply leading-normal;
+
+  @screen sm {
+    line-height: 80px;
+  }
+}
+
+.p-70 {
+  @apply leading-normal;
+
+  @screen sm {
+    line-height: 70px;
+  }
+}
+
+.p-60 {
+  @apply leading-normal;
+
+  @screen sm {
+    line-height: 60px;
+  }
+}
+
+.p-50 {
+  @apply leading-normal;
+
+  @screen sm {
+    line-height: 50px;
+  }
+}
+
+.p-48 {
+  @apply leading-normal;
+
+  @screen sm {
+    line-height: 48px;
+  }
+}
+
+.p-38 {
+  @apply leading-normal;
+
+  @screen sm {
+    line-height: 38px;
+  }
+}

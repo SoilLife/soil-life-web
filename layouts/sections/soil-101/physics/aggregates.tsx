@@ -10,6 +10,8 @@ import { Text, Icon } from 'design-system/atoms';
 import AggregationSvg from 'public/images/soil-101/physics/aggregation.svg';
 import AggregatesSvg from 'public/images/soil-101/physics/whats_an_aggregate.svg';
 
+import styles from '../soil-101.module.css';
+
 export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const orientation = useOrientation();
@@ -57,8 +59,9 @@ export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className={styles['section']}
       >
-        <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-20'>
+        <Text type='h1' weight='light' size='4xl' color='yellow' className={styles['heading']}>
           aggregates
         </Text>
         <AggregationSvg />

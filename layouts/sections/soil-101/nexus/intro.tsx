@@ -10,6 +10,8 @@ import { Text, Image, Icon } from 'design-system/atoms';
 import AirWaterMineralOrganic from 'public/images/soil-101/nexus/air_water_mineral_organic.svg';
 import NexusIntro from 'public/images/soil-101/nexus/nexus_intro.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   air: {
     title: 'air',
@@ -91,30 +93,29 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className={styles['section']}
       >
-        <div className='space-y-8'>
-          <Text type='h1' weight='bold' size='4xl' className='text-pink-500'>
-            soil: the nexus
-          </Text>
-          <Text type='p' weight='light' size='md'>
-            the{' '}
-            <Text type='span' weight='bold' size='md' className='text-pink-500'>
-              "solid ground"
-            </Text>{' '}
-            we walk on is only about{' '}
-            <Text type='span' weight='bold' size='md' className='text-pink-500'>
-              50% solid
-            </Text>{' '}
-            material made of mostly mineral and 1-10% organic matter. the remaining{' '}
-            <Text type='span' weight='bold' size='md' className='text-pink-500'>
-              50% is empty, pore space
-            </Text>{' '}
-            — filled with either air or water.
-          </Text>
-          <div className='space-y-6 sm:space-y-0 sm:flex sm:space-x-10 sm:p-6'>
-            <NexusIntro />
-            <AirWaterMineralOrganic />
-          </div>
+        <Text type='h1' weight='bold' size='4xl' color='pink' className={styles['heading']}>
+          soil: the nexus
+        </Text>
+        <Text type='p' weight='light' size='md' className={styles['p-60']}>
+          the{' '}
+          <Text type='span' weight='bold' size='md' color='pink'>
+            "solid ground"
+          </Text>{' '}
+          we walk on is only about{' '}
+          <Text type='span' weight='bold' size='md' color='pink'>
+            50% solid
+          </Text>{' '}
+          material made of mostly mineral and 1-10% organic matter. the remaining{' '}
+          <Text type='span' weight='bold' size='md' color='pink'>
+            50% is empty, pore space
+          </Text>{' '}
+          — filled with either air or water.
+        </Text>
+        <div className='flex flex-col gap-6 sm:flex-row'>
+          <NexusIntro />
+          <AirWaterMineralOrganic />
         </div>
       </div>
       {modalType && (
@@ -144,13 +145,13 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4'>
-            <Text type='h1' weight='bold' size='2xl' className='text-pink-500 text-center'>
+          <div className='space-y-4 text-center'>
+            <Text type='h1' weight='bold' size='2xl' color='pink'>
               {modalTypeMap[modalType].title}
             </Text>
 
             <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto h-auto' />
-            <Text type='p' weight='light' size='2xs' className='text-center'>
+            <Text type='p' weight='light' size='2xs'>
               {modalTypeMap[modalType].text}
             </Text>
           </div>

@@ -9,6 +9,8 @@ import { Text, Icon, Image } from 'design-system/atoms';
 // assets
 import StructureSvg from 'public/images/soil-101/physics/structure.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   granular: {
     title: 'granular',
@@ -132,11 +134,12 @@ export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement)
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className={styles['section']}
       >
-        <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-20'>
+        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
           structure
         </Text>
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='thin' size='sm' className={styles['p-50']}>
           the way these structural units stack together determines the size, shape, and distribution of pore space
           within the soil profile. the density of the individual soil particles and the amount of empty space within and
           between them determines the bulk density, or mass per unit volume of the soil.
