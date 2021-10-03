@@ -8,6 +8,9 @@ import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 import { Text, Icon } from 'design-system/atoms';
 
+// interfaces
+import { TextProps } from 'design-system/atoms/text/text.interfaces';
+
 // assets
 import LeftArrow from 'public/images/left_arrow_pink_thick.svg';
 import RightArrow from 'public/images/right_arrow_pink_thick.svg';
@@ -19,30 +22,30 @@ import TranslocationsSvg from 'public/images/soil-101/nexus/translocations.svg';
 
 import styles from '../soil-101.module.css';
 
-const processes = [
+const processes: { title: string; text1: string; text2: string; color: TextProps['color'] }[] = [
   {
     title: 'additions',
     text1: 'rain/flooding, dust, animal',
     text2: 'and plant residues, fertilizers',
-    textColor: 'text-pink-500',
+    color: 'pink',
   },
   {
     title: 'losses',
     text1: 'erosion/runoff, leaching,',
     text2: 'metabolism, volatilization',
-    textColor: 'text-teal-500',
+    color: 'teal',
   },
   {
     title: 'translocations',
     text1: 'gravity/water, evaporation of',
     text2: 'salts, mixing by organisms',
-    textColor: 'text-yellow-500',
+    color: 'yellow',
   },
   {
     title: 'transformations',
     text1: 'decomposition of residues,',
     text2: 'weathering of rocks to clay, iron oxidation',
-    textColor: 'text-blue-500',
+    color: 'blue',
   },
 ];
 
@@ -151,7 +154,8 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
                       type='p'
                       weight='medium'
                       size='lg'
-                      className={`${process.textColor} hover:underline hover:cursor-pointer ${styles['p-48']}`}
+                      color={process.color}
+                      className={`hover:underline hover:cursor-pointer ${styles['p-48']}`}
                     >
                       {process.title}:
                     </Text>
