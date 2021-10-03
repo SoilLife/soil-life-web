@@ -32,4 +32,4 @@ export function Text({ type, className, weight, size, color, ...props }: TextPro
 Text.defaultProps = {
   className: '',
   color: 'current',
-} as TextProps;
+};

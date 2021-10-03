@@ -34,12 +34,12 @@ export function HealthySoilsSection() {
         </div>
       </Slide>
 
-      {healthySoilsSlides.map(({ name, content, photoUrl, arrowsImage, nameColor }) => (
+      {healthySoilsSlides.map(({ name, content, photoUrl, arrowsImage, color }) => (
         <Slide key={name}>
           <div className='flex flex-col-reverse h-full sm:grid sm:grid-cols-3'>
             <div className='flex-grow py-10 sm:px-10 sm:py-4 text-center md:p-8'>
               <img src={arrowsImage} className='block mb-4' />
-              <Text type='h1' weight='medium' size='2xl' className={`mb-4 sm:mb-10 ${nameColor}`}>
+              <Text type='h1' weight='medium' size='2xl' color={color} className='mb-4 sm:mb-10'>
                 {name}
               </Text>
 

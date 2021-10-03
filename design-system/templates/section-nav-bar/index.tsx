@@ -15,11 +15,6 @@ export function SectionsNavBar<T extends string>({
   sections: T[];
   color: Color;
 }) {
-  const textColor = getColor({
-    color,
-    state: 'idle',
-    type: 'text',
-  });
   const borderColor = getColor({
     color,
     state: 'idle',
@@ -27,7 +22,7 @@ export function SectionsNavBar<T extends string>({
   });
   return (
     <div className='sticky top-10 bg-white py-4 overflow-auto z-[1] sm:top-16'>
-      <ul className={`w-max flex mx-auto space-x-5 px-6 sm:space-x-16 ${textColor} ${borderColor}`}>
+      <ul className={`w-max flex mx-auto space-x-5 px-6 sm:space-x-16  ${borderColor}`}>
         {sections.map((section) => (
           <li key={section}>
             <div className='inline-block cursor-pointer' onClick={onClick(section)}>
@@ -35,6 +30,7 @@ export function SectionsNavBar<T extends string>({
                 type='h3'
                 weight='medium'
                 size='sm'
+                color={color}
                 className={`py-2 
                 ${section === currentSection ? `border-solid border-b ${borderColor}` : ''}
                 `}

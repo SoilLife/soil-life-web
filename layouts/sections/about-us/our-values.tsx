@@ -83,7 +83,7 @@ export function OurValuesSection() {
   return (
     <Section>
       <div className='container h-full flex flex-col items-center justify-center text-center'>
-        <Text type='h1' weight='regular' size='3xl' className='text-yellow-500 mb-4 sm:mb-10'>
+        <Text type='h1' weight='regular' size='3xl' color='yellow' className='mb-4 sm:mb-10'>
           our values
         </Text>
         {
@@ -95,17 +95,17 @@ export function OurValuesSection() {
                   <div className='relative col-span-full row-span-full'>
                     <Image url={imageUrl} className='h-40' />
                     <div
-                      className={`absolute inset-0 w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-teal-600 to-transparent text-white`}
+                      className={`absolute inset-0 w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-teal-600 to-transparent`}
                     >
                       <div className='flex space-x-2 mb-8'>
-                        <Text type='p' weight='medium' size='md'>
+                        <Text type='p' weight='medium' color='white' size='md'>
                           {index + 1}
                         </Text>
-                        <Text type='p' weight='medium' size='md'>
+                        <Text type='p' weight='medium' color='white' size='md'>
                           {label}
                         </Text>
                       </div>
-                      <Text type='p' weight='light' size='xs'>
+                      <Text type='p' weight='light' color='white' size='xs'>
                         {content}
                       </Text>
                     </div>
@@ -121,20 +121,20 @@ export function OurValuesSection() {
                 >
                   <Image url={imageUrl} className='object-cover' />
                   <div
-                    className={`absolute inset-0 w-full h-full flex items-center justify-center p-8 text-white ${
+                    className={`absolute inset-0 w-full h-full flex items-center justify-center p-8 ${
                       isActive ? 'bg-gradient-to-br from-teal-600 to-transparent' : ''
                     }`}
                   >
                     {isActive ? (
-                      <Text type='p' weight='light' size='2xs'>
+                      <Text type='p' weight='light' color='white' size='2xs'>
                         {content}
                       </Text>
                     ) : (
                       <div>
-                        <Text type='p' weight='medium' size='md'>
+                        <Text type='p' weight='medium' color='white' size='md'>
                           {index + 1}
                         </Text>
-                        <Text type='p' weight='medium' size='md'>
+                        <Text type='p' weight='medium' color='white' size='md'>
                           {label}
                         </Text>
                       </div>

@@ -11,7 +11,8 @@ export function OurTeamSection() {
             type='h1'
             weight='regular'
             size='3xl'
-            className='absolute w-full text-center text-white top-8 md:w-auto md:top-20 md:left-40'
+            color='white'
+            className='absolute w-full text-center top-8 md:w-auto md:top-20 md:left-40'
           >
             our team
           </Text>
