@@ -719,7 +719,7 @@ export default function WebOfSoilPage() {
                     className='py-8 flex flex-col space-y-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'
                   >
                     <div className='flex-shrink-0 space-y-6'>
-                      <Text type='h2' weight='regular' size='lg' className='mb-6 text-pink-500 text-center'>
+                      <Text type='h2' weight='regular' size='lg' color='pink' className='mb-6 text-center'>
                         {node.label}
                       </Text>
                       <img src={node.image} className='h-full max-h-48 object-cover mx-auto my-0' />
@@ -730,7 +730,7 @@ export default function WebOfSoilPage() {
                     {_connectedNodes.map((n) => {
                       return (
                         <div key={n.id} className='flex-shrink-0 space-y-6'>
-                          <Text type='h2' weight='regular' size='lg' className='mb-6 text-pink-500 text-center'>
+                          <Text type='h2' weight='regular' size='lg' color='pink' className='mb-6 text-center'>
                             {n.label}
                           </Text>
                           <img src={n.image} className='max-h-48 w-full object-cover mx-auto my-0' />

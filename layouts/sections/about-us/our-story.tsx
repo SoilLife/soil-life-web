@@ -23,7 +23,7 @@ export function OurStorySection() {
           sm:shadow-none
           `}
           >
-            <Text type='h1' weight='regular' size='3xl' className='text-teal-500 mb-4 xl:mb-10'>
+            <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               our story
             </Text>
             <div className='space-y-2 xl:space-y-8'>
