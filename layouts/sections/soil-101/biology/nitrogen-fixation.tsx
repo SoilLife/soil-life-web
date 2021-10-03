@@ -12,7 +12,9 @@ import NitrogenFixation2Svg from 'public/images/soil-101/biology/nitrogen_fixati
 import NitrogenFixation3Svg from 'public/images/soil-101/biology/nitrogen_fixation_3.svg';
 import RootNoduleSvg from 'public/images/soil-101/biology/root_nodule.svg';
 
-export const NitrogenFixationSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
+import styles from '../soil-101.module.css';
+
+export const NitrogenFixationSection = () => {
   useFullpageOverflow();
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
@@ -57,14 +59,8 @@ export const NitrogenFixationSection = (props: { assignRef: (el: null | HTMLDivE
 
   return (
     <>
-      <div
-        ref={(el) => {
-          props.assignRef(el);
-          sectionRef.current = el;
-        }}
-        className='space-y-4 sm:space-y-8'
-      >
-        <Text type='h1' weight='light' size='2xl' className='text-teal-500 mb-20'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
           nitrogen fixation
         </Text>
         <NitrogenFixation1Svg />
@@ -96,7 +92,7 @@ export const NitrogenFixationSection = (props: { assignRef: (el: null | HTMLDivE
           </button>
           {modalType === 'infected' ? (
             <div>
-              <Text type='h1' weight='bold' size='xl' className='text-pink-500 text-center mb-8'>
+              <Text type='h1' weight='bold' size='xl' color='pink' className='text-center mb-8'>
                 "infected" root
               </Text>
               <Image url='Soil_101/Soil_Biology/UNADJUSTEDNONRAW_thumb_1be_kuHV5nM5s56_mKaTZ9IfFH.jpg' />

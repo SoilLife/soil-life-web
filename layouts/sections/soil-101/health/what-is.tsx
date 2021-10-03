@@ -21,6 +21,8 @@ import FiltrationSvg from 'public/images/soil-101/health/filtration.svg';
 import BiodegradationSvg from 'public/images/soil-101/health/biodegradation.svg';
 import CarbonSanDiegoSvg from 'public/images/soil-101/health/carbon_san_diego.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   protection: <ProtectionSvg className='h-full w-full' />,
   respiration: <RespirationSvg className='h-full w-full' />,
@@ -167,14 +169,14 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           props.assignRef(el);
           sectionRef.current = el;
         }}
-        className='space-y-4 sm:space-y-8'
+        className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='4xl' className='text-blue-500 mb-8 sm:mb-20'>
+        <Text type='h1' weight='bold' size='4xl' color='blue' className={styles['heading']}>
           what is soil health?
         </Text>
-        <Text type='p' weight='light' size='md' className='text-center'>
+        <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-60']}`}>
           soil health is the capacity of soil to{' '}
-          <Text type='span' weight='bold' size='md'>
+          <Text type='span' weight='bold' size='sm'>
             function as a vital, living ecosystem
           </Text>{' '}
           that sustains plants, animals, and humans. many soil properties are inherent and can’t change on a human time
@@ -182,13 +184,13 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           matter).
         </Text>
         <WhatIsSoilHealthSvg className='mx-auto sm:w-3/4' />
-        <Text type='p' weight='light' size='md' className='text-center'>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-60']}`}>
           just like our{' '}
-          <Text type='span' weight='bold' size='md' className='text-blue-500'>
+          <Text type='span' weight='bold' size='md' color='blue'>
             organs
           </Text>{' '}
           provide services that keep us healthy, healthy soil provides important{' '}
-          <Text type='span' weight='bold' size='md' className='text-blue-500'>
+          <Text type='span' weight='bold' size='md' color='blue'>
             ecosystem services
           </Text>{' '}
           to life on earth!
@@ -197,17 +199,22 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         <div className='grid grid-cols-2 grid-rows-3 gap-4 sm:flex sm:items-center sm:gap-0 sm:space-x-8'>
           <HumanProfileSvg className='mx-auto row-span-2 h-[50vh] sm:h-auto' />
 
-          <Text type='p' weight='light' size='md' className='text-center row-start-3 col-span-2 sm:row-start-auto'>
+          <Text
+            type='p'
+            weight='light'
+            size='sm'
+            className={`text-center row-start-3 col-span-2 sm:row-start-auto ${styles['p-60']}`}
+          >
             just like we inherit{' '}
-            <Text type='span' weight='bold' size='md'>
+            <Text type='span' weight='bold' size='sm'>
               genetic material
             </Text>{' '}
             from our parents, soils inherit certain properties from their{' '}
-            <Text type='span' weight='bold' size='md'>
+            <Text type='span' weight='bold' size='sm'>
               parent material
             </Text>{' '}
             that can’t easily be changed (i.e. texture, mineralogy), but just like{' '}
-            <Text type='span' weight='bold' size='md'>
+            <Text type='span' weight='bold' size='sm'>
               diet and lifestyle
             </Text>{' '}
             have the power to modify our DNA (via epigenetics) and promote overall health, the way we manage soil has a
@@ -217,10 +224,10 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <SoilProfileSvg className='mx-auto row-span-2 col-start-2 h-[50vh] sm:col-start-auto sm:h-auto' />
         </div>
 
-        <Text type='p' weight='light' size='md' className='text-center'>
+        <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-60']}`}>
           organic matter (SOM) is key to soil health, as it greatly improves most soil functions. whether sandy or
           clayey, SOM improves structure, which may be the real{' '}
-          <Text type='span' weight='bold' size='md'>
+          <Text type='span' weight='bold' size='sm'>
             secret to soil health
           </Text>
           . while many conservation practices can improve soil structure, the ability to build and store SOM varies from
@@ -228,7 +235,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         </Text>
         <CarbonSequestSvg />
 
-        <Text type='p' weight='light' size='md' className='text-center'>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-60']}`}>
           in order to build SOM, microbes must{' '}
           <Text type='span' weight='bold' size='md'>
             store more of the carbon

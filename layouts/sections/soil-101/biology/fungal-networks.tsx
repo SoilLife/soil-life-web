@@ -10,8 +10,11 @@ import { Text, Icon } from 'design-system/atoms';
 import MycelialSvg from 'public/images/soil-101/biology/mycelial.svg';
 import MycorrhizalFungiSvg from 'public/images/soil-101/biology/mycorrhizal_fungi.svg';
 import MycorrhizaSvg from 'public/images/soil-101/biology/mycorrhiza.svg';
+import PlantGrowthPromoting from 'public/images/soil-101/biology/plant_growth_promoting.svg';
 
-export const FungalNetworksSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
+import styles from '../soil-101.module.css';
+
+export const FungalNetworksSection = () => {
   useFullpageOverflow();
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
@@ -49,33 +52,39 @@ export const FungalNetworksSection = (props: { assignRef: (el: null | HTMLDivEle
 
   return (
     <>
-      <div
-        ref={(el) => {
-          props.assignRef(el);
-          sectionRef.current = el;
-        }}
-      >
-        <Text type='h1' weight='light' size='2xl' className='text-teal-500 mb-20'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
           fungal networks
         </Text>
 
-        <MycelialSvg className='mb-20' />
+        <MycelialSvg />
 
-        <MycorrhizalFungiSvg className='mb-20' />
+        <MycorrhizalFungiSvg />
 
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='lg' className={`text-center ${styles['p-70']}`}>
           plants release{' '}
-          <Text type='span' weight='light' size='md' className='text-blue-500'>
+          <Text type='span' weight='light' size='lg' color='blue'>
             compounds
           </Text>{' '}
           to attract{' '}
-          <Text type='span' weight='light' size='md' className='text-pink-500'>
+          <Text type='span' weight='light' size='lg' color='pink'>
             mycorrhizal fungi
           </Text>
           , stimulating the growth of thread-like hyphae, which connect within or outside the roots, extending them
           100-1000x. the root provides sugars to feed the fungus and in turn, its hyphae spread throughout the soil in
           search of water, nitrogen, phosphorus, and other nutrients.
         </Text>
+
+        <div className={`text-center ${styles['p-70']}`}>
+          <Text type='p' weight='light' size='lg'>
+            microbes also release a variety of
+          </Text>
+          <Text type='p' weight='bold' size='lg'>
+            plant growth promoting compounds
+          </Text>
+        </div>
+
+        <PlantGrowthPromoting />
       </div>
       {isModalOpen && (
         <ReactModal

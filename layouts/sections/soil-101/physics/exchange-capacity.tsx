@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, forwardRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useOrientation, useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
@@ -14,6 +14,8 @@ import MetalOxideSvg from 'public/images/soil-101/physics/exchange_capacity_meta
 import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
 import AnionExchangeSvg from 'public/images/soil-101/physics/anion_exchange_capacity.svg';
 import MetalOxideExchangeSvg from 'public/images/soil-101/physics/metal_oxides_exchange_capacity.svg';
+
+import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   'cation exchange': {
@@ -33,7 +35,7 @@ const modalTypeMap = {
   },
 };
 
-export const ExchangeCapacitySection = forwardRef<HTMLDivElement, {}>((_, _ref) => {
+export const ExchangeCapacitySection = () => {
   useFullpageOverflow();
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
@@ -89,32 +91,36 @@ export const ExchangeCapacitySection = forwardRef<HTMLDivElement, {}>((_, _ref) 
 
   return (
     <>
-      <div ref={sectionRef}>
-        <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-20'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
           exchange capacity
         </Text>
-        <div className='space-y-8'>
-          <div className='flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0'>
-            <ClaySvg className='sm:w-1/2' />
-            <Text type='p' weight='light' size='md' className='sm:w-1/2'>
-              the large, negatively charged surface area of clays holds on to important plant nutrients, called cations,
-              preserving them against losses to gravity.
-            </Text>
-          </div>
-          <div className='flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16'>
-            <Text type='p' weight='light' size='md' className='sm:w-1/2'>
-              som also has high surface area and charge, holding on to both positive and negatively charged ions
-              (depending on pH) and contributing significantly to water holding capacity.
-            </Text>
-            <OrganicMatterSvg className='mb-4 sm:mb-0 sm:w-1/2' />
-          </div>
-          <div className='flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0'>
-            <MetalOxideSvg className='sm:w-1/2' />
-            <Text type='p' weight='light' size='md' className='sm:w-1/2'>
-              iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
-              capacity (i.e. NO3-, BO3-, Cl-).
-            </Text>
-          </div>
+        <div
+          className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
+        >
+          <ClaySvg className='sm:w-1/2' />
+          <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
+            the large, negatively charged surface area of clays holds on to important plant nutrients, called cations,
+            preserving them against losses to gravity.
+          </Text>
+        </div>
+        <div
+          className={`flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16 ${styles['p-48']}`}
+        >
+          <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
+            som also has high surface area and charge, holding on to both positive and negatively charged ions
+            (depending on pH) and contributing significantly to water holding capacity.
+          </Text>
+          <OrganicMatterSvg className='mb-4 sm:mb-0 sm:w-1/2' />
+        </div>
+        <div
+          className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
+        >
+          <MetalOxideSvg className='sm:w-1/2' />
+          <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
+            iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
+            capacity (i.e. NO3-, BO3-, Cl-).
+          </Text>
         </div>
       </div>
       {modalType && (
@@ -155,4 +161,4 @@ export const ExchangeCapacitySection = forwardRef<HTMLDivElement, {}>((_, _ref) 
       )}
     </>
   );
-});
+};

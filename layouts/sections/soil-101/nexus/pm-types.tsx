@@ -1,11 +1,14 @@
-import { useRef, useEffect, useState, forwardRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useOrientation, useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
 // components
 import { Text, Image, Icon } from 'design-system/atoms';
+
+// assets
 import PmTypesSvg from 'public/images/soil-101/nexus/pm_types.svg';
+import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   'coarse-mafic': {
@@ -40,7 +43,7 @@ const modalTypeMap = {
   },
 };
 
-export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) {
+export const PmTypesSection = () => {
   useFullpageOverflow();
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
@@ -106,18 +109,16 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
 
   return (
     <>
-      <div ref={sectionRef}>
-        <div className='space-y-8'>
-          <div className='flex flex-col space-x-4 sm:flex-row sm:items-end sm:pl-20'>
-            <Text type='p' weight='light' size='2xl' className='text-pink-500'>
-              types
-            </Text>
-            <Text type='p' weight='thin' size='xs'>
-              - rocks are composed of different types of minerals that weather at different rates
-            </Text>
-          </div>
-          <PmTypesSvg className='mx-auto h-full max-h-[683px]' />
+      <div ref={sectionRef} className={styles['section']}>
+        <div className='flex flex-col space-x-4 sm:flex-row sm:items-end sm:pl-20'>
+          <Text type='p' weight='light' size='2xl' color='pink'>
+            types
+          </Text>
+          <Text type='p' weight='thin' size='xs' className={styles['p-60']}>
+            - rocks are composed of different types of minerals that weather at different rates
+          </Text>
         </div>
+        <PmTypesSvg className='mx-auto h-full max-h-[683px]' />
       </div>
       {modalType && (
         <ReactModal
@@ -142,13 +143,13 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4'>
-            <Text type='h1' weight='bold' size='2xl' className='text-pink-500 text-center'>
+          <div className='space-y-4 text-center'>
+            <Text type='h1' weight='bold' size='2xl' color='pink'>
               {modalTypeMap[modalType].title}
             </Text>
 
             <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto' />
-            <Text type='p' weight='light' size='2xs' className='text-center'>
+            <Text type='p' weight='light' size='2xs'>
               {modalTypeMap[modalType].text}
             </Text>
           </div>
@@ -156,4 +157,4 @@ export const PmTypesSection = forwardRef<HTMLDivElement, {}>(function (_, _ref) 
       )}
     </>
   );
-});
+};

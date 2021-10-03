@@ -10,7 +10,7 @@ import { DefaultLayout } from 'layouts';
 import {
   HeroSection,
   CircleOfLifeSection,
-  SeedGerminationSection,
+  PlantGrowthSection,
   PhotosynthesisSection,
   NutrientUptakeSection,
   NutrientCyclingSection,
@@ -19,11 +19,13 @@ import {
   NutrientAvailabilitySection,
   MetabolismSection,
   DecompositionSection,
-  MicrobialWeatheringSection,
+  MineralWeatheringSection,
   AnimalInputsSection,
 } from 'layouts/sections/soil-101/chemistry';
 
-const sections = ['plant growth', 'metabolism', 'nutrient cycling', 'cation exchange capacity', 'chemistry'];
+import styles from '../soil-101.module.css';
+
+const sections = ['plant growth', 'nutrient cycling', 'metabolism', 'weathering', 'animal inputs'];
 
 export default function SoilChemistryPage() {
   const [currentSection, setCurrentSection] = useState('plant growth');
@@ -80,19 +82,19 @@ export default function SoilChemistryPage() {
       <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='orange' />
-        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-32'>
+        <div className={styles['sections-container']}>
           <CircleOfLifeSection />
-          <SeedGerminationSection assignRef={assignRefs('plant growth')} />
+          <PlantGrowthSection assignRef={assignRefs('plant growth')} />
           <PhotosynthesisSection />
           <NutrientUptakeSection />
           <NutrientCyclingSection assignRef={assignRefs('nutrient cycling')} />
           <CarbonicAcidSection />
-          <RootIonExchangeSection assignRef={assignRefs('cation exchange capacity')} />
+          <RootIonExchangeSection />
           <NutrientAvailabilitySection />
           <MetabolismSection assignRef={assignRefs('metabolism')} />
           <DecompositionSection />
-          <MicrobialWeatheringSection />
-          <AnimalInputsSection />
+          <MineralWeatheringSection assignRef={assignRefs('weathering')} />
+          <AnimalInputsSection assignRef={assignRefs('animal inputs')} />
         </div>
       </div>
       <Footer />

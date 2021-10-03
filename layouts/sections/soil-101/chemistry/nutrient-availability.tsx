@@ -14,6 +14,8 @@ import SomPhSvg from 'public/images/soil-101/chemistry/som_pH.svg';
 import LeftArrow from 'public/images/left_arrow_pink_thick.svg';
 import RightArrow from 'public/images/right_arrow_pink_thick.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   clay: <ClayPhSvg className='h-full w-full' />,
   oxide: <OxidesPhSvg className='h-full w-full' />,
@@ -88,11 +90,11 @@ export const NutrientAvailabilitySection = () => {
 
   return (
     <>
-      <div ref={sectionRef} className='space-y-4 sm:space-y-8'>
-        <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='light' size='3xl' color='orange' className={styles['heading']}>
           ph & nutrient availability
         </Text>
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           ph determines the amount and type of charge on soil minerals and organic matter (the exchange complex), as
           well as the concentration of protons or hydroxyls that can kick plant nutrients off the complex
         </Text>

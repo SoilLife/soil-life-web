@@ -10,6 +10,8 @@ import { Text, Icon } from 'design-system/atoms';
 import MetabolismSvg from 'public/images/soil-101/chemistry/metabolism.svg';
 import ChemMetabolismSvg from 'public/images/soil-101/chemistry/chem_metabolism.svg';
 
+import styles from '../soil-101.module.css';
+
 export const MetabolismSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,13 +55,13 @@ export const MetabolismSection = (props: { assignRef: (el: null | HTMLDivElement
           props.assignRef(el);
           sectionRef.current = el;
         }}
-        className='space-y-4 sm:space-y-8'
+        className={styles['section']}
       >
-        <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
+        <Text type='h1' weight='bold' size='4xl' color='orange' className={styles['heading']}>
           metabolism
         </Text>
         <MetabolismSvg />
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           meanwhile, 30-60% of the plant's carbon is put into compounds that are being pumped underground (i.e. sugars,
           amino acids); feeding microbes in the soil.
         </Text>

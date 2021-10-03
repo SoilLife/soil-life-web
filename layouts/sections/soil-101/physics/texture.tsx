@@ -9,6 +9,8 @@ import { Text, Image, Icon } from 'design-system/atoms';
 // assets
 import SoilTextureSvg from 'public/images/soil-101/physics/soil_texture.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   sand: {
     title: 'sand',
@@ -82,34 +84,33 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='3xl' className='text-yellow-500 mb-10'>
+        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
           soil texture
         </Text>
-        <div className='flex flex-col sm:flex-row-reverse'>
-          <SoilTextureSvg className='mb-10 sm:w-1/2 sm:mb-0' />
-          <div className='sm:w-1/2 sm:mr-10'>
-            <Text type='p' weight='light' size='md'>
-              the clay particles in soil are classified by size into{' '}
-              <Text type='span' weight='bold' size='md' style={{ color: '#EEA117' }}>
-                sand
-              </Text>
-              ,{' '}
-              <Text type='span' weight='bold' size='md' style={{ color: '#C17443' }}>
-                silts
-              </Text>
-              , and{' '}
-              <Text type='span' weight='bold' size='md' style={{ color: '#5C5052' }}>
-                clay
-              </Text>
-              . the proportion of these three particle sizes determines the{' '}
-              <Text type='span' weight='bold' size='md' style={{ color: '#FFCF01' }}>
-                texture
-              </Text>{' '}
-              of the soil -- how it feels in your hand, how silt moves into and through it, how fertile it is, and much,
-              much more!
+        <div className='flex flex-col items-center gap-8 sm:flex-row-reverse'>
+          <SoilTextureSvg className='sm:w-1/2' />
+          <Text type='p' weight='light' size='lg' className={`max-w-lg sm:w-1/2 ${styles['p-48']}`}>
+            the clay particles in soil are classified by size into{' '}
+            <Text type='span' weight='bold' size='lg' style={{ color: '#EEA117' }}>
+              sand
             </Text>
-          </div>
+            ,{' '}
+            <Text type='span' weight='bold' size='lg' style={{ color: '#C17443' }}>
+              silts
+            </Text>
+            , and{' '}
+            <Text type='span' weight='bold' size='lg' style={{ color: '#5C5052' }}>
+              clay
+            </Text>
+            . the proportion of these three particle sizes determines the{' '}
+            <Text type='span' weight='bold' size='lg' style={{ color: '#FFCF01' }}>
+              texture
+            </Text>{' '}
+            of the soil -- how it feels in your hand, how silt moves into and through it, how fertile it is, and much,
+            much more!
+          </Text>
         </div>
       </div>
       {modalType && (

@@ -16,6 +16,8 @@ import NematodeSvg from 'public/images/soil-101/biology/nematode.svg';
 import DungPatSvg from 'public/images/soil-101/biology/dung_pat.svg';
 import ProtozoaSvg from 'public/images/soil-101/biology/protozoa.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   invertebrate: <InvertebrateSvg />,
   bacteria: <BacteriaSvg />,
@@ -26,7 +28,7 @@ const modalTypeMap = {
   protozoa: <ProtozoaSvg />,
 };
 
-export const FoodWebSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
+export const FoodWebSection = () => {
   useFullpageOverflow();
   const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
@@ -91,13 +93,8 @@ export const FoodWebSection = (props: { assignRef: (el: null | HTMLDivElement) =
 
   return (
     <>
-      <div
-        ref={(el) => {
-          props.assignRef(el);
-          sectionRef.current = el;
-        }}
-      >
-        <Text type='h1' weight='light' size='2xl' className='text-teal-500 mb-20'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
           soil food web
         </Text>
         <FoodWebSvg />

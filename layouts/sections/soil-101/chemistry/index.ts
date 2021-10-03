@@ -1,6 +1,6 @@
 export * from './hero';
 export * from './circle-of-life';
-export * from './seed-germination';
+export * from './plant-growth';
 export * from './photosynthesis';
 export * from './nutrient-uptake';
 export * from './nutrient-cycling';
@@ -9,5 +9,5 @@ export * from './root-ion-exchange';
 export * from './nutrient-availability';
 export * from './metabolism';
 export * from './decomposition';
-export * from './microbial-weathering';
+export * from './mineral-weathering';
 export * from './animal-inputs';

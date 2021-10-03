@@ -19,18 +19,12 @@ import {
   FinalFrontierSection,
 } from 'layouts/sections/soil-101/biology';
 
-const sections = [
-  'rhizosphere',
-  'soil food web',
-  'symbiosis',
-  'nitrogen fixation',
-  'mycorrhizae',
-  'biodegradation',
-  'final frontier',
-];
+import styles from '../soil-101.module.css';
+
+const sections = ['rhizosphere', 'symbioses', 'biocycling', 'biodegradation', 'final frontier'];
 
 export default function SoilBiologyPage() {
-  const [currentSection, setCurrentSection] = useState('texture');
+  const [currentSection, setCurrentSection] = useState('rhizosphere');
   const refs = useRef<{ [key: string]: HTMLDivElement }>({});
 
   useEffect(() => {
@@ -84,13 +78,13 @@ export default function SoilBiologyPage() {
       <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='teal' />
-        <div className='space-y-16 mb-10 sm:space-y-32 sm:px-32'>
+        <div className={styles['sections-container']}>
           <RhizosphereSection assignRef={assignRefs('rhizosphere')} />
-          <FoodWebSection assignRef={assignRefs('soil food web')} />
-          <SymbiosesSection assignRef={assignRefs('symbiosis')} />
-          <NitrogenFixationSection assignRef={assignRefs('nitrogen fixation')} />
-          <FungalNetworksSection assignRef={assignRefs('mycorrhizae')} />
-          <BiocyclingSection />
+          <FoodWebSection />
+          <SymbiosesSection assignRef={assignRefs('symbioses')} />
+          <NitrogenFixationSection />
+          <FungalNetworksSection />
+          <BiocyclingSection assignRef={assignRefs('biocycling')} />
           <BiodegradationSection assignRef={assignRefs('biodegradation')} />
           <FinalFrontierSection assignRef={assignRefs('final frontier')} />
         </div>

@@ -9,10 +9,9 @@ import ReactModal from 'react-modal';
 import { Text, Icon } from 'design-system/atoms';
 
 // assets
-
-// assets
 import RockWeathering from 'public/images/soil-101/nexus/rock_weathering.svg';
 import RockWeatheringTable from 'public/images/soil-101/nexus/rock_weathering_table.svg';
+import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   'freeze/thaw': {
@@ -188,16 +187,16 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
           props.assignRef(el);
           sectionRef.current = el;
         }}
-        className='space-y-8'
+        className={styles['section']}
       >
         <div className='grid gap-4 sm:grid-cols-4'>
-          <Text type='h1' weight='bold' size='4xl' className='text-pink-500 sm:col-span-3'>
+          <Text type='h1' weight='bold' size='4xl' color='pink' className={`sm:col-span-3 ${styles['heading']}`}>
             rock weathering
           </Text>
           <div className='sm:row-span-2'>
             <RockWeathering className='mx-auto h-[189px]' />
           </div>
-          <Text type='p' weight='light' size='md' className='sm:col-span-3'>
+          <Text type='p' weight='light' size='md' className={`sm:col-span-3 ${styles['p-60']}`}>
             over time, through a combination of physical, biological, and chemical processes, rocks break down into
             smaller and smaller pieces.
           </Text>

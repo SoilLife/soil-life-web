@@ -10,6 +10,8 @@ import { Text, Icon } from 'design-system/atoms';
 import PhotosynthesisSvg from 'public/images/soil-101/chemistry/photosynthesis.svg';
 import PhotosynthesisChemistrySvg from 'public/images/soil-101/chemistry/photosynthesis_chemistry.svg';
 
+import styles from '../soil-101.module.css';
+
 export const PhotosynthesisSection = () => {
   useFullpageOverflow();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,12 +50,12 @@ export const PhotosynthesisSection = () => {
 
   return (
     <>
-      <div ref={sectionRef} className='space-y-4 sm:space-y-8'>
-        <Text type='h1' weight='light' size='2xl' className='text-orange-500 mb-20'>
+      <div ref={sectionRef} className={styles['section']}>
+        <Text type='h1' weight='light' size='4xl' color='orange' className={styles['heading']}>
           photosynthesis
         </Text>
         <PhotosynthesisSvg />
-        <Text type='p' weight='light' size='md'>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           as shoots grow, they act like solar panels, with the sun fueling conversion of CO2 from the atmosphere into
           the building blocks of life (carbohydrates, proteins, fats, etc).
         </Text>

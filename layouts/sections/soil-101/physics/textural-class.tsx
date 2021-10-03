@@ -1,18 +1,18 @@
-import { forwardRef } from 'react';
-
 // components
 import { Text } from 'design-system/atoms';
 
 // assets
 import SoilTexturalClassSvg from 'public/images/soil-101/physics/soil_textural_class.svg';
 
-export const TexturalClassSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
+import styles from '../soil-101.module.css';
+
+export const TexturalClassSection = () => {
   return (
-    <div ref={ref}>
-      <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-10'>
-        soil texture
+    <div className={styles['section']}>
+      <Text type='h1' weight='light' size='3xl' color='yellow' className={styles['heading']}>
+        textural class
       </Text>
-      <Text type='p' weight='thin' size='md' className='mb-20'>
+      <Text type='p' weight='thin' size='lg' className='ml-8'>
         ratios of sand, silt, and clay are grouped into categories that behave similarly
       </Text>
       <div className='sm:grid sm:grid-cols-2'>
@@ -44,4 +44,4 @@ export const TexturalClassSection = forwardRef<HTMLDivElement, {}>((_, ref) => {
       </div>
     </div>
   );
-});
+};

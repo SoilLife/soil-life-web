@@ -17,6 +17,8 @@ import LossesSvg from 'public/images/soil-101/nexus/losses.svg';
 import TransformationsSvg from 'public/images/soil-101/nexus/transformations.svg';
 import TranslocationsSvg from 'public/images/soil-101/nexus/translocations.svg';
 
+import styles from '../soil-101.module.css';
+
 const processes = [
   {
     title: 'additions',
@@ -129,13 +131,14 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='3xl' className='text-pink-500 mb-10'>
+        <Text type='h1' weight='bold' size='5xl' color='pink' className={styles['heading']}>
           soil processes
         </Text>
-        <div className='grid gap-10 sm:grid-cols-2'>
-          <div className='row-start-2 space-y-10 sm:row-start-auto'>
-            <ul className='grid grid-cols-2 gap-4 sm:grid-cols-none sm:gap-8'>
+        <div className='grid sm:grid-cols-2'>
+          <div className='row-start-2 sm:row-start-auto'>
+            <ul className='grid grid-cols-2 gap-4 sm:grid-cols-none'>
               {processes.map((process) => (
                 <li key={process.title}>
                   <div
@@ -148,15 +151,15 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
                       type='p'
                       weight='medium'
                       size='lg'
-                      className={`${process.textColor} hover:underline hover:cursor-pointer`}
+                      className={`${process.textColor} hover:underline hover:cursor-pointer ${styles['p-48']}`}
                     >
                       {process.title}:
                     </Text>
                   </div>
-                  <Text type='p' weight='medium' size='md'>
+                  <Text type='p' weight='light' size='md' className={styles['p-48']}>
                     {process.text1}
                   </Text>
-                  <Text type='p' weight='medium' size='md'>
+                  <Text type='p' weight='light' size='md' className={styles['p-48']}>
                     {process.text2}
                   </Text>
                 </li>
@@ -189,22 +192,26 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-pink-500' />
           </button>
-          <ul className='w-full flex flex-wrap mb-10 sm:flex-nowrap'>
-            {processes.map((process) => (
-              <li key={process.title} className='sm:flex-grow sm:w-full'>
-                <button
-                  className={`${process.title === modalType ? 'bg-teal-700' : 'bg-teal-500'} w-full text-white p-2 `}
-                  onClick={() => {
-                    if (modalType !== process.title) {
-                      setModalType(process.title as typeof modalType);
-                    }
-                  }}
-                >
-                  {process.title}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className='w-full overflow-x-auto overflow-y-hidden mb-6 sm:mb-10'>
+            <ul className='flex flex-nowrap'>
+              {processes.map((process) => (
+                <li key={process.title} className='sm:flex-grow sm:w-full'>
+                  <button
+                    className={`${process.title === modalType ? 'bg-teal-700' : 'bg-teal-500'} w-full p-4`}
+                    onClick={() => {
+                      if (modalType !== process.title) {
+                        setModalType(process.title as typeof modalType);
+                      }
+                    }}
+                  >
+                    <Text type='h3' weight='light' size='xs' color='white' className='whitespace-nowrap'>
+                      {process.title}
+                    </Text>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
           {modalTypeMap[modalType]}
 
           <LeftArrow

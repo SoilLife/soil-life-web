@@ -20,6 +20,8 @@ import PhSvg from 'public/images/soil-101/health/measuring_ph.svg';
 import RespirationSvg from 'public/images/soil-101/health/measuring_respiration.svg';
 import SalinitySvg from 'public/images/soil-101/health/measuring_salinity.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   aggregate: <AggregateSvg className='h-full w-full' />,
   capacity: <CapacitySvg className='h-full w-full' />,
@@ -98,12 +100,12 @@ export const MeasuringSection = (props: { assignRef: (el: null | HTMLDivElement)
           props.assignRef(el);
           sectionRef.current = el;
         }}
-        className='space-y-4 sm:space-y-8'
+        className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='3xl' className='text-blue-500 mb-8 sm:mb-20'>
+        <Text type='h1' weight='bold' size='3xl' color='blue' className={styles['heading']}>
           measuring soil health
         </Text>
-        <Text type='p' weight='light' size='sm'>
+        <Text type='p' weight='light' size='sm' className={styles['p-50']}>
           soil testing helps land managers evaluate the health of their systems. traditional lab tests focus on soil
           chemical properties, while soil health tests include physical and biological properties, as well.
         </Text>

@@ -15,6 +15,8 @@ import SolidPhaseSvg from 'public/images/soil-101/physics/solid_phase.svg';
 import LiquidPhaseSvg from 'public/images/soil-101/physics/liquid_phase.svg';
 import GasPhaseSvg from 'public/images/soil-101/physics/gas_phase.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   gravitational: {
     title: 'gravitational water',
@@ -122,8 +124,9 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
           props.assignRef(el);
           sectionRef.current = el;
         }}
+        className={styles['section']}
       >
-        <Text type='h1' weight='light' size='2xl' className='text-yellow-500 mb-20'>
+        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
           pore space
         </Text>
         <div className='relative overflow-hidden'>

@@ -30,6 +30,8 @@ import AnimalsSvg from 'public/images/soil-101/health/wild_soil.svg';
 import TimingSvg from 'public/images/soil-101/health/prescribed_graze_soil.svg';
 import IntensitySvg from 'public/images/soil-101/health/timing_duration.svg';
 
+import styles from '../soil-101.module.css';
+
 const integrateAnimalsMap = {
   animals: <AnimalsSvg />,
   timing: <IntensitySvg />,
@@ -41,12 +43,12 @@ const integrateAnimalsHeadings: (keyof typeof integrateAnimalsMap)[] = ['animals
 export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   const [activeHeading, setActiveHeading] = useState<keyof typeof integrateAnimalsMap>('animals');
   return (
-    <div ref={props.assignRef} className='text-center space-y-8'>
-      <Text type='h1' weight='bold' size='4xl' className='text-left text-blue-500 mb-8 sm:mb-20'>
+    <div ref={props.assignRef} className={`text-center ${styles['section']}`}>
+      <Text type='h1' weight='bold' size='4xl' color='blue' className={`text-left ${styles['heading']}`}>
         principles of soil health
       </Text>
       <div className='space-y-8'>
-        <Text type='p' weight='bold' size='2xl' className='text-pink-500'>
+        <Text type='p' weight='bold' size='2xl' color='pink'>
           keep it active and well-fed!
         </Text>
         <WellFedFinalSvg />
@@ -72,13 +74,13 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
         <DiversifiedFinalSvg />
         {/* <div className='inline-block relative mt-8 sm:mt-20'>
           <DiversifiedTopSvg className='mx-auto h-20 sm:absolute sm:top-0 sm:-right-32 sm:h-32' />
-          <Text type='p' weight='bold' size='2xl' className='text-pink-500'>
+          <Text type='p' weight='bold' size='2xl' color="pink">
             keep it diversified!
           </Text>
-          <Text type='p' weight='light' size='2xl' className='text-pink-500'>
+          <Text type='p' weight='light' size='2xl' color="pink">
             a teaspoon of healthy soil
           </Text>
-          <Text type='p' weight='light' size='2xl' className='text-pink-500'>
+          <Text type='p' weight='light' size='2xl' color="pink">
             contains billions of microorganisms
           </Text>
         </div>
@@ -111,20 +113,20 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
 
       <div className='space-y-8'>
         <BalancedTopSvg className='h-32 mx-auto' />
-        <Text type='p' weight='bold' size='2xl' className='text-pink-500'>
+        <Text type='p' weight='bold' size='2xl' color='pink'>
           keep it balanced!
         </Text>
-        <Text type='p' weight='light' size='2xl' className='text-pink-500'>
+        <Text type='p' weight='light' size='2xl' color='pink'>
           healthy soil has room to breathe
         </Text>
 
-        <Text type='p' weight='light' size='lg'>
+        <Text type='p' weight='light' size='lg' className={styles['p-60']}>
           about half of the soil's volume should consist of open pore space, allowing{' '}
-          <Text type='span' weight='bold' size='lg' className='text-teal-500'>
+          <Text type='span' weight='bold' size='lg' color='teal'>
             air
           </Text>{' '}
           and{' '}
-          <Text type='span' weight='bold' size='lg' className='text-teal-500'>
+          <Text type='span' weight='bold' size='lg' color='teal'>
             water
           </Text>{' '}
           to flow freely.
@@ -142,25 +144,25 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
       <div className='space-y-8'>
         <div className='inline-block relative pt-20'>
           <HydratedTopSvg className='mx-auto h-20 sm:absolute sm:top-0 sm:-right-8 sm:h-32' />
-          <Text type='p' weight='bold' size='2xl' className='text-pink-500'>
+          <Text type='p' weight='bold' size='2xl' color='pink'>
             keep it hydrated!
           </Text>
-          <Text type='p' weight='light' size='2xl' className='text-pink-500'>
+          <Text type='p' weight='light' size='2xl' color='pink'>
             healthy soil carries weight.
           </Text>
         </div>
 
         <HydratedMiddleSvg className='sm:w-1/2 mx-auto' />
 
-        <Text type='p' weight='light' size='lg'>
+        <Text type='p' weight='light' size='lg' className={styles['p-60']}>
           soil organic matter holds approximately{' '}
-          <Text type='span' weight='bold' size='lg' className='text-blue-500'>
+          <Text type='span' weight='bold' size='lg' color='blue'>
             10 times
           </Text>{' '}
           its weight in water.
         </Text>
 
-        <Text type='p' weight='light' size='lg'>
+        <Text type='p' weight='light' size='lg' className={styles['p-60']}>
           for every 1% increase in soil organic matter, a soil can hold upto 1 extra inch -- or 20,000 extra gallons --
           of water/acre.
         </Text>
@@ -169,19 +171,19 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
       </div>
 
       <div className='space-y-8'>
-        <div className='inline-block relative mt-8 sm:mt-20'>
-          <CoveredTopSvg className='h-20 mx-auto sm:absolute sm:top-0 sm:left-full sm:h-32' />
-          <Text type='p' weight='bold' size='2xl' className='text-pink-500'>
+        <div className='inline-block relative mt-8 xl:mt-20'>
+          <CoveredTopSvg className='h-20 mx-auto xl:absolute xl:top-0 xl:left-full xl:h-32' />
+          <Text type='p' weight='bold' size='2xl' color='pink'>
             keep it covered!
           </Text>
-          <Text type='p' weight='light' size='2xl' className='text-pink-500'>
+          <Text type='p' weight='light' size='2xl' color='pink'>
             healthy soil needs full-time coverage.
           </Text>
         </div>
 
         <CoveredMiddleSvg className='sm:w-3/4 mx-auto' />
 
-        <Text type='p' weight='light' size='lg'>
+        <Text type='p' weight='light' size='lg' className={styles['p-60']}>
           seeding with a "cocktail mix" of 6-12 different plants provides diversity above-ground, which breeds much
           needed diversity below-ground. including legumes in your cocktail allows microbes to pull nitrogen out of the
           atmosphere and into the soil -- free fertilizer for your cash crop.
@@ -191,7 +193,7 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
       </div>
 
       <div className='space-y-8'>
-        <Text type='h2' weight='bold' size='xl' className='text-pink-500 mt-8 sm:mt-20'>
+        <Text type='h2' weight='bold' size='xl' color='pink' className='mt-8 sm:mt-20'>
           integrate animals{' '}
           <Text type='span' weight='light' size='xl'>
             - its the circle of life
@@ -207,9 +209,9 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
             >
               <Text
                 type='h2'
-                weight='light'
-                size='lg'
-                className={heading === activeHeading ? 'underline cursor-default' : 'cursor-pointer'}
+                weight={heading === activeHeading ? 'bold' : 'light'}
+                size='md'
+                className={heading === activeHeading ? 'cursor-default' : 'cursor-pointer'}
               >
                 {heading}
               </Text>

@@ -6,6 +6,8 @@ import { Text } from 'design-system/atoms';
 // assets
 import Biocycling from 'public/images/soil-101/biology/biocycling.svg';
 
+import styles from '../soil-101.module.css';
+
 const modalTypeMap = {
   'plant respiration': {
     title: 'plant respiration',
@@ -39,7 +41,7 @@ const modalTypeMap = {
   },
 };
 
-export const BiocyclingSection = () => {
+export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   const [popups, setPopups] = useState({
     'plant respiration': false,
     'plant uptake': false,
@@ -108,14 +110,15 @@ export const BiocyclingSection = () => {
 
   return (
     <>
-      <div className='space-y-4 sm:space-y-8'>
-        <Text type='h1' weight='light' size='2xl' className='text-teal-500 mb-20'>
+      <div ref={props.assignRef} className={styles['section']}>
+        <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
           biocycling
         </Text>
-        <Text type='p' weight='light' size='sm'>
+        <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
           plants combine carbon from the atmosphere with water and nutrients from soil to form the building blocks of
           life -- carbohydrates, proteins, and lipids that form plant leaves, stems, roots, and fruits.
         </Text>
+
         <div className='relative' ref={svgContainerRef}>
           <Biocycling />
           {popups['plant respiration'] && <Popup {...modalTypeMap['plant respiration']} className='top-20 left-0' />}
@@ -125,7 +128,7 @@ export const BiocyclingSection = () => {
           {popups['decomposition'] && <Popup {...modalTypeMap['decomposition']} className='top-1/2 right-0' />}
           {popups['bioperturbation'] && <Popup {...modalTypeMap['bioperturbation']} className='top-3/4 right-0' />}
         </div>
-        <Text type='p' weight='light' size='sm'>
+        <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
           plant biomass is eaten and excreted by animals or it decomposes when the plant dies. carbon is also pumped
           directly underground by roots. mineral weathering and decomposition then make nutrients available for future
           growth and the cycle continues.

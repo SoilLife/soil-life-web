@@ -1,14 +1,16 @@
 // helpers
-import { textTypeMap, textFontWeightMap, textSizeMap } from './text.utils';
+import { textTypeMap, textFontWeightMap, textSizeMap, textColorMap } from './text.utils';
 
 // interfaces
 import { TextProps } from './text.interfaces';
 
-export function Text({ type, className, weight, size, ...props }: TextProps) {
+export function Text({ type, className, weight, size, color, ...props }: TextProps) {
   function getTextClasses() {
     return {
       'data-text-size': size,
-      className: `${textTypeMap[type]} ${textSizeMap[size]} ${textFontWeightMap[weight]} ${className}`,
+      className: `${textTypeMap[type]} ${textSizeMap[size]} ${textFontWeightMap[weight]} ${
+        textColorMap[color as Color]
+      } ${className}`,
     };
   }
   switch (type) {
@@ -29,4 +31,5 @@ export function Text({ type, className, weight, size, ...props }: TextProps) {
 
 Text.defaultProps = {
   className: '',
-};
+  color: 'current',
+} as TextProps;
