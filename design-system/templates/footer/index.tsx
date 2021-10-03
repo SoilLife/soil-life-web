@@ -11,14 +11,14 @@ export function Footer({ className }: { className?: string }) {
             className='h-full ml-0 object-contain w-auto max-h-[200px] sm:max-h-[382px] lg:ml-20'
           />
           <div className='w-full lg:w-1/3'>
-            <Text type='p' weight='bold' size='xs' className='p-1 mb-6 text-white bg-pink-500'>
+            <Text type='p' weight='bold' size='xs' color='white' className='p-1 mb-6 bg-pink-500'>
               stay connected.
             </Text>
             <SocialMediaIcons className='flex justify-center gap-4 mb-6 sm:justify-start' />
-            <Text type='p' weight='regular' size='sm' className='text-center text-teal-500 lg:text-right'>
+            <Text type='p' weight='regular' size='sm' color='teal' className='text-center lg:text-right'>
               soil life is a PhD project based out of UC Davis in collaboration and with support from USDA-NRCS.
             </Text>
-            <Text type='p' weight='bold' size='sm' className='text-center text-teal-500 lg:text-right'>
+            <Text type='p' weight='bold' size='sm' color='teal' className='text-center lg:text-right'>
               we are on a mission to change the way the world looks at soil.
             </Text>
           </div>

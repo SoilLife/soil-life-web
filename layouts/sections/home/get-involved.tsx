@@ -6,17 +6,17 @@ export function GetInvolvedSection() {
     <Section>
       <Image url='/Home_Page/AdobeStock_144874490_6lpeJS0jbCq.jpg' className='object-cover' />
       <div className='px-10 absolute bottom-10 w-full flex flex-col lg:items-center lg:flex-row lg:space-x-10 2xl:space-x-20'>
-        <div className='text-white tw-space-y-6'>
-          <Text type='h2' weight='light' size='4xl'>
+        <div className='tw-space-y-6'>
+          <Text type='h2' weight='light' color='white' size='4xl'>
             soil does so
           </Text>
-          <Text type='h2' weight='light' size='4xl'>
+          <Text type='h2' weight='light' color='white' size='4xl'>
             much for us,
           </Text>
-          <Text type='h2' weight='bold' size='4xl'>
+          <Text type='h2' weight='bold' color='white' size='4xl'>
             find out what you
           </Text>
-          <Text type='h2' weight='bold' size='4xl'>
+          <Text type='h2' weight='bold' color='white' size='4xl'>
             can do for soil!
           </Text>
         </div>
