@@ -1,0 +1,9 @@
+.bg__img {
+  object-position: 65% -70px;
+}
+
+@screen sm {
+  .bg__img {
+    object-position: initial;
+  }
+}

@@ -13,6 +13,7 @@ export function Text({ type, className, weight, size, color, ...props }: TextPro
       } ${className}`,
     };
   }
+
   switch (type) {
     case 'h1':
       return <h1 {...getTextClasses()} {...props} />;
