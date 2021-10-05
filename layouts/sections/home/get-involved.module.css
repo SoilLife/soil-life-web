@@ -1,0 +1,9 @@
+.bg__img {
+  object-position: 68% -30px;
+}
+
+@screen sm {
+  .bg__img {
+    object-position: 50% 0%;
+  }
+}
