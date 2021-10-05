@@ -7,60 +7,51 @@ import { Text } from 'design-system/atoms';
 import Biocycling from 'public/images/soil-101/biology/biocycling.svg';
 
 import styles from '../soil-101.module.css';
+import { TextProps } from 'design-system/atoms/text/text.interfaces';
 
-const modalTypeMap = {
+const popupMap = {
   'plant respiration': {
-    title: 'plant respiration',
-    color: 'text-yellow-500',
+    color: 'yellow',
     text: 'as opposed to animal or microbial respiration, which releases CO2, plants respire O2, which keeps our air safe for life on earth!',
+    className: 'top-20 left-0',
   },
   'plant uptake': {
-    title: 'plant uptake',
-    color: 'text-pink-500',
-    text: 'plants move nutrients from the soil into their leaves, roots, shoots, and fruits, where they are temporarily held against losses',
+    color: 'pink',
+    text: 'plants move nutrients from the soil into their leaves, roots, shoots, and fruits, where they are temporarily held against losses.',
+    className: 'top-1/2 left-0',
   },
   photosynthesis: {
-    title: 'photosynthesis',
-    color: 'text-teal-500',
+    color: 'teal',
     text: 'all carbon that enters soil starts as atmospheric CO2, fixed by plants via photosynthesis and either pumped underground by roots or held aboveground in residues, until they fall to the ground, as plant litter.',
+    className: 'top-20 right-0',
   },
   respiration: {
-    title: 'respiration',
-    color: 'text-pink-500',
+    color: 'pink',
     text: 'as microbes feed on roots, residues, and organic matter and organisms prey on each other, nutrients are released for plant uptake.',
+    className: 'top-1/3 right-0',
   },
-  decomposition: {
-    title: 'litter decomposition',
-    color: 'text-blue-500',
-    text: 'decomposition of organic materials (i.e. plant and animal residues) releases nutrients for microbial growth and plant uptake',
+  'litter decomposition': {
+    color: 'blue',
+    text: 'decomposition of organic materials (i.e. plant and animal residues) releases nutrients for microbial growth and plant uptake.',
+    className: 'top-1/2 right-0',
   },
   bioperturbation: {
-    title: 'bioperturbation',
-    color: 'text-gray-500',
-    text: 'macrofauna like earthworms and gophers move large amounts of soil, combining organic and mineral matter and mixing it deep into the soil profile',
+    color: 'gray',
+    text: 'macrofauna like earthworms and gophers move large amounts of soil, combining organic and mineral matter and mixing it deep into the soil profile.',
+    className: 'top-3/4 right-0',
   },
-};
+} as const;
 
 export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  const [popups, setPopups] = useState({
-    'plant respiration': false,
-    'plant uptake': false,
-    photosynthesis: false,
-    respiration: false,
-    decomposition: false,
-    bioperturbation: false,
-  });
+  const [popups, setPopups] = useState<null | keyof typeof popupMap>(null);
   const [, setIsImagePopupOpen] = useState(false);
   const svgContainerRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!svgContainerRef.current) return;
-    function handleOpenPopup(type: keyof typeof popups) {
+    function handleOpenPopup(type: typeof popups) {
       return () => {
-        setPopups((prevState) => ({
-          ...prevState,
-          [type]: !prevState[type],
-        }));
+        setPopups(type);
       };
     }
 
@@ -87,7 +78,7 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
 
     const decompositionSvg = sectionContainer.querySelector('#biocycling_svg__Layer_62') as SVGGElement | null;
     decompositionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    decompositionSvg?.addEventListener('click', handleOpenPopup('decomposition'));
+    decompositionSvg?.addEventListener('click', handleOpenPopup('litter decomposition'));
 
     const bioperturbationSvg = sectionContainer.querySelector('#biocycling_svg__Layer_54') as SVGGElement | null;
     bioperturbationSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
@@ -97,14 +88,22 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
     imagePopupSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     imagePopupSvg?.addEventListener('click', handleImagePopup);
 
+    function handleOutsideClick(e: MouseEvent) {
+      if (!svgContainerRef.current?.contains(e.target as HTMLElement)) {
+        setPopups(null);
+      }
+    }
+    document.addEventListener('click', handleOutsideClick);
+
     return () => {
       plantRespirationSvg?.removeEventListener('click', handleOpenPopup('plant respiration'));
       plantUptakeSvg?.removeEventListener('click', handleOpenPopup('plant uptake'));
       photosynthesisSvg?.removeEventListener('click', handleOpenPopup('photosynthesis'));
       respirationSvg?.removeEventListener('click', handleOpenPopup('respiration'));
-      decompositionSvg?.removeEventListener('click', handleOpenPopup('decomposition'));
+      decompositionSvg?.removeEventListener('click', handleOpenPopup('litter decomposition'));
       bioperturbationSvg?.removeEventListener('click', handleOpenPopup('bioperturbation'));
       imagePopupSvg?.removeEventListener('click', handleImagePopup);
+      document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
 
@@ -121,12 +120,7 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
 
         <div className='relative' ref={svgContainerRef}>
           <Biocycling />
-          {popups['plant respiration'] && <Popup {...modalTypeMap['plant respiration']} className='top-20 left-0' />}
-          {popups['plant uptake'] && <Popup {...modalTypeMap['plant uptake']} className='top-1/2 left-0' />}
-          {popups['photosynthesis'] && <Popup {...modalTypeMap['photosynthesis']} className='top-20 right-0' />}
-          {popups['respiration'] && <Popup {...modalTypeMap['respiration']} className='top-1/3 right-0' />}
-          {popups['decomposition'] && <Popup {...modalTypeMap['decomposition']} className='top-1/2 right-0' />}
-          {popups['bioperturbation'] && <Popup {...modalTypeMap['bioperturbation']} className='top-3/4 right-0' />}
+          {popups && <Popup {...popupMap[popups]} title={popups} />}
         </div>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
           plant biomass is eaten and excreted by animals or it decomposes when the plant dies. carbon is also pumped
@@ -138,14 +132,24 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
   );
 };
 
-function Popup({ title, color, text, className }: { title: string; color: string; text: string; className: string }) {
+function Popup({
+  title,
+  color,
+  text,
+  className,
+}: {
+  title: string;
+  color: Required<TextProps>['color'];
+  text: string;
+  className: string;
+}) {
   return (
     <div className={`absolute p-4 bg-white shadow max-w-[475px] ${className}`}>
-      <Text type='h3' weight='bold' size='2xs' className={color}>
+      <Text type='h3' weight='bold' size='2xs' color={color}>
         {title}:
       </Text>
       <Text type='h3' weight='bold' size='2xs'>
-        {text}:
+        {text}
       </Text>
     </div>
   );

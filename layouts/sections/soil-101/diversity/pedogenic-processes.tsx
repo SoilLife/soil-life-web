@@ -12,95 +12,52 @@ import styles from '../soil-101.module.css';
 
 export const PedogenicProcessesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   const sectionContainerRef = useRef<null | HTMLDivElement>(null);
+  const svgRefs = useRef<{ [key: string]: SVGSVGElement }>({});
 
   useEffect(() => {
     if (!sectionContainerRef.current) return;
 
     const el = sectionContainerRef.current;
-    function togglePopup(el: null | Element) {
+    function togglePopup(popup: string) {
       return () => {
-        el?.classList?.toggle('hidden');
+        Object.entries(svgRefs.current).forEach(([popupName, svgElement]) => {
+          if (popupName === popup && svgElement.classList.contains('hidden')) {
+            svgElement.classList.remove('hidden');
+          } else {
+            svgElement.classList.add('hidden');
+          }
+        });
       };
     }
 
-    const pedoturbationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_33');
-    const pedoturbationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_38');
-    pedoturbationPopupSvg?.classList?.toggle('hidden');
-    pedoturbationLabelSvg?.classList?.add(...interactiveClassNames);
-    pedoturbationLabelSvg?.addEventListener('click', togglePopup(pedoturbationPopupSvg));
+    const popupByLabels = {
+      '#pedogenic_processes_svg__Layer_33': '#pedogenic_processes_svg__Layer_38',
+      '#pedogenic_processes_svg__Layer_14': '#pedogenic_processes_svg__Layer_43',
+      '#pedogenic_processes_svg__Layer_52': '#pedogenic_processes_svg__Layer_42',
+      '#pedogenic_processes_svg__Layer_18': '#pedogenic_processes_svg__Layer_47',
+      '#pedogenic_processes_svg__Layer_17': '#pedogenic_processes_svg__Layer_40',
+      '#pedogenic_processes_svg__Layer_37': '#pedogenic_processes_svg__Layer_46',
+      '#pedogenic_processes_svg__Layer_15': '#pedogenic_processes_svg__Layer_44',
+      '#pedogenic_processes_svg__Layer_34': '#pedogenic_processes_svg__Layer_48',
+      '#pedogenic_processes_svg__Layer_35': '#pedogenic_processes_svg__Layer_41',
+      '#pedogenic_processes_svg__Layer_16': '#pedogenic_processes_svg__Layer_45',
+      '#pedogenic_processes_svg__Layer_32': '#pedogenic_processes_svg__Layer_49',
+    };
 
-    const lessivageLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_14');
-    const lessivagePopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_43');
-    lessivagePopupSvg?.classList?.toggle('hidden');
-    lessivageLabelSvg?.classList?.add(...interactiveClassNames);
-    lessivageLabelSvg?.addEventListener('click', togglePopup(lessivagePopupSvg));
-
-    const illuviationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_52');
-    const illuviationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_42');
-    illuviationPopupSvg?.classList?.toggle('hidden');
-    illuviationLabelSvg?.classList?.add(...interactiveClassNames);
-    illuviationLabelSvg?.addEventListener('click', togglePopup(illuviationPopupSvg));
-
-    const gleizationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_18');
-    const gleizationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_47');
-    gleizationPopupSvg?.classList?.toggle('hidden');
-    gleizationLabelSvg?.classList?.add(...interactiveClassNames);
-    gleizationLabelSvg?.addEventListener('click', togglePopup(gleizationPopupSvg));
-
-    const salinizationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_17');
-    const salinizationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_40');
-    salinizationPopupSvg?.classList?.toggle('hidden');
-    salinizationLabelSvg?.classList?.add(...interactiveClassNames);
-    salinizationLabelSvg?.addEventListener('click', togglePopup(salinizationPopupSvg));
-
-    const bioturbationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_37');
-    const bioturbationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_46');
-    bioturbationPopupSvg?.classList?.toggle('hidden');
-    bioturbationLabelSvg?.classList?.add(...interactiveClassNames);
-    bioturbationLabelSvg?.addEventListener('click', togglePopup(bioturbationPopupSvg));
-
-    const calcificationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_15');
-    const calcificationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_44');
-    calcificationPopupSvg?.classList?.toggle('hidden');
-    calcificationLabelSvg?.classList?.add(...interactiveClassNames);
-    calcificationLabelSvg?.addEventListener('click', togglePopup(calcificationPopupSvg));
-
-    const melanizationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_34');
-    const melanizationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_48');
-    melanizationPopupSvg?.classList?.toggle('hidden');
-    melanizationLabelSvg?.classList?.add(...interactiveClassNames);
-    melanizationLabelSvg?.addEventListener('click', togglePopup(melanizationPopupSvg));
-
-    const elluviationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_35');
-    const elluviationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_41');
-    elluviationPopupSvg?.classList?.toggle('hidden');
-    elluviationLabelSvg?.classList?.add(...interactiveClassNames);
-    elluviationLabelSvg?.addEventListener('click', togglePopup(elluviationPopupSvg));
-
-    const podzolizationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_16');
-    const podzolizationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_45');
-    podzolizationPopupSvg?.classList?.toggle('hidden');
-    podzolizationLabelSvg?.classList?.add(...interactiveClassNames);
-    podzolizationLabelSvg?.addEventListener('click', togglePopup(podzolizationPopupSvg));
-
-    const desilicationLabelSvg = el.querySelector('#pedogenic_processes_svg__Layer_32');
-    const desilicationPopupSvg = el.querySelector('#pedogenic_processes_svg__Layer_49');
-    desilicationPopupSvg?.classList?.toggle('hidden');
-    desilicationLabelSvg?.classList?.add(...interactiveClassNames);
-    desilicationLabelSvg?.addEventListener('click', togglePopup(desilicationPopupSvg));
+    Object.entries(popupByLabels).forEach(([labelClassName, popupClassName]) => {
+      const labelSvg = el.querySelector(labelClassName) as SVGSVGElement;
+      const popupSvg = el.querySelector(popupClassName) as SVGSVGElement;
+      svgRefs.current[popupClassName] = popupSvg;
+      popupSvg?.classList?.add('hidden');
+      labelSvg?.classList?.add(...interactiveClassNames);
+      labelSvg?.addEventListener('click', togglePopup(popupClassName));
+    });
 
     return () => {
-      pedoturbationLabelSvg?.removeEventListener('click', togglePopup(pedoturbationPopupSvg));
-      lessivageLabelSvg?.removeEventListener('click', togglePopup(lessivagePopupSvg));
-      illuviationLabelSvg?.removeEventListener('click', togglePopup(illuviationPopupSvg));
-      gleizationLabelSvg?.removeEventListener('click', togglePopup(gleizationPopupSvg));
-      salinizationLabelSvg?.removeEventListener('click', togglePopup(salinizationPopupSvg));
-      bioturbationLabelSvg?.removeEventListener('click', togglePopup(bioturbationPopupSvg));
-      calcificationLabelSvg?.removeEventListener('click', togglePopup(calcificationPopupSvg));
-      melanizationLabelSvg?.removeEventListener('click', togglePopup(melanizationPopupSvg));
-      elluviationLabelSvg?.removeEventListener('click', togglePopup(elluviationPopupSvg));
-      podzolizationLabelSvg?.removeEventListener('click', togglePopup(podzolizationPopupSvg));
-      desilicationLabelSvg?.removeEventListener('click', togglePopup(desilicationPopupSvg));
+      Object.entries(popupByLabels).forEach(([labelClassName, popupClassName]) => {
+        const labelSvg = el.querySelector(labelClassName) as SVGSVGElement;
+        labelSvg?.removeEventListener('click', togglePopup(popupClassName));
+      });
     };
   }, []);
 
