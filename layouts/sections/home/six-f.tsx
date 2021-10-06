@@ -10,20 +10,15 @@ export function SixFSection() {
   } = useAppContext();
   const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApi);
 
+  // section-home-six-f
   return (
-    <Section className='relative section-home-six-f'>
-      {slides.map(({ photoUrl, position, ...slide }, index) => {
+    <Section className='relative '>
+      {slides.map(({ photoUrl, imageClassname = '', ...slide }, index) => {
         return (
           <Slide className='relative' key={index}>
             <Card6F {...slide} />
-            <div className='absolute top-1/3 left-0 w-full h-full'>
-              <Image
-                key={index}
-                url={photoUrl}
-                className={`h-2/3 object-cover ${
-                  position === 'bottom' ? 'object-bottom' : position === 'left-bottom' ? 'object-left-bottom' : ''
-                }`}
-              />
+            <div className='absolute overflow-hidden top-1/2 left-0 w-full h-full xl:top-1/3'>
+              <Image key={index} url={photoUrl} className={`h-2/3 object-cover ${imageClassname}`} />
             </div>
           </Slide>
         );
