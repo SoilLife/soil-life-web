@@ -2,8 +2,38 @@
   object-position: 68% -30px;
 }
 
+.text {
+  font-size: 36px;
+}
+
 @screen sm {
   .bg__img {
     object-position: 50% 0%;
+  }
+}
+
+@screen md {
+  .bg__img {
+    object-position: 68% 0;
+  }
+
+  .text {
+    font-size: 50px;
+  }
+}
+
+@screen xl {
+  .bg__img {
+    object-position: initial;
+  }
+}
+
+@screen 2xl {
+  .bg__img {
+    object-position: initial;
+  }
+
+  .text {
+    font-size: 80px;
   }
 }
