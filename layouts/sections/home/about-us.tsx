@@ -12,7 +12,7 @@ export function AboutUsSection() {
           we are on a mission to change the way the world looks at soil-digging into what’s dirty and calling into
           question what’s clean.
         </Text>
-        <Image url='/Home_Page/grass_roots_pnwdrMGcq.jpeg' className='object-contain max-h-full' />
+        <Image url='/Home_Page/grass_roots_pnwdrMGcq.jpeg' className='object-contain max-h-[320px]' />
         <Text type='p' weight='light' size='md' className='leading-normal'>
           we believe in change from the ground up! by starting at the root of some of our most pressing global issues,
           we aim to promote environmental and human health across the globe!

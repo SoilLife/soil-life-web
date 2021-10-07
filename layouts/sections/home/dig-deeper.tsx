@@ -14,7 +14,7 @@ export function DigDeeperSection() {
       />
       <div className='container relative h-full w-full'>
         <div className='absolute top-0 left-0 h-full w-full'>
-          <div className='p-12 flex flex-col justify-between h-full w-full sm:h-auto sm:w-max sm:p-0 sm:block sm:relative sm:left-[32%] sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-10'>
+          <div className='p-8 flex flex-col justify-between h-full w-full sm:h-auto sm:w-max sm:p-0 sm:block sm:relative sm:left-[32%] sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-10'>
             <Text type='h2' weight='regular' size='3xl' color='white'>
               want to know more?
             </Text>
