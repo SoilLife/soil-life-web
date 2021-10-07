@@ -10,9 +10,8 @@ export function SixFSection() {
   } = useAppContext();
   const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApi);
 
-  // section-home-six-f
   return (
-    <Section className='relative '>
+    <Section className='relative section-home-six-f'>
       {slides.map(({ photoUrl, imageClassname = '', ...slide }, index) => {
         return (
           <Slide className='relative' key={index}>
