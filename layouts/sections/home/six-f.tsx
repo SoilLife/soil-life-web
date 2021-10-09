@@ -6,9 +6,9 @@ import { useAppContext } from 'context';
 
 export function SixFSection() {
   const {
-    state: { fullpageApi },
+    state: { fullpageRef },
   } = useAppContext();
-  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApi);
+  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageRef?.fullpageApi);
 
   return (
     <Section className='relative section-home-six-f'>
