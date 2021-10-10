@@ -1,0 +1,57 @@
+.card {
+  @apply p-2 text-center bg-white h-48 w-28;
+}
+
+.img-container {
+  z-index: 1;
+  @apply h-24 w-full;
+}
+
+@screen sm {
+  .card {
+    @apply h-auto w-auto;
+  }
+
+  .img-container {
+    @apply h-24 w-32;
+  }
+}
+
+@screen md {
+  .img-container {
+    @apply mb-3 h-32 w-40;
+  }
+}
+
+@screen lg {
+  @media screen and (orientation: portrait) {
+    .img-container {
+      @apply h-60 w-64;
+    }
+  }
+
+  @media screen and (orientation: landscape) {
+    .card {
+      @apply p-2;
+    }
+
+    .img-container {
+      @apply h-28 w-40;
+    }
+  }
+}
+
+@screen xl {
+  .card {
+    @apply p-3;
+  }
+  .img-container {
+    @apply h-40 w-48;
+  }
+}
+
+@screen 2xl {
+  .img-container {
+    @apply h-48 w-52;
+  }
+}

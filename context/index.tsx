@@ -4,7 +4,7 @@ import { appReducer } from './app.reducer';
 import { App } from './app.interfaces';
 
 const initialState: App.State = {
-  fullpageApi: null,
+  fullpageRef: null,
   isMenuOpen: false,
 };
 

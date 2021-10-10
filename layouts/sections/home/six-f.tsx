@@ -1,4 +1,4 @@
-import { Card6F } from 'design-system/atoms/card-six-f';
+import { Card6F } from 'design-system/components';
 import { slides } from 'data/six-f-slides';
 import { Section, Slide, Image, CarouselArrowLeft, CarouselArrowRight } from 'design-system/atoms';
 import { useCarouselHandlers } from 'helpers/use-carousel-handlers';
@@ -6,9 +6,9 @@ import { useAppContext } from 'context';
 
 export function SixFSection() {
   const {
-    state: { fullpageApi },
+    state: { fullpageRef },
   } = useAppContext();
-  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApi);
+  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageRef?.fullpageApi);
 
   return (
     <Section className='relative section-home-six-f'>

@@ -1,6 +1,7 @@
 // components
 import Link from 'next/link';
-import { Text, CardGetInvolved, Button } from 'design-system/atoms';
+import { Text, Button } from 'design-system/atoms';
+import { CardGetInvolved } from 'design-system/components';
 import { Header } from 'design-system/templates';
 
 // helpers
@@ -8,7 +9,7 @@ import { getColor } from 'helpers/get-color';
 
 // interfaces
 import { ButtonProps } from 'design-system/atoms/button/button.interfaces';
-import { CardGetInvolvedProps } from 'design-system/atoms/card-get-involved/card-get-involved.interfaces';
+import { CardGetInvolvedProps } from 'design-system/components/card-get-involved/card-get-involved.interfaces';
 import { getInvolvedHeadings } from 'data/main-headings';
 
 function ReturnHomeButton({ color }: { color: Color }) {

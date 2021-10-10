@@ -10,12 +10,12 @@ import { healthySoilsSlides } from 'data/healthy-soils-slides';
 
 export function HealthySoilsSection() {
   const {
-    state: { fullpageApi },
+    state: { fullpageRef },
   } = useAppContext();
-  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageApi);
+  const { handleNextSlide, handlePreviousSlide } = useCarouselHandlers(fullpageRef?.fullpageApi);
 
   function handleFindOutHowClick() {
-    fullpageApi.moveSlideRight();
+    fullpageRef?.fullpageApi?.moveSlideRight();
   }
 
   return (
