@@ -9,7 +9,7 @@ export const Section = forwardRef<
   }>
 >(function ({ className, children, ...props }, ref) {
   return (
-    <div ref={ref} className={`section overflow-y-hidden ${className}`} {...props}>
+    <div ref={ref} className={`section overflow-hidden ${className}`} {...props}>
       {children}
     </div>
   );
