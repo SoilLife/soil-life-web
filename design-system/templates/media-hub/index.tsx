@@ -141,7 +141,7 @@ export function MediaHub({
                                       ? 'object-cover'
                                       : medium.mediaType === 'image'
                                       ? 'object-contain'
-                                      : 'p-8'
+                                      : 'p-8 object-contain'
                                   }
                                   loading='lazy'
                                 />
