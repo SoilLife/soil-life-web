@@ -1,4 +1,4 @@
-import { CardSixFProps } from 'design-system/atoms/card-six-f/card-six-f.interfaces';
+import { CardSixFProps } from 'design-system/components/card-six-f/card-six-f.interfaces';
 import { Text } from 'design-system/atoms';
 import { ButtonProps } from 'design-system/atoms/button/button.interfaces';
 
