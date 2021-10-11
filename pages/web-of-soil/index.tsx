@@ -99,6 +99,20 @@ export default function WebOfSoilPage() {
   const { graph: funGraph } = useWebOfSoils('fun data structure');
 
   useEffect(() => {
+    if (query['f']) {
+      const fMap = ['food', 'fiber', 'filter', 'foundations', 'farmaceuticals', 'fun'];
+      const nav = Array.from(document.querySelectorAll('[data-nav]')) as HTMLLIElement[];
+      const fQuery = query['f'] as string;
+
+      if (nav?.length) {
+        setTimeout(() => {
+          nav[fMap.findIndex((f) => f === fQuery) ?? 0]?.click();
+        }, 10);
+      }
+    }
+  }, [query]);
+
+  useEffect(() => {
     const sections = Array.from(document.querySelectorAll('.section')) as HTMLDivElement[];
     setSections(sections);
     const fpNav = document.querySelector('#fp-nav') as HTMLDivElement;
