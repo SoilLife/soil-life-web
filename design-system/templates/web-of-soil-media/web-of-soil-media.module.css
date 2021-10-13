@@ -1,0 +1,20 @@
+.media-container {
+  scroll-snap-type: x proximity;
+}
+
+.media-section {
+  scroll-snap-align: start;
+}
+
+.media-section > * {
+  scroll-snap-align: start;
+  transition: opacity 0.2s ease-in;
+}
+
+.media-section:hover > * {
+  opacity: 0.5;
+}
+
+.media-section:hover > *:hover {
+  opacity: 1;
+}

@@ -2,8 +2,19 @@ import { Section } from 'design-system/atoms/fullpage-section';
 import { Image, Text } from 'design-system/atoms';
 
 import DownArrow from 'public/images/down_arrow_white.svg';
+import { useAppContext } from 'context';
 
 export function HeroSection() {
+  const {
+    state: { fullpageRef },
+  } = useAppContext();
+
+  function handleDownArrowClick() {
+    if (fullpageRef?.state?.initialized) {
+      fullpageRef.fullpageApi.moveSectionDown();
+    }
+  }
+
   return (
     <Section>
       <Image url='/Home_Page/natgeo5b_H4vFWWpPA.jpg' className='mt-10 object-cover object-top' />
@@ -24,7 +35,7 @@ export function HeroSection() {
           connected
         </Text>
         <div className='flex justify-center'>
-          <DownArrow height={20} />
+          <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
         </div>
       </div>
     </Section>
