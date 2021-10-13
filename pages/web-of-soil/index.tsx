@@ -16,7 +16,6 @@ import { webOfSoilSubheadings } from 'data/main-headings';
 import { DefaultLayout } from 'layouts';
 import { useWebOfSoils, Node, Edge } from 'helpers/use-web-of-soil';
 import { textSizeMap } from 'design-system/atoms/text/text.utils';
-import { useAppContext } from 'context';
 
 // assets
 import DownArrow from 'public/images/down_arrow_white.svg';
@@ -84,9 +83,6 @@ const videos = [
 
 export default function WebOfSoilPage() {
   const { query } = useRouter();
-  const {
-    state: { fullpageRef },
-  } = useAppContext();
   const [activeHeader, setActiveHeader] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isWebOfSoilMModalOpen, setIsWebOfSoilModalOpen] = useState(false);
