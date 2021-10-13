@@ -16,6 +16,10 @@ import { webOfSoilSubheadings } from 'data/main-headings';
 import { DefaultLayout } from 'layouts';
 import { useWebOfSoils, Node, Edge } from 'helpers/use-web-of-soil';
 import { textSizeMap } from 'design-system/atoms/text/text.utils';
+import { useAppContext } from 'context';
+
+// assets
+import DownArrow from 'public/images/down_arrow_white.svg';
 
 const options = {
   autoResize: true,
@@ -80,6 +84,9 @@ const videos = [
 
 export default function WebOfSoilPage() {
   const { query } = useRouter();
+  const {
+    state: { fullpageRef },
+  } = useAppContext();
   const [activeHeader, setActiveHeader] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isWebOfSoilMModalOpen, setIsWebOfSoilModalOpen] = useState(false);
@@ -117,6 +124,12 @@ export default function WebOfSoilPage() {
       nav[sectionMap.findIndex((f) => f === query['section']) ?? 0]?.click();
     }
   }, [query, fullPageRef.current]);
+
+  function handleDownArrowClick() {
+    if (fullPageRef.current?.state?.initialized) {
+      fullPageRef.current.fullpageApi.moveSectionDown();
+    }
+  }
 
   const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
     if (direction === 'up' && hideHeader) {
@@ -289,12 +302,11 @@ export default function WebOfSoilPage() {
           onLeave={handleSectionLeave}
           onSlideLeave={handleSlideLeave}
           normalScrollElements={'.media-hub__scroll__container, .viz-graph'}
-          scrollOverflow={true}
           render={() => {
             return (
               <>
                 <Section>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image
                       className='object-cover object-center'
                       url='/6Fs/brooke-lark-08bOYnH_r_E-unsplash_Nsw5XgGxU.jpg'
@@ -325,8 +337,11 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Fiber_Slide_NkVYdxIN7-t.jpg' />
                     <div
                       className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
@@ -354,8 +369,11 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Filter_zylk3NyhU.jpg' transformation={[{ rotate: 90 }]} />
                     <div
                       className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
@@ -383,8 +401,11 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Foundation_sl5IYmaDB.jpg' />
                     <div
                       className='p-6 flex flex-col h-full w-full items-center justify-center absolute top-0 left-0
@@ -414,8 +435,11 @@ export default function WebOfSoilPage() {
                         </div>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover object-left' url='/6Fs/cup_of_pills_ioFvZZ0lo.png' />
                     <div
                       className={`p-6 flex flex-col h-full w-full items-center justify-center absolute top-0 left-0
@@ -446,8 +470,11 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Fun_XHWRw699s.jpg' />
                     <div
                       className={`p-6 flex flex-col items-center justify-center h-full w-full absolute top-0 left-0
@@ -479,6 +506,9 @@ export default function WebOfSoilPage() {
                           </button>
                         </div>
                       </div>
+                    </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
                     </div>
                   </Slide>
                 </Section>
