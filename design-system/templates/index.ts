@@ -4,3 +4,4 @@ export * from './social-media-icons';
 export * from './mobile-nav-menu';
 export * from './media-hub';
 export * from './section-nav-bar';
+export * from './web-of-soil-media';
