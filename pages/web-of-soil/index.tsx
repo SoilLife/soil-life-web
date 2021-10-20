@@ -224,6 +224,9 @@ export default function WebOfSoilPage() {
   function handleGraphEvent(type: 'food' | 'filter' | 'fiber' | 'fun' | 'farmaceutical' | 'foundation') {
     return {
       select({ nodes, edges }: { nodes: string[]; edges: string[] }) {
+        if (!nodes.length || !edges.length) {
+          return;
+        }
         const graphs: { [Type in typeof type]: { nodes: Node[]; edges: Edge[] } } = {
           farmaceutical: farmaceuticalGraph,
           fiber: fiberGraph,
@@ -678,7 +681,7 @@ export default function WebOfSoilPage() {
               <Icon icon='x' size='32' className='text-yellow-500' />
             </button>
           </div>
-          <div className='flex justify-center items-center overflow-x-auto space-x-2 sm:space-x-10'>
+          <div className='flex flex-grow justify-center items-center overflow-x-auto space-x-2 sm:space-x-10'>
             {nodeSelections.map((node) => {
               return (
                 <div key={node.id} className='flex-shrink-0 text-center'>
@@ -696,7 +699,7 @@ export default function WebOfSoilPage() {
               );
             })}
           </div>
-          <div className='mt-10 mx-auto flex-grow grid place-items-center'>
+          <div className='mt-10 mx-auto flex-grow'>
             {nodeSelections.map((node) => {
               if (node.active && !node.to.length) {
                 return (
@@ -705,51 +708,60 @@ export default function WebOfSoilPage() {
                   </p>
                 );
               } else if (node.active) {
-                let _connectedNodes: Node[] = [];
+                const graphs: { [Type in typeof activeHeader]: { nodes: Node[]; edges: Edge[] } } = {
+                  0: foodGraph,
+                  1: fiberGraph,
+                  2: filterGraph,
+                  3: foundationsGraph,
+                  4: farmaceuticalGraph,
+                  5: funGraph,
+                };
+                const edges = graphs[activeHeader]?.edges.filter((edge) => edge.to === node.id);
+                if ((edges?.length ?? 0) > 1) {
+                  return (
+                    <p key={node.label} className='max-w-3xl mx-auto text-center font-acre-light leading-[22px]'>
+                      {node.description}
+                    </p>
+                  );
+                } else {
+                  let _connectedNodes: Node[] = [];
 
-                function findConnectedNodes(node: Node) {
-                  const graphs: { [Type in typeof activeHeader]: { nodes: Node[]; edges: Edge[] } } = {
-                    0: foodGraph,
-                    1: fiberGraph,
-                    2: filterGraph,
-                    3: foundationsGraph,
-                    4: farmaceuticalGraph,
-                    5: funGraph,
-                  };
-                  const connectedNodes = graphs?.[activeHeader]?.nodes.filter((n) => n.to.includes(node.id)) ?? [];
-                  for (const n of connectedNodes) {
-                    _connectedNodes.push(n);
-                    findConnectedNodes(n);
+                  function findConnectedNodes(node: Node) {
+                    const connectedNodes = graphs?.[activeHeader]?.nodes.filter((n) => n.to.includes(node.id)) ?? [];
+                    for (const n of connectedNodes) {
+                      _connectedNodes.push(n);
+                      findConnectedNodes(n);
+                    }
                   }
-                }
 
-                findConnectedNodes(node);
+                  findConnectedNodes(node);
 
-                return (
-                  <div
-                    key={node.label}
-                    className='flex flex-col space-y-10 sm:py-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'
-                  >
-                    <div className='flex-shrink-0 space-y-6'>
-                      <h3 className='text-pink-500 font-acre-light text-[40px] leading-[48px] mb-6 text-center'>
-                        {node.label}
-                      </h3>
-                      <img src={node.image} className='h-[147px] w-[233px] object-cover mx-auto' />
-                      <p className='font-acre-light text-base leading-[22px] max-w-md mx-auto'>{node.description}</p>
+                  return (
+                    <div
+                      key={node.label}
+                      className='flex flex-col space-y-10 sm:py-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'
+                    >
+                      <div className='flex-shrink-0 space-y-6'>
+                        <h3 className='text-pink-500 font-acre-light text-[40px] leading-[48px] mb-6 text-center'>
+                          {node.label}
+                        </h3>
+                        <img src={node.image} className='h-[147px] w-[233px] object-cover mx-auto' />
+                        <p className='font-acre-light text-base leading-[22px] max-w-md mx-auto'>{node.description}</p>
+                      </div>
+                      {uniqBy(_connectedNodes, 'id').map((n) => {
+                        return (
+                          <div key={n.id} className='flex-shrink-0 space-y-6'>
+                            <h3 className='text-pink-500 font-acre-light text-[40px] leading-[48px] mb-6 text-center'>
+                              {n.label}
+                            </h3>
+                            <img src={n.image} className='h-[147px] w-[233px] object-cover mx-auto' />
+                            <p className='font-acre-light text-base leading-[22px] max-w-md mx-auto'>{n.description}</p>
+                          </div>
+                        );
+                      })}
                     </div>
-                    {uniqBy(_connectedNodes, 'id').map((n) => {
-                      return (
-                        <div key={n.id} className='flex-shrink-0 space-y-6'>
-                          <h3 className='text-pink-500 font-acre-light text-[40px] leading-[48px] mb-6 text-center'>
-                            {n.label}
-                          </h3>
-                          <img src={n.image} className='h-[147px] w-[233px] object-cover mx-auto' />
-                          <p className='font-acre-light text-base leading-[22px] max-w-md mx-auto'>{n.description}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
+                  );
+                }
               }
               return null;
             })}
