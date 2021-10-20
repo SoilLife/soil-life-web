@@ -16,6 +16,7 @@ import { webOfSoilSubheadings } from 'data/main-headings';
 import { DefaultLayout } from 'layouts';
 import { useWebOfSoils, Node, Edge } from 'helpers/use-web-of-soil';
 import { textSizeMap } from 'design-system/atoms/text/text.utils';
+import { uniqBy } from 'lodash';
 
 // assets
 import DownArrow from 'public/images/down_arrow_white.svg';
@@ -26,7 +27,7 @@ const options = {
     hierarchical: false,
   },
   interaction: {
-    dragNodes: false,
+    dragNodes: true,
     zoomView: false,
   },
   nodes: {
@@ -222,7 +223,7 @@ export default function WebOfSoilPage() {
 
   function handleGraphEvent(type: 'food' | 'filter' | 'fiber' | 'fun' | 'farmaceutical' | 'foundation') {
     return {
-      select({ nodes }: { nodes: string[] }) {
+      select({ nodes, edges }: { nodes: string[]; edges: string[] }) {
         const graphs: { [Type in typeof type]: { nodes: Node[]; edges: Edge[] } } = {
           farmaceutical: farmaceuticalGraph,
           fiber: fiberGraph,
@@ -231,16 +232,59 @@ export default function WebOfSoilPage() {
           foundation: foundationsGraph,
           fun: funGraph,
         };
+
         const [id] = nodes;
         if (id) {
-          const connectedNodes = graphs[type].nodes
-            .filter((node) => node.to.includes(id))
-            .map((node) => ({ ...node, active: false }));
-          const selectedNode = graphs[type].nodes.find((node) => node.id === id);
+          if (edges.length === 1) {
+            const [edge] = edges;
+            if (edge) {
+              let connections: typeof nodeSelections = [];
+              const first = graphs[type].nodes.find((node) => node.id === id);
+              if (first) {
+                connections.push({ ...first, active: true });
+              }
+              function findEdges(edgeId: string) {
+                const connection = graphs[type].edges.find((e) => e.id === edgeId);
+                const allEdges = graphs[type].edges.filter((e) => e.to === connection?.from);
 
-          if (selectedNode) {
-            const nodeSelections = [{ ...selectedNode, active: true }, ...connectedNodes];
-            setNodeSelections(nodeSelections);
+                if (connection && allEdges.length === 1) {
+                  const node = graphs[type].nodes.find((node) =>
+                    node.to.find((to) => to.toLowerCase().includes(connection.to.toLowerCase()))
+                  );
+                  if (node) {
+                    connections.push({ ...node, active: false });
+                    const foundEdge = graphs[type].edges.find((edge) => edge.to.includes(node.id));
+                    if (foundEdge?.id) {
+                      findEdges(foundEdge.id);
+                    }
+                  }
+                } else {
+                  const node = graphs[type].nodes.find((node) =>
+                    node.to.find((to) => to.toLowerCase().includes(connection?.to?.toLowerCase() ?? ''))
+                  );
+
+                  if (node) {
+                    connections.push({ ...node, active: false });
+                    connections.push(
+                      ...graphs[type].nodes.filter((n) => n.to.includes(node.id)).map((n) => ({ ...n, active: false }))
+                    );
+                  }
+                }
+              }
+
+              findEdges(edge);
+              setNodeSelections(connections);
+            }
+          } else {
+            const connectedNodes = graphs[type].nodes
+              .filter((node) => node.to.includes(id))
+              .map((node) => ({ ...node, active: false }));
+            const selectedNode = graphs[type].nodes.find((node) => node.id === id);
+
+            if (selectedNode) {
+              const nodeSelections = [{ ...selectedNode, active: true }, ...connectedNodes];
+              setNodeSelections(nodeSelections);
+            }
           }
         }
         handleOpenWebOfSoilModal();
@@ -628,22 +672,22 @@ export default function WebOfSoilPage() {
           },
         }}
       >
-        <div className='relative bg-white mx-auto flex flex-col p-4 sm:p-8'>
+        <div className='relative bg-white mx-auto flex flex-col h-full justify-center p-4 sm:p-8'>
           <div className='absolute top-2 right-2 sm:top-6 sm:right-6'>
             <button onClick={handleCloseWebOfSoilModal}>
               <Icon icon='x' size='32' className='text-yellow-500' />
             </button>
           </div>
-          <div className='flex justify-evenly items-center overflow-x-auto space-x-2 sm:space-x-10'>
+          <div className='flex justify-center items-center overflow-x-auto space-x-2 sm:space-x-10'>
             {nodeSelections.map((node) => {
               return (
                 <div key={node.id} className='flex-shrink-0 text-center'>
-                  <Text type='h2' weight='light' size={node.active ? 'lg' : 'sm'}>
+                  <Text type='h2' weight='light' size={node.active ? 'lg' : 'sm'} className='mb-1'>
                     {node.label}
                   </Text>
                   <img
                     src={node.image}
-                    className={`object-cover rounded-full mx-auto border- border-solid border-pink-500 ${
+                    className={`object-cover rounded-full mx-auto border-4 border-solid border-pink-500 ${
                       node.active ? 'h-20 w-20 sm:h-40 sm:w-40' : 'h-10 w-10 sm:h-20 sm:w-20 cursor-pointer'
                     }`}
                     onClick={handleWebOfSoilModalNodeClick(node)}
@@ -652,13 +696,13 @@ export default function WebOfSoilPage() {
               );
             })}
           </div>
-          <div className='mt-10 mx-auto'>
+          <div className='mt-10 mx-auto flex-grow grid place-items-center'>
             {nodeSelections.map((node) => {
               if (node.active && !node.to.length) {
                 return (
-                  <Text key={node.label} type='p' weight='light' size='xs' className='max-w-3xl mx-auto'>
+                  <p key={node.label} className='max-w-3xl mx-auto text-center font-acre-light leading-[22px]'>
                     {node.description}
-                  </Text>
+                  </p>
                 );
               } else if (node.active) {
                 let _connectedNodes: Node[] = [];
@@ -684,27 +728,23 @@ export default function WebOfSoilPage() {
                 return (
                   <div
                     key={node.label}
-                    className='py-8 flex flex-col space-y-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'
+                    className='flex flex-col space-y-10 sm:py-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'
                   >
                     <div className='flex-shrink-0 space-y-6'>
-                      <Text type='h2' weight='regular' size='lg' color='pink' className='mb-6 text-center'>
+                      <h3 className='text-pink-500 font-acre-light text-[40px] leading-[48px] mb-6 text-center'>
                         {node.label}
-                      </Text>
-                      <img src={node.image} className='h-full max-h-48 object-cover mx-auto my-0' />
-                      <Text type='p' weight='light' size='xs' className='max-w-md mx-auto'>
-                        {node.description}
-                      </Text>
+                      </h3>
+                      <img src={node.image} className='h-[147px] w-[233px] object-cover mx-auto' />
+                      <p className='font-acre-light text-base leading-[22px] max-w-md mx-auto'>{node.description}</p>
                     </div>
-                    {_connectedNodes.map((n) => {
+                    {uniqBy(_connectedNodes, 'id').map((n) => {
                       return (
                         <div key={n.id} className='flex-shrink-0 space-y-6'>
-                          <Text type='h2' weight='regular' size='lg' color='pink' className='mb-6 text-center'>
+                          <h3 className='text-pink-500 font-acre-light text-[40px] leading-[48px] mb-6 text-center'>
                             {n.label}
-                          </Text>
-                          <img src={n.image} className='max-h-48 w-full object-cover mx-auto my-0' />
-                          <Text type='p' weight='light' size='xs' className='max-w-md mx-auto'>
-                            {n.description}
-                          </Text>
+                          </h3>
+                          <img src={n.image} className='h-[147px] w-[233px] object-cover mx-auto' />
+                          <p className='font-acre-light text-base leading-[22px] max-w-md mx-auto'>{n.description}</p>
                         </div>
                       );
                     })}
