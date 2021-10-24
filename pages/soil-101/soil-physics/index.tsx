@@ -69,8 +69,10 @@ export default function SoilPhysicsPage() {
 
   function handleClick(section: string) {
     return () => {
-      if (refs.current[section]) {
-        refs.current[section]?.scrollIntoView({ behavior: 'smooth' });
+      const container = refs.current[section];
+      if (container) {
+        const headerOffsetTop = 141;
+        window.scrollTo({ behavior: 'smooth', top: container.offsetTop - headerOffsetTop });
         setCurrentSection(section);
       }
     };
@@ -79,7 +81,7 @@ export default function SoilPhysicsPage() {
   function handleDownArrowClick() {
     const headerOffsetTop = 141;
     if (refs.current['texture']) {
-      window.scrollBy({ behavior: 'smooth', top: refs.current['texture'].offsetTop - headerOffsetTop });
+      window.scrollTo({ behavior: 'smooth', top: refs.current['texture'].offsetTop - headerOffsetTop });
     }
   }
 
@@ -103,7 +105,7 @@ export default function SoilPhysicsPage() {
           <HealthyStructureSection assignRef={assignRefs('healthy structure')} />
         </div>
       </div>
-      <Footer />
+      <Footer className='border-t border-solid border-gray-500' />
     </DefaultLayout>
   );
 }

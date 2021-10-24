@@ -62,8 +62,10 @@ export default function SoilBiologyPage() {
 
   function handleClick(section: string) {
     return () => {
-      if (refs.current[section]) {
-        refs.current[section]?.scrollIntoView({ behavior: 'smooth' });
+      const container = refs.current[section];
+      if (container) {
+        const headerOffsetTop = 141;
+        window.scrollTo({ behavior: 'smooth', top: container.offsetTop - headerOffsetTop });
         setCurrentSection(section);
       }
     };
@@ -72,7 +74,7 @@ export default function SoilBiologyPage() {
   function handleDownArrowClick() {
     const headerOffsetTop = 141;
     if (refs.current['what is soil health?']) {
-      window.scrollBy({ behavior: 'smooth', top: refs.current['what is soil health?'].offsetTop - headerOffsetTop });
+      window.scrollTo({ behavior: 'smooth', top: refs.current['what is soil health?'].offsetTop - headerOffsetTop });
     }
   }
 
@@ -90,7 +92,7 @@ export default function SoilBiologyPage() {
           <RisksSection assignRef={assignRefs('soils at risk')} />
         </div>
       </div>
-      <Footer />
+      <Footer className='border-t border-solid border-gray-500' />
     </DefaultLayout>
   );
 }

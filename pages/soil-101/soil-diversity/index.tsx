@@ -63,8 +63,10 @@ export default function SoilDiversityPage() {
 
   function handleClick(section: string) {
     return () => {
-      if (refs.current[section]) {
-        refs.current[section]?.scrollIntoView({ behavior: 'smooth' });
+      const container = refs.current[section];
+      if (container) {
+        const headerOffsetTop = 141;
+        window.scrollTo({ behavior: 'smooth', top: container.offsetTop - headerOffsetTop });
         setCurrentSection(section);
       }
     };
@@ -73,7 +75,7 @@ export default function SoilDiversityPage() {
   function handleDownArrowClick() {
     const headerOffsetTop = 141;
     if (refs.current['pedogenesis']) {
-      window.scrollBy({ behavior: 'smooth', top: refs.current['pedogenesis'].offsetTop - headerOffsetTop });
+      window.scrollTo({ behavior: 'smooth', top: refs.current['pedogenesis'].offsetTop - headerOffsetTop });
     }
   }
 
@@ -91,7 +93,7 @@ export default function SoilDiversityPage() {
           <DiversitySection assignRef={assignRefs('soil diversity')} />
         </div>
       </div>
-      <Footer />
+      <Footer className='border-t border-solid border-gray-500' />
     </DefaultLayout>
   );
 }
