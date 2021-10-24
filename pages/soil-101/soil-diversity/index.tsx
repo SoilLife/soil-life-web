@@ -70,10 +70,17 @@ export default function SoilDiversityPage() {
     };
   }
 
+  function handleDownArrowClick() {
+    const headerOffsetTop = 141;
+    if (refs.current['pedogenesis']) {
+      window.scrollBy({ behavior: 'smooth', top: refs.current['pedogenesis'].offsetTop - headerOffsetTop });
+    }
+  }
+
   return (
     <DefaultLayout>
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-gray-500' />
-      <HeroSection />
+      <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='gray' />
         <div className={styles['sections-container']}>

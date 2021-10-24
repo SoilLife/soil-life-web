@@ -69,10 +69,17 @@ export default function SoilBiologyPage() {
     };
   }
 
+  function handleDownArrowClick() {
+    const headerOffsetTop = 141;
+    if (refs.current['what is soil health?']) {
+      window.scrollBy({ behavior: 'smooth', top: refs.current['what is soil health?'].offsetTop - headerOffsetTop });
+    }
+  }
+
   return (
     <DefaultLayout>
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-blue-500' />
-      <HeroSection />
+      <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='blue' />
         <div className={styles['sections-container']}>

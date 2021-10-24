@@ -72,10 +72,17 @@ export default function SoilNexusPage() {
     };
   }
 
+  function handleDownArrowClick() {
+    const headerOffsetTop = 141;
+    if (refs.current['soil nexus']) {
+      window.scrollBy({ behavior: 'smooth', top: refs.current['soil nexus'].offsetTop - headerOffsetTop });
+    }
+  }
+
   return (
     <DefaultLayout>
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-pink-500' />
-      <HeroSection />
+      <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' />
         <div className={styles['sections-container']}>

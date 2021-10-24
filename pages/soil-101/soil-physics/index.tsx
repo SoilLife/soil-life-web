@@ -76,10 +76,17 @@ export default function SoilPhysicsPage() {
     };
   }
 
+  function handleDownArrowClick() {
+    const headerOffsetTop = 141;
+    if (refs.current['texture']) {
+      window.scrollBy({ behavior: 'smooth', top: refs.current['texture'].offsetTop - headerOffsetTop });
+    }
+  }
+
   return (
     <DefaultLayout>
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-yellow-500' />
-      <HeroSection />
+      <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='yellow' />
         <div className={styles['sections-container']}>

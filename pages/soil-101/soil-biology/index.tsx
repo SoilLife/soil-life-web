@@ -72,10 +72,17 @@ export default function SoilBiologyPage() {
     };
   }
 
+  function handleDownArrowClick() {
+    const headerOffsetTop = 141;
+    if (refs.current['rhizosphere']) {
+      window.scrollBy({ behavior: 'smooth', top: refs.current['rhizosphere'].offsetTop - headerOffsetTop });
+    }
+  }
+
   return (
     <DefaultLayout>
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-teal-500' />
-      <HeroSection />
+      <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
         <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='teal' />
         <div className={styles['sections-container']}>
