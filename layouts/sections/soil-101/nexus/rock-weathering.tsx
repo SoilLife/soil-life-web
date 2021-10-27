@@ -14,91 +14,69 @@ import RockWeatheringTable from 'public/images/soil-101/nexus/rock_weathering_ta
 import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
-  'freeze/thaw': {
-    isSimple: true,
-    title: 'freeze/thaw:',
-    text: 'water that enters cracks in rocks can break them apart when it freezes and expands',
-    image: null,
-  },
-  gravity: {
-    isSimple: true,
-    title: 'gravity:',
-    text: 'gravity moves materials downslope. as they knock into eachother rocks break down',
-    image: null,
-  },
-  'wind abrasion': {
-    isSimple: true,
-    title: 'wind abrasion:',
-    text: 'water that enters cracks in rocks can break them apart when it freezes and expands',
-    image: null,
-  },
-  'root expansion': {
-    isSimple: true,
-    title: 'root (physical):',
-    text: 'as roots grow they exert an immense amount of pressure on the materials around them -- enough to break apart solid rock',
-    image: null,
-  },
-  fauna: {
-    isSimple: true,
-    title: 'fauna:',
-    text: 'the wastes and decomposing bodies of living things produce acids that can weather rocks.',
-    image: null,
-  },
-  roots: {
-    isSimple: true,
-    title: 'roots (biochemical):',
-    text: 'roots release CO2, which can turn into an acid, and other acids that chemically weather rocks.',
-    image: null,
-  },
-  microbes: {
-    isSimple: true,
-    title: 'microbes:',
-    text: 'microbes also release CO2 and organic acids that weather rocks. a symbiosis of bacteria and fungi, known as lichen, plays a major role in rock weathering on earth.',
-    image: null,
-  },
   hydrolysis: {
-    isSimple: false,
     title: 'hydrolysis:',
-    text: null,
     image: '/images/soil-101/nexus/hydrolysis.svg',
   },
   'carbonic acid': {
-    isSimple: false,
     title: 'carbonic acid weathering',
-    text: null,
     image: '/images/soil-101/nexus/carbonic_acid.svg',
   },
   dissolution: {
-    isSimple: false,
     title: 'dissolution',
-    text: null,
     image: '/images/soil-101/nexus/dissolution.svg',
   },
   'oxidation-reduction': {
-    isSimple: false,
     title: 'oxidation-reduction:',
-    text: null,
     image: '/images/soil-101/nexus/oxidation_reduction.svg',
+  },
+};
+
+const popupMap = {
+  'freeze/thaw': {
+    title: 'freeze/thaw',
+    text: 'water that enters cracks in rocks can break them apart when it freezes and expands',
+    className: 'max-w-[495px] top-[40%]',
+  },
+  gravity: {
+    title: 'gravity',
+    text: 'gravity moves materials downslope. as they knock into eachother rocks break down',
+    className: 'max-w-[506px] top-[40%] left-[10%]',
+  },
+  'wind abrasion': {
+    title: 'wind abrasion',
+    text: 'water that enters cracks in rocks can break them apart when it freezes and expands',
+    className: 'max-w-[581px] top-[40%] left-[20%]',
+  },
+  'root expansion': {
+    title: 'root (physical)',
+    text: 'as roots grow they exert an immense amount of pressure on the materials around them -- enough to break apart solid rock',
+    className: 'max-w-[598px] top-[40%] left-[20%]',
+  },
+  fauna: {
+    title: 'fauna',
+    text: 'the wastes and decomposing bodies of living things produce acids that can weather rocks.',
+    className: 'max-w-[450px] top-[40%] right-0',
+  },
+  roots: {
+    title: 'roots (biochemical)',
+    text: 'roots release CO2, which can turn into an acid, and other acids that chemically weather rocks.',
+    className: 'max-w-[450px] top-[60%] right-0',
+  },
+  microbes: {
+    title: 'microbes',
+    text: 'microbes also release CO2 and organic acids that weather rocks. a symbiosis of bacteria and fungi, known as lichen, plays a major role in rock weathering on earth.',
+    className: 'max-w-[628px] top-[80%] right-0',
   },
 };
 
 export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const isMobile = useMedia('(max-width: 640px)');
-  const [modalType, setModalType] = useState<
-    | null
-    | 'freeze/thaw'
-    | 'gravity'
-    | 'wind abrasion'
-    | 'root expansion'
-    | 'carbonic acid'
-    | 'hydrolysis'
-    | 'dissolution'
-    | 'oxidation-reduction'
-    | 'fauna'
-    | 'roots'
-    | 'microbes'
-  >(null);
+  const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
+
+  const [popup, setPopup] = useState<null | keyof typeof popupMap>(null);
+
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
@@ -110,6 +88,12 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
           body.style.overflow = 'hidden';
         }
         setModalType(type);
+      };
+    }
+
+    function handlePopup(type: typeof popup) {
+      return (_e: MouseEvent) => {
+        setPopup((p) => (p === type ? null : type));
       };
     }
 
@@ -135,15 +119,19 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
     const faunaSvg = sectionContainer.querySelector('#rock_weathering_table_svg__Layer_42') as SVGGElement | null;
 
     freezeThawSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    freezeThawSvg?.addEventListener('click', handleOpenModal('freeze/thaw'));
+    freezeThawSvg?.addEventListener('click', handlePopup('freeze/thaw'));
     gravitySvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    gravitySvg?.addEventListener('click', handleOpenModal('gravity'));
+    gravitySvg?.addEventListener('click', handlePopup('gravity'));
     windAbrasionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    windAbrasionSvg?.addEventListener('click', handleOpenModal('wind abrasion'));
+    windAbrasionSvg?.addEventListener('click', handlePopup('wind abrasion'));
     rootExpansionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    rootExpansionSvg?.addEventListener('click', handleOpenModal('root expansion'));
+    rootExpansionSvg?.addEventListener('click', handlePopup('root expansion'));
     faunaSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    faunaSvg?.addEventListener('click', handleOpenModal('fauna'));
+    faunaSvg?.addEventListener('click', handlePopup('fauna'));
+    microbesSvg?.addEventListener('click', handlePopup('microbes'));
+    rootsSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    rootsSvg?.addEventListener('click', handlePopup('roots'));
+
     carbonicAcidSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     carbonicAcidSvg?.addEventListener('click', handleOpenModal('carbonic acid'));
     hydrolysisSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
@@ -153,22 +141,20 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
     oxidationReductionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     oxidationReductionSvg?.addEventListener('click', handleOpenModal('oxidation-reduction'));
     microbesSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    microbesSvg?.addEventListener('click', handleOpenModal('microbes'));
-    rootsSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    rootsSvg?.addEventListener('click', handleOpenModal('roots'));
 
     return () => {
-      freezeThawSvg?.removeEventListener('click', handleOpenModal('freeze/thaw'));
-      gravitySvg?.removeEventListener('click', handleOpenModal('gravity'));
-      windAbrasionSvg?.removeEventListener('click', handleOpenModal('wind abrasion'));
-      rootExpansionSvg?.removeEventListener('click', handleOpenModal('root expansion'));
-      faunaSvg?.removeEventListener('click', handleOpenModal('fauna'));
+      freezeThawSvg?.removeEventListener('click', handlePopup('freeze/thaw'));
+      gravitySvg?.removeEventListener('click', handlePopup('gravity'));
+      windAbrasionSvg?.removeEventListener('click', handlePopup('wind abrasion'));
+      rootExpansionSvg?.removeEventListener('click', handlePopup('root expansion'));
+      faunaSvg?.removeEventListener('click', handlePopup('fauna'));
+      microbesSvg?.removeEventListener('click', handlePopup('microbes'));
+      rootsSvg?.removeEventListener('click', handlePopup('roots'));
+
       carbonicAcidSvg?.removeEventListener('click', handleOpenModal('carbonic acid'));
       hydrolysisSvg?.removeEventListener('click', handleOpenModal('hydrolysis'));
       dissolutionSvg?.removeEventListener('click', handleOpenModal('dissolution'));
       oxidationReductionSvg?.removeEventListener('click', handleOpenModal('oxidation-reduction'));
-      microbesSvg?.removeEventListener('click', handleOpenModal('microbes'));
-      rootsSvg?.removeEventListener('click', handleOpenModal('roots'));
     };
   }, []);
 
@@ -201,7 +187,17 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
             smaller and smaller pieces.
           </Text>
         </div>
-        <RockWeatheringTable />
+        <div className='relative'>
+          <RockWeatheringTable />
+          {popup && (
+            <Popup
+              {...popupMap[popup]}
+              onClick={() => {
+                setPopup(null);
+              }}
+            />
+          )}
+        </div>
       </div>
       {modalType && (
         <ReactModal
@@ -211,13 +207,11 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
           style={{
             content: {
               padding: 40,
-              height: modalTypeMap[modalType]?.image ? '100%' : '200px',
-              width: modalTypeMap[modalType]?.image ? '100%' : isMobile ? '60%' : '500px',
-              left: modalTypeMap[modalType]?.image ? undefined : '50%',
-              top: modalTypeMap[modalType]?.image ? (isMobile ? '40px' : '64px') : '50%',
+              height: '100%',
+              width: '100%',
+              top: isMobile ? '40px' : '64px',
               right: 'auto',
               bottom: 'auto',
-              transform: modalTypeMap[modalType]?.image ? undefined : 'translate(-50%, -50%)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -232,18 +226,35 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          {modalTypeMap[modalType].isSimple ? (
-            <Text type='p' weight='bold' size='2xs'>
-              {modalTypeMap[modalType].title}{' '}
-              <Text type='span' weight='light' size='2xs'>
-                {modalTypeMap[modalType].text}
-              </Text>
-            </Text>
-          ) : (
-            <img src={modalTypeMap[modalType].image as string} className='h-full w-full max-h-[80vh] object-contain' />
-          )}
+          <img src={modalTypeMap[modalType].image as string} className='h-full w-full max-h-[80vh] object-contain' />
         </ReactModal>
       )}
     </>
   );
 };
+
+function Popup({
+  title,
+  text,
+  className,
+  onClick,
+}: {
+  title: string;
+  text: string;
+  onClick: () => void;
+  className: string;
+}) {
+  return (
+    <div className={`py-8 px-12 absolute top-0 bg-white shadow-xl ${className}`}>
+      <button onClick={onClick}>
+        <Icon icon='x' size={24} className='absolute top-4 left-4 text-gray-500 opacity-50' />
+      </button>
+      <Text type='p' weight='bold' size='sm' style={{ lineHeight: '32px' }}>
+        {title}:{' '}
+        <Text type='span' weight='light' size='sm'>
+          {text}
+        </Text>
+      </Text>
+    </div>
+  );
+}
