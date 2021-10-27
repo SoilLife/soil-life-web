@@ -143,15 +143,16 @@ export const PmTypesSection = () => {
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4 text-center'>
-            <Text type='h1' weight='bold' size='2xl' color='pink'>
-              {modalTypeMap[modalType].title}
-            </Text>
-
-            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto' />
-            <Text type='p' weight='light' size='2xs'>
-              {modalTypeMap[modalType].text}
-            </Text>
+          <div className='flex items-center justify-center'>
+            <div className='space-y-2 text-center'>
+              <Text type='h1' weight='bold' size='4xl' color='pink'>
+                {modalTypeMap[modalType].title}
+              </Text>
+              <Text type='p' weight='light' size='xl'>
+                {modalTypeMap[modalType].text}
+              </Text>
+              <Image url={modalTypeMap[modalType].imageUrl} className='object-contain mx-auto max-h-[508px]' />
+            </div>
           </div>
         </ReactModal>
       )}

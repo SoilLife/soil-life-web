@@ -98,21 +98,26 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
         <Text type='h1' weight='bold' size='4xl' color='pink' className={styles['heading']}>
           soil: the nexus
         </Text>
-        <Text type='p' weight='light' size='md' className={styles['p-60']}>
-          the{' '}
-          <Text type='span' weight='bold' size='md' color='pink'>
-            "solid ground"
-          </Text>{' '}
-          we walk on is only about{' '}
-          <Text type='span' weight='bold' size='md' color='pink'>
-            50% solid
-          </Text>{' '}
-          material made of mostly mineral and 1-10% organic matter. the remaining{' '}
-          <Text type='span' weight='bold' size='md' color='pink'>
-            50% is empty, pore space
-          </Text>{' '}
-          — filled with either air or water.
-        </Text>
+        <div>
+          <Text type='p' weight='light' size='md' className={styles['p-60']}>
+            the{' '}
+            <Text type='span' weight='light' size='md' color='pink'>
+              "solid ground"
+            </Text>{' '}
+            we walk on is only about{' '}
+            <Text type='span' weight='light' size='md' color='pink'>
+              50% solid
+            </Text>{' '}
+            material made of mostly mineral and
+          </Text>
+          <Text type='p' weight='light' size='md' className={styles['p-60']}>
+            1-10% organic matter. the remaining{' '}
+            <Text type='span' weight='light' size='md' color='pink'>
+              50% is empty, pore space
+            </Text>{' '}
+            — filled with either air or water.
+          </Text>
+        </div>
         <div className='flex flex-col gap-6 sm:flex-row'>
           <NexusIntro />
           <AirWaterMineralOrganic />
@@ -151,7 +156,7 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
             </Text>
 
             <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto h-auto' />
-            <Text type='p' weight='light' size='2xs'>
+            <Text type='p' weight='light' size='2xs' style={{ lineHeight: '38px' }}>
               {modalTypeMap[modalType].text}
             </Text>
           </div>
