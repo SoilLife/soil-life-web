@@ -15,7 +15,7 @@ const modalTypeMap = {
   granular: {
     title: 'granular',
     imageUrl: 'Soil_101/Soil_Physics/granular_structure_ViHk-cnG7.png',
-    text: 'nearly spherical aggregates commonly found in surface soils (esp with high organic matter)',
+    text: 'nearly spherical aggregates commonly found in surface soils (especially with high organic matter)',
   },
   wedge: {
     title: 'wedge',
@@ -50,7 +50,7 @@ const modalTypeMap = {
   'single grain': {
     title: 'single grain',
     imageUrl: 'Soil_101/Soil_Physics/singlegrained.jpg',
-    text: 'absence of structure;  each particle is separate and distinct from the other',
+    text: 'absence of structure; each particle is separate and distinct from the other',
   },
 };
 
@@ -139,12 +139,12 @@ export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement)
         <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
           structure
         </Text>
-        <Text type='p' weight='thin' size='sm' className={styles['p-50']}>
+        <Text type='p' weight='thin' size='md' className={styles['p-60']}>
           the way these structural units stack together determines the size, shape, and distribution of pore space
           within the soil profile. the density of the individual soil particles and the amount of empty space within and
           between them determines the bulk density, or mass per unit volume of the soil.
         </Text>
-        <StructureSvg />
+        <StructureSvg className='mx-auto max-h-[50vh]' />
       </div>
       {modalType && (
         <ReactModal
@@ -174,9 +174,17 @@ export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement)
               {modalTypeMap[modalType].title}
             </Text>
 
-            <div className='flex flex-col items-center sm:space-x-10 sm:flex-row'>
-              <Image url={modalTypeMap[modalType].imageUrl} className='object-contain mb-10 sm:mb-0 sm:w-1/2' />
-              <Text type='p' weight='light' size='lg' className='text-center sm:w-1/2'>
+            <div className='flex flex-col items-center sm:space-x-6 sm:flex-row'>
+              <Image
+                url={modalTypeMap[modalType].imageUrl}
+                className='flex-shrink-0 object-contain mb-10 max-h-[50vh] sm:mb-0 sm:w-3/5'
+              />
+              <Text
+                type='p'
+                weight='light'
+                size='lg'
+                className={`flex-shrink-0 text-center sm:w-2/5 ${styles['p-50']}`}
+              >
                 {modalTypeMap[modalType].text}
               </Text>
             </div>

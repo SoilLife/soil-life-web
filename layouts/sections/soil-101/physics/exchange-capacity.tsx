@@ -19,12 +19,12 @@ import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   'cation exchange': {
-    title: 'carbon-based inputs',
+    title: 'cation exchange capacity',
     image: <CationExchangeSvg className='h-full w-full' />,
     text: 'cations are positively charged ions. cation exchange capacity is the number of negatively charged sites (on clays or organic matter) that can hold onto these ions.',
   },
   'anion exchange': {
-    title: 'microbial filters',
+    title: 'anion exchange capacity',
     image: <AnionExchangeSvg className='h-full w-full' />,
     text: 'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions.',
   },

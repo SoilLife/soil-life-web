@@ -74,11 +74,7 @@ export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
+              inset: isMobile ? '40px 0 0 0' : '10%',
             },
             overlay: {
               zIndex: 2,
@@ -89,7 +85,9 @@ export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <AggregatesSvg />
+          <div className='h-full grid place-items-center'>
+            <AggregatesSvg className='max-h-[70vh]' />
+          </div>
         </ReactModal>
       )}
     </>

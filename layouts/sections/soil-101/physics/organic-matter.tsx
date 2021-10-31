@@ -19,7 +19,7 @@ const modalTypeMap = {
     image: <CarbonInputsSvg className='h-full w-full' />,
   },
   filter: {
-    title: 'microbial filters',
+    title: '',
     image: <MicrobialFilterSvg className='h-full w-full' />,
   },
 };
@@ -44,6 +44,13 @@ export const OrganicMatterSection = () => {
       };
     }
 
+    function handlePopup() {
+      const soilOrganicMatterPopup = sectionContainer.querySelector(
+        '#organic_matter_svg__Layer_34'
+      ) as SVGGElement | null;
+      soilOrganicMatterPopup?.classList?.toggle('hidden');
+    }
+
     const sectionContainer = sectionRef.current;
 
     const microbialFilterSvg = sectionContainer.querySelector('#organic_matter_svg__Layer_1-2') as SVGGElement | null;
@@ -62,11 +69,20 @@ export const OrganicMatterSection = () => {
     animalResidueSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     animalResidueSvg?.addEventListener('click', handleOpenModal('carbon inputs'));
 
+    const soilOrganicMatterNode = sectionContainer.querySelector('#organic_matter_svg__Layer_25') as SVGAElement | null;
+    const soilOrganicMatterPopup = sectionContainer.querySelector(
+      '#organic_matter_svg__Layer_34'
+    ) as SVGGElement | null;
+    soilOrganicMatterPopup?.classList?.add('hidden');
+    soilOrganicMatterNode?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    soilOrganicMatterNode?.addEventListener('click', handlePopup);
+
     return () => {
       microbialFilterSvg?.removeEventListener('click', handleOpenModal('filter'));
       plantResiduesSvg?.removeEventListener('click', handleOpenModal('carbon inputs'));
       plantRootsSvg?.removeEventListener('click', handleOpenModal('carbon inputs'));
       animalResidueSvg?.removeEventListener('click', handleOpenModal('carbon inputs'));
+      soilOrganicMatterNode?.removeEventListener('click', handlePopup);
     };
   }, []);
 
@@ -88,7 +104,7 @@ export const OrganicMatterSection = () => {
           supramolecular aggregation of plant, animal, and microbially-based compounds in varying stages of
           decomposition. stable organic matter can last in the soil for 100s to 1000s of years.
         </Text>
-        <OrganicMatterSvg />
+        <OrganicMatterSvg className='mx-auto max-h-[50vh]' />
       </div>
       {modalType && (
         <ReactModal
@@ -110,13 +126,17 @@ export const OrganicMatterSection = () => {
           }}
           onRequestClose={handleCloseModal}
         >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
+          {modalTypeMap[modalType].title && (
+            <button className='absolute top-4 right-4' onClick={handleCloseModal}>
+              <Icon icon='x' size={32} className='text-gray-500' />
+            </button>
+          )}
           <div className='space-y-8'>
-            <Text type='h1' weight='light' size='xl' color='teal' className='text-center'>
-              {modalTypeMap[modalType].title}
-            </Text>
+            {modalTypeMap[modalType].title && (
+              <Text type='h1' weight='light' size='xl' color='teal' className='text-center'>
+                {modalTypeMap[modalType].title}
+              </Text>
+            )}
             {modalTypeMap[modalType].image}
           </div>
         </ReactModal>
