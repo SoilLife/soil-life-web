@@ -71,7 +71,7 @@ export const FormingFactorsSection = () => {
             ))}
           </ul>
         </div>
-        <div className='grid place-items-center max-h-[40vh]'>{factorSvgMap[activeFactor]}</div>
+        <div className='grid place-items-center overflow-y-auto max-h-[40vh]'>{factorSvgMap[activeFactor]}</div>
       </div>
     </div>
   );

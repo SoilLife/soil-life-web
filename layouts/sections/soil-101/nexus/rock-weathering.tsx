@@ -72,7 +72,7 @@ const popupMap = {
 
 export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
-  const isMobile = useMedia('(max-width: 640px)');
+  const isMobile = useMedia('(max-width: 639px)');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
 
   const [popup, setPopup] = useState<null | keyof typeof popupMap>(null);
@@ -206,16 +206,7 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
           shouldCloseOnEsc
           style={{
             content: {
-              padding: 40,
-              height: '100%',
-              width: '100%',
-              top: isMobile ? '40px' : '64px',
-              right: 'auto',
-              bottom: 'auto',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
+              inset: isMobile ? '40px 0 0 0' : '10%',
             },
             overlay: {
               zIndex: 2,
@@ -226,7 +217,9 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <img src={modalTypeMap[modalType].image as string} className='h-full w-full max-h-[80vh] object-contain' />
+          <div className='h-full w-full grid place-items-center'>
+            <img src={modalTypeMap[modalType].image as string} className='h-full w-full max-h-[80vh] object-contain' />
+          </div>
         </ReactModal>
       )}
     </>
