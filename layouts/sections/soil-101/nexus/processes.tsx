@@ -50,10 +50,10 @@ const processes: { title: string; text1: string; text2: string; color: TextProps
 ];
 
 const modalTypeMap = {
-  additions: <AdditionsSvg className='w-full' />,
-  losses: <LossesSvg className='w-full' />,
-  transformations: <TransformationsSvg className='w-full' />,
-  translocations: <TranslocationsSvg className='w-full' />,
+  additions: <AdditionsSvg className='w-full h-full' />,
+  losses: <LossesSvg className='w-full h-full' />,
+  transformations: <TransformationsSvg className='w-full h-full' />,
+  translocations: <TranslocationsSvg className='w-full h-full' />,
 };
 
 export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
@@ -182,10 +182,6 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
             content: {
               padding: 40,
               inset: isMobile ? '40px 0 0 0' : '10%',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
             },
             overlay: {
               zIndex: 2,
@@ -216,7 +212,7 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
               ))}
             </ul>
           </div>
-          {modalTypeMap[modalType]}
+          <div className='h-full w-full'>{modalTypeMap[modalType]}</div>
 
           <LeftArrow
             className='absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer'
