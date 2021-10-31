@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
+import { useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
@@ -14,9 +14,7 @@ import styles from '../soil-101.module.css';
 
 export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
-  const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
