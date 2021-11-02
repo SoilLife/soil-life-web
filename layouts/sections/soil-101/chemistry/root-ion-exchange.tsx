@@ -53,10 +53,10 @@ export const RootIonExchangeSection = () => {
         <Text type='h1' weight='regular' size='4xl' color='orange' className={styles['heading']}>
           root ion exchange
         </Text>
-        <RootIonExchangeSvg />
+        <RootIonExchangeSvg className='mx-auto max-h-[50vh]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
-          plant roots also release H+, or protons, which can replace other positively charged cations on clays, making
-          them available for plant uptake.
+          plant roots also release H+, or protons, which can replace other positively charged ions (cations) on clays,
+          making them available for plant uptake.
         </Text>
       </div>
       {isModalOpen && (

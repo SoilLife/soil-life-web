@@ -61,10 +61,10 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
           nutrient cycling
         </Text>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>
-          some nutrients are more reliable than others, making it easier for plants to access and take theme up
+          some nutrients are more mobile than others, making it easier for plants to access and take them up
         </Text>
 
-        <NutrientCyclingSvg />
+        <NutrientCyclingSvg className='mx-auto max-h-[50vh]' />
       </div>
       {isModalOpen && (
         <ReactModal
@@ -74,11 +74,7 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
+              inset: isMobile ? '40px 0 0 0' : '10%',
             },
             overlay: {
               zIndex: 2,
@@ -89,8 +85,8 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='h-full grid place-items-center'>
-            <PlantNutrientSupplySvg />
+          <div className='grid place-items-center'>
+            <PlantNutrientSupplySvg className='mx-auto max-h-[80vh]' />
           </div>
         </ReactModal>
       )}
