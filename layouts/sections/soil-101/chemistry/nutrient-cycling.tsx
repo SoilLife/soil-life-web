@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
+import { useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
@@ -15,9 +15,7 @@ import styles from '../soil-101.module.css';
 export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {

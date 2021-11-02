@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
+import { useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
@@ -16,9 +16,7 @@ import styles from '../soil-101.module.css';
 
 export const NitrogenFixationSection = () => {
   useFullpageOverflow();
-  const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | 'infected' | 'root nodules'>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -75,12 +73,7 @@ export const NitrogenFixationSection = () => {
           style={{
             content: {
               padding: 40,
-              inset: modalType !== 'infected' ? '20% 30%' : '10% 20%',
-              // height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              // width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              // left: isMobile ? 0 : '50%',
-              // top: isMobile ? '40px' : '50%',
-              // transform: isMobile ? undefined : 'translate(-50%, -50%)',
+              inset: isMobile ? '40px 0 0 0' : modalType !== 'infected' ? '20% 30%' : '10% 20%',
             },
             overlay: {
               zIndex: 2,
