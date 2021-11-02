@@ -122,7 +122,7 @@ export const FoodWebSection = () => {
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div>{modalTypeMap[modalType]}</div>
+          <div className='h-full grid place-items-center'>{modalTypeMap[modalType]}</div>
         </ReactModal>
       )}
     </>
