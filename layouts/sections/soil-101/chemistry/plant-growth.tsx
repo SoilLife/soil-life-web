@@ -12,7 +12,7 @@ export const PlantGrowthSection = (props: { assignRef: (el: null | HTMLDivElemen
       <Text type='h1' weight='bold' size='4xl' color='orange' className={styles['heading']}>
         plant growth
       </Text>
-      <PlantGrowthSvg />
+      <PlantGrowthSvg className='mx-auto max-h-[70vh]' />
     </div>
   );
 };

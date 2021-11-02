@@ -13,7 +13,7 @@ export const CircleOfLifeSection = (props: { assignRef: (el: null | HTMLDivEleme
         circle of life
       </Text>
 
-      <CircleOfLifeSvg />
+      <CircleOfLifeSvg className='mx-auto max-h-[70vh]' />
     </div>
   );
 };

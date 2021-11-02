@@ -145,10 +145,10 @@ function Popup({
 }) {
   return (
     <div className={`absolute p-4 bg-white shadow max-w-[475px] ${className}`}>
-      <Text type='h3' weight='bold' size='2xs' color={color}>
+      <Text type='h3' weight='light' size='2xs' color={color}>
         {title}:
       </Text>
-      <Text type='h3' weight='bold' size='2xs'>
+      <Text type='h3' weight='light' size='2xs'>
         {text}
       </Text>
     </div>

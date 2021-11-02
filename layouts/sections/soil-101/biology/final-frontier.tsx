@@ -15,24 +15,46 @@ export const FinalFrontierSection = (props: { assignRef: (el: null | HTMLDivElem
 
       <Text type='p' weight='light' size='md' className={styles['p-80']}>
         soil is home to{' '}
-        <Text type='span' weight='bold' size='md'>
+        <Text type='span' weight='bold' size='md' color='teal'>
           1/4 of the world’s biodiversity
         </Text>{' '}
         with billions of microscopic organisms in a single teaspoon.{' '}
-        <Text type='span' weight='bold' size='md'>
+        <Text type='span' weight='bold' size='md' color='teal'>
           95-99%
         </Text>{' '}
-        of these microorganisms{' '}
-        <Text type='span' weight='bold' size='md'>
-          have yet to be discovered, making soils a major frontier in
+        of these{' '}
+        <Text type='span' weight='bold' size='md' color='teal'>
+          microorganisms
         </Text>{' '}
-        <Text type='span' weight='bold' size='md' color='pink'>
+        have yet to be discovered, making soils a major frontier in
+        <Text type='span' weight='bold' size='md' color='teal'>
           genetic discovery!
-        </Text>
+        </Text>{' '}
+        they{' '}
+        <Text type='span' weight='bold' size='md' color='teal'>
+          decompose
+        </Text>{' '}
+        waste,{' '}
+        <Text type='span' weight='bold' size='md' color='teal'>
+          recycle
+        </Text>{' '}
+        nutrients,{' '}
+        <Text type='span' weight='bold' size='md' color='teal'>
+          detoxify
+        </Text>{' '}
+        contaminants,{' '}
+        <Text type='span' weight='bold' size='md' color='teal'>
+          store
+        </Text>{' '}
+        carbon, and{' '}
+        <Text type='span' weight='bold' size='md' color='teal'>
+          build
+        </Text>{' '}
+        structure that resists flooding and drought.
       </Text>
       <FinalFrontierSvg />
 
-      <Text type='p' weight='light' size='md' className={`text-center ${styles['p-60']}`}>
+      <Text type='p' weight='light' size='md' className={`text-center ${styles['p-80']}`}>
         "essentially,{' '}
         <Text type='span' weight='bold' size='md' color='pink'>
           all life depends upon the soil...
