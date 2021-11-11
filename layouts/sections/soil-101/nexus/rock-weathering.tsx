@@ -218,7 +218,10 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
           <div className='h-full w-full grid place-items-center'>
-            <img src={modalTypeMap[modalType].image as string} className='h-full w-full max-h-[80vh] object-contain' />
+            <img
+              src={modalTypeMap[modalType].image as string}
+              className='p-8 h-full w-full max-h-[80vh] object-contain'
+            />
           </div>
         </ReactModal>
       )}

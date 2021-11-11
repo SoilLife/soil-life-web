@@ -20,10 +20,10 @@ export const BiodegradationSection = (props: { assignRef: (el: null | HTMLDivEle
             considered toxic to humans. they can even transform heavy metals into less toxic or less mobile forms.
           </Text>
 
-          <Text type='p' weight='bold' size='md' color='teal' className={styles['p-40']}>
+          <Text type='p' weight='bold' size='md' color='teal' className={`mb-4 ${styles['p-38']}`}>
             so what's with all the pollution?
           </Text>
-          <Text type='p' weight='light' size='sm' className={styles['p-40']}>
+          <Text type='p' weight='light' size='sm' className={styles['p-38']}>
             a microbe’s ability to degrade toxic substances is controlled by:
           </Text>
         </div>

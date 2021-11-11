@@ -12,11 +12,6 @@ export const SymbiosesSection = (props: { assignRef: (el: null | HTMLDivElement)
       <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
         symbioses
       </Text>
-
-      <Text type='p' weight='light' size='xl' className={styles['p-60']}>
-        mutually beneficial relationships, called symbioses, have evolved over millions and millions of years between
-        plants and soil organisms.
-      </Text>
       <BetterTogetherSvg className='w-1/2 mx-auto' />
     </div>
   );

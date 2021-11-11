@@ -1,5 +1,5 @@
 // components
-import { Text } from 'design-system/atoms';
+// import { Text } from 'design-system/atoms';
 
 // assets
 import FinalFrontierSvg from 'public/images/soil-101/biology/final_frontier.svg';
@@ -9,7 +9,7 @@ import styles from '../soil-101.module.css';
 export const FinalFrontierSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
+      {/* <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
         soil: the final frontier
       </Text>
 
@@ -51,10 +51,10 @@ export const FinalFrontierSection = (props: { assignRef: (el: null | HTMLDivElem
           build
         </Text>{' '}
         structure that resists flooding and drought.
-      </Text>
+      </Text> */}
       <FinalFrontierSvg />
 
-      <Text type='p' weight='light' size='md' className={`text-center ${styles['p-80']}`}>
+      {/* <Text type='p' weight='light' size='md' className={`text-center ${styles['p-80']}`}>
         "essentially,{' '}
         <Text type='span' weight='bold' size='md' color='pink'>
           all life depends upon the soil...
@@ -67,7 +67,7 @@ export const FinalFrontierSection = (props: { assignRef: (el: null | HTMLDivElem
         <Text type='span' weight='light' size='md' color='pink'>
           - charles kellogg
         </Text>
-      </Text>
+      </Text> */}
     </div>
   );
 };
