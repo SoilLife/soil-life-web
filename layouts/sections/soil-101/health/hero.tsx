@@ -9,7 +9,7 @@ export function HeroSection({ onDownArrowClick }: { onDownArrowClick: () => void
     <div className='relative h-screen overflow-hidden'>
       <div className='absolute top-1/2 transform -translate-y-1/2 text-center text-white w-full z-10'>
         <Text type='h1' weight='light' size='4xl'>
-          bringing it altogether:
+          bringing it all together:
         </Text>
         <Text type='h1' weight='bold' size='4xl'>
           soil health

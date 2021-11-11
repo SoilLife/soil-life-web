@@ -1,4 +1,4 @@
-const { colors, fontFamily } = require('./config/tailwind');
+const { colors, fontFamily, height, width } = require('./config/tailwind');
 
 module.exports = {
   mode: 'jit',
@@ -10,6 +10,12 @@ module.exports = {
     extend: {
       maxWidth: {
         'app-full': '1920px',
+      },
+      width: {
+        fit: 'fit-content',
+      },
+      height: {
+        fit: 'fit-content',
       },
     },
   },
