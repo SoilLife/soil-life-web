@@ -51,8 +51,9 @@ export const FormingFactorsSection = () => {
         soil forming factors
       </Text>
       <Text type='p' weight='light' size='md' className={styles['p-50']}>
-        pedogenesis is the formation of soil. over time. as energy flows through the system, in the form of heat,
-        precipitation, and organisms, soils weather, developing horizons and other distinct morphological features.
+        pedogenesis is the formation of soil - over time. as energy flows through the system, in the form of heat,
+        precipitation, and organism activity, soils weather, developing horizons and other distinct morphological
+        features.
       </Text>
       <div className='border border-solid border-gray-500'>
         <div className='overflow-x-auto overflow-y-hidden'>
