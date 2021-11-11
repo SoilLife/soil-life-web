@@ -33,9 +33,9 @@ import IntensitySvg from 'public/images/soil-101/health/timing_duration.svg';
 import styles from '../soil-101.module.css';
 
 const integrateAnimalsMap = {
-  animals: <AnimalsSvg />,
-  timing: <IntensitySvg />,
-  intensity: <TimingSvg />,
+  animals: <AnimalsSvg className='mx-auto max-h-[50vh]' />,
+  timing: <IntensitySvg className='mx-auto max-h-[50vh]' />,
+  intensity: <TimingSvg className='mx-auto max-h-[50vh]' />,
 };
 
 const integrateAnimalsHeadings: (keyof typeof integrateAnimalsMap)[] = ['animals', 'timing', 'intensity'];
@@ -43,7 +43,7 @@ const integrateAnimalsHeadings: (keyof typeof integrateAnimalsMap)[] = ['animals
 export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   const [activeHeading, setActiveHeading] = useState<keyof typeof integrateAnimalsMap>('animals');
   return (
-    <div ref={props.assignRef} className={`text-center ${styles['section']}`}>
+    <div ref={props.assignRef} className={`text-center ${styles['principles-section']}`}>
       <Text type='h1' weight='bold' size='4xl' color='blue' className={`text-left ${styles['heading']}`}>
         principles of soil health
       </Text>
@@ -122,11 +122,11 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
 
         <Text type='p' weight='light' size='lg' className={styles['p-60']}>
           about half of the soil's volume should consist of open pore space, allowing{' '}
-          <Text type='span' weight='bold' size='lg' color='teal'>
+          <Text type='span' weight='bold' size='lg' color='blue'>
             air
           </Text>{' '}
           and{' '}
-          <Text type='span' weight='bold' size='lg' color='teal'>
+          <Text type='span' weight='bold' size='lg' color='blue'>
             water
           </Text>{' '}
           to flow freely.

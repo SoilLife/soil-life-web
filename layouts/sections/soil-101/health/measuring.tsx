@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
+import { useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
@@ -38,9 +38,7 @@ const modalTypeMap = {
 
 export const MeasuringSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
-  const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -119,15 +117,7 @@ export const MeasuringSection = (props: { assignRef: (el: null | HTMLDivElement)
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
+              inset: isMobile ? '40px 0 0 0' : '20%',
             },
             overlay: {
               zIndex: 2,
@@ -138,7 +128,7 @@ export const MeasuringSection = (props: { assignRef: (el: null | HTMLDivElement)
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          {modalTypeMap[modalType]}
+          <div className='h-full w-full grid place-items-center'>{modalTypeMap[modalType]}</div>
         </ReactModal>
       )}
     </>

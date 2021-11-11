@@ -59,27 +59,27 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
 
     const sectionContainer = svgContainerRef.current;
     const organicLayerSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_13') as SVGGElement | null;
-    organicLayerSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    organicLayerSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
     organicLayerSvg?.addEventListener('click', handleOpenPopup('organic'));
 
     const topSoilSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_12') as SVGGElement | null;
-    topSoilSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    topSoilSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
     topSoilSvg?.addEventListener('click', handleOpenPopup('topsoil'));
 
     const eluviatedZoneSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_31') as SVGGElement | null;
-    eluviatedZoneSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    eluviatedZoneSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
     eluviatedZoneSvg?.addEventListener('click', handleOpenPopup('eluviated zone'));
 
     const accumulationZoneSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_29') as SVGGElement | null;
-    accumulationZoneSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    accumulationZoneSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
     accumulationZoneSvg?.addEventListener('click', handleOpenPopup('accumulation zone'));
 
     const parentMaterialSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_28') as SVGGElement | null;
-    parentMaterialSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    parentMaterialSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
     parentMaterialSvg?.addEventListener('click', handleOpenPopup('parent material'));
 
     const bedrockSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_30') as SVGGElement | null;
-    bedrockSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    bedrockSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
     bedrockSvg?.addEventListener('click', handleOpenPopup('bedrock'));
 
     return () => {

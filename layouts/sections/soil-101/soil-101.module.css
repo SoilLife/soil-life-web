@@ -1,5 +1,9 @@
 .section {
-  @apply space-y-8 sm:space-y-12;
+  @apply space-y-10 sm:space-y-14;
+}
+
+.principles-section {
+  @apply space-y-14 sm:space-y-20;
 }
 
 .heading {
@@ -21,6 +25,10 @@
 }
 
 .p-60 {
+  @apply leading-normal;
+}
+
+.p-55 {
   @apply leading-normal;
 }
 
@@ -47,6 +55,10 @@
 
   .p-60 {
     line-height: 60px;
+  }
+
+  .p-55 {
+    line-height: 55px;
   }
 
   .p-50 {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import { useOrientation, useMedia } from 'react-use';
 
@@ -148,12 +148,11 @@ export const SoilOrdersSection = (props: { assignRef: (el: null | HTMLDivElement
 
   return (
     <>
-      (
       <div ref={props.assignRef} className={styles['section']}>
         <Text type='h1' weight='bold' size='4xl' className={styles['heading']}>
           soil orders
         </Text>
-        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-55']}`}>
           the diversity of{' '}
           <Text type='span' weight='bold' size='md'>
             soil forming factors
@@ -185,11 +184,11 @@ export const SoilOrdersSection = (props: { assignRef: (el: null | HTMLDivElement
           {Object.entries(data).map(([soilType, soilData]) => {
             return (
               <div key={soilType}>
-                <Text type='h1' weight='light' size='4xl' className='mb-4 sm:pl-10'>
+                <Text type='h1' weight='light' size='4xl' className='mb-8 sm:pl-10'>
                   {soilType}
                 </Text>
 
-                <div className='flex justify-center mb-8'>
+                <div className='flex justify-center mb-10'>
                   <Text type='h1' weight='light' size='2xl' color='pink' className={styles['diversity-subheading']}>
                     the{' '}
                     <Text type='span' weight='bold' size='2xl'>

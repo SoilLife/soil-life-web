@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
+import { useState, useEffect, useRef } from 'react';
+import { useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
@@ -11,7 +11,7 @@ import styles from '../soil-101.module.css';
 const modalTypeMap = {
   desertification: {
     imageUrl: 'Soil_101/Soil_Health/Soils_at_Risk_xa3jFk-qG.jpg',
-    text: 'desertification leads to fragile, dry soils and low vegetative and agricultural productivity. ~46% of the global land surface is affected by desertification; primarily in arid, semi-arid to dry sub-humid regions. climate change is increasing the risk.',
+    text: '~46% of the global land surface is affected by desertification; primarily in arid, semi-arid to dry sub-humid regions. desertification leads to fragile, dry soils and low vegetative and agricultural productivity. climate change is increasing the risk.',
   },
   erosion: {
     imageUrl: 'Soil_101/Soil_Health/natgeo8_LM18ks0gTcb.jpg',
@@ -27,20 +27,31 @@ const modalTypeMap = {
   },
   acidification: {
     imageUrl: 'Soil_101/Soil_Health/acid_sulfate_Southern_Cross_University_xfxO7chz6.png',
-    text: 'the build-up of hydrogen ions, or protons in soil and/or the loss of basic cations (I.e. calcium, magnesium).  this increases the acidity affecting plant and microbial growth. adding lime and reducing the use of acidifying fertilizers can help.',
+    text: 'the build-up of hydrogen ions (or protons) in soil and/or the loss of basic cations (i.e. calcium, magnesium). this increases soil acidity, affecting plant and microbial growth. adding lime and reducing use of acidifying fertilizers can help.',
   },
   urbanization: {
     imageUrl: 'Soil_101/Soil_Health/Greening-empty-lots-helps-reduce-depression-for-city-residents_hYgARqy5e.jpeg',
-    text: 'urban land area expanded 4x from 1970 to 2000, compacting and sealing off the once fertile soils upon which our cities are situated. this reduces infiltration of water and cuts off oxygen to life underground. pollution is also a problem in urban soils.',
+    text: 'urban land area expanded 4x from 1970 to 2000, compacting and sealing off the once fertile soils upon which our cities are situated. this reduces infiltration of water and cuts off oxygen to life underground. pollution can also be a problem in urban soils. get a soil test!',
   },
 };
 
 export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
-  const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
+  const modalRef = useRef<null | HTMLDivElement>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!modalRef.current || !modalType) return;
+
+      const modalTypeNode = modalRef.current.querySelector(`#${modalType?.replaceAll(' ', '-')}`) as HTMLDivElement;
+      const parent = modalRef.current.parentElement;
+      if (parent) {
+        parent.scrollTop = modalTypeNode?.offsetTop - 40 ?? 0;
+      }
+    }, 50);
+  }, [modalType]);
 
   function handleButtonClick(type: typeof modalType) {
     return () => {
@@ -69,8 +80,8 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
           a soccer field of soil is eroded every 5 seconds, an area the size of new york is sealed up every day, and 33%
           of the world’s soils are considered moderately to highly degraded. this poses an existential threat -- to our
-          food supply and the global economy. there is a great opportunity to improve soil health and provide solutions
-          to global challenges.
+          food supply and the global economy. by working together to improve soil health, we can provide solutions to
+          these global challenges.
         </Text>
 
         <ul className='mx-auto space-y-4 sm:w-1/2'>
@@ -96,15 +107,7 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
+              inset: isMobile ? '40px 0 0 0' : '10% 20%',
             },
             overlay: {
               zIndex: 2,
@@ -115,15 +118,24 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4'>
-            <Text type='h1' weight='bold' size='2xl' color='blue' className='text-center'>
-              {modalType}
-            </Text>
-
-            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto h-auto' />
-            <Text type='p' weight='light' size='2xs' className='text-center'>
-              {modalTypeMap[modalType].text}
-            </Text>
+          <div ref={modalRef} className='space-y-14'>
+            {Object.entries(modalTypeMap).map(([modalTitle, { text, imageUrl }]) => {
+              return (
+                <div
+                  key={modalTitle}
+                  id={modalTitle.replaceAll(' ', '-')}
+                  className='h-full grid place-items-center space-y-4'
+                >
+                  <Text type='h1' weight='bold' size='2xl' color='blue' className='text-center'>
+                    {modalTitle}
+                  </Text>
+                  <Image url={imageUrl} className='object-contain mx-auto max-w-[50vh]' />
+                  <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-38']}`}>
+                    {text}
+                  </Text>
+                </div>
+              );
+            })}
           </div>
         </ReactModal>
       )}

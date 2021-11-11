@@ -26,9 +26,9 @@ export const DiversitySection = (props: { assignRef: (el: null | HTMLDivElement)
         <Text type='span' weight='bold' size='sm'>
           ecosystems
         </Text>{' '}
-        on earth, which in turn, further influence the diversity of soils.{' '}
+        on earth, which in turn, influence the development of soils!{' '}
         <Text type='span' weight='bold' size='sm'>
-          it's all connected
+          it's all connected.
         </Text>
         .
       </Text>
