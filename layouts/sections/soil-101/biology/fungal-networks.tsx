@@ -57,9 +57,9 @@ export const FungalNetworksSection = () => {
           fungal networks
         </Text>
 
-        <MycelialSvg />
+        <MycelialSvg className='mx-auto max-h-[80vh]' />
 
-        <MycorrhizalFungiSvg />
+        <MycorrhizalFungiSvg className='mx-auto max-h-[80vh]' />
 
         <Text type='p' weight='light' size='lg' className={`text-center ${styles['p-70']}`}>
           plants release{' '}
@@ -75,16 +75,16 @@ export const FungalNetworksSection = () => {
           search of water, nitrogen, phosphorus, and other nutrients.
         </Text>
 
-        <div className={`text-center ${styles['p-70']}`}>
-          <Text type='p' weight='light' size='lg'>
+        <div className='text-center pt-4'>
+          <Text type='p' weight='light' size='lg' className={styles['p-70']}>
             microbes also release a variety of
           </Text>
-          <Text type='p' weight='bold' size='lg'>
+          <Text type='p' weight='bold' size='lg' className={styles['p-70']}>
             plant growth promoting compounds
           </Text>
         </div>
 
-        <PlantGrowthPromoting />
+        <PlantGrowthPromoting className='mx-auto max-h-[80vh]' />
       </div>
       {isModalOpen && (
         <ReactModal
@@ -109,7 +109,9 @@ export const FungalNetworksSection = () => {
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <MycorrhizaSvg />
+          <div className='h-full grid place-items-center'>
+            <MycorrhizaSvg />
+          </div>
         </ReactModal>
       )}
     </>

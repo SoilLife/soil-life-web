@@ -60,7 +60,7 @@ export const MetabolismSection = (props: { assignRef: (el: null | HTMLDivElement
         <Text type='h1' weight='bold' size='4xl' color='orange' className={styles['heading']}>
           metabolism
         </Text>
-        <MetabolismSvg />
+        <MetabolismSvg className='mx-auto max-h-[50vh]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           meanwhile, 30-60% of the plant's carbon is put into compounds that are being pumped underground (i.e. sugars,
           amino acids); feeding microbes in the soil.

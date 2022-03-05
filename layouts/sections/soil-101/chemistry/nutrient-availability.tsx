@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
+import { useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
@@ -17,17 +17,15 @@ import RightArrow from 'public/images/right_arrow_pink_thick.svg';
 import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
-  clay: <ClayPhSvg className='h-full w-full' />,
-  oxide: <OxidesPhSvg className='h-full w-full' />,
-  som: <SomPhSvg className='h-full w-full' />,
+  clays: <ClayPhSvg className='h-full w-full' />,
+  'metal oxides': <OxidesPhSvg className='h-full w-full' />,
+  SOM: <SomPhSvg className='h-full w-full' />,
 };
 
 export const NutrientAvailabilitySection = () => {
   useFullpageOverflow();
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
-  const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,7 +35,7 @@ export const NutrientAvailabilitySection = () => {
       if (body) {
         body.style.overflow = 'hidden';
       }
-      setModalType('clay');
+      setModalType('clays');
     }
 
     const sectionContainer = sectionRef.current;
@@ -62,28 +60,28 @@ export const NutrientAvailabilitySection = () => {
 
   function handlePreviousProcessClick() {
     switch (modalType) {
-      case 'clay':
-        setModalType('som');
+      case 'clays':
+        setModalType('SOM');
         break;
-      case 'oxide':
-        setModalType('clay');
+      case 'metal oxides':
+        setModalType('clays');
         break;
-      case 'som':
-        setModalType('oxide');
+      case 'SOM':
+        setModalType('metal oxides');
         break;
     }
   }
 
   function handleNextProcessClick() {
     switch (modalType) {
-      case 'clay':
-        setModalType('oxide');
+      case 'clays':
+        setModalType('metal oxides');
         break;
-      case 'oxide':
-        setModalType('som');
+      case 'metal oxides':
+        setModalType('SOM');
         break;
-      case 'som':
-        setModalType('clay');
+      case 'SOM':
+        setModalType('clays');
         break;
     }
   }
@@ -96,9 +94,10 @@ export const NutrientAvailabilitySection = () => {
         </Text>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           ph determines the amount and type of charge on soil minerals and organic matter (the exchange complex), as
-          well as the concentration of protons or hydroxyls that can kick plant nutrients off the complex
+          well as the amount of protons or hydroxyls in the soil solution, which can kick plant nutrients off the
+          complex.
         </Text>
-        <NutrientAvailabilitySvg />
+        <NutrientAvailabilitySvg className='mx-auto max-h-[50vh]' />
       </div>
       {modalType && (
         <ReactModal
@@ -108,11 +107,7 @@ export const NutrientAvailabilitySection = () => {
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
+              inset: isMobile ? '40px 0 0 0' : '10% 20%',
             },
             overlay: {
               zIndex: 2,
@@ -125,6 +120,9 @@ export const NutrientAvailabilitySection = () => {
               <Icon icon='x' size={32} className='text-gray-500' />
             </button>
             <div className='relative grid place-items-center h-full px-8 sm:px-10'>
+              <Text type='h2' size='3xl' weight='bold' className='mb-4'>
+                {modalType}
+              </Text>
               {modalTypeMap[modalType]}
               <LeftArrow
                 className='absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer'

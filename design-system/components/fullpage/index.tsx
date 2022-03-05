@@ -17,13 +17,13 @@ export function FullPage({ type, subHeaderProps, children, afterLoad }: FullPage
   const [hideHeader, setHideHeader] = useState(false);
 
   useEffect(() => {
-    if (!state.fullpageApi && fullPageRef.current) {
+    if (!state.fullpageRef && fullPageRef.current) {
       dispatch({
-        type: 'SET_FULL_PAGE_API',
-        payload: fullPageRef.current.fullpageApi,
+        type: 'SET_FULL_PAGE_REF',
+        payload: fullPageRef.current,
       });
     }
-  }, [state.fullpageApi, fullPageRef.current]);
+  }, [state.fullpageRef, fullPageRef.current]);
 
   const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
     if (direction === 'up' && hideHeader) {

@@ -1,28 +1,46 @@
 import { Section, Button, Image, Text } from 'design-system/atoms';
 import Link from 'next/link';
 
+import styles from './get-involved.module.css';
+
 export function GetInvolvedSection() {
   return (
-    <Section>
-      <Image url='/Home_Page/AdobeStock_144874490_6lpeJS0jbCq.jpg' className='object-cover' />
-      <div className='px-10 absolute bottom-10 w-full flex flex-col lg:items-center lg:flex-row lg:space-x-10 2xl:space-x-20'>
-        <div className='text-white tw-space-y-6'>
-          <Text type='h2' weight='light' size='4xl'>
-            soil does so
-          </Text>
-          <Text type='h2' weight='light' size='4xl'>
-            much for us,
-          </Text>
-          <Text type='h2' weight='bold' size='4xl'>
-            find out what you
-          </Text>
-          <Text type='h2' weight='bold' size='4xl'>
-            can do for soil!
-          </Text>
+    <Section className='relative'>
+      <Image
+        url='/Home_Page/AdobeStock_144874490_6lpeJS0jbCq.jpg'
+        className={`absolute scale-150 object-cover sm:scale-100 ${styles['bg__img']}`}
+      />
+      <div className='relative container h-full w-full'>
+        <div
+          className='px-10 absolute bottom-10 left-0 w-full flex flex-col
+        md:bottom-20 md:space-y-10 md:items-center md:justify-center
+        xl:space-y-0 xl:justify-between xl:flex-row'
+        >
+          <div className='mb-6 lg:mb-0 xl:w-full'>
+            <Text
+              type='h2'
+              weight='light'
+              color='white'
+              size='4xl'
+              className={`mb-4 max-w-[220px] sm:mb-0 sm:max-w-none sm:whitespace-nowrap ${styles['text']}`}
+            >
+              soil does so much for us,
+            </Text>
+            <Text type='h2' weight='bold' color='white' size='4xl' className={styles['text']}>
+              find out what you
+            </Text>
+            <Text type='h2' weight='bold' color='white' size='4xl' className={styles['text']}>
+              can do for soil!
+            </Text>
+          </div>
+          <div className='xl:w-full'>
+            <div className='text-center lg:text-left lg:pl-[15%]'>
+              <Link href='/get-involved'>
+                <Button as='link' size='lg' type='secondary' label='get involved' />
+              </Link>
+            </div>
+          </div>
         </div>
-        <Link href='/get-involved'>
-          <Button as='link' size='lg' type='secondary' label='get involved' />
-        </Link>
       </div>
     </Section>
   );

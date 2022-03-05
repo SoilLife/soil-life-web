@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
+import { useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
@@ -16,9 +16,7 @@ import styles from '../soil-101.module.css';
 
 export const NitrogenFixationSection = () => {
   useFullpageOverflow();
-  const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | 'infected' | 'root nodules'>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -63,9 +61,9 @@ export const NitrogenFixationSection = () => {
         <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
           nitrogen fixation
         </Text>
-        <NitrogenFixation1Svg />
-        <NitrogenFixation2Svg />
-        <NitrogenFixation3Svg />
+        <NitrogenFixation1Svg className='mx-auto max-h-[80vh]' />
+        <NitrogenFixation2Svg className='mx-auto max-h-[80vh]' />
+        <NitrogenFixation3Svg className='mx-auto' />
       </div>
       {modalType && (
         <ReactModal
@@ -75,11 +73,7 @@ export const NitrogenFixationSection = () => {
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
+              inset: isMobile ? '40px 0 0 0' : modalType !== 'infected' ? '20% 30%' : '10% 20%',
             },
             overlay: {
               zIndex: 2,
@@ -91,11 +85,14 @@ export const NitrogenFixationSection = () => {
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
           {modalType === 'infected' ? (
-            <div>
+            <div className='h-full grid place-items-center'>
               <Text type='h1' weight='bold' size='xl' color='pink' className='text-center mb-8'>
                 "infected" root
               </Text>
-              <Image url='Soil_101/Soil_Biology/UNADJUSTEDNONRAW_thumb_1be_kuHV5nM5s56_mKaTZ9IfFH.jpg' />
+              <Image
+                url='Soil_101/Soil_Biology/UNADJUSTEDNONRAW_thumb_1be_kuHV5nM5s56_mKaTZ9IfFH.jpg'
+                className='object-contain mx-auto max-h-[50vh]'
+              />
             </div>
           ) : (
             <div className='h-full grid place-items-center'>

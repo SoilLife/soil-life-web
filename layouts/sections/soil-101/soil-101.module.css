@@ -1,11 +1,15 @@
 .section {
-  @apply space-y-8;
+  @apply space-y-10 sm:space-y-14;
+}
+
+.principles-section {
+  @apply space-y-14 sm:space-y-20;
 }
 
 .heading {
-  line-height: 1;
+  @apply pb-4 sm:leading-tight;
 
-  @apply sm:leading-tight;
+  line-height: 1;
 }
 
 .diversity-subheading {
@@ -14,48 +18,58 @@
 
 .p-80 {
   @apply leading-normal;
-
-  @screen sm {
-    line-height: 80px;
-  }
 }
 
 .p-70 {
   @apply leading-normal;
-
-  @screen sm {
-    line-height: 70px;
-  }
 }
 
 .p-60 {
   @apply leading-normal;
+}
 
-  @screen sm {
-    line-height: 60px;
-  }
+.p-55 {
+  @apply leading-normal;
 }
 
 .p-50 {
   @apply leading-normal;
-
-  @screen sm {
-    line-height: 50px;
-  }
 }
 
 .p-48 {
   @apply leading-normal;
-
-  @screen sm {
-    line-height: 48px;
-  }
 }
 
 .p-38 {
   @apply leading-normal;
+}
 
-  @screen sm {
+@screen sm {
+  .p-80 {
+    line-height: 80px;
+  }
+
+  .p-70 {
+    line-height: 70px;
+  }
+
+  .p-60 {
+    line-height: 60px;
+  }
+
+  .p-55 {
+    line-height: 55px;
+  }
+
+  .p-50 {
+    line-height: 50px;
+  }
+
+  .p-48 {
+    line-height: 48px;
+  }
+
+  .p-38 {
     line-height: 38px;
   }
 }

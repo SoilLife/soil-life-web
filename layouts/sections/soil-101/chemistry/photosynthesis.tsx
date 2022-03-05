@@ -54,10 +54,10 @@ export const PhotosynthesisSection = () => {
         <Text type='h1' weight='light' size='4xl' color='orange' className={styles['heading']}>
           photosynthesis
         </Text>
-        <PhotosynthesisSvg />
+        <PhotosynthesisSvg className='mx-auto max-h-[70vh]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
-          as shoots grow, they act like solar panels, with the sun fueling conversion of CO2 from the atmosphere into
-          the building blocks of life (carbohydrates, proteins, fats, etc).
+          as shoots grow, they act like solar panels, using energy from the sun to convert CO<sub>2</sub> from the
+          atmosphere into the building blocks of life (carbohydrates, proteins, fats, etc).
         </Text>
       </div>
       {isModalOpen && (

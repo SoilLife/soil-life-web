@@ -11,28 +11,25 @@ import PoreSpaceSvg from 'public/images/soil-101/physics/pore_space.svg';
 import GravitationalWaterSvg from 'public/images/soil-101/physics/gravitational_water.svg';
 import HygroscopicWaterSvg from 'public/images/soil-101/physics/hygroscopic_water.svg';
 import PlantAvailableWaterSvg from 'public/images/soil-101/physics/plant_available_water.svg';
-import SolidPhaseSvg from 'public/images/soil-101/physics/solid_phase.svg';
-import LiquidPhaseSvg from 'public/images/soil-101/physics/liquid_phase.svg';
-import GasPhaseSvg from 'public/images/soil-101/physics/gas_phase.svg';
 
 import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   gravitational: {
     title: 'gravitational water',
-    image: <GravitationalWaterSvg />,
+    image: <GravitationalWaterSvg className='mx-auto max-h-[35vh]' />,
     heading: 'saturation',
     text: 'all pores are full of water. lost to gravity',
   },
   plant: {
     title: 'plant available water',
-    image: <PlantAvailableWaterSvg />,
+    image: <PlantAvailableWaterSvg className='mx-auto max-h-[35vh]' />,
     heading: 'field capacity',
     text: 'available water for plant growth',
   },
   hygroscopic: {
     title: 'hygroscopic water',
-    image: <HygroscopicWaterSvg />,
+    image: <HygroscopicWaterSvg className='mx-auto max-h-[35vh]' />,
     heading: 'wilting point',
     text: 'no more water available for plants',
   },
@@ -44,11 +41,7 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
   const isMobile = useMedia('(max-width: 640px)');
   const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
-  const [popup, setPopup] = useState({
-    gas: false,
-    solid: false,
-    liquid: false,
-  });
+  const [popup, setPopup] = useState<'gas' | 'liquid' | 'solid' | null>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
@@ -63,14 +56,9 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
       };
     }
 
-    function handlePopupModal(phase: keyof typeof popup) {
+    function handlePopupModal(phase: typeof popup) {
       return (_e: MouseEvent) => {
-        setPopup((prevState) => {
-          return {
-            ...prevState,
-            [phase]: !prevState[phase],
-          };
-        });
+        setPopup(phase);
       };
     }
 
@@ -129,16 +117,7 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
         <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
           pore space
         </Text>
-        <div className='relative overflow-hidden'>
-          <PoreSpaceSvg />
-          {popup.gas && (
-            <GasPhaseSvg className='absolute top-[11%] left-[10%] transform -translate-y-1/4 w-[120%] pointer-events-none' />
-          )}
-          {popup.solid && (
-            <SolidPhaseSvg className='absolute top-1/4 left-1/2 transform -translate-y-1/4 w-1/4 pointer-events-none' />
-          )}
-          {popup.liquid && <LiquidPhaseSvg className='absolute top-[31%] left-[15%] w-[30%] pointer-events-none' />}
-        </div>
+        <PoreSpaceSvg />
       </div>
       {modalType && (
         <ReactModal

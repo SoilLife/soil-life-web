@@ -131,10 +131,14 @@ export const ParentMaterialSection = () => {
 
         <div className='flex flex-col space-x-4 sm:flex-row sm:items-center sm:pl-20'>
           <Text type='p' weight='light' size='xl' color='pink'>
-            source
+            sources
           </Text>
           <Text type='p' weight='thin' size='xs' className={styles['p-60']}>
-            - rocks weather in place or are deposited in one of the following ways
+            - rocks{' '}
+            <Text type='span' weight='bold' size='xs'>
+              break down (weather)
+            </Text>{' '}
+            in place or are deposited in one of the following ways:
           </Text>
         </div>
         <ParentMaterial className='mx-auto max-h-[700px]' />
@@ -152,10 +156,6 @@ export const ParentMaterialSection = () => {
               left: isMobile ? 0 : '50%',
               top: isMobile ? '40px' : '50%',
               transform: isMobile ? undefined : 'translate(-50%, -50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
             },
             overlay: {
               zIndex: 2,
@@ -166,15 +166,17 @@ export const ParentMaterialSection = () => {
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4 text-center'>
-            <Text type='h1' weight='bold' size='2xl' color='pink'>
-              {modalTypeMap[modalType].title}
-            </Text>
+          <div className='flex items-center justify-center text-center h-full sm:h-auto'>
+            <div className='space-y-4'>
+              <Text type='h1' weight='bold' size='2xl' color='pink'>
+                {modalTypeMap[modalType].title}
+              </Text>
 
-            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto h-auto' />
-            <Text type='p' weight='light' size='2xs'>
-              {modalTypeMap[modalType].text}
-            </Text>
+              <Image url={modalTypeMap[modalType].imageUrl} className='object-contain mx-auto h-auto max-h-[546px]' />
+              <Text type='p' weight='light' size='2xs' style={{ lineHeight: isMobile ? undefined : '44px' }}>
+                {modalTypeMap[modalType].text}
+              </Text>
+            </div>
           </div>
         </ReactModal>
       )}

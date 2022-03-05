@@ -50,7 +50,7 @@ export function SoilDiversityModal({
             <Text type='h2' weight='light' size='lg' className='text-center'>
               {title}
             </Text>
-            <Text type='h2' weight='light' size='lg' className='text-pink-500 text-center'>
+            <Text type='h2' weight='light' size='lg' color='pink' className='text-center'>
               {label}
             </Text>
             <div>

@@ -55,20 +55,25 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                   return (
                     <li
                       key={index}
-                      className={`flex justify-center items-center bg-white bg-opacity-[0.85] w-full py-4
-                      ${getColor({
-                        color,
-                        type: 'text',
-                        state: 'hover',
-                      })}
+                      className={`flex justify-center items-center bg-white bg-opacity-[0.85] w-full py-4 `}
+                    >
+                      <a href={link.href} target='_blank' rel='noreferrer noopener' className='text-center'>
+                        <Text
+                          type='span'
+                          color='gray'
+                          weight='medium'
+                          size='sm'
+                          className={`${getColor({
+                            color,
+                            type: 'text',
+                            state: 'hover',
+                          })}
                       ${getColor({
                         color,
                         type: 'text',
                         state: 'active',
                       })}`}
-                    >
-                      <a href={link.href} target='_blank' rel='noreferrer noopener' className='text-center'>
-                        <Text type='span' weight='medium' size='sm'>
+                        >
                           {link.name}
                         </Text>
                       </a>
@@ -86,6 +91,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
                     type='p'
                     weight='medium'
                     size='sm'
+                    color='gray'
                     className={`${getColor({
                       color,
                       type: 'text',
@@ -110,12 +116,7 @@ export function CardGetInvolved({ index, color, links, text, imageUrl, imageCont
           <Icon icon={icon} size='10x' className='mx-auto text-blue-500' />
         ) : null}
       </div>
-      <Text
-        type='h3'
-        size='lg'
-        weight='regular'
-        className={`text-center mt-4 ${getColor({ color, type: 'text', state: 'idle' })}`}
-      >
+      <Text type='h3' size='lg' weight='regular' color={color} className='text-center mt-4'>
         {text}
       </Text>
 

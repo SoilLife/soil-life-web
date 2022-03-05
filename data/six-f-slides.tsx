@@ -1,4 +1,4 @@
-import { CardSixFProps } from 'design-system/atoms/card-six-f/card-six-f.interfaces';
+import { CardSixFProps } from 'design-system/components/card-six-f/card-six-f.interfaces';
 import { Text } from 'design-system/atoms';
 import { ButtonProps } from 'design-system/atoms/button/button.interfaces';
 
@@ -15,7 +15,10 @@ const commonProps: {
   },
 };
 
-export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 'left-bottom' })[] = [
+export const slides: (CardSixFProps & {
+  photoUrl: string;
+  imageClassname?: string;
+})[] = [
   {
     ...commonProps,
     icon: '/images/web-of-soil/food_white.svg',
@@ -35,6 +38,8 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     },
     href: '/web-of-soil?section=food',
     photoUrl: '/6Fs/brooke-lark-08bOYnH_r_E-unsplash_Nsw5XgGxU.jpg',
+    imageClassname:
+      'transform object-left scale-[2] translate-x-[10%] translate-y-[30%] sm:scale-[1.75] sm:translate-x-[25%]',
   },
   {
     ...commonProps,
@@ -55,6 +60,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     },
     href: '/web-of-soil?section=fiber',
     photoUrl: '/6Fs/Fiber-2-Intro_xAvzmC6CB.jpg',
+    imageClassname: 'object-[10%40%] sm:transform sm:scale-[2] sm:translate-x-1/2 sm:object-[25%] xl:translate-x-1/4]',
   },
   {
     ...commonProps,
@@ -75,6 +81,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     },
     href: '/web-of-soil?section=filter',
     photoUrl: '/6Fs/Filter-3_YElVtnQWZ.jpg',
+    imageClassname: 'object-top',
   },
   {
     ...commonProps,
@@ -95,7 +102,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     },
     href: '/web-of-soil?section=filter',
     photoUrl: '/6Fs/Filter-2_qJOgH5RmKJ9.jpg',
-    position: 'bottom',
+    imageClassname: 'scale-125 translate-y-[-20%] lg:translate-y-[-10%]',
   },
   {
     ...commonProps,
@@ -136,7 +143,7 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     },
     href: '/web-of-soil?section=farmaceutical',
     photoUrl: '/6Fs/cup_of_pills_ioFvZZ0lo.png',
-    position: 'left-bottom',
+    imageClassname: 'object-[10%50%] sm:object-[50%80%]',
   },
   {
     ...commonProps,
@@ -157,5 +164,6 @@ export const slides: (CardSixFProps & { photoUrl: string; position?: 'bottom' | 
     },
     href: '/web-of-soil?section=fun',
     photoUrl: '/6Fs/Fun-2_NepidzuqS.jpg',
+    imageClassname: 'scale-125 translate-x-[-10%]',
   },
 ];

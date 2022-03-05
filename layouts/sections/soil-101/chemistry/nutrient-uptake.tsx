@@ -53,14 +53,14 @@ export const NutrientUptakeSection = () => {
         <Text type='h1' weight='light' size='4xl' color='orange' className={styles['heading']}>
           nutrient uptake
         </Text>
-        <NutrientUptakeSvg />
+        <NutrientUptakeSvg className='mx-auto max-h-[50vh]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
-          building the compounds also requires water and nutrients. as roots grow, they take up nutrients dissolved in
-          water, known as the "
+          building these compounds also requires water and nutrients. as roots grow, they take up nutrients dissolved in
+          water{' '}
           <Text type='span' weight='bold' size='md'>
-            soil solution
-          </Text>
-          " or from particle surfaces.
+            (the "soil solution")
+          </Text>{' '}
+          or from particle surfaces.
         </Text>
       </div>
       {isModalOpen && (

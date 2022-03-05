@@ -8,8 +8,8 @@ import { Text, Icon } from 'design-system/atoms';
 
 // assets
 import ClaySvg from 'public/images/soil-101/physics/exchange_capacity_clay.svg';
-import OrganicMatterSvg from 'public/images/soil-101/physics/exchange_capacity_organic_matter.svg';
-import MetalOxideSvg from 'public/images/soil-101/physics/exchange_capacity_metal_oxides.svg';
+// import OrganicMatterSvg from 'public/images/soil-101/physics/exchange_capacity_organic_matter.png';
+// import MetalOxideSvg from 'public/images/soil-101/physics/exchange_capacity_metal_oxides.svg';
 
 import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
 import AnionExchangeSvg from 'public/images/soil-101/physics/anion_exchange_capacity.svg';
@@ -19,12 +19,12 @@ import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   'cation exchange': {
-    title: 'carbon-based inputs',
+    title: 'cation exchange capacity',
     image: <CationExchangeSvg className='h-full w-full' />,
     text: 'cations are positively charged ions. cation exchange capacity is the number of negatively charged sites (on clays or organic matter) that can hold onto these ions.',
   },
   'anion exchange': {
-    title: 'microbial filters',
+    title: 'anion exchange capacity',
     image: <AnionExchangeSvg className='h-full w-full' />,
     text: 'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions.',
   },
@@ -111,12 +111,12 @@ export const ExchangeCapacitySection = () => {
             som also has high surface area and charge, holding on to both positive and negatively charged ions
             (depending on pH) and contributing significantly to water holding capacity.
           </Text>
-          <OrganicMatterSvg className='mb-4 sm:mb-0 sm:w-1/2' />
+          <img src='/images/soil-101/physics/exchange_capacity_organic_matter.png' className='mb-4 sm:mb-0 sm:w-1/2' />
         </div>
         <div
           className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
         >
-          <MetalOxideSvg className='sm:w-1/2' />
+          <img src='/images/soil-101/physics/exchange_capacity_metal_oxides.png' className='sm:w-1/2' />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
             iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
             capacity (i.e. NO3-, BO3-, Cl-).

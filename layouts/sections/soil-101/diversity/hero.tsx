@@ -19,7 +19,7 @@ const imageUrls = [
   'Soil_101/Diversity_-_Soil_Profiles/Soil_Profile_11_UvZP_6LA0B.jpeg',
 ];
 
-export function HeroSection() {
+export function HeroSection({ onDownArrowClick }: { onDownArrowClick: () => void }) {
   return (
     <div className='relative h-screen overflow-hidden'>
       <div className='absolute pt-16 top-1/2 transform -translate-y-1/2 text-center text-white w-full z-10'>
@@ -37,7 +37,12 @@ export function HeroSection() {
           </div>
         ))}
       </div>
-      <DownArrow height={30} className='absolute bottom-4 left-1/2 transform -translate-x-1/2' />
+      <button
+        className='absolute bottom-4 left-1/2 transform -translate-x-1/2 hover:scale-105 active:scale-100'
+        onClick={onDownArrowClick}
+      >
+        <DownArrow height={30} />
+      </button>
     </div>
   );
 }

@@ -11,7 +11,8 @@ export function ContactUsSection() {
           type='h1'
           weight='regular'
           size='3xl'
-          className='absolute top-10 inset-x-0 text-center text-white sm:hidden'
+          color='white'
+          className='absolute top-10 inset-x-0 text-center sm:hidden'
         >
           contact us
         </Text>
@@ -20,7 +21,7 @@ export function ContactUsSection() {
 
       <div className='px-10 absolute bottom-10 w-full sm:bottom-auto sm:top-1/2 sm:max-w-3xl sm:transform sm:-translate-y-1/2'>
         <form className='rounded-lg p-4 bg-white shadow-lg sm:p-10' onSubmit={handleSubmit}>
-          <Text type='h1' weight='regular' size='2xl' className='hidden text-pink-500 mb-10 sm:block'>
+          <Text type='h1' weight='regular' size='2xl' color='pink' className='hidden mb-10 sm:block'>
             contact us
           </Text>
           <div className='mb-4 md:mb-8 h-[54px]'>

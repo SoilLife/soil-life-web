@@ -90,7 +90,8 @@ export function MediaHub({
                     type='p'
                     weight='regular'
                     size='sm'
-                    className='py-1 px-10 md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500 text-white'
+                    color='white'
+                    className='py-1 px-10 md:w-3/4 lg:w-1/2 xl:w-1/3 bg-pink-500'
                   >
                     {key}
                   </Text>
@@ -140,7 +141,7 @@ export function MediaHub({
                                       ? 'object-cover'
                                       : medium.mediaType === 'image'
                                       ? 'object-contain'
-                                      : 'p-8'
+                                      : 'p-8 object-contain'
                                   }
                                   loading='lazy'
                                 />

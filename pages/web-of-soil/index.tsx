@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 // components
-import { Footer, MediaHub, MobileNavMenu } from 'design-system/templates';
+import { Footer, WebOfSoilMedia, MobileNavMenu } from 'design-system/templates';
 import { Section, Slide, Image, Icon, Modal, Text } from 'design-system/atoms';
 import { VisGraph } from 'design-system/components';
 import ReactModal from 'react-modal';
@@ -14,9 +14,12 @@ import { webOfSoilSubheadings } from 'data/main-headings';
 
 // helpers
 import { DefaultLayout } from 'layouts';
-import { useMediaHub } from 'helpers/use-media-hub';
 import { useWebOfSoils, Node, Edge } from 'helpers/use-web-of-soil';
 import { textSizeMap } from 'design-system/atoms/text/text.utils';
+import { uniqBy } from 'lodash';
+
+// assets
+import DownArrow from 'public/images/down_arrow_white.svg';
 
 const options = {
   autoResize: true,
@@ -24,7 +27,7 @@ const options = {
     hierarchical: false,
   },
   interaction: {
-    dragNodes: false,
+    dragNodes: true,
     zoomView: false,
   },
   nodes: {
@@ -70,7 +73,6 @@ function getBgColorFromActiveHeader(index: number) {
   }
 }
 
-const showSections = ['video', 'infographic', 'educational video'];
 const videos = [
   'https://www.youtube.com/watch?v=GqNmbgfDTGE',
   'https://www.youtube.com/watch?v=q6qtZhrKgU4',
@@ -90,7 +92,6 @@ export default function WebOfSoilPage() {
   const fullPageRef = useRef<any>(null);
   const [hideHeader, setHideHeader] = useState(false);
   const [nodeSelections, setNodeSelections] = useState<(Node & { active: boolean })[]>([]);
-  const { media } = useMediaHub();
   const { graph: foodGraph } = useWebOfSoils('food data structure');
   const { graph: fiberGraph } = useWebOfSoils('fiber data structure');
   const { graph: filterGraph } = useWebOfSoils('filter data structure');
@@ -115,31 +116,17 @@ export default function WebOfSoilPage() {
 
   useEffect(() => {
     if (query?.['section'] && fullPageRef.current) {
+      const sectionMap = ['food', 'fiber', 'filter', 'foundations', 'farmaceuticals', 'fun'];
       const nav = Array.from(document.querySelectorAll('[data-nav]')) as HTMLLIElement[];
-      if (nav.length) {
-        switch (query['section']) {
-          case 'food':
-            nav[0]?.click();
-            break;
-          case 'fiber':
-            nav[1]?.click();
-            break;
-          case 'filter':
-            nav[2]?.click();
-            break;
-          case 'foundation':
-            nav[3]?.click();
-            break;
-          case 'farmaceutical':
-            nav[4]?.click();
-            break;
-          case 'fun':
-            nav[5]?.click();
-            break;
-        }
-      }
+      nav[sectionMap.findIndex((f) => f === query['section']) ?? 0]?.click();
     }
   }, [query, fullPageRef.current]);
+
+  function handleDownArrowClick() {
+    if (fullPageRef.current?.state?.initialized) {
+      fullPageRef.current.fullpageApi.moveSectionDown();
+    }
+  }
 
   const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
     if (direction === 'up' && hideHeader) {
@@ -236,7 +223,10 @@ export default function WebOfSoilPage() {
 
   function handleGraphEvent(type: 'food' | 'filter' | 'fiber' | 'fun' | 'farmaceutical' | 'foundation') {
     return {
-      select({ nodes }: { nodes: string[] }) {
+      select({ nodes, edges }: { nodes: string[]; edges: string[] }) {
+        if (!nodes.length || !edges.length) {
+          return;
+        }
         const graphs: { [Type in typeof type]: { nodes: Node[]; edges: Edge[] } } = {
           farmaceutical: farmaceuticalGraph,
           fiber: fiberGraph,
@@ -245,16 +235,59 @@ export default function WebOfSoilPage() {
           foundation: foundationsGraph,
           fun: funGraph,
         };
+
         const [id] = nodes;
         if (id) {
-          const connectedNodes = graphs[type].nodes
-            .filter((node) => node.to.includes(id))
-            .map((node) => ({ ...node, active: false }));
-          const selectedNode = graphs[type].nodes.find((node) => node.id === id);
+          if (edges.length === 1) {
+            const [edge] = edges;
+            if (edge) {
+              let connections: typeof nodeSelections = [];
+              const first = graphs[type].nodes.find((node) => node.id === id);
+              if (first) {
+                connections.push({ ...first, active: true });
+              }
+              function findEdges(edgeId: string) {
+                const connection = graphs[type].edges.find((e) => e.id === edgeId);
+                const allEdges = graphs[type].edges.filter((e) => e.to === connection?.from);
 
-          if (selectedNode) {
-            const nodeSelections = [{ ...selectedNode, active: true }, ...connectedNodes];
-            setNodeSelections(nodeSelections);
+                if (connection && allEdges.length === 1) {
+                  const node = graphs[type].nodes.find((node) =>
+                    node.to.find((to) => to.toLowerCase().includes(connection.to.toLowerCase()))
+                  );
+                  if (node) {
+                    connections.push({ ...node, active: false });
+                    const foundEdge = graphs[type].edges.find((edge) => edge.to.includes(node.id));
+                    if (foundEdge?.id) {
+                      findEdges(foundEdge.id);
+                    }
+                  }
+                } else {
+                  const node = graphs[type].nodes.find((node) =>
+                    node.to.find((to) => to.toLowerCase().includes(connection?.to?.toLowerCase() ?? ''))
+                  );
+
+                  if (node) {
+                    connections.push({ ...node, active: false });
+                    connections.push(
+                      ...graphs[type].nodes.filter((n) => n.to.includes(node.id)).map((n) => ({ ...n, active: false }))
+                    );
+                  }
+                }
+              }
+
+              findEdges(edge);
+              setNodeSelections(connections);
+            }
+          } else {
+            const connectedNodes = graphs[type].nodes
+              .filter((node) => node.to.includes(id))
+              .map((node) => ({ ...node, active: false }));
+            const selectedNode = graphs[type].nodes.find((node) => node.id === id);
+
+            if (selectedNode) {
+              const nodeSelections = [{ ...selectedNode, active: true }, ...connectedNodes];
+              setNodeSelections(nodeSelections);
+            }
           }
         }
         handleOpenWebOfSoilModal();
@@ -316,7 +349,7 @@ export default function WebOfSoilPage() {
             return (
               <>
                 <Section>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image
                       className='object-cover object-center'
                       url='/6Fs/brooke-lark-08bOYnH_r_E-unsplash_Nsw5XgGxU.jpg'
@@ -347,8 +380,11 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Fiber_Slide_NkVYdxIN7-t.jpg' />
                     <div
                       className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
@@ -376,8 +412,11 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Filter_zylk3NyhU.jpg' transformation={[{ rotate: 90 }]} />
                     <div
                       className={`p-6 absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center
@@ -405,8 +444,11 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Foundation_sl5IYmaDB.jpg' />
                     <div
                       className='p-6 flex flex-col h-full w-full items-center justify-center absolute top-0 left-0
@@ -436,8 +478,11 @@ export default function WebOfSoilPage() {
                         </div>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover object-left' url='/6Fs/cup_of_pills_ioFvZZ0lo.png' />
                     <div
                       className={`p-6 flex flex-col h-full w-full items-center justify-center absolute top-0 left-0
@@ -468,8 +513,11 @@ export default function WebOfSoilPage() {
                         </button>
                       </div>
                     </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
+                    </div>
                   </Slide>
-                  <Slide>
+                  <Slide className='relative'>
                     <Image className='object-cover' url='/6Fs/Fun_XHWRw699s.jpg' />
                     <div
                       className={`p-6 flex flex-col items-center justify-center h-full w-full absolute top-0 left-0
@@ -501,6 +549,9 @@ export default function WebOfSoilPage() {
                           </button>
                         </div>
                       </div>
+                    </div>
+                    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                      <DownArrow className='h-5 cursor-pointer hover:scale-105' onClick={handleDownArrowClick} />
                     </div>
                   </Slide>
                 </Section>
@@ -552,78 +603,42 @@ export default function WebOfSoilPage() {
 
                 <Section>
                   <Slide>
-                    <MediaHub
-                      compact
-                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
-                      media={media}
-                      filters={['food']}
-                      showSections={showSections}
-                    />
+                    <WebOfSoilMedia filter='food' />
                     <SlideButtons
                       leftImage='/images/web-of-soil/fun-arrow-left.png'
                       rightImage='/images/web-of-soil/fiber-arrow-right.png'
                     />
                   </Slide>
                   <Slide>
-                    <MediaHub
-                      compact
-                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
-                      media={media}
-                      filters={['fiber']}
-                      showSections={showSections}
-                    />
+                    <WebOfSoilMedia filter='fiber' />
                     <SlideButtons
                       leftImage='/images/web-of-soil/food-arrow-left.png'
                       rightImage='/images/web-of-soil/filter-arrow-right.png'
                     />
                   </Slide>
                   <Slide>
-                    <MediaHub
-                      compact
-                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
-                      media={media}
-                      filters={['filter']}
-                      showSections={showSections}
-                    />
+                    <WebOfSoilMedia filter='filter' />
                     <SlideButtons
                       leftImage='/images/web-of-soil/fiber-arrow-left.png'
                       rightImage='/images/web-of-soil/foundations-arrow-right.png'
                     />
                   </Slide>
                   <Slide>
-                    <MediaHub
-                      compact
-                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
-                      media={media}
-                      filters={['foundation']}
-                      showSections={showSections}
-                    />
+                    <WebOfSoilMedia filter='foundation' />
                     <SlideButtons
                       leftImage='/images/web-of-soil/filter-arrow-left.png'
                       rightImage='/images/web-of-soil/farmaceuticals-arrow-right.png'
                     />
                   </Slide>
                   <Slide>
-                    <MediaHub
-                      compact
-                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
-                      media={media}
-                      filters={['farmaceuticals']}
-                      showSections={showSections}
-                    />
+                    <WebOfSoilMedia filter='farmaceuticals' />
                     <SlideButtons
                       leftImage='/images/web-of-soil/foundations-arrow-left.png'
                       rightImage='/images/web-of-soil/fun-arrow-right.png'
                     />
                   </Slide>
                   <Slide>
-                    <MediaHub
-                      compact
-                      className='h-full flex flex-col justify-center mx-auto max-w-[80%]'
-                      media={media}
-                      filters={['fun']}
-                      showSections={showSections}
-                    />
+                    <WebOfSoilMedia filter='fun' />
                     <SlideButtons
                       leftImage='/images/web-of-soil/farmaceuticals-arrow-left.png'
                       rightImage='/images/web-of-soil/food-arrow-right.png'
@@ -660,22 +675,22 @@ export default function WebOfSoilPage() {
           },
         }}
       >
-        <div className='relative bg-white mx-auto flex flex-col p-4 sm:p-8'>
+        <div className='relative bg-white mx-auto flex flex-col h-full justify-center p-4 sm:p-8'>
           <div className='absolute top-2 right-2 sm:top-6 sm:right-6'>
             <button onClick={handleCloseWebOfSoilModal}>
               <Icon icon='x' size='32' className='text-yellow-500' />
             </button>
           </div>
-          <div className='flex justify-evenly items-center overflow-x-auto space-x-2 sm:space-x-10'>
+          <div className='flex flex-grow justify-center items-center overflow-x-auto space-x-2 sm:space-x-10'>
             {nodeSelections.map((node) => {
               return (
                 <div key={node.id} className='flex-shrink-0 text-center'>
-                  <Text type='h2' weight='light' size={node.active ? 'lg' : 'sm'}>
+                  <Text type='h2' weight='light' size={node.active ? 'lg' : 'sm'} className='mb-1'>
                     {node.label}
                   </Text>
                   <img
                     src={node.image}
-                    className={`object-cover rounded-full mx-auto border- border-solid border-pink-500 ${
+                    className={`object-cover rounded-full mx-auto border-4 border-solid border-pink-500 ${
                       node.active ? 'h-20 w-20 sm:h-40 sm:w-40' : 'h-10 w-10 sm:h-20 sm:w-20 cursor-pointer'
                     }`}
                     onClick={handleWebOfSoilModalNodeClick(node)}
@@ -684,64 +699,69 @@ export default function WebOfSoilPage() {
               );
             })}
           </div>
-          <div className='mt-10 mx-auto'>
+          <div className='mt-10 mx-auto flex-grow'>
             {nodeSelections.map((node) => {
               if (node.active && !node.to.length) {
                 return (
-                  <Text key={node.label} type='p' weight='light' size='xs' className='max-w-3xl mx-auto'>
+                  <p key={node.label} className='max-w-3xl mx-auto text-center font-acre-light leading-[22px]'>
                     {node.description}
-                  </Text>
+                  </p>
                 );
               } else if (node.active) {
-                let _connectedNodes: Node[] = [];
+                const graphs: { [Type in typeof activeHeader]: { nodes: Node[]; edges: Edge[] } } = {
+                  0: foodGraph,
+                  1: fiberGraph,
+                  2: filterGraph,
+                  3: foundationsGraph,
+                  4: farmaceuticalGraph,
+                  5: funGraph,
+                };
+                const edges = graphs[activeHeader]?.edges.filter((edge) => edge.to === node.id);
+                if ((edges?.length ?? 0) > 1) {
+                  return (
+                    <p key={node.label} className='max-w-3xl mx-auto text-center font-acre-light leading-[22px]'>
+                      {node.description}
+                    </p>
+                  );
+                } else {
+                  let _connectedNodes: Node[] = [];
 
-                function findConnectedNodes(node: Node) {
-                  const graphs: { [Type in typeof activeHeader]: { nodes: Node[]; edges: Edge[] } } = {
-                    0: foodGraph,
-                    1: fiberGraph,
-                    2: filterGraph,
-                    3: foundationsGraph,
-                    4: farmaceuticalGraph,
-                    5: funGraph,
-                  };
-                  const connectedNodes = graphs?.[activeHeader]?.nodes.filter((n) => n.to.includes(node.id)) ?? [];
-                  for (const n of connectedNodes) {
-                    _connectedNodes.push(n);
-                    findConnectedNodes(n);
+                  function findConnectedNodes(node: Node) {
+                    const connectedNodes = graphs?.[activeHeader]?.nodes.filter((n) => n.to.includes(node.id)) ?? [];
+                    for (const n of connectedNodes) {
+                      _connectedNodes.push(n);
+                      findConnectedNodes(n);
+                    }
                   }
-                }
 
-                findConnectedNodes(node);
+                  findConnectedNodes(node);
 
-                return (
-                  <div
-                    key={node.label}
-                    className='py-8 flex flex-col space-y-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'
-                  >
-                    <div className='flex-shrink-0 space-y-6'>
-                      <Text type='h2' weight='regular' size='lg' className='mb-6 text-pink-500 text-center'>
-                        {node.label}
-                      </Text>
-                      <img src={node.image} className='h-full max-h-48 object-cover mx-auto my-0' />
-                      <Text type='p' weight='light' size='xs' className='max-w-md mx-auto'>
-                        {node.description}
-                      </Text>
+                  return (
+                    <div
+                      key={node.label}
+                      className='flex flex-col space-y-10 sm:py-10 sm:space-y-0 sm:overflow-x-auto sm:flex-row sm:space-x-10'
+                    >
+                      <div className='flex-shrink-0 space-y-6'>
+                        <h3 className='text-pink-500 font-acre-light text-[40px] leading-[48px] mb-6 text-center'>
+                          {node.label}
+                        </h3>
+                        <img src={node.image} className='h-[147px] w-[233px] object-cover mx-auto' />
+                        <p className='font-acre-light text-base leading-[22px] max-w-md mx-auto'>{node.description}</p>
+                      </div>
+                      {uniqBy(_connectedNodes, 'id').map((n) => {
+                        return (
+                          <div key={n.id} className='flex-shrink-0 space-y-6'>
+                            <h3 className='text-pink-500 font-acre-light text-[40px] leading-[48px] mb-6 text-center'>
+                              {n.label}
+                            </h3>
+                            <img src={n.image} className='h-[147px] w-[233px] object-cover mx-auto' />
+                            <p className='font-acre-light text-base leading-[22px] max-w-md mx-auto'>{n.description}</p>
+                          </div>
+                        );
+                      })}
                     </div>
-                    {_connectedNodes.map((n) => {
-                      return (
-                        <div key={n.id} className='flex-shrink-0 space-y-6'>
-                          <Text type='h2' weight='regular' size='lg' className='mb-6 text-pink-500 text-center'>
-                            {n.label}
-                          </Text>
-                          <img src={n.image} className='max-h-48 w-full object-cover mx-auto my-0' />
-                          <Text type='p' weight='light' size='xs' className='max-w-md mx-auto'>
-                            {n.description}
-                          </Text>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
+                  );
+                }
               }
               return null;
             })}

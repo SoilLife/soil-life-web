@@ -1,69 +1,81 @@
 // components
-import { Section, Image, CardTeamMember, Text } from 'design-system/atoms';
+import { Section, Image, Text } from 'design-system/atoms';
+import { CardTeamMember } from 'design-system/components';
 
 export function OurTeamSection() {
   return (
-    <Section>
-      <div className='relative h-full'>
-        <Image url='/About_Us/Our_Team_About_Us_NIPGMI969.jpg' className='object-cover' />
-        <div className='container absolute inset-0'>
-          <Text
-            type='h1'
-            weight='regular'
-            size='3xl'
-            className='absolute w-full text-center text-white top-8 md:w-auto md:top-20 md:left-40'
-          >
-            our team
-          </Text>
-          <div className='flex flex-col items-center justify-center h-full '>
-            <div className='flex justify-center w-full mb-4 space-x-4 md:mb-8 md:space-x-8'>
-              <CardTeamMember
-                name='jessica chiartas'
-                position='founder, director'
-                photo='/About_Us/Our_Team/Jessica_Leigh_yBqrcFvWf.JPG'
-              />
-              <CardTeamMember
-                name='autumn ward'
-                position='producer, animator'
-                photo='/About_Us/Our_Team/autumn_44YIVRff3.jpg'
-              />
-            </div>
+    <Section className='relative h-full overflow-hidden'>
+      <Image url='/About_Us/Our_Team_About_Us_NIPGMI969.jpg' className='absolute top-0 left-0 object-cover z-[-1]' />
+      <div className='container h-full'>
+        <Text
+          type='h1'
+          weight='regular'
+          size='3xl'
+          color='white'
+          className='absolute top-0 left-1/2 -translate-x-1/2 sm:top-[8%] sm:left-[5%] sm:-translate-x-0'
+        >
+          our team
+        </Text>
+        <div className='h-full flex flex-col items-center justify-center w-max mx-auto gap-[2%]'>
+          <div className='flex justify-center gap-4 sm:gap-[5%]'>
+            <CardTeamMember
+              name='jessica chiartas'
+              position='founder, director'
+              photo='/About_Us/Our_Team/Jessica_Leigh_yBqrcFvWf.JPG'
+              link='https://www.linkedin.com/in/mindbodysoil/'
+            />
+            <CardTeamMember
+              name='autumn ward'
+              position='producer, animator'
+              photo='/About_Us/Our_Team/autumn_44YIVRff3.jpg'
+              link='https://www.instagram.com/honey_bee_studios_/'
+            />
+          </div>
 
-            <div className='flex justify-center w-full mb-4 space-x-4 md:mb-8 md:space-x-8'>
-              <CardTeamMember
-                name='irfan ainuddin'
-                position='technical advisor'
-                photo='/About_Us/Our_Team/Irfan_Ainnudin_tech_MAJbqEfpD.jpg'
-              />
-              <CardTeamMember
-                name='sinead santich'
-                position='videographer'
-                photo='/About_Us/Our_Team/Sinead_Santich_Videographer_kGo84M7li2s.jpg'
-              />
-              <CardTeamMember
-                name='elisa massenzio'
-                position='lead designer'
-                photo='About_Us/Our_Team/Elisa_Massenzio'
-              />
-            </div>
+          <div className='flex justify-center gap-4 sm:gap-[5%]'>
+            <CardTeamMember
+              name='irfan ainuddin'
+              position='technical advisor'
+              photo='/About_Us/Our_Team/Irfan_Ainnudin_tech_MAJbqEfpD.jpg'
+              link='https://www.linkedin.com/in/irfandin/'
+              imgClassName='object-top'
+            />
+            <CardTeamMember
+              name='sinead santich'
+              position='videographer'
+              photo='/About_Us/Our_Team/Sinead_Santich_Videographer_kGo84M7li2s.jpg'
+              link='https://www.linkedin.com/in/sinead-santich-b46641155/'
+            />
+            <CardTeamMember
+              name='elisa massenzio'
+              position='lead designer'
+              photo='About_Us/Our_Team/Elisa_Massenzio'
+              link='https://www.linkedin.com/in/elisamassenzio/'
+              imgClassName='object-top object-[50%25%]'
+            />
+          </div>
 
-            <div className='flex justify-center w-full space-x-4 md:space-x-8'>
-              <CardTeamMember
-                name='stephanie lew'
-                position='content development'
-                photo='/About_Us/Our_Team/stephanie_lew_NVSY98E-Ts8.jpg'
-              />
-              <CardTeamMember
-                name='anna gomes'
-                position='content development'
-                photo='/About_Us/Our_Team/Gomes_GAIA_8hophxc2S.jpg'
-              />
-              <CardTeamMember
-                name='billy le'
-                position='web development'
-                photo='/About_Us/Our_Team/billy-le_KqzbxIGrP.jpg'
-              />
-            </div>
+          <div className='flex justify-center gap-4 sm:gap-[15%]'>
+            <CardTeamMember
+              name='stephanie lew'
+              position='content development'
+              photo='/About_Us/Our_Team/stephanie_lew_NVSY98E-Ts8.jpg'
+              link='https://www.linkedin.com/in/stephanieelew/'
+              imgClassName='object-top object-[50%0%]'
+            />
+            <CardTeamMember
+              name='anna gomes'
+              position='content development'
+              photo='/About_Us/Our_Team/Gomes_GAIA_8hophxc2S.jpg'
+              link='https://www.linkedin.com/in/anna-gomes-85ab6b114/'
+            />
+            <CardTeamMember
+              name='billy le'
+              position='web development'
+              photo='/About_Us/Our_Team/billy-le_KqzbxIGrP.jpg'
+              link='https://www.linkedin.com/in/lebilly/'
+              imgClassName='object-top object-[50%20%]'
+            />
           </div>
         </div>
       </div>

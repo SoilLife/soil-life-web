@@ -13,32 +13,32 @@ import styles from '../soil-101.module.css';
 const modalTypeMap = {
   'coarse-mafic': {
     title: 'coarse mafic',
-    imageUrl: 'Soil_101/Soil_Nexus/coarse_mafic.jpeg',
+    imageUrl: 'Soil_101/Soil_Nexus/coarse_mafic_Rv4nOXIvr.png',
     text: 'gabbro',
   },
   'coarse-intermediate': {
     title: 'coarse intermediate',
-    imageUrl: 'Soil_101/Soil_Nexus/coarse_intermediate.jpeg',
+    imageUrl: 'Soil_101/Soil_Nexus/coarse_intermediate_Z-FsFw9N5.png',
     text: 'diorite',
   },
   'coarse-felsic': {
     title: 'coarse felsic',
-    imageUrl: 'Soil_101/Soil_Nexus/coarse_felsic.jpg',
+    imageUrl: 'Soil_101/Soil_Nexus/coarse_felsic_V9NkPZRBq.png',
     text: 'granite',
   },
   'fine-mafic': {
     title: 'fine mafic',
-    imageUrl: 'Soil_101/Soil_Nexus/fine_mafic.jpeg',
+    imageUrl: 'Soil_101/Soil_Nexus/fine_mafic_E-ZoDPW3t.png',
     text: 'basalt',
   },
   'fine-intermediate': {
     title: 'fine intermediate',
-    imageUrl: 'Soil_101/Soil_Nexus/fine_intermediate.jpeg',
+    imageUrl: 'Soil_101/Soil_Nexus/fine_intermediate_Lk-PMOrcJ.png',
     text: 'andesite',
   },
   'fine-felsic': {
     title: 'fine felsic',
-    imageUrl: 'Soil_101/Soil_Nexus/fine_felsic.jpeg',
+    imageUrl: 'Soil_101/Soil_Nexus/fine_felsic_GB5ktT7qZPq.png',
     text: 'rhyolite',
   },
 };
@@ -143,15 +143,16 @@ export const PmTypesSection = () => {
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4 text-center'>
-            <Text type='h1' weight='bold' size='2xl' color='pink'>
-              {modalTypeMap[modalType].title}
-            </Text>
-
-            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto' />
-            <Text type='p' weight='light' size='2xs'>
-              {modalTypeMap[modalType].text}
-            </Text>
+          <div className='h-full flex items-center justify-center'>
+            <Image url={modalTypeMap[modalType].imageUrl} className='object-contain mx-auto max-h-[508px]' />
+            {/* <div className='space-y-2 text-center'>
+              <Text type='h1' weight='bold' size='4xl' color='pink'>
+                {modalTypeMap[modalType].title}
+              </Text>
+              <Text type='p' weight='light' size='xl'>
+                {modalTypeMap[modalType].text}
+              </Text>
+            </div> */}
           </div>
         </ReactModal>
       )}

@@ -6,6 +6,8 @@ import { useMedia } from 'react-use';
 // components
 import { Section, Image, Text } from 'design-system/atoms';
 
+import styles from './our-values.module.css';
+
 // data
 const valueCards: {
   imageUrl: string;
@@ -68,6 +70,24 @@ const valueCards: {
   },
 ];
 
+function ValueText(props: React.PropsWithChildren<{ className?: string }>) {
+  return (
+    <h2
+      className={`text-white font-acre-medium leading-[25px] lg:leading-[35px] lg:text-[36px] ${props.className ?? ''}`}
+    >
+      {props.children}
+    </h2>
+  );
+}
+
+function ValueDetailsText(props: React.PropsWithChildren<{ className?: string }>) {
+  return (
+    <p className={`text-white font-acre-light leading-[21px] lg:text-[15px] ${props.className ?? ''}`}>
+      {props.children}
+    </p>
+  );
+}
+
 export function OurValuesSection() {
   const isMobile = useMedia('(max-width: 639px)');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -80,71 +100,65 @@ export function OurValuesSection() {
   function handleMouseLeave() {
     setActiveIndex(null);
   }
+
   return (
     <Section>
-      <div className='container h-full flex flex-col items-center justify-center text-center'>
-        <Text type='h1' weight='regular' size='3xl' className='text-yellow-500 mb-4 sm:mb-10'>
-          our values
-        </Text>
-        {
-          <div className='grid grid-cols-2 sm:grid-cols-3 grid-rows-3 gap-4'>
-            {valueCards.map(({ content, imageUrl, label }, index) => {
-              const isActive = activeIndex === index;
-              if (isMobile && isActive) {
-                return (
-                  <div className='relative col-span-full row-span-full'>
-                    <Image url={imageUrl} className='h-40' />
-                    <div
-                      className={`absolute inset-0 w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-teal-600 to-transparent text-white`}
-                    >
-                      <div className='flex space-x-2 mb-8'>
-                        <Text type='p' weight='medium' size='md'>
-                          {index + 1}
-                        </Text>
-                        <Text type='p' weight='medium' size='md'>
-                          {label}
-                        </Text>
+      <div className='h-full flex flex-col items-center justify-center text-center'>
+        <div>
+          <Text type='h1' weight='regular' size='3xl' color='yellow' className='mb-4'>
+            our values
+          </Text>
+          {
+            <div className={`${styles['grid-container']}`}>
+              {valueCards.map(({ content, imageUrl, label }, index) => {
+                const isActive = activeIndex === index;
+                if (isMobile && isActive) {
+                  return (
+                    <div className='relative col-span-2 h-40 order-last'>
+                      <Image url={imageUrl} className='object-cover' />
+                      <div
+                        className={`absolute inset-0 w-full h-full flex flex-col items-center justify-center p-2 bg-gradient-to-br from-teal-600 to-transparent`}
+                      >
+                        <div className='flex space-x-2 mb-1'>
+                          <ValueText>{index + 1}</ValueText>
+                          <ValueText>{label}</ValueText>
+                        </div>
+                        <ValueDetailsText>{content}</ValueDetailsText>
                       </div>
-                      <Text type='p' weight='light' size='xs'>
-                        {content}
-                      </Text>
+                    </div>
+                  );
+                }
+                const isOneActive = valueCards.some((_, index) => index === activeIndex);
+                return (
+                  <div
+                    key={index}
+                    className={`relative ${styles['grid-item']} ${
+                      !isOneActive && isMobile && label === 'organic growth' ? 'transform translate-x-1/2' : ''
+                    }`}
+                    onMouseEnter={handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Image url={imageUrl} className='object-cover' />
+                    <div
+                      className={`absolute inset-0 w-full h-full flex text-center items-center justify-center p-1 xl:p-8 ${
+                        isActive ? 'bg-gradient-to-br from-teal-600 to-transparent' : ''
+                      }`}
+                    >
+                      {isActive ? (
+                        <ValueDetailsText>{content}</ValueDetailsText>
+                      ) : (
+                        <div>
+                          <ValueText>{index + 1}</ValueText>
+                          <ValueText>{label}</ValueText>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
-              }
-              return (
-                <div
-                  key={index}
-                  className='relative h-24 sm:h-40 md:h-60 lg:h-96 xl:h-52 2xl:h-64'
-                  onMouseEnter={handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Image url={imageUrl} className='object-cover' />
-                  <div
-                    className={`absolute inset-0 w-full h-full flex items-center justify-center p-8 text-white ${
-                      isActive ? 'bg-gradient-to-br from-teal-600 to-transparent' : ''
-                    }`}
-                  >
-                    {isActive ? (
-                      <Text type='p' weight='light' size='2xs'>
-                        {content}
-                      </Text>
-                    ) : (
-                      <div>
-                        <Text type='p' weight='medium' size='md'>
-                          {index + 1}
-                        </Text>
-                        <Text type='p' weight='medium' size='md'>
-                          {label}
-                        </Text>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        }
+              })}
+            </div>
+          }
+        </div>
       </div>
     </Section>
   );
