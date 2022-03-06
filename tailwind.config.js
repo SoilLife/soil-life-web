@@ -1,8 +1,7 @@
 const { colors, fontFamily, height, width } = require('./config/tailwind');
 
 module.exports = {
-  mode: 'jit',
-  purge: ['**/*.{ts,tsx}'],
+  content: ['**/*.{ts,tsx}'],
   darkMode: 'media',
   theme: {
     colors,
@@ -18,9 +17,6 @@ module.exports = {
         fit: 'fit-content',
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [
     require('@tailwindcss/forms'),
