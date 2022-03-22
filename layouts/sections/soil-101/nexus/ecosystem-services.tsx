@@ -83,18 +83,18 @@ export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDiv
 
     const sectionContainer = sectionRef.current;
     const climateRegulationsSvg = sectionContainer.querySelector(
-      '#ecosystem_services_svg__Layer_2-2'
+      '#ecosystem_services_svg__Layer_1-2'
     ) as SVGGElement | null;
-    const plantGrowthSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_3') as SVGGElement | null;
-    const waterFiltrationSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_4') as SVGGElement | null;
-    const nutrientCyclingSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_5') as SVGGElement | null;
-    const waterStorageSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_6') as SVGGElement | null;
+    const plantGrowthSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_2-2') as SVGGElement | null;
+    const waterFiltrationSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_3') as SVGGElement | null;
+    const nutrientCyclingSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_4') as SVGGElement | null;
+    const waterStorageSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_5') as SVGGElement | null;
     const historicalRecordSvg = sectionContainer.querySelector(
-      '#ecosystem_services_svg__Layer_7'
+      '#ecosystem_services_svg__Layer_6'
     ) as SVGGElement | null;
-    const biodiversitySvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_8') as SVGGElement | null;
-    const carbonStorageSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_9') as SVGGElement | null;
-    const engineeringSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_10') as SVGGElement | null;
+    const biodiversitySvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_7') as SVGGElement | null;
+    const carbonStorageSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_8') as SVGGElement | null;
+    const engineeringSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_9') as SVGGElement | null;
 
     climateRegulationsSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     climateRegulationsSvg?.addEventListener('click', handleOpenModal('climate regulation'));
