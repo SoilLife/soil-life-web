@@ -96,8 +96,11 @@ export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDiv
     const carbonStorageSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_8') as SVGGElement | null;
     const engineeringSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_9') as SVGGElement | null;
 
-    climateRegulationsSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    climateRegulationsSvg?.addEventListener('click', handleOpenModal('climate regulation'));
+    if (climateRegulationsSvg) {
+      climateRegulationsSvg.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+      climateRegulationsSvg.addEventListener('click', handleOpenModal('climate regulation'));
+      climateRegulationsSvg.tabIndex = 0;
+    }
     plantGrowthSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
     plantGrowthSvg?.addEventListener('click', handleOpenModal('plant growth'));
     waterFiltrationSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
@@ -149,7 +152,7 @@ export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDiv
           ecosystem services that give rise to healthy plants, healthy people, and a healthy planet!
         </Text>
         <div className='relative' style={{ height: 'fit-content' }}>
-          <EcosystemServices className='h-full mx-auto object-contain max-h-[720px]' />
+          <EcosystemServices className='mx-auto object-contain max-h-[calc(100vh-60px)] sm:max-h-[calc(100vh-80px)]' />
           {modalType && <ServicePopup {...modalTypeMap[modalType]} onClose={handleClose} />}
         </div>
         <Text type='p' weight='regular' size='md' color='teal' className={`text-center ${styles['p-50']}`}>

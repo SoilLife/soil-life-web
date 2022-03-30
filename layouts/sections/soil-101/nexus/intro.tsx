@@ -108,10 +108,7 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
             <Text type='span' weight='light' size='md' color='pink'>
               50% solid
             </Text>{' '}
-            material made of mostly mineral and
-          </Text>
-          <Text type='p' weight='light' size='md' className={styles['p-60']}>
-            1-10% organic matter. the remaining{' '}
+            material made of mostly mineral and 1-10% organic matter. the remaining{' '}
             <Text type='span' weight='light' size='md' color='pink'>
               50% is empty, pore space
             </Text>{' '}

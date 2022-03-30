@@ -27,8 +27,8 @@ const modalTypeMap = {
     image: 'Soil_101/Soil_Nexus/organisms.jpg',
     text: ' the living organisms that inhabit a given soil both drive and are driven by soil development. plants and microbes produce CO2 (which forms carbonic acid in water) and other organic acids that weather rocks into soil. organisms also physically break things down or move materials.',
   },
-  typography: {
-    image: 'Soil_101/Soil_Nexus/topographySvg.jpg',
+  topography: {
+    image: 'Soil_101/Soil_Nexus/topography.jpg',
     text: 'the aspect or the direction that a slope faces determines how much sun it receives; whether it is warmer and drier or cooler and wetter. the slope (or the angle of the surface) influences erosion potential and water dynamics, leading to different rates of soil development or weathering.',
   },
   anthropogenic: {
@@ -80,7 +80,7 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
     organismsSvg?.addEventListener('click', handleOpenModal('organisms'));
 
     topographySvg?.classList?.add(...classes);
-    topographySvg?.addEventListener('click', handleOpenModal('typography'));
+    topographySvg?.addEventListener('click', handleOpenModal('topography'));
 
     anthropogenicSvg?.classList?.add(...classes);
     anthropogenicSvg?.addEventListener('click', handleOpenModal('anthropogenic'));
@@ -90,7 +90,7 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
       parentMaterialSvg?.removeEventListener('click', handleOpenModal('parent material'));
       climateSvg?.removeEventListener('click', handleOpenModal('climate'));
       organismsSvg?.removeEventListener('click', handleOpenModal('organisms'));
-      topographySvg?.removeEventListener('click', handleOpenModal('typography'));
+      topographySvg?.removeEventListener('click', handleOpenModal('topography'));
       anthropogenicSvg?.removeEventListener('click', handleOpenModal('anthropogenic'));
     };
   }, []);
@@ -123,15 +123,11 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
           style={{
             content: {
               padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
+              height: isMobile ? '100%' : isLandscape ? '80vh' : '70vh',
+              width: isMobile ? '100%' : isLandscape ? '50vw' : '90vw',
               left: isMobile ? 0 : '50%',
               top: isMobile ? '40px' : '50%',
               transform: isMobile ? undefined : 'translate(-50%, -50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
             },
             overlay: {
               zIndex: 2,
@@ -142,12 +138,11 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4 text-center'>
+          <div className='flex flex-col items-center justify-center space-y-4 text-center h-full'>
             <Text type='h1' weight='bold' size='2xl' color='pink'>
               {modalType}
             </Text>
-
-            <Image url={modalTypeMap[modalType].image} className='object-cover mx-auto h-auto' />
+            <Image url={modalTypeMap[modalType].image} className='object-contain mx-auto h-[255px] sm:h-96' alt='' />
             <Text type='p' weight='light' size='2xs' style={{ lineHeight: '36px' }}>
               {modalTypeMap[modalType].text}
             </Text>

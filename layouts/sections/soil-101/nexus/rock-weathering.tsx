@@ -180,7 +180,7 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
             rock weathering
           </Text>
           <div className='sm:row-span-2'>
-            <RockWeathering className='mx-auto h-[189px]' />
+            <RockWeathering className='mx-auto max-h-[189px]' />
           </div>
           <Text type='p' weight='light' size='md' className={`sm:col-span-3 ${styles['p-60']}`}>
             over time, through a combination of physical, biological, and chemical processes, rocks break down into

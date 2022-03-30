@@ -15,77 +15,58 @@ import styles from '../soil-101.module.css';
 
 const factorSvgMap: { [key: string]: React.ReactElement } = {
   'parent material': (
-    <div className='space-y-4 p-4'>
-      <Text type='h2' weight='regular' size='xl' color='pink'>
-        parent material
-      </Text>
-      <Text type='h2' weight='light' size='xs'>
+    <div className='space-y-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4'>
         as temperature and precipitation increase, organisms are more active, chemical reactions are faster, and more
         weathering occurs over time.
       </Text>
-      <ParentMaterialSvg className='max-h-[inherit]' />
+      <ParentMaterialSvg />
     </div>
   ),
   climate: (
-    <div className='space-y-4 p-4'>
-      <Text type='h2' weight='regular' size='xl' color='pink'>
-        climate
-      </Text>
-      <Text type='h2' weight='light' size='xs'>
+    <div className='space-y-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4'>
         the finer the particles, the faster the weathering, but mineralogy matters! silica is one of the least
         weatherable minerals, while minerals high in iron and magnesium weather readily.
       </Text>
-      <ClimateSvg className='max-h-[inherit]' />
+      <ClimateSvg />
     </div>
   ),
   topography: (
-    <div className='space-y-4 p-4'>
-      <div className='flex justify-between space-x-6'>
-        <Text type='h2' weight='regular' size='xl' color='pink'>
-          topography
-        </Text>
-        <Text type='h2' weight='light' size='xs'>
-          in the northern hemisphere, north facing slopes receives less sun and are often cooler and wetter;
-          south-facing slopes receives more sun and are often, warmer and drier.
-        </Text>
-      </div>
-      <TopographySvg className='max-h-[inherit]' />
+    <div className='space-y-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4'>
+        in the northern hemisphere, north facing slopes receives less sun and are often cooler and wetter; south-facing
+        slopes receives more sun and are often, warmer and drier.
+      </Text>
+
+      <TopographySvg />
     </div>
   ),
   organisms: (
-    <div className='space-y-4 p-4'>
-      <Text type='h2' weight='regular' size='xl' color='pink'>
-        organisms
-      </Text>
-      <Text type='h2' weight='light' size='xs'>
+    <div className='space-y-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4'>
         plants and microbes produce carbon dioxide (which forms carbonic acid in water) and a host of other organic
         acids that weather minerals into soil-sized particles.
       </Text>
-      <OrganismsSvg className='max-h-[inherit]' />
+      <OrganismsSvg />
     </div>
   ),
   time: (
-    <div className='space-y-4 p-4'>
-      <Text type='h2' weight='regular' size='xl' color='pink'>
-        time
-      </Text>
-      <Text type='h2' weight='light' size='xs'>
+    <div className='space-y-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4'>
         like us, soil ages! but time is relative to all other factors. for instance, a soil in a hot/wet climate will
         weather far more in 100 years than a soil in a cold/dry climate.
       </Text>
-      <TimeSvg className='max-h-[inherit]' />
+      <TimeSvg />
     </div>
   ),
   humans: (
-    <div className='space-y-4 p-4'>
-      <Text type='h2' weight='regular' size='xl' color='pink'>
-        anthropogenic
-      </Text>
-      <Text type='h2' weight='light' size='xs'>
+    <div className='space-y-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4'>
         soils form on geologic time scales that extends far beyond a human lifetime. however, while it takes 1,000 years
         to build an inch of topsoil, the same amount can be washed away in just a few decades when poorly managed
       </Text>
-      <HumansSvg className='mx-auto max-h-[20vh]' />
+      <HumansSvg className='p-4' />
     </div>
   ),
 };
@@ -110,7 +91,7 @@ export const FormingFactorsSection = () => {
         precipitation, and organism activity, soils weather, developing horizons and other distinct morphological
         features.
       </Text>
-      <div className='border border-solid border-gray-500'>
+      <div className='border border-solid border-gray-500 max-h-[calc(100vh-60px)] sm:max-h-[calc(100vh-80px)]'>
         <div className='overflow-x-auto overflow-y-hidden'>
           <ul className='flex flex-nowrap'>
             {Object.keys(factorSvgMap).map((factor) => (
@@ -127,7 +108,7 @@ export const FormingFactorsSection = () => {
             ))}
           </ul>
         </div>
-        <div className='grid place-items-center overflow-y-auto max-h-[40vh]'>{factorSvgMap[activeFactor]}</div>
+        <div className='grid place-items-center'>{factorSvgMap[activeFactor]}</div>
       </div>
     </div>
   );

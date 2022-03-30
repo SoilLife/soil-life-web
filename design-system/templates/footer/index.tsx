@@ -12,18 +12,12 @@ export function Footer({ className }: { className?: string }) {
             url='/soil_all_connected_Xgb0g5f3Fqm.png'
             className='h-full ml-0 object-contain w-auto max-h-[200px] sm:max-h-[382px] lg:ml-20'
           />
-          <div className='w-full flex flex-col items-end'>
-            <Text
-              type='p'
-              weight='bold'
-              size='xs'
-              color='white'
-              className='px-1 py-2 mb-6 bg-pink-500 w-full sm:max-w-[610px]'
-            >
+          <div className='w-full flex flex-col items-end lg:w-[731px]'>
+            <Text type='p' weight='bold' size='xs' color='white' className='px-1 py-2 mb-6 bg-pink-500 w-full'>
               stay connected.
             </Text>
             <SocialMediaIcons className='flex justify-center gap-4 mb-6 sm:justify-start' />
-            <div className='w-full sm:max-w-[731px]'>
+            <div className='w-full'>
               <Text
                 type='p'
                 weight='regular'
