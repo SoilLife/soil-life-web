@@ -1,12 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 
-// helpers
-import { useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-
 // components
-import ReactModal from 'react-modal';
 import { Text, Icon } from 'design-system/atoms';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import RockWeathering from 'public/images/soil-101/nexus/rock_weathering.svg';
@@ -71,8 +67,6 @@ const popupMap = {
 };
 
 export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
-  const isMobile = useMedia('(max-width: 639px)');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
 
   const [popup, setPopup] = useState<null | keyof typeof popupMap>(null);
@@ -200,30 +194,13 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
         </div>
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              inset: isMobile ? '40px 0 0 0' : '10%',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <FullImage
+          image={{
+            type: 'img',
+            url: modalTypeMap[modalType].image,
           }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='h-full w-full grid place-items-center'>
-            <img
-              src={modalTypeMap[modalType].image as string}
-              className='p-8 h-full w-full max-h-[80vh] object-contain'
-            />
-          </div>
-        </ReactModal>
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

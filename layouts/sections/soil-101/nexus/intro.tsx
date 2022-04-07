@@ -1,10 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
 
 // components
-import { Text, Image, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 
 // assets
 import AirWaterMineralOrganic from 'public/images/soil-101/nexus/air_water_mineral_organic.svg';
@@ -36,10 +34,6 @@ const modalTypeMap = {
 };
 
 export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
-  const orientation = useOrientation();
-  const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -121,43 +115,12 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
         </div>
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-            },
-            overlay: {
-              zIndex: 2,
-            },
-          }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='space-y-4 text-center'>
-            <Text type='h1' weight='bold' size='2xl' color='pink'>
-              {modalTypeMap[modalType].title}
-            </Text>
-
-            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto h-auto' />
-            <Text type='p' weight='light' size='2xs' style={{ lineHeight: '38px' }}>
-              {modalTypeMap[modalType].text}
-            </Text>
-          </div>
-        </ReactModal>
+        <GenericModal
+          title={modalTypeMap[modalType].title}
+          description={modalTypeMap[modalType].text}
+          imageUrl={modalTypeMap[modalType].imageUrl}
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

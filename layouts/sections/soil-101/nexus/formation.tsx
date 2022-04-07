@@ -1,10 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
 
 // components
-import { Text, Image, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 
 // assets
 import SoilFormation from 'public/images/soil-101/nexus/soil_formation.svg';
@@ -38,10 +36,6 @@ const modalTypeMap = {
 };
 
 export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
-  const orientation = useOrientation();
-  const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -62,6 +56,7 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
     const sectionContainer = sectionRef.current;
     const timeSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_75') as SVGGElement | null;
     const parentMaterialSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_76') as SVGGElement | null;
+    const parentMaterialSvg2 = sectionContainer.querySelector('#soil_formation_svg__Layer_77') as SVGGElement | null;
     const climateSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_78') as SVGGElement | null;
     const organismsSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_79') as SVGGElement | null;
     const topographySvg = sectionContainer.querySelector('#soil_formation_svg__Layer_80') as SVGGElement | null;
@@ -72,6 +67,8 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
 
     parentMaterialSvg?.classList?.add(...classes);
     parentMaterialSvg?.addEventListener('click', handleOpenModal('parent material'));
+    parentMaterialSvg2?.classList?.add(...classes);
+    parentMaterialSvg2?.addEventListener('click', handleOpenModal('parent material'));
 
     climateSvg?.classList?.add(...classes);
     climateSvg?.addEventListener('click', handleOpenModal('climate'));
@@ -88,6 +85,7 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
     return () => {
       timeSvg?.removeEventListener('click', handleOpenModal('time'));
       parentMaterialSvg?.removeEventListener('click', handleOpenModal('parent material'));
+      parentMaterialSvg2?.removeEventListener('click', handleOpenModal('parent material'));
       climateSvg?.removeEventListener('click', handleOpenModal('climate'));
       organismsSvg?.removeEventListener('click', handleOpenModal('organisms'));
       topographySvg?.removeEventListener('click', handleOpenModal('topography'));
@@ -116,38 +114,12 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
       </Text>
       <SoilFormation className='max-h-[668px] mx-auto' />
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '70vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '90vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-            },
-            overlay: {
-              zIndex: 2,
-            },
-          }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='flex flex-col items-center justify-center space-y-4 text-center h-full'>
-            <Text type='h1' weight='bold' size='2xl' color='pink'>
-              {modalType}
-            </Text>
-            <Image url={modalTypeMap[modalType].image} className='object-contain mx-auto h-[255px] sm:h-96' alt='' />
-            <Text type='p' weight='light' size='2xs' style={{ lineHeight: '36px' }}>
-              {modalTypeMap[modalType].text}
-            </Text>
-          </div>
-        </ReactModal>
+        <GenericModal
+          title={modalType}
+          description={modalTypeMap[modalType].text}
+          imageUrl={modalTypeMap[modalType].image}
+          onClose={handleCloseModal}
+        />
       )}
     </div>
   );

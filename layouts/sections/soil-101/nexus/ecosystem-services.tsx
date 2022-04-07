@@ -1,8 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 
-// helpers
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-
 // components
 import { Text } from 'design-system/atoms';
 
@@ -69,7 +66,6 @@ const modalTypeMap = {
 };
 
 export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -179,10 +175,10 @@ function ServicePopup({
 }) {
   return (
     <div className={`bg-white p-4 shadow-lg absolute cursor-pointer ${className}`} onClick={onClose}>
-      <Text type='h1' weight='bold' size='2xs' color={color} style={{ lineHeight: '30px' }}>
+      <Text type='h1' weight='bold' size='xs' color={color} style={{ lineHeight: '30px' }}>
         {title}
       </Text>
-      <Text type='p' weight='light' size='2xs' style={{ lineHeight: '30px' }}>
+      <Text type='p' weight='light' size='xs' style={{ lineHeight: '30px' }}>
         {text}
       </Text>
     </div>
