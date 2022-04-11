@@ -497,9 +497,6 @@ export default function WebOfSoilPage() {
                         weight='light'
                         size='lg'
                         className='bg-white rounded-lg p-6 lg:bg-transparent lg:p-0'
-                        style={{
-                          lineHeight: '35px',
-                        }}
                       >
                         soils are home to the plants, fungi, & bacteria that produce most of the world’s medicine — and
                         ~98% of the microbes that inhabit it are yet to be discovered!
@@ -533,9 +530,6 @@ export default function WebOfSoilPage() {
                           weight='light'
                           size='lg'
                           className='bg-white rounded-lg p-6 max-w-md lg:max-w-none lg:bg-transparent lg:p-0'
-                          style={{
-                            lineHeight: '35px',
-                          }}
                         >
                           from paints and pottery to playing fields and parks, soils provide the grounds for music,
                           sports, and art!

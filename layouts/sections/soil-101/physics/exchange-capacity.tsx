@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { useOrientation, useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
@@ -43,50 +43,32 @@ export const ExchangeCapacitySection = () => {
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
-        setModalType(type);
-      };
-    }
-
-    const sectionContainer = sectionRef.current;
-    const cationExchangeSvg = sectionContainer.querySelector(
-      '#exchange_capacity_clay_svg__Layer_59'
-    ) as SVGGElement | null;
-    cationExchangeSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    cationExchangeSvg?.addEventListener('click', handleOpenModal('cation exchange'));
-
-    const anionExchangeSvg = sectionContainer.querySelector(
-      '#exchange_capacity_organic_matter_svg__Layer_65'
-    ) as SVGGElement | null;
-    anionExchangeSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    anionExchangeSvg?.addEventListener('click', handleOpenModal('anion exchange'));
-
-    const metalOxideSvg = sectionContainer.querySelector(
-      '#exchange_capacity_metal_oxides_svg__Layer_72'
-    ) as SVGGElement | null;
-    metalOxideSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    metalOxideSvg?.addEventListener('click', handleOpenModal('metal oxide exchange'));
-
+  const handleOpenModal = useCallback(function (type: typeof modalType) {
     return () => {
-      cationExchangeSvg?.removeEventListener('click', handleOpenModal('cation exchange'));
-      anionExchangeSvg?.removeEventListener('click', handleOpenModal('anion exchange'));
-      metalOxideSvg?.removeEventListener('click', handleOpenModal('metal oxide exchange'));
+      setModalType(type);
     };
   }, []);
 
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const sectionContainer = sectionRef.current;
+    const cationExchangeSvg = sectionContainer.querySelector(
+      '#exchange_capacity_clay_svg__Layer_2'
+    ) as SVGGElement | null;
+    if (cationExchangeSvg) {
+      cationExchangeSvg.classList.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+      cationExchangeSvg.addEventListener('click', handleOpenModal('cation exchange'));
+      cationExchangeSvg.tabIndex = 0;
+    }
+
+    return () => {
+      cationExchangeSvg?.removeEventListener('click', handleOpenModal('cation exchange'));
+    };
+  }, [handleOpenModal]);
+
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -111,12 +93,20 @@ export const ExchangeCapacitySection = () => {
             som also has high surface area and charge, holding on to both positive and negatively charged ions
             (depending on pH) and contributing significantly to water holding capacity.
           </Text>
-          <img src='/images/soil-101/physics/exchange_capacity_organic_matter.png' className='mb-4 sm:mb-0 sm:w-1/2' />
+          <img
+            src='/images/soil-101/physics/exchange_capacity_organic_matter.png'
+            className='cursor-pointer hover:opacity-50 active:opacity-100 mb-4 sm:mb-0 sm:w-1/2'
+            onClick={handleOpenModal('anion exchange')}
+          />
         </div>
         <div
           className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
         >
-          <img src='/images/soil-101/physics/exchange_capacity_metal_oxides.png' className='sm:w-1/2' />
+          <img
+            src='/images/soil-101/physics/exchange_capacity_metal_oxides.png'
+            className='cursor-pointer hover:opacity-50 active:opacity-100 sm:w-1/2'
+            onClick={handleOpenModal('metal oxide exchange')}
+          />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
             iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
             capacity (i.e. NO3-, BO3-, Cl-).
@@ -128,6 +118,7 @@ export const ExchangeCapacitySection = () => {
           isOpen
           shouldCloseOnOverlayClick
           shouldCloseOnEsc
+          preventScroll
           style={{
             content: {
               padding: 40,

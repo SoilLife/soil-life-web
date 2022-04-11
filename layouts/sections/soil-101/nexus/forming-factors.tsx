@@ -16,7 +16,7 @@ import styles from '../soil-101.module.css';
 const factorSvgMap: { [key: string]: React.ReactElement } = {
   'parent material': (
     <div className='space-y-4'>
-      <Text type='h2' weight='light' size='xs' className='p-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
         as temperature and precipitation increase, organisms are more active, chemical reactions are faster, and more
         weathering occurs over time.
       </Text>
@@ -25,7 +25,7 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   ),
   climate: (
     <div className='space-y-4'>
-      <Text type='h2' weight='light' size='xs' className='p-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
         the finer the particles, the faster the weathering, but mineralogy matters! silica is one of the least
         weatherable minerals, while minerals high in iron and magnesium weather readily.
       </Text>
@@ -34,7 +34,7 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   ),
   topography: (
     <div className='space-y-4'>
-      <Text type='h2' weight='light' size='xs' className='p-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
         in the northern hemisphere, north facing slopes receives less sun and are often cooler and wetter; south-facing
         slopes receives more sun and are often, warmer and drier.
       </Text>
@@ -44,7 +44,7 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   ),
   organisms: (
     <div className='space-y-4'>
-      <Text type='h2' weight='light' size='xs' className='p-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
         plants and microbes produce carbon dioxide (which forms carbonic acid in water) and a host of other organic
         acids that weather minerals into soil-sized particles.
       </Text>
@@ -53,7 +53,7 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   ),
   time: (
     <div className='space-y-4'>
-      <Text type='h2' weight='light' size='xs' className='p-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
         like us, soil ages! but time is relative to all other factors. for instance, a soil in a hot/wet climate will
         weather far more in 100 years than a soil in a cold/dry climate.
       </Text>
@@ -62,7 +62,7 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   ),
   humans: (
     <div className='space-y-4'>
-      <Text type='h2' weight='light' size='xs' className='p-4'>
+      <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
         soils form on geologic time scales that extends far beyond a human lifetime. however, while it takes 1,000 years
         to build an inch of topsoil, the same amount can be washed away in just a few decades when poorly managed
       </Text>
@@ -88,7 +88,7 @@ export const FormingFactorsSection = () => {
       </Text>
       <Text type='p' weight='light' size='md' className={styles['p-50']}>
         pedogenesis is the formation of soil - over time. as energy flows through the system, in the form of heat,
-        precipitation, and organism activity, soils weather, developing horizons and other distinct morphological
+        precipitation, and biological activity; soils weather, developing horizons and other distinct morphological
         features.
       </Text>
       <div className='border border-solid border-gray-500 max-h-[calc(100vh-60px)] sm:max-h-[calc(100vh-80px)]'>

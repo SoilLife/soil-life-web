@@ -52,10 +52,6 @@ export const OurStorySection = forwardRef<HTMLDivElement, {}>(function (_props, 
                 and importance of soil, which caught the attention of the Natural Resource Conservation Service and
                 ultimately, led to a collaboration to produce this website and the tools housed within it.
               </Paragraph>
-              <Paragraph className='hidden sm:block'>
-                the project caught the attention of the Natural Resource Conservation Service and ultimately, led to a
-                collaboration to produce this website and the tools housed within it.
-              </Paragraph>
               <Paragraph className='hidden sm:block'>we hope you dig it!</Paragraph>
             </div>
           </div>

@@ -144,7 +144,7 @@ export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement)
           within the soil profile. the density of the individual soil particles and the amount of empty space within and
           between them determines the bulk density, or mass per unit volume of the soil.
         </Text>
-        <StructureSvg className='mx-auto max-h-[50vh]' />
+        <StructureSvg className='mx-auto max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)]' />
       </div>
       {modalType && (
         <ReactModal

@@ -94,9 +94,9 @@ export default function SoilPhysicsPage() {
         <div className={styles['sections-container']}>
           <TextureSection assignRef={assignRefs('texture')} />
           <TexturalClassSection />
+          <OrganicMatterSection />
           <SurfaceChargeSection assignRef={assignRefs('charge')} />
           <WaterDynamicsSection />
-          <OrganicMatterSection />
           <ExchangeCapacitySection />
           <AggregatesSection assignRef={assignRefs('aggregation')} />
           <AggregateFormationSection />
