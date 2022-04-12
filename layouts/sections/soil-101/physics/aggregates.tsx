@@ -1,10 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
-import { useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
 
 // components
-import { Text, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import AggregationSvg from 'public/images/soil-101/physics/aggregation.svg';
@@ -13,8 +11,6 @@ import AggregatesSvg from 'public/images/soil-101/physics/whats_an_aggregate.svg
 import styles from '../soil-101.module.css';
 
 export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
-  const isMobile = useMedia('(max-width: 640px)');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -65,28 +61,13 @@ export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement
         <AggregationSvg />
       </div>
       {isModalOpen && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              inset: isMobile ? '40px 0 0 0' : '10%',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <FullImage
+          image={{
+            type: 'svg',
+            element: <AggregatesSvg className='max-h-full' />,
           }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='h-full grid place-items-center'>
-            <AggregatesSvg className='max-h-[70vh]' />
-          </div>
-        </ReactModal>
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

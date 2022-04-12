@@ -1,15 +1,11 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
-import { useOrientation, useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
 
 // components
-import { Text, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 
 // assets
 import ClaySvg from 'public/images/soil-101/physics/exchange_capacity_clay.svg';
-// import OrganicMatterSvg from 'public/images/soil-101/physics/exchange_capacity_organic_matter.png';
-// import MetalOxideSvg from 'public/images/soil-101/physics/exchange_capacity_metal_oxides.svg';
 
 import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
 import AnionExchangeSvg from 'public/images/soil-101/physics/anion_exchange_capacity.svg';
@@ -20,26 +16,22 @@ import styles from '../soil-101.module.css';
 const modalTypeMap = {
   'cation exchange': {
     title: 'cation exchange capacity',
-    image: <CationExchangeSvg className='h-full w-full' />,
+    image: <CationExchangeSvg className='mx-auto sm:w-3/4' />,
     text: 'cations are positively charged ions. cation exchange capacity is the number of negatively charged sites (on clays or organic matter) that can hold onto these ions.',
   },
   'anion exchange': {
     title: 'anion exchange capacity',
-    image: <AnionExchangeSvg className='h-full w-full' />,
+    image: <AnionExchangeSvg className='mx-auto sm:w-3/4' />,
     text: 'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions.',
   },
   'metal oxide exchange': {
     title: '',
-    image: <MetalOxideExchangeSvg className='h-full w-full' />,
+    image: <MetalOxideExchangeSvg className='mx-auto h-[50%]' />,
     text: '',
   },
 };
 
 export const ExchangeCapacitySection = () => {
-  useFullpageOverflow();
-  const orientation = useOrientation();
-  const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -114,41 +106,12 @@ export const ExchangeCapacitySection = () => {
         </div>
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          preventScroll
-          style={{
-            content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-            },
-            overlay: {
-              zIndex: 2,
-            },
-          }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='space-y-4'>
-            <Text type='h1' weight='thin' size='2xl' className='text-pink-500 text-center'>
-              {modalTypeMap[modalType].title}
-            </Text>
-
-            <Text type='p' weight='light' size='md' className='text-center'>
-              {modalTypeMap[modalType].text}
-            </Text>
-
-            {modalTypeMap[modalType].image}
-          </div>
-        </ReactModal>
+        <GenericModal
+          title={modalTypeMap[modalType].title}
+          description={modalTypeMap[modalType].text}
+          image={{ type: 'svg', element: modalTypeMap[modalType].image }}
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

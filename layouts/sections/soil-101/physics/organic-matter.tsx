@@ -1,10 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
-import { useMedia, useOrientation } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
 
 // components
-import { Text, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import OrganicMatterSvg from 'public/images/soil-101/physics/organic_matter.svg';
@@ -16,19 +14,15 @@ import styles from '../soil-101.module.css';
 const modalTypeMap = {
   'carbon inputs': {
     title: 'carbon-based inputs',
-    image: <CarbonInputsSvg className='h-full w-full' />,
+    image: <CarbonInputsSvg className='max-h-full' />,
   },
   filter: {
-    title: '',
-    image: <MicrobialFilterSvg className='h-full w-full' />,
+    title: 'microbial filter',
+    image: <MicrobialFilterSvg className='max-h-full' />,
   },
 };
 
 export const OrganicMatterSection = () => {
-  useFullpageOverflow();
-  const orientation = useOrientation();
-  const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -107,39 +101,15 @@ export const OrganicMatterSection = () => {
         <OrganicMatterSvg className='mx-auto max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)]' />
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <FullImage
+          image={{
+            type: 'svg',
+            element: modalTypeMap[modalType].image,
           }}
-          onRequestClose={handleCloseModal}
-        >
-          {modalTypeMap[modalType].title && (
-            <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-              <Icon icon='x' size={32} className='text-gray-500' />
-            </button>
-          )}
-          <div className='space-y-8'>
-            {modalTypeMap[modalType].title && (
-              <Text type='h1' weight='light' size='xl' color='teal' className='text-center'>
-                {modalTypeMap[modalType].title}
-              </Text>
-            )}
-            {modalTypeMap[modalType].image}
-          </div>
-        </ReactModal>
+          title={modalTypeMap[modalType].title}
+          titleColor='teal'
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

@@ -14,9 +14,9 @@ const navLinks = [
     name: 'soil 101',
     slug: '/soil-101',
     submenu: [
-      { name: 'soil genesis', slug: '/soil-nexus', icon: 'nexus.svg' },
+      { name: 'soil nexus', slug: '/soil-nexus', icon: 'nexus.svg' },
       {
-        name: 'soil habitat',
+        name: 'soil physics',
         slug: '/soil-physics',
         icon: 'physics.svg',
       },

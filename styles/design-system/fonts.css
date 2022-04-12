@@ -42,11 +42,11 @@
 
 @layer base {
   :root {
-    --acre-thin: 'Acre-Thin';
-    --acre-light: 'Acre-Light';
-    --acre-regular: 'Acre-Regular';
-    --acre-medium: 'Acre-Medium';
-    --acre-semibold: 'Acre-Semibold';
-    --acre-bold: 'Acre-Bold';
+    --acre-thin: 'Acre-Thin', 'Gotham', 'Avenir', Arial, Helvetica, sans-serif;
+    --acre-light: 'Acre-Light', 'Gotham', 'Avenir', Arial, Helvetica, sans-serif;
+    --acre-regular: 'Acre-Regular', 'Gotham', 'Avenir', Arial, Helvetica, sans-serif;
+    --acre-medium: 'Acre-Medium', 'Gotham', 'Avenir', Arial, Helvetica, sans-serif;
+    --acre-semibold: 'Acre-Semibold', 'Gotham', 'Avenir', Arial, Helvetica, sans-serif;
+    --acre-bold: 'Acre-Bold', 'Gotham', 'Avenir', Arial, Helvetica, sans-serif;
   }
 }

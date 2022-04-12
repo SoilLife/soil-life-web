@@ -117,7 +117,7 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
         <GenericModal
           title={modalType}
           description={modalTypeMap[modalType].text}
-          imageUrl={modalTypeMap[modalType].image}
+          image={{ type: 'imagekit', url: modalTypeMap[modalType].image }}
           onClose={handleCloseModal}
         />
       )}

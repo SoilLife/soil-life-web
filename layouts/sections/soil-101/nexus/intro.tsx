@@ -118,7 +118,7 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
         <GenericModal
           title={modalTypeMap[modalType].title}
           description={modalTypeMap[modalType].text}
-          imageUrl={modalTypeMap[modalType].imageUrl}
+          image={{ type: 'imagekit', url: modalTypeMap[modalType].imageUrl }}
           onClose={handleCloseModal}
         />
       )}

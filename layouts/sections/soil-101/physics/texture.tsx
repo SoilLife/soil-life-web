@@ -1,10 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
+import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 
 // components
-import { Text, Image, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
 
 // assets
 import SoilTextureSvg from 'public/images/soil-101/physics/soil_texture.svg';
@@ -30,10 +28,6 @@ const modalTypeMap = {
 };
 
 export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
-  const orientation = useOrientation();
-  const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -41,40 +35,36 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
     if (!sectionRef.current) return;
     function handleOpenModal(type: typeof modalType) {
       return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
         setModalType(type);
       };
     }
 
+    function makeInteractive(svg: SVGGElement | null, type: keyof typeof modalTypeMap) {
+      if (!svg) return;
+      svg.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+      svg.addEventListener('click', handleOpenModal(type));
+      svg.tabIndex = 0;
+      return {
+        unmount() {
+          svg.removeEventListener('click', handleOpenModal(type));
+        },
+      };
+    }
+
     const sectionContainer = sectionRef.current;
-    const sandSvg = sectionContainer.querySelector('#soil_texture_svg__Layer_19') as SVGGElement | null;
-    sandSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    sandSvg?.addEventListener('click', handleOpenModal('sand'));
-
-    const siltSvg = sectionContainer.querySelector('#soil_texture_svg__Layer_17') as SVGGElement | null;
-    siltSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    siltSvg?.addEventListener('click', handleOpenModal('silt'));
-
-    const claySvg = sectionContainer.querySelector('#soil_texture_svg__Layer_18') as SVGGElement | null;
-    claySvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    claySvg?.addEventListener('click', handleOpenModal('clay'));
+    const sandSvg = makeInteractive(sectionContainer.querySelector('#soil_texture_svg__d'), 'sand');
+    const siltSvg = makeInteractive(sectionContainer.querySelector('#soil_texture_svg__e'), 'silt');
+    const claySvg = makeInteractive(sectionContainer.querySelector('#soil_texture_svg__f'), 'clay');
 
     return () => {
-      sandSvg?.removeEventListener('click', handleOpenModal('sand'));
-      siltSvg?.removeEventListener('click', handleOpenModal('silt'));
-      claySvg?.removeEventListener('click', handleOpenModal('clay'));
+      sandSvg?.unmount();
+      siltSvg?.unmount();
+      claySvg?.unmount();
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -114,43 +104,12 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
         </div>
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-            },
-            overlay: {
-              zIndex: 2,
-            },
-          }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='space-y-4'>
-            <Text type='h1' weight='bold' size='2xl' className='text-pink-500 text-center'>
-              {modalTypeMap[modalType].title}
-            </Text>
-
-            <Image url={modalTypeMap[modalType].imageUrl} className='object-cover mx-auto h-auto' />
-            <Text type='p' weight='light' size='2xs' className='text-center'>
-              {modalTypeMap[modalType].text}
-            </Text>
-          </div>
-        </ReactModal>
+        <GenericModal
+          title={modalTypeMap[modalType].title}
+          image={{ type: 'imagekit', url: modalTypeMap[modalType].imageUrl }}
+          description={modalTypeMap[modalType].text}
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );
