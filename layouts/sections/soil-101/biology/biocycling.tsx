@@ -144,11 +144,11 @@ function Popup({
   className: string;
 }) {
   return (
-    <div className={`absolute p-4 bg-white shadow max-w-[475px] ${className}`}>
-      <Text type='h3' weight='light' size='2xs' color={color}>
+    <div className={`absolute p-4 space-y-2 bg-white shadow max-w-[475px] ${className}`}>
+      <Text type='h3' weight='light' size='sm' color={color} style={{ lineHeight: '32px' }}>
         {title}:
       </Text>
-      <Text type='h3' weight='light' size='2xs'>
+      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
         {text}
       </Text>
     </div>

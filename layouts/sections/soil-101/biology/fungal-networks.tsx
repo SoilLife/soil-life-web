@@ -63,16 +63,19 @@ export const FungalNetworksSection = () => {
 
         <Text type='p' weight='light' size='lg' className={`text-center ${styles['p-70']}`}>
           plants release{' '}
-          <Text type='span' weight='light' size='lg' color='blue'>
+          <Text type='span' weight='bold' size='lg' color='blue'>
             compounds
           </Text>{' '}
           to attract{' '}
-          <Text type='span' weight='light' size='lg' color='pink'>
+          <Text type='span' weight='bold' size='lg' color='pink'>
             mycorrhizal fungi
           </Text>
-          , stimulating the growth of thread-like hyphae, which connect within or outside the roots, extending them
-          100-1000x. the root provides sugars to feed the fungus and in turn, its hyphae spread throughout the soil in
-          search of water, nitrogen, phosphorus, and other nutrients.
+          , stimulating the growth of thread-like hyphae, which connect within or outside the roots, extending them{' '}
+          <Text type='span' weight='bold' size='lg'>
+            100-1000x
+          </Text>
+          . the root provides sugars to feed the fungus and in turn, its hyphae spread throughout the soil in search of
+          water, nitrogen, phosphorus, and other nutrients.
         </Text>
 
         <div className='text-center pt-4'>
@@ -84,7 +87,7 @@ export const FungalNetworksSection = () => {
           </Text>
         </div>
 
-        <PlantGrowthPromoting className='mx-auto max-h-[80vh]' />
+        <PlantGrowthPromoting className='mx-auto' />
       </div>
       {isModalOpen && (
         <ReactModal

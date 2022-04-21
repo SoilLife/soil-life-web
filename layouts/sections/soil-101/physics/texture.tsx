@@ -33,20 +33,30 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
+    function handleOpenModalClick(type: typeof modalType) {
+      return () => {
         setModalType(type);
+      };
+    }
+
+    function handleOpenModalKeydown(type: typeof modalType) {
+      return (event: KeyboardEvent) => {
+        if (event.code === 'Enter') {
+          setModalType(type);
+        }
       };
     }
 
     function makeInteractive(svg: SVGGElement | null, type: keyof typeof modalTypeMap) {
       if (!svg) return;
-      svg.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-      svg.addEventListener('click', handleOpenModal(type));
+      svg.classList.add('cursor-pointer', 'focus:opacity-50', 'hover:opacity-50', 'active:opacity-100');
       svg.tabIndex = 0;
+      svg.addEventListener('click', handleOpenModalClick(type));
+      svg.addEventListener('keydown', handleOpenModalKeydown(type));
       return {
         unmount() {
-          svg.removeEventListener('click', handleOpenModal(type));
+          svg.removeEventListener('click', handleOpenModalClick(type));
+          svg.removeEventListener('keydown', handleOpenModalKeydown(type));
         },
       };
     }
@@ -82,7 +92,7 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
         <div className='flex flex-col items-center gap-8 sm:flex-row-reverse'>
           <SoilTextureSvg className='sm:w-1/2' />
           <Text type='p' weight='light' size='lg' className={`max-w-lg sm:w-1/2 ${styles['p-48']}`}>
-            the clay particles in soil are classified by size into{' '}
+            the particles in soil are classified by size into{' '}
             <Text type='span' weight='bold' size='lg' style={{ color: '#EEA117' }}>
               sand
             </Text>

@@ -16,7 +16,7 @@ export const RhizosphereSection = (props: { assignRef: (el: null | HTMLDivElemen
       <div className='flex flex-col gap-4 sm:flex-row sm:items-center'>
         <Text type='p' weight='light' size='lg' className={`text-center sm:w-2/5 ${styles['p-48']}`}>
           the{' '}
-          <Text type='span' weight='light' size='lg' color='teal'>
+          <Text type='span' weight='bold' size='lg' color='teal'>
             rhizosphere
           </Text>{' '}
           is a bustling metropolis with billions of organisms in a single teaspoon! it's the area of soil that is in
