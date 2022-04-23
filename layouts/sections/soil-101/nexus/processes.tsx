@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 
 // helpers
 import { useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 
 // components
 import ReactModal from 'react-modal';
 import { Text, Icon } from 'design-system/atoms';
+import { Image } from 'design-system/atoms/image';
 
 // interfaces
 import { TextProps } from 'design-system/atoms/text/text.interfaces';
@@ -15,10 +15,6 @@ import { TextProps } from 'design-system/atoms/text/text.interfaces';
 import LeftArrow from 'public/images/left_arrow_pink_thick.svg';
 import RightArrow from 'public/images/right_arrow_pink_thick.svg';
 import SoilProcessesSvg from 'public/images/soil-101/nexus/soil_processes.svg';
-import AdditionsSvg from 'public/images/soil-101/nexus/additions.svg';
-import LossesSvg from 'public/images/soil-101/nexus/losses.svg';
-import TransformationsSvg from 'public/images/soil-101/nexus/transformations.svg';
-import TranslocationsSvg from 'public/images/soil-101/nexus/translocations.svg';
 
 import styles from '../soil-101.module.css';
 
@@ -50,14 +46,13 @@ const processes: { title: string; text1: string; text2: string; color: TextProps
 ];
 
 const modalTypeMap = {
-  additions: <AdditionsSvg className='w-full h-full' />,
-  losses: <LossesSvg className='w-full h-full' />,
-  transformations: <TransformationsSvg className='w-full h-full' />,
-  translocations: <TranslocationsSvg className='w-full h-full' />,
+  additions: 'Soil_101/Soil_Nexus/additions_9NxZVypDg.png',
+  losses: 'Soil_101/Soil_Nexus/losses_4xgqo0ix9.png',
+  transformations: 'Soil_101/Soil_Nexus/transformations_KSFwxq0hS.png',
+  translocations: 'Soil_101/Soil_Nexus/translocations_KoJ3eAVfB.png',
 };
 
 export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
   const isMobile = useMedia('(max-width: 640px)');
   const [modalType, setModalType] = useState<null | 'additions' | 'losses' | 'transformations' | 'translocations'>(
     null
@@ -66,36 +61,52 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function handleOpenModalClick(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
-    const sectionContainer = sectionRef.current;
-    const additionsSvg = sectionContainer.querySelector('#soil_processes_svg__Layer_83') as SVGGElement | null;
-    const lossesSvg = sectionContainer.querySelector('#soil_processes_svg__Layer_84') as SVGGElement | null;
-    const transformationsSvg = sectionContainer.querySelector('#soil_processes_svg__Layer_85') as SVGGElement | null;
-    const translocationSvg = sectionContainer.querySelector('#soil_processes_svg__Layer_86') as SVGGElement | null;
+    function handleOpenModalKeydown(type: typeof modalType) {
+      return (event: KeyboardEvent) => {
+        if (event.code === 'Enter') {
+          setModalType(type);
+        }
+      };
+    }
 
-    additionsSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    additionsSvg?.addEventListener('click', handleOpenModal('additions'));
-    lossesSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    lossesSvg?.addEventListener('click', handleOpenModal('losses'));
-    transformationsSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    transformationsSvg?.addEventListener('click', handleOpenModal('transformations'));
-    translocationSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    translocationSvg?.addEventListener('click', handleOpenModal('translocations'));
+    function makeInteractive(svg: SVGGElement | null, type: typeof modalType) {
+      if (!svg) return;
+      svg.classList.add('cursor-pointer', 'focus:opacity-50', 'hover:opacity-50', 'active:opacity-100');
+      svg.ariaLabel = `open ${type} modal`;
+      svg.tabIndex = 0;
+      svg.addEventListener('click', handleOpenModalClick(type));
+      svg.addEventListener('keydown', handleOpenModalKeydown(type));
+      return {
+        unmount() {
+          svg.removeEventListener('click', handleOpenModalClick(type));
+          svg.removeEventListener('keydown', handleOpenModalKeydown(type));
+        },
+      };
+    }
+
+    const sectionContainer = sectionRef.current;
+    const additionsSvg = makeInteractive(sectionContainer.querySelector('#soil_processes_svg__Layer_83'), 'additions');
+    const lossesSvg = makeInteractive(sectionContainer.querySelector('#soil_processes_svg__Layer_84'), 'losses');
+    const transformationsSvg = makeInteractive(
+      sectionContainer.querySelector('#soil_processes_svg__Layer_85'),
+      'transformations'
+    );
+    const translocationSvg = makeInteractive(
+      sectionContainer.querySelector('#soil_processes_svg__Layer_86'),
+      'translocations'
+    );
 
     return () => {
-      additionsSvg?.removeEventListener('click', handleOpenModal('additions'));
-      lossesSvg?.removeEventListener('click', handleOpenModal('losses'));
-      transformationsSvg?.removeEventListener('click', handleOpenModal('transformations'));
-      translocationSvg?.removeEventListener('click', handleOpenModal('translocations'));
+      additionsSvg?.unmount();
+      lossesSvg?.unmount();
+      transformationsSvg?.unmount();
+      translocationSvg?.unmount();
     };
   }, []);
 
@@ -144,8 +155,7 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
             <ul className='grid grid-cols-2 gap-4 sm:grid-cols-none'>
               {processes.map((process) => (
                 <li key={process.title}>
-                  <div
-                    className='inline-block'
+                  <button
                     onClick={() => {
                       setModalType(process.title as typeof modalType);
                     }}
@@ -159,7 +169,7 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
                     >
                       {process.title}:
                     </Text>
-                  </div>
+                  </button>
                   <Text type='p' weight='light' size='md' className={styles['p-48']}>
                     {process.text1}
                   </Text>
@@ -212,7 +222,7 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
               ))}
             </ul>
           </div>
-          <div className='h-full w-full'>{modalTypeMap[modalType]}</div>
+          <Image key={modalType} url={modalTypeMap[modalType]} />
 
           <LeftArrow
             className='absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer'
