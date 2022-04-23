@@ -37,7 +37,7 @@ export const TexturalClassSection = () => {
     const x = (left + top / 2) / 100;
     const y = top / 100;
 
-    dotRef.current.classList?.remove('hidden');
+    dotRef.current.classList.remove('hidden');
     dotRef.current.style.left = `${svgBoundingClientRect.width * x}px`;
     dotRef.current.style.top = `${svgBoundingClientRect.height * (1 - y)}px`;
   }, [values]);
