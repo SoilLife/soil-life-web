@@ -6,7 +6,13 @@ import styles from '../soil-101.module.css';
 export const DiversitySection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='bold' size='4xl' className={styles['heading']}>
+      <Text
+        id='soil-diversity'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         soil diversity
       </Text>
       <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>

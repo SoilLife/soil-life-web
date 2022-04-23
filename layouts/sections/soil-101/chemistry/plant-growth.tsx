@@ -9,7 +9,14 @@ import styles from '../soil-101.module.css';
 export const PlantGrowthSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='bold' size='4xl' color='orange' className={styles['heading']}>
+      <Text
+        id='plant-growth'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        color='orange'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         plant growth
       </Text>
       <PlantGrowthSvg className='mx-auto max-h-[70vh]' />

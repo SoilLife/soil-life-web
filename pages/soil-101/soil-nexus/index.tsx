@@ -63,17 +63,6 @@ export default function SoilNexusPage() {
     };
   }
 
-  function handleClick(section: string) {
-    return () => {
-      const container = refs.current[section];
-      if (container) {
-        const headerOffsetTop = 141;
-        window.scrollTo({ behavior: 'smooth', top: container.offsetTop - headerOffsetTop });
-        setCurrentSection(section);
-      }
-    };
-  }
-
   function handleDownArrowClick() {
     const headerOffsetTop = 141;
     if (refs.current['soil nexus']) {
@@ -86,7 +75,7 @@ export default function SoilNexusPage() {
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-pink-500' />
       <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
-        <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='pink' />
+        <SectionsNavBar sections={sections} currentSection={currentSection} color='pink' />
         <div className={styles['sections-container']}>
           <IntroSection assignRef={assignRefs('soil nexus')} />
           <EcosystemServicesSection assignRef={assignRefs('soil services')} />

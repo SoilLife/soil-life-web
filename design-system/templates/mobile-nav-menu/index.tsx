@@ -1,3 +1,6 @@
+import { useEffect, useRef } from 'react';
+
+// components
 import { Text } from 'design-system/atoms';
 import Link from 'next/link';
 
@@ -10,12 +13,12 @@ const navLinks = [
   { name: 'about us', slug: '/about-us' },
 ];
 
-function createNavLinks() {
+function createNavLinks(isOpen: boolean) {
   return navLinks.map(({ name, slug }) => {
     return (
       <li key={name} className='text-center cursor-pointer'>
         <Link href={slug}>
-          <a>
+          <a tabIndex={isOpen ? undefined : -1}>
             <Text
               type='h3'
               weight='light'
@@ -32,9 +35,16 @@ function createNavLinks() {
 }
 
 export function MobileNavMenu({ isMenuOpen }: { isMenuOpen: boolean }) {
+  const menuRef = useRef<HTMLUListElement | null>(null);
+  useEffect(() => {
+    if (isMenuOpen && menuRef.current) {
+      (menuRef.current.firstElementChild?.firstElementChild as HTMLAnchorElement)?.focus();
+    }
+  }, [isMenuOpen]);
   return (
     <>
       <ul
+        ref={menuRef}
         className={`
       fixed top-10 left-0 pt-10 bg-white shadow-md
       w-full h-full z-50 min-w-[320px]
@@ -43,7 +53,7 @@ export function MobileNavMenu({ isMenuOpen }: { isMenuOpen: boolean }) {
       ${isMenuOpen ? '' : '-translate-x-full'}
      `}
       >
-        {createNavLinks()}
+        {createNavLinks(isMenuOpen)}
       </ul>
       {isMenuOpen && <div className={`bg-gray-900 bg-opacity-25 absolute top-0 left-0 h-full w-full z-10`} />}
     </>

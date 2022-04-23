@@ -74,7 +74,14 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
   return (
     <>
       <div ref={props.assignRef} className={styles['section']}>
-        <Text type='h1' weight='bold' size='3xl' color='blue' className={styles['heading']}>
+        <Text
+          id='soils-at-risk'
+          type='h1'
+          weight='bold'
+          size='3xl'
+          color='blue'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           soils at risk
         </Text>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>

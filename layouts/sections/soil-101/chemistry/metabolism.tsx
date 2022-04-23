@@ -1,10 +1,11 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
+
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
-import { Text, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import MetabolismSvg from 'public/images/soil-101/chemistry/metabolism.svg';
@@ -13,39 +14,30 @@ import ChemMetabolismSvg from 'public/images/soil-101/chemistry/chem_metabolism.
 import styles from '../soil-101.module.css';
 
 export const MetabolismSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const orientation = useOrientation();
-  const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal() {
-      const body = document.querySelector('body');
-      if (body) {
-        body.style.overflow = 'hidden';
-      }
+    function openModal() {
       setIsModalOpen(true);
     }
 
     const sectionContainer = sectionRef.current;
-    const nutrientUptake = sectionContainer.querySelector('#metabolism_svg__Layer_76') as SVGGElement | null;
-    nutrientUptake?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    nutrientUptake?.addEventListener('click', handleOpenModal);
+    const nutrientUptake = makeSvgInteractive({
+      svg: sectionContainer.querySelector('#metabolism_svg__Layer_76'),
+      onClick: openModal,
+      onKeydown: openModal,
+      ariaLabel: 'open metabolism chemistry modal',
+    });
 
     return () => {
-      nutrientUptake?.removeEventListener('click', handleOpenModal);
+      nutrientUptake?.unmount();
     };
   }, []);
 
   function handleCloseModal() {
     setIsModalOpen(false);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -57,7 +49,14 @@ export const MetabolismSection = (props: { assignRef: (el: null | HTMLDivElement
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='4xl' color='orange' className={styles['heading']}>
+        <Text
+          id='metabolism'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='orange'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           metabolism
         </Text>
         <MetabolismSvg className='mx-auto max-h-[50vh]' />
@@ -67,32 +66,13 @@ export const MetabolismSection = (props: { assignRef: (el: null | HTMLDivElement
         </Text>
       </div>
       {isModalOpen && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <FullImage
+          image={{
+            type: 'svg',
+            element: <ChemMetabolismSvg className='h-full w-full' />,
           }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='h-full grid place-items-center'>
-            <ChemMetabolismSvg />
-          </div>
-        </ReactModal>
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

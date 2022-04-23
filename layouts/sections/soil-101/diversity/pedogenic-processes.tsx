@@ -69,7 +69,13 @@ export const PedogenicProcessesSection = (props: { assignRef: (el: null | HTMLDi
       }}
       className={styles['section']}
     >
-      <Text type='h1' weight='bold' size='4xl' className={styles['heading']}>
+      <Text
+        id='pedogenesis-processes'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         pedogenic processes
       </Text>
       <PedogenicProcessesSvg />

@@ -63,16 +63,6 @@ export default function SoilBiologyPage() {
     };
   }
 
-  function handleClick(section: string) {
-    return () => {
-      const container = refs.current[section];
-      if (container) {
-        const headerOffsetTop = 141;
-        window.scrollTo({ behavior: 'smooth', top: container.offsetTop - headerOffsetTop });
-        setCurrentSection(section);
-      }
-    };
-  }
   function handleDownArrowClick() {
     const headerOffsetTop = 141;
     if (refs.current['rhizosphere']) {
@@ -85,7 +75,7 @@ export default function SoilBiologyPage() {
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-teal-500' />
       <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
-        <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='teal' />
+        <SectionsNavBar sections={sections} currentSection={currentSection} color='teal' />
         <div className={styles['sections-container']}>
           <RhizosphereSection assignRef={assignRefs('rhizosphere')} />
           <FoodWebSection />

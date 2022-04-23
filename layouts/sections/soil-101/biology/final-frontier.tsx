@@ -1,5 +1,5 @@
 // components
-// import { Text } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
 
 // assets
 import FinalFrontierSvg from 'public/images/soil-101/biology/final_frontier.svg';
@@ -52,6 +52,16 @@ export const FinalFrontierSection = (props: { assignRef: (el: null | HTMLDivElem
         </Text>{' '}
         structure that resists flooding and drought.
       </Text> */}
+      <Text
+        id='final-frontier'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        color='teal'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
+        soil: the final frontier
+      </Text>
       <FinalFrontierSvg />
 
       {/* <Text type='p' weight='light' size='md' className={`text-center ${styles['p-80']}`}>

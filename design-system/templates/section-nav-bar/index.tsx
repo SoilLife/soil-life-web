@@ -7,15 +7,13 @@ import { Text } from 'design-system/atoms';
 import { getColor } from 'helpers/get-color';
 import { debounce } from 'lodash';
 
-export function SectionsNavBar<T extends string>({
+export function SectionsNavBar({
   currentSection,
   sections,
-  onClick,
   color,
 }: {
-  currentSection: T;
-  onClick: (section: T) => () => void;
-  sections: T[];
+  currentSection: string;
+  sections: string[];
   color: Color;
 }) {
   const [isHidden, setIsHidden] = useState(false);
@@ -56,7 +54,7 @@ export function SectionsNavBar<T extends string>({
       <ul className={`flex justify-between space-x-5 sm:space-x-16 ${borderColor}`}>
         {sections.map((section) => (
           <li key={section}>
-            <div className='inline-block cursor-pointer' onClick={onClick(section)}>
+            <a href={`#${section.replaceAll(' ', '-')}`} onClick={() => setIsHidden(true)}>
               <Text
                 type='h3'
                 weight='medium'
@@ -68,7 +66,7 @@ export function SectionsNavBar<T extends string>({
               >
                 {section}
               </Text>
-            </div>
+            </a>
           </li>
         ))}
       </ul>

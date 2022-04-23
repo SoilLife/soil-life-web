@@ -136,7 +136,14 @@ export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement)
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
+        <Text
+          id='structure'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='yellow'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           structure
         </Text>
         <Text type='p' weight='thin' size='md' className={styles['p-60']}>

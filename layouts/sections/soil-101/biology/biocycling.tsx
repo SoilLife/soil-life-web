@@ -110,7 +110,14 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
   return (
     <>
       <div ref={props.assignRef} className={styles['section']}>
-        <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
+        <Text
+          id='biocycling'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='teal'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           biocycling
         </Text>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>

@@ -10,7 +10,14 @@ import styles from '../soil-101.module.css';
 export const BiodegradationSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
+      <Text
+        id='biodegradation'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        color='teal'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         biodegradation
       </Text>
       <div className='text-center grid grid-cols-3 gap-4 max-h-[950px]'>

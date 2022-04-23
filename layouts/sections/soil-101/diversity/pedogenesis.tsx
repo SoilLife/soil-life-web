@@ -9,7 +9,7 @@ import styles from '../soil-101.module.css';
 export const PedogenesisSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='bold' size='4xl' className={styles['heading']}>
+      <Text id='pedogenesis' type='h1' weight='bold' size='4xl' className={`${styles['anchor']} ${styles['heading']}`}>
         pedogenesis
       </Text>
       <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>

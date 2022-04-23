@@ -100,7 +100,14 @@ export const MeasuringSection = (props: { assignRef: (el: null | HTMLDivElement)
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='3xl' color='blue' className={styles['heading']}>
+        <Text
+          id='measurement'
+          type='h1'
+          weight='bold'
+          size='3xl'
+          color='blue'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           measuring soil health
         </Text>
         <Text type='p' weight='light' size='sm' className={styles['p-50']}>

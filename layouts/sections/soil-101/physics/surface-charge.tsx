@@ -107,7 +107,14 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
   return (
     <>
       <div ref={props.assignRef} className={styles['section']}>
-        <Text type='h1' weight='bold' size='4xl' color='yellow' className={`${styles['heading']}`}>
+        <Text
+          id='charge'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='yellow'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           surface charge
         </Text>
         <div className='flex flex-col gap-8 sm:flex-row sm:justify-between sm:items-center'>

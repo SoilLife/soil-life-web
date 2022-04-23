@@ -44,7 +44,14 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
   const [activeHeading, setActiveHeading] = useState<keyof typeof integrateAnimalsMap>('animals');
   return (
     <div ref={props.assignRef} className={`text-center ${styles['principles-section']}`}>
-      <Text type='h1' weight='bold' size='4xl' color='blue' className={`text-left ${styles['heading']}`}>
+      <Text
+        id='principles'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        color='blue'
+        className={`text-left ${styles['anchor']} ${styles['heading']}`}
+      >
         principles of soil health
       </Text>
       <div className='space-y-8'>

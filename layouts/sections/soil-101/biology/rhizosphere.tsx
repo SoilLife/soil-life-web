@@ -10,7 +10,14 @@ import styles from '../soil-101.module.css';
 export const RhizosphereSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
+      <Text
+        id='rhizosphere'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        color='teal'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         rhizosphere
       </Text>
       <div className='flex flex-col gap-4 sm:flex-row sm:items-center'>

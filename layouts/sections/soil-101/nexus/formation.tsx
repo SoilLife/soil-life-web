@@ -109,7 +109,14 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
       }}
       className={styles['section']}
     >
-      <Text type='h1' weight='bold' size='4xl' color='pink' className={styles['heading']}>
+      <Text
+        id='soil-formation'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        color='pink'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         soil formation
       </Text>
       <SoilFormation className='max-h-[668px] mx-auto' />

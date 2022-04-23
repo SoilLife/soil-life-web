@@ -67,17 +67,6 @@ export default function SoilChemistryPage() {
     };
   }
 
-  function handleClick(section: string) {
-    return () => {
-      const container = refs.current[section];
-      if (container) {
-        const headerOffsetTop = 141;
-        window.scrollTo({ behavior: 'smooth', top: container.offsetTop - headerOffsetTop });
-        setCurrentSection(section);
-      }
-    };
-  }
-
   function handleDownArrowClick() {
     const headerOffsetTop = 141;
     if (refs.current['circle of life']) {
@@ -90,7 +79,7 @@ export default function SoilChemistryPage() {
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-orange-500' />
       <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
-        <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='orange' />
+        <SectionsNavBar sections={sections} currentSection={currentSection} color='orange' />
         <div className={styles['sections-container']}>
           <CircleOfLifeSection assignRef={assignRefs('circle of life')} />
           <PlantGrowthSection assignRef={assignRefs('plant growth')} />

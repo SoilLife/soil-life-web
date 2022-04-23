@@ -170,7 +170,14 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
         className={styles['section']}
       >
         <div className='grid gap-4 sm:grid-cols-4'>
-          <Text type='h1' weight='bold' size='4xl' color='pink' className={`sm:col-span-3 ${styles['heading']}`}>
+          <Text
+            id='rock-weathering'
+            type='h1'
+            weight='bold'
+            size='4xl'
+            color='pink'
+            className={`sm:col-span-3 ${styles['anchor']} ${styles['heading']}`}
+          >
             rock weathering
           </Text>
           <div className='sm:row-span-2'>

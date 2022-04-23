@@ -1,10 +1,11 @@
 import { useRef, useEffect, useState } from 'react';
-import { useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
+
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
-import { Text, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import NutrientCyclingSvg from 'public/images/soil-101/chemistry/nutrient_cycling.svg';
@@ -13,37 +14,30 @@ import PlantNutrientSupplySvg from 'public/images/soil-101/chemistry/plant_nutri
 import styles from '../soil-101.module.css';
 
 export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isMobile = useMedia('(max-width: 640px)');
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal() {
-      const body = document.querySelector('body');
-      if (body) {
-        body.style.overflow = 'hidden';
-      }
+
+    function openModal() {
       setIsModalOpen(true);
     }
-
     const sectionContainer = sectionRef.current;
-    const nutrientUptake = sectionContainer.querySelector('#nutrient_cycling_svg__nut_cycling') as SVGGElement | null;
-    nutrientUptake?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    nutrientUptake?.addEventListener('click', handleOpenModal);
+    const nutrientUptake = makeSvgInteractive({
+      svg: sectionContainer.querySelector('#nutrient_cycling_svg__nut_cycling'),
+      onClick: openModal,
+      onKeydown: openModal,
+      ariaLabel: 'open plant nutrient supply modal',
+    });
 
     return () => {
-      nutrientUptake?.removeEventListener('click', handleOpenModal);
+      nutrientUptake?.unmount();
     };
   }, []);
 
   function handleCloseModal() {
     setIsModalOpen(false);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -55,7 +49,14 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='4xl' color='orange' className={styles['heading']}>
+        <Text
+          id='nutrient-cycling'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='orange'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           nutrient cycling
         </Text>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>
@@ -65,28 +66,13 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
         <NutrientCyclingSvg className='mx-auto max-h-[50vh]' />
       </div>
       {isModalOpen && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              inset: isMobile ? '40px 0 0 0' : '10%',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <FullImage
+          image={{
+            type: 'svg',
+            element: <PlantNutrientSupplySvg className='h-full w-full' />,
           }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='grid place-items-center'>
-            <PlantNutrientSupplySvg className='mx-auto max-h-[80vh]' />
-          </div>
-        </ReactModal>
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

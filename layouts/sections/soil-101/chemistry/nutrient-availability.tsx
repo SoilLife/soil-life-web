@@ -1,7 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
 import { useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
+
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
 import { Text, Icon } from 'design-system/atoms';
@@ -19,68 +21,59 @@ import styles from '../soil-101.module.css';
 const modalTypeMap = {
   clays: <ClayPhSvg className='h-full w-full' />,
   'metal oxides': <OxidesPhSvg className='h-full w-full' />,
-  SOM: <SomPhSvg className='h-full w-full' />,
+  'soil organic matter': <SomPhSvg className='h-full w-full' />,
 };
 
 export const NutrientAvailabilitySection = () => {
-  useFullpageOverflow();
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const isMobile = useMedia('(max-width: 640px)');
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal() {
-      const body = document.querySelector('body');
-      if (body) {
-        body.style.overflow = 'hidden';
-      }
+    function openModal() {
       setModalType('clays');
     }
 
     const sectionContainer = sectionRef.current;
-    const nutrientAvailabilitySvg = sectionContainer.querySelector(
-      '#nutrient_availability_svg__pH'
-    ) as SVGGElement | null;
-    nutrientAvailabilitySvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    nutrientAvailabilitySvg?.addEventListener('click', handleOpenModal);
-
+    const nutrientAvailabilitySvg = makeSvgInteractive({
+      svg: sectionContainer.querySelector('#nutrient_availability_svg__pH'),
+      onClick: openModal,
+      onKeydown: openModal,
+      ariaLabel: 'open nutrient availability modal',
+    });
     return () => {
-      nutrientAvailabilitySvg?.removeEventListener('click', handleOpenModal);
+      nutrientAvailabilitySvg?.unmount();
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
-  function handlePreviousProcessClick() {
+  function handlePreviousClick() {
     switch (modalType) {
       case 'clays':
-        setModalType('SOM');
+        setModalType('soil organic matter');
         break;
       case 'metal oxides':
         setModalType('clays');
         break;
-      case 'SOM':
+      case 'soil organic matter':
         setModalType('metal oxides');
         break;
     }
   }
 
-  function handleNextProcessClick() {
+  function handleNextClick() {
     switch (modalType) {
       case 'clays':
         setModalType('metal oxides');
         break;
       case 'metal oxides':
-        setModalType('SOM');
+        setModalType('soil organic matter');
         break;
-      case 'SOM':
+      case 'soil organic matter':
         setModalType('clays');
         break;
     }
@@ -104,6 +97,7 @@ export const NutrientAvailabilitySection = () => {
           isOpen
           shouldCloseOnOverlayClick
           shouldCloseOnEsc
+          preventScroll
           style={{
             content: {
               padding: 40,
@@ -124,16 +118,12 @@ export const NutrientAvailabilitySection = () => {
                 {modalType}
               </Text>
               {modalTypeMap[modalType]}
-              <LeftArrow
-                className='absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer'
-                height={40}
-                onClick={handlePreviousProcessClick}
-              />
-              <RightArrow
-                className='absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer'
-                height={40}
-                onClick={handleNextProcessClick}
-              />
+              <button className='absolute top-1/2 left-4 transform -translate-y-1/2' onClick={handlePreviousClick}>
+                <LeftArrow height={40} />
+              </button>
+              <button className='absolute top-1/2 right-4 transform -translate-y-1/2 ' onClick={handleNextClick}>
+                <RightArrow height={40} />
+              </button>
             </div>
           </div>
         </ReactModal>

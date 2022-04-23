@@ -86,7 +86,14 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
+        <Text
+          id='texture'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='yellow'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           soil texture
         </Text>
         <div className='flex flex-col items-center gap-8 sm:flex-row-reverse'>

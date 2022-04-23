@@ -1,5 +1,5 @@
 import './_app.css';
-
+import 'helpers/polyfill-replaceAll';
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import { IKContext } from 'imagekitio-react';

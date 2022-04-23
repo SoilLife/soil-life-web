@@ -81,7 +81,14 @@ export const ManagingSection = (props: { assignRef: (el: null | HTMLDivElement) 
       }}
       className={styles['section']}
     >
-      <Text type='h1' weight='bold' size='4xl' color='blue' className={styles['heading']}>
+      <Text
+        id='management'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        color='blue'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         managing for soil health
       </Text>
       <div className='overflow-x-auto overflow-y-hidden'>

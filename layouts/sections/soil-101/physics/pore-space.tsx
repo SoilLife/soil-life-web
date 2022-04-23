@@ -159,7 +159,14 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
+        <Text
+          id='pore-space'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='yellow'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           pore space
         </Text>
         <PoreSpaceSvg />

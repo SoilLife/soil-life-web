@@ -5,4 +5,5 @@ export interface TextProps extends React.PropsWithChildren<{}> {
   color?: Color | 'white' | 'current';
   className?: string;
   style?: React.CSSProperties;
+  id?: string;
 }

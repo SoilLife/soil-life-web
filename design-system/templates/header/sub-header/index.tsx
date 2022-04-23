@@ -47,11 +47,9 @@ export function SubHeader({ pathName, headings, className, hideHeader }: SubHead
         <nav className='container'>
           <ul className='flex items-center justify-between h-10 sm:h-16'>
             <li>
-              <Icon
-                icon={isMenuOpen ? 'x' : 'menu'}
-                className='text-white cursor-pointer h-8 w-8'
-                onClick={toggleMenu}
-              />
+              <button onClick={toggleMenu}>
+                <Icon icon={isMenuOpen ? 'x' : 'menu'} className='text-white h-8 w-8' />
+              </button>
             </li>
             {headings.map(({ name, slug, asset }) => {
               const href = `/${pathName}/${slug}`;

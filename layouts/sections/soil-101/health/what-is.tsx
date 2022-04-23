@@ -171,7 +171,14 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='4xl' color='blue' className={styles['heading']}>
+        <Text
+          id='what-is-soil-health?'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='blue'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           what is soil health?
         </Text>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-60']}`}>

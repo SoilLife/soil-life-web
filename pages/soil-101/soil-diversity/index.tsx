@@ -61,17 +61,6 @@ export default function SoilDiversityPage() {
     };
   }
 
-  function handleClick(section: string) {
-    return () => {
-      const container = refs.current[section];
-      if (container) {
-        const headerOffsetTop = 141;
-        window.scrollTo({ behavior: 'smooth', top: container.offsetTop - headerOffsetTop });
-        setCurrentSection(section);
-      }
-    };
-  }
-
   function handleDownArrowClick() {
     const headerOffsetTop = 141;
     if (refs.current['pedogenesis']) {
@@ -84,7 +73,7 @@ export default function SoilDiversityPage() {
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-gray-500' />
       <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
-        <SectionsNavBar sections={sections} onClick={handleClick} currentSection={currentSection} color='gray' />
+        <SectionsNavBar sections={sections} currentSection={currentSection} color='gray' />
         <div className={styles['sections-container']}>
           <PedogenesisSection assignRef={assignRefs('pedogenesis')} />
           <ProfileSection assignRef={assignRefs('soil profile')} />

@@ -94,7 +94,7 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
 
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='bold' size='4xl' className={styles['heading']}>
+      <Text id='soil-profile' type='h1' weight='bold' size='4xl' className={`${styles['anchor']} ${styles['heading']}`}>
         soil profile
       </Text>
       <div className='flex flex-col gap-4 h-full w-full items-center sm:flex-row sm:gap-8'>

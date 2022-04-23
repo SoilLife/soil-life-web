@@ -140,7 +140,14 @@ export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDiv
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='4xl' color='pink' className={styles['heading']}>
+        <Text
+          id='soil-services'
+          type='h1'
+          weight='bold'
+          size='4xl'
+          color='pink'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           ecosystem services
         </Text>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>

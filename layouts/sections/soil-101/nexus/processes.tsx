@@ -147,7 +147,14 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
         }}
         className={styles['section']}
       >
-        <Text type='h1' weight='bold' size='5xl' color='pink' className={styles['heading']}>
+        <Text
+          id='soil-processes'
+          type='h1'
+          weight='bold'
+          size='5xl'
+          color='pink'
+          className={`${styles['anchor']} ${styles['heading']}`}
+        >
           soil processes
         </Text>
         <div className='grid sm:grid-cols-2'>

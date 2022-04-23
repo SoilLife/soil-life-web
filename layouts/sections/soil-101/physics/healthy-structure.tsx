@@ -11,7 +11,14 @@ import styles from '../soil-101.module.css';
 export const HealthyStructureSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='light' size='4xl' color='yellow' className={styles['heading']}>
+      <Text
+        id='healthy-structure'
+        type='h1'
+        weight='light'
+        size='4xl'
+        color='yellow'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         healthy structure
       </Text>
       <div className='sm:pl-20'>

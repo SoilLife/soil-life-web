@@ -9,7 +9,14 @@ import styles from '../soil-101.module.css';
 export const SymbiosesSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   return (
     <div ref={props.assignRef} className={styles['section']}>
-      <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
+      <Text
+        id='symbioses'
+        type='h1'
+        weight='bold'
+        size='4xl'
+        color='teal'
+        className={`${styles['anchor']} ${styles['heading']}`}
+      >
         symbioses
       </Text>
       <BetterTogetherSvg className='w-1/2 mx-auto' />
