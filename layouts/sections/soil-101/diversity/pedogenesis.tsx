@@ -21,11 +21,11 @@ export const PedogenesisSection = (props: { assignRef: (el: null | HTMLDivElemen
         <Text type='span' weight='bold' size='md'>
           activity
         </Text>
-        , soils{' '}
+        , etc., soils{' '}
         <Text type='span' weight='bold' size='md'>
-          weather
+          weather and evolve
         </Text>
-        ; developing horizons and other distinct morphological features.
+        , forming distinct layers and other distinct morphological features.
       </Text>
       <PedogenesisSvg />
     </div>

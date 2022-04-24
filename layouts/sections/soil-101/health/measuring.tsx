@@ -1,10 +1,11 @@
 import { useRef, useEffect, useState } from 'react';
-import { useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
+
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
-import { Text, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import MeasuringSvg from 'public/images/soil-101/health/measuring_soil_health.svg';
@@ -37,58 +38,48 @@ const modalTypeMap = {
 };
 
 export const MeasuringSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
-  const isMobile = useMedia('(max-width: 640px)');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
     const sectionContainer = sectionRef.current;
-    const svgs: { [Key in keyof typeof modalTypeMap]: string } = {
-      aggregate: 'measuring_soil_health_svg__Layer_58',
-      infiltration: 'measuring_soil_health_svg__Layer_57',
-      matter: 'measuring_soil_health_svg__Layer_56',
-      nutrients: 'measuring_soil_health_svg__Layer_55',
-      ph: 'measuring_soil_health_svg__Layer_54',
-      salinity: 'measuring_soil_health_svg__Layer_53',
-      respiration: 'measuring_soil_health_svg__Layer_52',
-      earthworms: 'measuring_soil_health_svg__Layer_51',
-      diversity: 'measuring_soil_health_svg__Layer_50',
-      density: 'measuring_soil_health_svg__Layer_49',
-      capacity: 'measuring_soil_health_svg__Layer_48',
-    };
+    const svgs: [string, typeof modalType][] = [
+      ['#measuring_soil_health_svg__Layer_58', 'aggregate'],
+      ['#measuring_soil_health_svg__Layer_57', 'infiltration'],
+      ['#measuring_soil_health_svg__Layer_56', 'matter'],
+      ['#measuring_soil_health_svg__Layer_55', 'nutrients'],
+      ['#measuring_soil_health_svg__Layer_54', 'ph'],
+      ['#measuring_soil_health_svg__Layer_53', 'salinity'],
+      ['#measuring_soil_health_svg__Layer_52', 'respiration'],
+      ['#measuring_soil_health_svg__Layer_51', 'earthworms'],
+      ['#measuring_soil_health_svg__Layer_50', 'diversity'],
+      ['#measuring_soil_health_svg__Layer_49', 'density'],
+      ['#measuring_soil_health_svg__Layer_48', 'capacity'],
+    ];
 
-    Object.entries(svgs).forEach(([type, svgId]) => {
-      const svg = sectionContainer.querySelector(`#${svgId}`) as SVGGElement | null;
-      svg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-      svg?.addEventListener('click', handleOpenModal(type as typeof modalType));
-    });
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      Object.entries(svgs).forEach(([type, svgId]) => {
-        const svg = sectionContainer.querySelector(`#${svgId}`) as SVGGElement | null;
-        svg?.removeEventListener('click', handleOpenModal(type as typeof modalType));
-      });
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -117,26 +108,13 @@ export const MeasuringSection = (props: { assignRef: (el: null | HTMLDivElement)
         <MeasuringSvg />
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              inset: isMobile ? '40px 0 0 0' : '20%',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <FullImage
+          image={{
+            type: 'svg',
+            element: modalTypeMap[modalType],
           }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='h-full w-full grid place-items-center'>{modalTypeMap[modalType]}</div>
-        </ReactModal>
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

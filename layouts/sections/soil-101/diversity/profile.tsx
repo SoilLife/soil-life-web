@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 
@@ -48,7 +51,7 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
 
   useEffect(() => {
     if (!svgContainerRef.current) return;
-    function handleOpenPopup(type: keyof typeof popups) {
+    function showPopup(type: keyof typeof popups) {
       return () => {
         setPopups((prevState) => ({
           ...popups,
@@ -57,38 +60,29 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
       };
     }
 
+    const svgs: [string, keyof typeof popups][] = [
+      ['#soil_profile_svg__Layer_13', 'organic'],
+      ['#soil_profile_svg__Layer_12', 'topsoil'],
+      ['#soil_profile_svg__Layer_31', 'eluviated zone'],
+      ['#soil_profile_svg__Layer_29', 'accumulation zone'],
+      ['#soil_profile_svg__Layer_28', 'parent material'],
+      ['#soil_profile_svg__Layer_30', 'bedrock'],
+    ];
+
     const sectionContainer = svgContainerRef.current;
-    const organicLayerSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_13') as SVGGElement | null;
-    organicLayerSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
-    organicLayerSvg?.addEventListener('click', handleOpenPopup('organic'));
 
-    const topSoilSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_12') as SVGGElement | null;
-    topSoilSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
-    topSoilSvg?.addEventListener('click', handleOpenPopup('topsoil'));
-
-    const eluviatedZoneSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_31') as SVGGElement | null;
-    eluviatedZoneSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
-    eluviatedZoneSvg?.addEventListener('click', handleOpenPopup('eluviated zone'));
-
-    const accumulationZoneSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_29') as SVGGElement | null;
-    accumulationZoneSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
-    accumulationZoneSvg?.addEventListener('click', handleOpenPopup('accumulation zone'));
-
-    const parentMaterialSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_28') as SVGGElement | null;
-    parentMaterialSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
-    parentMaterialSvg?.addEventListener('click', handleOpenPopup('parent material'));
-
-    const bedrockSvg = sectionContainer.querySelector('#soil_profile_svg__Layer_30') as SVGGElement | null;
-    bedrockSvg?.classList?.add('cursor-pointer', 'hover:opacity-80', 'active:opacity-100');
-    bedrockSvg?.addEventListener('click', handleOpenPopup('bedrock'));
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: showPopup(type),
+        onKeydown: showPopup(type),
+        ariaLabel: `show ${type} popup`,
+        classList: ['hover:opacity-75', 'focus:opacity-75'],
+      })
+    );
 
     return () => {
-      organicLayerSvg?.removeEventListener('click', handleOpenPopup('organic'));
-      topSoilSvg?.removeEventListener('click', handleOpenPopup('topsoil'));
-      eluviatedZoneSvg?.removeEventListener('click', handleOpenPopup('eluviated zone'));
-      accumulationZoneSvg?.removeEventListener('click', handleOpenPopup('accumulation zone'));
-      parentMaterialSvg?.removeEventListener('click', handleOpenPopup('parent material'));
-      bedrockSvg?.removeEventListener('click', handleOpenPopup('bedrock'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 

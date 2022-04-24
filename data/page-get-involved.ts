@@ -70,12 +70,12 @@ const homeSectionCards = [
     text: 'convert your lawn to native plants',
     links: [
       {
-        name: 'Native Again Landscape',
-        href: 'http://www.native-again-landscape.com/lawn-to-drought-resistant-perennials.html',
+        name: 'Wild Seed Project',
+        href: 'https://wildseedproject.net/2022/03/return-of-the-meadow/',
       },
       {
-        name: 'DIY Network',
-        href: 'https://www.diynetwork.com/how-to/outdoors/gardening/replacing-your-lawn-with-landscaping',
+        name: 'Lawn to Wildflowers',
+        href: 'https://www.lawntowildflowers.org/news/bringing-your-lawn-back-to-life-by-converting-turfgrass-to-native-wildflowers',
       },
     ],
   },
@@ -127,7 +127,7 @@ const communitySectionCards = [
   },
   {
     imageUrl: '/Get_Involved/In_Your_Community/2_In_Your_Community_5_Farm_to_Fork_AyHl6mQNG.jpg',
-    text: 'eat a farm-to-fork restaurant',
+    text: 'eat at a farm-to-fork restaurant',
     links: 'https://www.eatwellguide.org/',
   },
   {

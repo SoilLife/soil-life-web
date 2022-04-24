@@ -13,6 +13,9 @@ import NutrientAvailabilitySvg from 'public/images/soil-101/chemistry/nutrient_a
 import ClayPhSvg from 'public/images/soil-101/chemistry/clay_pH.svg';
 import OxidesPhSvg from 'public/images/soil-101/chemistry/oxides_pH.svg';
 import SomPhSvg from 'public/images/soil-101/chemistry/som_pH.svg';
+import AlumPhSvg from 'public/images/soil-101/chemistry/aluminum_oxide.svg';
+import PhosphateSvg from 'public/images/soil-101/chemistry/phosphate_retention.svg';
+
 import LeftArrow from 'public/images/left_arrow_pink_thick.svg';
 import RightArrow from 'public/images/right_arrow_pink_thick.svg';
 
@@ -20,9 +23,13 @@ import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   clays: <ClayPhSvg className='h-full w-full' />,
-  'metal oxides': <OxidesPhSvg className='h-full w-full' />,
-  'soil organic matter': <SomPhSvg className='h-full w-full' />,
+  'iron oxides': <OxidesPhSvg className='h-full w-full' />,
+  'organic matter': <SomPhSvg className='h-full w-full' />,
+  'aluminum oxides': <AlumPhSvg className='h-full w-full' />,
+  'phosphate retention': <PhosphateSvg className='h-full w-full' />,
 };
+
+const modalTypesArray = ['clays', 'iron oxides', 'organic matter', 'aluminum oxides', 'phosphate retention'] as const;
 
 export const NutrientAvailabilitySection = () => {
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
@@ -52,31 +59,23 @@ export const NutrientAvailabilitySection = () => {
   }
 
   function handlePreviousClick() {
-    switch (modalType) {
-      case 'clays':
-        setModalType('soil organic matter');
-        break;
-      case 'metal oxides':
-        setModalType('clays');
-        break;
-      case 'soil organic matter':
-        setModalType('metal oxides');
-        break;
-    }
+    setModalType((prevType) => {
+      if (prevType) {
+        const index = modalTypesArray.indexOf(prevType);
+        const type = index - 1 < 0 ? 'phosphate retention' : modalTypesArray[index - 1];
+        return type ?? null;
+      } else return prevType;
+    });
   }
 
   function handleNextClick() {
-    switch (modalType) {
-      case 'clays':
-        setModalType('metal oxides');
-        break;
-      case 'metal oxides':
-        setModalType('soil organic matter');
-        break;
-      case 'soil organic matter':
-        setModalType('clays');
-        break;
-    }
+    setModalType((prevType) => {
+      if (prevType) {
+        const index = modalTypesArray.indexOf(prevType);
+        const type = index + 1 === modalTypesArray.length ? 'clays' : modalTypesArray[index + 1];
+        return type ?? null;
+      } else return prevType;
+    });
   }
 
   return (
@@ -90,7 +89,7 @@ export const NutrientAvailabilitySection = () => {
           well as the amount of protons or hydroxyls in the soil solution, which can kick plant nutrients off the
           complex.
         </Text>
-        <NutrientAvailabilitySvg className='mx-auto max-h-[50vh]' />
+        <NutrientAvailabilitySvg className='mx-auto max-h-[70vh]' />
       </div>
       {modalType && (
         <ReactModal

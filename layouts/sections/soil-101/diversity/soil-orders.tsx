@@ -22,8 +22,8 @@ const data = {
     textEmphasis: 'adolescent',
     imageUrl: 'Soil_101/Diversity_-_Soil_Profiles/Inceptisol_surface_Dellwood_WLB_PuYJjmE3V.jpg',
     modalTitle: 'moderate soil development, horizons beginning to form',
-    label: 'contain permafrost',
-    features: ['moderate organic matter', 'moderate rock content'],
+    label: 'occur in wide range of environments',
+    features: ['moderate organic matter', 'moderate rock content', 'wide variety of characteristics'],
     modalImage: 'Soil_101/Diversity_-_Soil_Profiles/Inceptisol_profile_Dellwood_WLB_trHwpLtL_Ls.jpg',
   },
   aridisol: {
@@ -186,11 +186,11 @@ export const SoilOrdersSection = (props: { assignRef: (el: null | HTMLDivElement
           .
         </Text>
 
-        <div className='space-y-16'>
+        <div className='space-y-28'>
           {Object.entries(data).map(([soilType, soilData]) => {
             return (
               <div key={soilType}>
-                <Text type='h1' weight='light' size='4xl' className='mb-8 sm:pl-10'>
+                <Text id={soilType} type='h1' weight='light' size='4xl' className='mb-8 sm:pl-10'>
                   {soilType}
                 </Text>
 
@@ -204,13 +204,11 @@ export const SoilOrdersSection = (props: { assignRef: (el: null | HTMLDivElement
                   </Text>
                 </div>
 
-                <div className='max-h-full mx-auto border-2 border-solid border-gray-500 sm:w-3/4'>
-                  <Image
-                    url={soilData.imageUrl}
-                    className='object-cover cursor-pointer'
-                    onClick={handleOpenModal(soilType as typeof modalType)}
-                  />
-                </div>
+                <a href={`#${soilType}`} onClick={handleOpenModal(soilType as typeof modalType)}>
+                  <div className='max-h-full mx-auto border-2 border-solid border-gray-500 sm:w-3/4'>
+                    <Image url={soilData.imageUrl} className='object-cover' />
+                  </div>
+                </a>
               </div>
             );
           })}

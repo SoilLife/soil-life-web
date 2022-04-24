@@ -1,12 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 
 // helpers
-import { useMedia, useOrientation } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
-import ReactModal from 'react-modal';
-import { Text, Icon } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import WhatIsSoilHealthSvg from 'public/images/soil-101/health/what_is_soil_health.svg';
@@ -32,134 +31,64 @@ const modalTypeMap = {
   biodegradation: <BiodegradationSvg className='h-full w-full' />,
 };
 
-const interactiveClassNames = ['cursor-pointer', 'hover:opacity-50', 'active:opacity-100'];
-
 export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
-  const isMobile = useMedia('(max-width: 640px)');
-  const orientation = useOrientation();
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const [isSomModalOpen, setIsSomModalOpen] = useState(false);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
     const sectionContainer = sectionRef.current;
 
-    function addSvgInteractivity({ element, modalType }: { element: string; modalType: keyof typeof modalTypeMap }) {
-      const interactiveSvg = sectionContainer.querySelector(element) as SVGGElement | null;
-      interactiveSvg?.classList?.add(...interactiveClassNames);
-      interactiveSvg?.addEventListener('click', handleOpenModal(modalType));
-      return interactiveSvg;
-    }
-    const humanProfileProtectionSvg = addSvgInteractivity({
-      element: '#human_profile_svg__Layer_40',
-      modalType: 'protection',
-    });
-    const soilProfileProtectionSvg = addSvgInteractivity({
-      element: '#soil_profile_svg__Layer_28',
-      modalType: 'protection',
-    });
+    const svgs: [string, typeof modalType][] = [
+      ['#human_profile_svg__Layer_40', 'protection'],
+      ['#soil_profile_svg__Layer_28', 'protection'],
+      ['#human_profile_svg__Layer_37', 'respiration'],
+      ['#human_profile_svg__Layer_39', 'filtration'],
+      ['#soil_profile_svg__Layer_24', 'filtration'],
+      ['#human_profile_svg__Layer_35', 'circulation'],
+      ['#soil_profile_svg__Layer_26', 'circulation'],
+      ['#ecosystem_services_svg__Layer_6', 'biodegradation'],
+      ['#soil_profile_svg__Layer_25', 'biodegradation'],
+      ['#human_profile_svg__Layer_85', 'physical'],
+      ['#soil_profile_svg__Layer_28', 'physical'],
+    ];
 
-    const humanProfileRespirationSvg = addSvgInteractivity({
-      element: '#human_profile_svg__Layer_37',
-      modalType: 'respiration',
-    });
-    const soilProfileRespirationSvg = addSvgInteractivity({
-      element: '#soil_profile_svg__Layer_27',
-      modalType: 'respiration',
-    });
-
-    const humanProfileFiltrationSvg = addSvgInteractivity({
-      element: '#human_profile_svg__Layer_39',
-      modalType: 'filtration',
-    });
-    const soilProfileFiltrationSvg = addSvgInteractivity({
-      element: '#soil_profile_svg__Layer_24',
-      modalType: 'filtration',
-    });
-
-    const humanProfileCirculationSvg = addSvgInteractivity({
-      element: '#human_profile_svg__Layer_35',
-      modalType: 'circulation',
-    });
-    const soilProfileCirculationSvg = addSvgInteractivity({
-      element: '#soil_profile_svg__Layer_26',
-      modalType: 'circulation',
-    });
-
-    const humanProfileBiodegradationSvg = addSvgInteractivity({
-      element: '#ecosystem_services_svg__Layer_6',
-      modalType: 'biodegradation',
-    });
-    const soilProfileBiodegradationSvg = addSvgInteractivity({
-      element: '#soil_profile_svg__Layer_25',
-      modalType: 'biodegradation',
-    });
-
-    const humanProfilePhysicalSvg = addSvgInteractivity({
-      element: '#human_profile_svg__Layer_85',
-      modalType: 'physical',
-    });
-    const soilProfilePhysicalSvg = addSvgInteractivity({
-      element: '#soil_profile_svg__Layer_28',
-      modalType: 'physical',
-    });
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     function toggleSomModal() {
-      setIsSomModalOpen((prevState) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
-        return !prevState;
-      });
+      setIsSomModalOpen(true);
     }
-    const somSvg = sectionContainer.querySelector('#carbon_sequest_svg__Layer_2');
-    somSvg?.classList?.add(...interactiveClassNames);
-    somSvg?.addEventListener('click', toggleSomModal);
+
+    const somSvg = makeSvgInteractive({
+      svg: sectionContainer.querySelector('#carbon_sequest_svg__Layer_2'),
+      onClick: toggleSomModal,
+      onKeydown: toggleSomModal,
+      ariaLabel: 'toggle soil organic matter modal',
+    });
 
     return () => {
-      humanProfileProtectionSvg?.removeEventListener('click', handleOpenModal('protection'));
-      soilProfileProtectionSvg?.removeEventListener('click', handleOpenModal('protection'));
-
-      humanProfileRespirationSvg?.removeEventListener('click', handleOpenModal('respiration'));
-      soilProfileRespirationSvg?.removeEventListener('click', handleOpenModal('respiration'));
-
-      humanProfileFiltrationSvg?.removeEventListener('click', handleOpenModal('filtration'));
-      soilProfileFiltrationSvg?.removeEventListener('click', handleOpenModal('filtration'));
-
-      humanProfileCirculationSvg?.removeEventListener('click', handleOpenModal('circulation'));
-      soilProfileCirculationSvg?.removeEventListener('click', handleOpenModal('circulation'));
-
-      humanProfileBiodegradationSvg?.removeEventListener('click', handleOpenModal('biodegradation'));
-      soilProfileBiodegradationSvg?.removeEventListener('click', handleOpenModal('biodegradation'));
-
-      humanProfilePhysicalSvg?.removeEventListener('click', handleOpenModal('physical'));
-      soilProfilePhysicalSvg?.removeEventListener('click', handleOpenModal('physical'));
-
-      somSvg?.removeEventListener('click', toggleSomModal);
+      interactiveSvgs.forEach((svg) => svg?.unmount());
+      somSvg?.unmount();
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
     setIsSomModalOpen(false);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -190,7 +119,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <Text type='span' weight='bold' size='sm' color='blue'>
             inherent
           </Text>{' '}
-          and can’t change on a human time scale (i.e. texture). others are{' '}
+          and can't change on a human time scale (i.e. texture). others are{' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
             dynamic
           </Text>{' '}
@@ -215,20 +144,15 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <WhatIsSoilHealthSvg className='max-w-[595px]' />
         </div>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-60']}`}>
-          just like our{' '}
+          just like our organs provide services that keep us healthy, healthy soil provides important ecosystem services{' '}
           <Text type='span' weight='bold' size='md' color='blue'>
-            organs
+            that promote
           </Text>{' '}
-          provide services that keep us healthy, healthy soil provides important{' '}
-          <Text type='span' weight='bold' size='md' color='blue'>
-            ecosystem services
-          </Text>{' '}
-          that promote life on earth!
+          life on earth!
         </Text>
 
         <div className='grid grid-cols-2 grid-rows-4 gap-4 place-items-center sm:flex sm:items-center sm:gap-0 sm:space-x-8'>
           <HumanProfileSvg className='mx-auto row-span-3 max-h-[800px]' />
-
           <Text
             type='p'
             weight='light'
@@ -243,7 +167,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
             <Text type='span' weight='bold' size='sm' color='blue'>
               parent material
             </Text>{' '}
-            that can’t easily be changed (i.e. texture, mineralogy), but just like{' '}
+            that can't easily be changed (i.e. texture, mineralogy), but just like{' '}
             <Text type='span' weight='bold' size='sm' color='blue'>
               diet and lifestyle
             </Text>{' '}
@@ -279,55 +203,23 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         </Text>
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <FullImage
+          image={{
+            type: 'svg',
+            element: modalTypeMap[modalType],
           }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-pink-500' />
-          </button>
-          <div className='h-full grid place-items-center'>{modalTypeMap[modalType]}</div>
-        </ReactModal>
+          onClose={handleCloseModal}
+        />
       )}
 
       {isSomModalOpen && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: isMobile ? 10 : 40,
-              inset: isMobile ? '40px 0 0 0' : '64px 0 0 0',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <FullImage
+          image={{
+            type: 'svg',
+            element: <CarbonSanDiegoSvg className='h-full w-full' />,
           }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-pink-500' />
-          </button>
-          <div className='h-full grid place-items-center'>
-            <CarbonSanDiegoSvg className='h-full w-full' />
-          </div>
-        </ReactModal>
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

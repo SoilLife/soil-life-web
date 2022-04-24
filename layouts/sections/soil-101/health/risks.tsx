@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
 // components
@@ -36,7 +35,6 @@ const modalTypeMap = {
 };
 
 export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
   const isMobile = useMedia('(max-width: 640px)');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const modalRef = useRef<null | HTMLDivElement>(null);
@@ -55,20 +53,12 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
 
   function handleButtonClick(type: typeof modalType) {
     return () => {
-      const body = document.querySelector('body');
-      if (body) {
-        body.style.overflow = 'hidden';
-      }
       setModalType(type);
     };
   }
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -86,7 +76,7 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
         </Text>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
           a soccer field of soil is eroded every 5 seconds, an area the size of new york is sealed up every day, and 33%
-          of the world’s soils are considered moderately to highly degraded. this poses an existential threat -- to our
+          of the world's soils are considered moderately to highly degraded. this poses an existential threat -- to our
           food supply and the global economy. by working together to improve soil health, we can provide solutions to
           these global challenges.
         </Text>
@@ -125,13 +115,13 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
           <button className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div ref={modalRef} className='space-y-14'>
+          <div ref={modalRef} className='flex gap-20 pb-4 overflow-x-auto'>
             {Object.entries(modalTypeMap).map(([modalTitle, { text, imageUrl }]) => {
               return (
                 <div
                   key={modalTitle}
                   id={modalTitle.replaceAll(' ', '-')}
-                  className='h-full grid place-items-center space-y-4'
+                  className='flex-shrink-0 h-full w-full grid place-items-center space-y-4'
                 >
                   <Text type='h1' weight='bold' size='2xl' color='blue' className='text-center'>
                     {modalTitle}

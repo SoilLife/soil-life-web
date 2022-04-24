@@ -33,9 +33,9 @@ import IntensitySvg from 'public/images/soil-101/health/timing_duration.svg';
 import styles from '../soil-101.module.css';
 
 const integrateAnimalsMap = {
-  animals: <AnimalsSvg className='mx-auto max-h-[50vh]' />,
-  timing: <IntensitySvg className='mx-auto max-h-[50vh]' />,
-  intensity: <TimingSvg className='mx-auto max-h-[50vh]' />,
+  animals: <AnimalsSvg className='mx-auto max-h-[60vh]' />,
+  timing: <IntensitySvg className='mx-auto max-h-[60vh]' />,
+  intensity: <TimingSvg className='mx-auto max-h-[60vh]' />,
 };
 
 const integrateAnimalsHeadings: (keyof typeof integrateAnimalsMap)[] = ['animals', 'timing', 'intensity'];
@@ -54,6 +54,7 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
       >
         principles of soil health
       </Text>
+
       <div className='space-y-8'>
         <Text type='p' weight='bold' size='2xl' color='pink'>
           keep it active and well-fed!
@@ -77,9 +78,9 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
         <WellFedBottomSvg /> */}
       </div>
 
-      <div className='space-y-8'>
-        <DiversifiedFinalSvg />
-        {/* <div className='inline-block relative mt-8 sm:mt-20'>
+      <DiversifiedFinalSvg />
+      {/* <div className='space-y-8'>
+        <div className='inline-block relative mt-8 sm:mt-20'>
           <DiversifiedTopSvg className='mx-auto h-20 sm:absolute sm:top-0 sm:-right-32 sm:h-32' />
           <Text type='p' weight='bold' size='2xl' color="pink">
             keep it diversified!
@@ -115,8 +116,8 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
           of soil organic matter.
         </Text>
 
-        <DiversifiedBottomSvg /> */}
-      </div>
+        <DiversifiedBottomSvg />
+      </div> */}
 
       <div className='space-y-8'>
         <BalancedTopSvg className='h-32 mx-auto' />

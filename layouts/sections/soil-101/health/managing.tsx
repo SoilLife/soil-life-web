@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 
@@ -28,49 +31,43 @@ const headers: (keyof typeof headerSvgMap)[] = [
   'organic amendments',
 ];
 
-const svgIdMap: {
-  [Key in keyof typeof headerSvgMap]: {
-    graphic: string;
-    popup: string;
-  };
-} = {
-  'no-tillage': {
-    graphic: 'management_no_tillage_svg__Layer_2',
-    popup: 'management_no_tillage_svg__Layer_78',
-  },
-  'cover cropping': {
-    graphic: 'management_cover_svg__Layer_2',
-    popup: 'management_cover_svg__Layer_81',
-  },
-  'nutrient management': {
-    graphic: 'management_nutrient_svg__Layer_2',
-    popup: 'management_cover_svg',
-  },
-  'organic amendments': {
-    graphic: 'management_organic_svg__Layer_2',
-    popup: 'management_organic_svg__Layer_88',
-  },
-  hedgerows: {
-    graphic: 'management_hedgerows_svg__Layer_2',
-    popup: 'management_hedgerows_svg__Layer_82',
-  },
-};
-
 export const ManagingSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   const [activeHeader, setActiveHeader] = useState<keyof typeof headerSvgMap>('no-tillage');
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    const section = sectionRef.current;
-    const svgData = svgIdMap[activeHeader];
+    const svgs = [
+      ['#management_no_tillage_svg__Layer_2', '#management_no_tillage_svg__Layer_78'],
+      ['#management_cover_svg__Layer_2', '#management_cover_svg__Layer_81'],
+      ['#management_nutrient_svg__Layer_2', '#management_cover_svg'],
+      ['#management_organic_svg__Layer_2', '#management_organic_svg__Layer_88'],
+      ['#management_hedgerows_svg__Layer_2', '#management_hedgerows_svg__Layer_82'],
+    ] as const;
 
-    const graphic = section?.querySelector(`#${svgData.graphic}`);
-    const popup = section?.querySelector(`#${svgData.popup}`);
-    graphic?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    popup?.classList?.add('hidden');
+    function showPopup(svg: SVGGElement | null) {
+      return () => {
+        if (!svg) return;
+        svg.classList.toggle('hidden');
+      };
+    }
 
-    return () => {};
+    const sectionContainer = sectionRef.current;
+    const interactiveSvgs = svgs.map(([id, popupId]) => {
+      const popupSvg = sectionContainer.querySelector(popupId) as SVGGElement | null;
+      popupSvg?.classList?.add('hidden');
+      return makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: showPopup(popupSvg),
+        onKeydown: showPopup(popupSvg),
+        ariaLabel: 'show popup',
+        classList: ['focus:opacity-100', 'hover:opacity-100'],
+      });
+    });
+
+    return () => {
+      interactiveSvgs.forEach((svg) => svg?.unmount());
+    };
   }, [activeHeader]);
 
   return (
