@@ -7,7 +7,6 @@ import { useMedia } from 'react-use';
 import ReactModal from 'react-modal';
 import { Text, Icon } from 'design-system/atoms';
 import { Image } from 'design-system/atoms/image';
-import { IKImage } from 'imagekitio-react';
 
 // interfaces
 import { TextProps } from 'design-system/atoms/text/text.interfaces';
@@ -231,7 +230,13 @@ export const ProcessesSection = (props: { assignRef: (el: null | HTMLDivElement)
             </ul>
           </div>
 
-          <Image key={modalType} url={modalTypeMap[modalType]} lqip={{ active: true }} className='object-contain' />
+          <Image
+            key={modalType}
+            url={modalTypeMap[modalType]}
+            lqip={{ active: true }}
+            transformation={[{ quality: 70 }]}
+            className='object-contain'
+          />
 
           <LeftArrow
             className='absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer'

@@ -90,7 +90,6 @@ export const ParentMaterialSection = () => {
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
   }
 
   return (

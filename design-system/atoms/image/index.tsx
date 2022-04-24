@@ -12,7 +12,15 @@ export function Image({
   loading?: 'lazy';
   alt?: string;
   className?: string;
-  transformation?: { height?: number; width?: number; rotation?: number }[];
+  transformation?: {
+    quality?: number;
+    height?: number;
+    width?: number;
+    rotation?: number;
+    cropMode?: string;
+    fo?: string;
+    rotate?: number;
+  }[];
   lqip?: { active?: boolean } & (
     | {
         quality?: number;
