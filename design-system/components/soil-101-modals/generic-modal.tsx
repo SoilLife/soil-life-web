@@ -6,6 +6,8 @@ import { useMedia } from 'react-use';
 // components
 import { Text, Icon, Image } from 'design-system/atoms';
 
+const imageClassName = 'object-cover mx-auto h-auto w-3/4 md:max-h-[calc(100vh-100px)] md:w-1/2';
+
 export function GenericModal({
   title,
   description,
@@ -50,9 +52,9 @@ export function GenericModal({
           {image.type === 'svg' ? (
             image.element
           ) : image.type === 'imagekit' ? (
-            <Image url={image.url} className='object-cover mx-auto h-auto w-3/4 md:w-1/2' />
+            <Image url={image.url} className={imageClassName} />
           ) : (
-            <img src={image.url} className='object-cover mx-auto h-auto w-3/4 md:w-1/2' />
+            <img src={image.url} className={imageClassName} />
           )}
           <Text type='p' weight='light' size='xs' style={{ lineHeight: '38px' }}>
             {description}

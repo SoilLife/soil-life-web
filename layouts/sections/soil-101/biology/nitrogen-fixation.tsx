@@ -1,10 +1,11 @@
 import { useRef, useEffect, useState } from 'react';
-import { useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
+
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
-import { Text, Icon, Image } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import NitrogenFixation1Svg from 'public/images/soil-101/biology/nitrogen_fixation_1.svg';
@@ -15,44 +16,40 @@ import RootNoduleSvg from 'public/images/soil-101/biology/root_nodule.svg';
 import styles from '../soil-101.module.css';
 
 export const NitrogenFixationSection = () => {
-  useFullpageOverflow();
-  const isMobile = useMedia('(max-width: 640px)');
   const [modalType, setModalType] = useState<null | 'infected' | 'root nodules'>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
-    const sectionContainer = sectionRef.current;
-    const infectedSvg = sectionContainer.querySelector('#nitrogen_fixation_2_svg__Layer_43') as SVGGElement | null;
-    infectedSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    infectedSvg?.addEventListener('click', handleOpenModal('infected'));
+    const svgs: [string, typeof modalType][] = [
+      ['#nitrogen_fixation_2_svg__Layer_43', 'infected'],
+      ['#nitrogen_fixation_2_svg__Layer_45', 'root nodules'],
+    ];
 
-    const rootNodulesSvg = sectionContainer.querySelector('#nitrogen_fixation_2_svg__Layer_45') as SVGGElement | null;
-    rootNodulesSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    rootNodulesSvg?.addEventListener('click', handleOpenModal('root nodules'));
+    const sectionContainer = sectionRef.current;
+
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      infectedSvg?.removeEventListener('click', handleOpenModal('infected'));
-      rootNodulesSvg?.removeEventListener('click', handleOpenModal('root nodules'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -66,40 +63,21 @@ export const NitrogenFixationSection = () => {
         <NitrogenFixation3Svg className='mx-auto' />
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              inset: isMobile ? '40px 0 0 0' : modalType !== 'infected' ? '20% 30%' : '10% 20%',
-            },
-            overlay: {
-              zIndex: 2,
-            },
-          }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          {modalType === 'infected' ? (
-            <div className='h-full grid place-items-center'>
-              <Text type='h1' weight='bold' size='xl' color='pink' className='text-center mb-8'>
-                "infected" root
-              </Text>
-              <Image
-                url='Soil_101/Soil_Biology/UNADJUSTEDNONRAW_thumb_1be_kuHV5nM5s56_mKaTZ9IfFH.jpg'
-                className='object-contain mx-auto max-h-[50vh]'
-              />
-            </div>
-          ) : (
-            <div className='h-full grid place-items-center'>
-              <RootNoduleSvg />
-            </div>
-          )}
-        </ReactModal>
+        <FullImage
+          title={modalType === 'infected' ? '"infected" root' : ''}
+          image={
+            modalType === 'infected'
+              ? {
+                  type: 'imagekit',
+                  url: 'Soil_101/Soil_Biology/UNADJUSTEDNONRAW_thumb_1be_kuHV5nM5s56_mKaTZ9IfFH.jpg',
+                }
+              : {
+                  type: 'svg',
+                  element: <RootNoduleSvg className='h-full w-full' />,
+                }
+          }
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

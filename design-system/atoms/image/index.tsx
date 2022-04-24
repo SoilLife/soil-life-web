@@ -12,8 +12,18 @@ export function Image({
   loading?: 'lazy';
   alt?: string;
   className?: string;
-  transformation?: any;
-  lqip?: any;
+  transformation?: { height?: number; width?: number; rotation?: number }[];
+  lqip?: { active?: boolean } & (
+    | {
+        quality?: number;
+        blur?: number;
+        raw?: never;
+      }
+    | { raw?: string; quality?: never; blur?: never }
+  );
+  queryParameters?: {
+    [key: string]: React.ReactText;
+  };
   onClick?: () => void;
   onLoad?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
 }) {

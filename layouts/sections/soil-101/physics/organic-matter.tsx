@@ -1,5 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 import { FullImage } from 'design-system/components/soil-101-modals/full-image';
@@ -28,55 +31,52 @@ export const OrganicMatterSection = () => {
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
-    function handlePopup() {
-      const soilOrganicMatterPopup = sectionContainer.querySelector(
-        '#organic_matter_svg__Layer_34'
-      ) as SVGGElement | null;
-      soilOrganicMatterPopup?.classList?.toggle('hidden');
+    function showPopup(svg: SVGGElement | null) {
+      return () => {
+        if (!svg) return;
+        svg.classList.toggle('hidden');
+      };
     }
+
+    const modalSvgs: [string, typeof modalType][] = [
+      ['#organic_matter_svg__Layer_1-2', 'filter'],
+      ['#organic_matter_svg__Layer_27', 'carbon inputs'],
+      ['#organic_matter_svg__Layer_28', 'carbon inputs'],
+      ['#organic_matter_svg__Layer_29', 'carbon inputs'],
+    ];
 
     const sectionContainer = sectionRef.current;
 
-    const microbialFilterSvg = sectionContainer.querySelector('#organic_matter_svg__Layer_1-2') as SVGGElement | null;
-    microbialFilterSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    microbialFilterSvg?.addEventListener('click', handleOpenModal('filter'));
+    const interactiveModalSvgs = modalSvgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
-    const plantResiduesSvg = sectionContainer.querySelector('#organic_matter_svg__Layer_27') as SVGGElement | null;
-    plantResiduesSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    plantResiduesSvg?.addEventListener('click', handleOpenModal('carbon inputs'));
-
-    const plantRootsSvg = sectionContainer.querySelector('#organic_matter_svg__Layer_28') as SVGGElement | null;
-    plantRootsSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    plantRootsSvg?.addEventListener('click', handleOpenModal('carbon inputs'));
-
-    const animalResidueSvg = sectionContainer.querySelector('#organic_matter_svg__Layer_29') as SVGGElement | null;
-    animalResidueSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    animalResidueSvg?.addEventListener('click', handleOpenModal('carbon inputs'));
-
-    const soilOrganicMatterNode = sectionContainer.querySelector('#organic_matter_svg__Layer_25') as SVGAElement | null;
     const soilOrganicMatterPopup = sectionContainer.querySelector(
       '#organic_matter_svg__Layer_34'
     ) as SVGGElement | null;
     soilOrganicMatterPopup?.classList?.add('hidden');
-    soilOrganicMatterNode?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    soilOrganicMatterNode?.addEventListener('click', handlePopup);
+
+    const soilOrganicMatterSvg = makeSvgInteractive({
+      svg: sectionContainer.querySelector('#organic_matter_svg__Layer_25'),
+      onClick: showPopup(soilOrganicMatterPopup),
+      onKeydown: showPopup(soilOrganicMatterPopup),
+      ariaLabel: 'show soil organic matter popup',
+    });
 
     return () => {
-      microbialFilterSvg?.removeEventListener('click', handleOpenModal('filter'));
-      plantResiduesSvg?.removeEventListener('click', handleOpenModal('carbon inputs'));
-      plantRootsSvg?.removeEventListener('click', handleOpenModal('carbon inputs'));
-      animalResidueSvg?.removeEventListener('click', handleOpenModal('carbon inputs'));
-      soilOrganicMatterNode?.removeEventListener('click', handlePopup);
+      interactiveModalSvgs.forEach((svg) => svg?.unmount());
+      soilOrganicMatterSvg?.unmount();
     };
   }, []);
 

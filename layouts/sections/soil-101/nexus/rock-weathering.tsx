@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text, Icon } from 'design-system/atoms';
 import { FullImage } from 'design-system/components/soil-101-modals/full-image';
@@ -68,87 +71,64 @@ const popupMap = {
 
 export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
-
   const [popup, setPopup] = useState<null | keyof typeof popupMap>(null);
 
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
-    function handlePopup(type: typeof popup) {
-      return (_e: MouseEvent) => {
-        setPopup((p) => (p === type ? null : type));
+    function showPopup(type: typeof popup) {
+      return () => {
+        setPopup(type);
       };
     }
 
+    const modalSvgs: [string, typeof modalType][] = [
+      ['#rock_weathering_table_svg__Layer_36', 'carbonic acid'],
+      ['#rock_weathering_table_svg__Layer_37', 'hydrolysis'],
+      ['#rock_weathering_table_svg__Layer_38', 'dissolution'],
+      ['#rock_weathering_table_svg__Layer_39', 'oxidation-reduction'],
+    ];
+    const popupSvgs: [string, typeof popup][] = [
+      ['#rock_weathering_table_svg__Layer_32', 'freeze/thaw'],
+      ['#rock_weathering_table_svg__Layer_33', 'gravity'],
+      ['#rock_weathering_table_svg__Layer_34', 'wind abrasion'],
+      ['#rock_weathering_table_svg__Layer_35', 'root expansion'],
+      ['#rock_weathering_table_svg__Layer_40', 'microbes'],
+      ['#rock_weathering_table_svg__Layer_41', 'roots'],
+      ['#rock_weathering_table_svg__Layer_42', 'fauna'],
+    ];
+
     const sectionContainer = sectionRef.current;
-    const freezeThawSvg = sectionContainer.querySelector('#rock_weathering_table_svg__Layer_32') as SVGGElement | null;
-    const gravitySvg = sectionContainer.querySelector('#rock_weathering_table_svg__Layer_33') as SVGGElement | null;
-    const windAbrasionSvg = sectionContainer.querySelector(
-      '#rock_weathering_table_svg__Layer_34'
-    ) as SVGGElement | null;
-    const rootExpansionSvg = sectionContainer.querySelector(
-      '#rock_weathering_table_svg__Layer_35'
-    ) as SVGGElement | null;
-    const carbonicAcidSvg = sectionContainer.querySelector(
-      '#rock_weathering_table_svg__Layer_36'
-    ) as SVGGElement | null;
-    const hydrolysisSvg = sectionContainer.querySelector('#rock_weathering_table_svg__Layer_37') as SVGGElement | null;
-    const dissolutionSvg = sectionContainer.querySelector('#rock_weathering_table_svg__Layer_38') as SVGGElement | null;
-    const oxidationReductionSvg = sectionContainer.querySelector(
-      '#rock_weathering_table_svg__Layer_39'
-    ) as SVGGElement | null;
-    const microbesSvg = sectionContainer.querySelector('#rock_weathering_table_svg__Layer_40') as SVGGElement | null;
-    const rootsSvg = sectionContainer.querySelector('#rock_weathering_table_svg__Layer_41') as SVGGElement | null;
-    const faunaSvg = sectionContainer.querySelector('#rock_weathering_table_svg__Layer_42') as SVGGElement | null;
 
-    freezeThawSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    freezeThawSvg?.addEventListener('click', handlePopup('freeze/thaw'));
-    gravitySvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    gravitySvg?.addEventListener('click', handlePopup('gravity'));
-    windAbrasionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    windAbrasionSvg?.addEventListener('click', handlePopup('wind abrasion'));
-    rootExpansionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    rootExpansionSvg?.addEventListener('click', handlePopup('root expansion'));
-    faunaSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    faunaSvg?.addEventListener('click', handlePopup('fauna'));
-    microbesSvg?.addEventListener('click', handlePopup('microbes'));
-    rootsSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    rootsSvg?.addEventListener('click', handlePopup('roots'));
+    const interactiveModalSvgs = modalSvgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
-    carbonicAcidSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    carbonicAcidSvg?.addEventListener('click', handleOpenModal('carbonic acid'));
-    hydrolysisSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    hydrolysisSvg?.addEventListener('click', handleOpenModal('hydrolysis'));
-    dissolutionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    dissolutionSvg?.addEventListener('click', handleOpenModal('dissolution'));
-    oxidationReductionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    oxidationReductionSvg?.addEventListener('click', handleOpenModal('oxidation-reduction'));
-    microbesSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
+    const interactivePopSvgs = popupSvgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: showPopup(type),
+        onKeydown: showPopup(type),
+        ariaLabel: `show ${type} popup`,
+      })
+    );
 
     return () => {
-      freezeThawSvg?.removeEventListener('click', handlePopup('freeze/thaw'));
-      gravitySvg?.removeEventListener('click', handlePopup('gravity'));
-      windAbrasionSvg?.removeEventListener('click', handlePopup('wind abrasion'));
-      rootExpansionSvg?.removeEventListener('click', handlePopup('root expansion'));
-      faunaSvg?.removeEventListener('click', handlePopup('fauna'));
-      microbesSvg?.removeEventListener('click', handlePopup('microbes'));
-      rootsSvg?.removeEventListener('click', handlePopup('roots'));
-
-      carbonicAcidSvg?.removeEventListener('click', handleOpenModal('carbonic acid'));
-      hydrolysisSvg?.removeEventListener('click', handleOpenModal('hydrolysis'));
-      dissolutionSvg?.removeEventListener('click', handleOpenModal('dissolution'));
-      oxidationReductionSvg?.removeEventListener('click', handleOpenModal('oxidation-reduction'));
+      interactiveModalSvgs.forEach((svg) => svg?.unmount());
+      interactivePopSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 

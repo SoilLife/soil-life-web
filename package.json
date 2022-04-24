@@ -26,9 +26,9 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@fullpage/react-fullpage": "^0.1.19",
     "feather-icons-react": "^0.4.3",
-    "imagekitio-react": "^1.0.9",
+    "imagekitio-react": "^1.1.0",
     "lodash": "^4.17.21",
-    "next": "^12.1.0",
+    "next": "^12.1.5",
     "next-seo": "^4.24.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -39,7 +39,7 @@
     "vis-network": "^9.0.5"
   },
   "devDependencies": {
-    "@svgr/webpack": "^5.5.0",
+    "@svgr/webpack": "^6.2.1",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.0",
     "@tailwindcss/line-clamp": "^0.3.1",

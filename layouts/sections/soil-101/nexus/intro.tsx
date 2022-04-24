@@ -1,5 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
@@ -39,45 +42,37 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
-    const sectionContainer = sectionRef.current;
-    const airSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_27') as SVGGElement | null;
-    const waterSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_28') as SVGGElement | null;
-    const mineralSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_29') as SVGGElement | null;
-    const organicSvg = sectionContainer.querySelector('#air_water_mineral_organic_svg__Layer_30') as SVGGElement | null;
+    const svgs: [string, typeof modalType][] = [
+      ['#air_water_mineral_organic_svg__Layer_27', 'air'],
+      ['#air_water_mineral_organic_svg__Layer_28', 'water'],
+      ['#air_water_mineral_organic_svg__Layer_29', 'mineral'],
+      ['#air_water_mineral_organic_svg__Layer_30', 'organic'],
+    ];
 
-    airSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    airSvg?.addEventListener('click', handleOpenModal('air'));
-    waterSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    waterSvg?.addEventListener('click', handleOpenModal('water'));
-    mineralSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    mineralSvg?.addEventListener('click', handleOpenModal('mineral'));
-    organicSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    organicSvg?.addEventListener('click', handleOpenModal('organic'));
+    const sectionContainer = sectionRef.current;
+
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      airSvg?.removeEventListener('click', handleOpenModal('air'));
-      waterSvg?.removeEventListener('click', handleOpenModal('water'));
-      mineralSvg?.removeEventListener('click', handleOpenModal('mineral'));
-      organicSvg?.removeEventListener('click', handleOpenModal('organic'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (

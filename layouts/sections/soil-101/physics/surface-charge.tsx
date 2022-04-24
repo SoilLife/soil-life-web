@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 import ReactModal from 'react-modal';
@@ -12,7 +15,7 @@ import SurfaceAreaChargedSvg from 'public/images/soil-101/physics/surface_area_c
 import styles from '../soil-101.module.css';
 
 const modalMap = {
-  highSurfaceArea: (
+  'high surface area': (
     <div className='h-full flex flex-col justify-between text-center gap-10'>
       <div>
         <Text type='h2' weight='light' size='2xl' color='teal'>
@@ -26,7 +29,7 @@ const modalMap = {
       <SurfaceAreaSvg className='mx-auto max-h-[457px]' />
     </div>
   ),
-  waterHoldingCapacity: (
+  'water holding capacity': (
     <div className='h-full flex flex-col justify-between text-center'>
       <Text type='h2' weight='light' size='2xl' color='yellow'>
         water-holding capacity
@@ -38,7 +41,7 @@ const modalMap = {
       </Text>
     </div>
   ),
-  electricallyCharged: (
+  'electrically charged': (
     <div className='h-full flex flex-col justify-between text-center'>
       <Text type='h2' weight='light' size='2xl' color='teal'>
         clay minerals
@@ -64,15 +67,11 @@ const modalMap = {
   ),
 };
 
-const classNames = ['cursor-pointer', 'hover:opacity-50', 'active:opacity-100'];
-
 export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  const [type, setType] = useState<
-    'cation exchange' | 'waterHoldingCapacity' | 'highSurfaceArea' | 'electricallyCharged' | null
-  >(null);
+  const [type, setType] = useState<'cation exchange' | keyof typeof modalMap | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
 
-  const handleClick = useCallback(function (modalType: typeof type) {
+  const openModal = useCallback(function (modalType: typeof type) {
     return () => {
       setType(modalType);
     };
@@ -80,25 +79,25 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
 
   useEffect(() => {
     if (!imgRef.current) return;
-    const highSurfaceArea = imgRef.current.querySelector('#surface_area_charged_svg__e') as SVGGElement;
-    if (highSurfaceArea) {
-      highSurfaceArea.classList.add(...classNames);
-      highSurfaceArea.tabIndex = 0;
-      highSurfaceArea.addEventListener('click', handleClick('highSurfaceArea'));
-    }
 
-    const electricallyCharged = imgRef.current.querySelector('#surface_area_charged_svg__d') as SVGGElement;
-    if (electricallyCharged) {
-      electricallyCharged.classList.add(...classNames);
-      electricallyCharged.tabIndex = 0;
-      electricallyCharged.addEventListener('click', handleClick('electricallyCharged'));
-    }
+    const svgs: [string, typeof type][] = [
+      ['#surface_area_charged_svg__e', 'high surface area'],
+      ['#surface_area_charged_svg__d', 'electrically charged'],
+    ];
+
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: imgRef.current?.querySelector(id) ?? null,
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      highSurfaceArea?.removeEventListener('click', handleClick('highSurfaceArea'));
-      electricallyCharged?.removeEventListener('click', handleClick('electricallyCharged'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
-  }, [handleClick]);
+  }, [openModal]);
 
   function handleModalClose() {
     setType(null);
@@ -133,12 +132,12 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
         </Text>
         <div className='flex flex-col space-between gap-10 sm:gap-20 sm:flex-row'>
           <div className='flex-grow'>
-            <button onClick={handleClick('cation exchange')} className='h-full w-full hover:opacity-50'>
+            <button onClick={openModal('cation exchange')} className='h-full w-full hover:opacity-50'>
               <img src='/images/soil-101/physics/clay_cec.svg' />
             </button>
           </div>
           <div className='flex-grow'>
-            <button onClick={handleClick('waterHoldingCapacity')} className='h-full w-full hover:opacity-50'>
+            <button onClick={openModal('water holding capacity')} className='h-full w-full hover:opacity-50'>
               <img src='/images/soil-101/physics/clay_whc.svg' />
             </button>
           </div>

@@ -1,5 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
@@ -52,68 +55,42 @@ export const ParentMaterialSection = () => {
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
+    const svgs: [string, typeof modalType][] = [
+      ['#parent_material_svg__Layer_54', 'colluvium'],
+      ['#parent_material_svg__Layer_50', 'organic'],
+      ['#parent_material_svg__Layer_61', 'lacustrine/marine'],
+      ['#parent_material_svg__Layer_59', 'lacustrine/marine'],
+      ['#parent_material_svg__Layer_65', 'glacial'],
+      ['#parent_material_svg__Layer_56', 'volcanic'],
+      ['#parent_material_svg__Layer_64', 'aeolian'],
+      ['#parent_material_svg__Layer_55', 'alluvium'],
+    ];
+
     const sectionContainer = sectionRef.current;
 
-    const colluviumSvg = sectionContainer.querySelector('#parent_material_svg__Layer_54') as SVGGElement | null;
-    colluviumSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    colluviumSvg?.addEventListener('click', handleOpenModal('colluvium'));
-
-    const organicSvg = sectionContainer.querySelector('#parent_material_svg__Layer_50') as SVGGElement | null;
-    organicSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    organicSvg?.addEventListener('click', handleOpenModal('organic'));
-
-    const lacustringSvg = sectionContainer.querySelector('#parent_material_svg__Layer_61') as SVGGElement | null;
-    lacustringSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    lacustringSvg?.addEventListener('click', handleOpenModal('lacustrine/marine'));
-
-    const marineSvg = sectionContainer.querySelector('#parent_material_svg__Layer_59') as SVGGElement | null;
-    marineSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    marineSvg?.addEventListener('click', handleOpenModal('lacustrine/marine'));
-
-    const glacialSvg = sectionContainer.querySelector('#parent_material_svg__Layer_65') as SVGGElement | null;
-    glacialSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    glacialSvg?.addEventListener('click', handleOpenModal('glacial'));
-
-    const volcanicSvg = sectionContainer.querySelector('#parent_material_svg__Layer_56') as SVGGElement | null;
-    volcanicSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    volcanicSvg?.addEventListener('click', handleOpenModal('volcanic'));
-
-    const aeolianSvg = sectionContainer.querySelector('#parent_material_svg__Layer_64') as SVGGElement | null;
-    aeolianSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    aeolianSvg?.addEventListener('click', handleOpenModal('aeolian'));
-
-    const alluviumSvg = sectionContainer.querySelector('#parent_material_svg__Layer_55') as SVGGElement | null;
-    alluviumSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    alluviumSvg?.addEventListener('click', handleOpenModal('alluvium'));
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      colluviumSvg?.removeEventListener('click', handleOpenModal('colluvium'));
-      organicSvg?.removeEventListener('click', handleOpenModal('organic'));
-      lacustringSvg?.removeEventListener('click', handleOpenModal('lacustrine/marine'));
-      marineSvg?.removeEventListener('click', handleOpenModal('lacustrine/marine'));
-      glacialSvg?.removeEventListener('click', handleOpenModal('glacial'));
-      volcanicSvg?.removeEventListener('click', handleOpenModal('volcanic'));
-      aeolianSvg?.removeEventListener('click', handleOpenModal('aeolian'));
-      alluviumSvg?.removeEventListener('click', handleOpenModal('alluvium'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
     const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (

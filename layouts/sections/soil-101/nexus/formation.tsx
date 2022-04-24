@@ -1,11 +1,14 @@
 import { useRef, useEffect, useState } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 
 // assets
-import SoilFormation from 'public/images/soil-101/nexus/soil_formation.svg';
+import SoilFormation from 'public/images/soil-101/nexus/soil_formations.svg';
 import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
@@ -41,64 +44,39 @@ export const FormationSection = (props: { assignRef: (el: null | HTMLDivElement)
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
-    const classes = ['cursor-pointer', 'hover:opacity-50', 'active:opacity-100'];
+    const svgs: [string, typeof modalType][] = [
+      ['#soil_formations_svg__d', 'time'],
+      ['#soil_formations_svg__i', 'parent material'],
+      ['#soil_formations_svg__g', 'climate'],
+      ['#soil_formations_svg__h', 'organisms'],
+      ['#soil_formations_svg__f', 'topography'],
+      ['#soil_formations_svg__e', 'anthropogenic'],
+    ];
 
     const sectionContainer = sectionRef.current;
-    const timeSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_75') as SVGGElement | null;
-    const parentMaterialSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_76') as SVGGElement | null;
-    const parentMaterialSvg2 = sectionContainer.querySelector('#soil_formation_svg__Layer_77') as SVGGElement | null;
-    const climateSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_78') as SVGGElement | null;
-    const organismsSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_79') as SVGGElement | null;
-    const topographySvg = sectionContainer.querySelector('#soil_formation_svg__Layer_80') as SVGGElement | null;
-    const anthropogenicSvg = sectionContainer.querySelector('#soil_formation_svg__Layer_81') as SVGGElement | null;
 
-    timeSvg?.classList?.add(...classes);
-    timeSvg?.addEventListener('click', handleOpenModal('time'));
-
-    parentMaterialSvg?.classList?.add(...classes);
-    parentMaterialSvg?.addEventListener('click', handleOpenModal('parent material'));
-    parentMaterialSvg2?.classList?.add(...classes);
-    parentMaterialSvg2?.addEventListener('click', handleOpenModal('parent material'));
-
-    climateSvg?.classList?.add(...classes);
-    climateSvg?.addEventListener('click', handleOpenModal('climate'));
-
-    organismsSvg?.classList?.add(...classes);
-    organismsSvg?.addEventListener('click', handleOpenModal('organisms'));
-
-    topographySvg?.classList?.add(...classes);
-    topographySvg?.addEventListener('click', handleOpenModal('topography'));
-
-    anthropogenicSvg?.classList?.add(...classes);
-    anthropogenicSvg?.addEventListener('click', handleOpenModal('anthropogenic'));
+    const interactiveSvgs = svgs.map(([id, type]) => {
+      return makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      });
+    });
 
     return () => {
-      timeSvg?.removeEventListener('click', handleOpenModal('time'));
-      parentMaterialSvg?.removeEventListener('click', handleOpenModal('parent material'));
-      parentMaterialSvg2?.removeEventListener('click', handleOpenModal('parent material'));
-      climateSvg?.removeEventListener('click', handleOpenModal('climate'));
-      organismsSvg?.removeEventListener('click', handleOpenModal('organisms'));
-      topographySvg?.removeEventListener('click', handleOpenModal('topography'));
-      anthropogenicSvg?.removeEventListener('click', handleOpenModal('anthropogenic'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (

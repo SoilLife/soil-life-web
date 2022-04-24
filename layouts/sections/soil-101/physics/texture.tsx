@@ -1,7 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
-import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
+
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
+import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 import { Text } from 'design-system/atoms';
 
 // assets
@@ -33,43 +36,31 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModalClick(type: typeof modalType) {
+    function openModal(type: typeof modalType) {
       return () => {
         setModalType(type);
       };
     }
 
-    function handleOpenModalKeydown(type: typeof modalType) {
-      return (event: KeyboardEvent) => {
-        if (event.code === 'Enter') {
-          setModalType(type);
-        }
-      };
-    }
-
-    function makeInteractive(svg: SVGGElement | null, type: keyof typeof modalTypeMap) {
-      if (!svg) return;
-      svg.classList.add('cursor-pointer', 'focus:opacity-50', 'hover:opacity-50', 'active:opacity-100');
-      svg.tabIndex = 0;
-      svg.addEventListener('click', handleOpenModalClick(type));
-      svg.addEventListener('keydown', handleOpenModalKeydown(type));
-      return {
-        unmount() {
-          svg.removeEventListener('click', handleOpenModalClick(type));
-          svg.removeEventListener('keydown', handleOpenModalKeydown(type));
-        },
-      };
-    }
+    const svgs: [string, typeof modalType][] = [
+      ['#soil_texture_svg__d', 'sand'],
+      ['#soil_texture_svg__e', 'silt'],
+      ['#soil_texture_svg__f', 'clay'],
+    ];
 
     const sectionContainer = sectionRef.current;
-    const sandSvg = makeInteractive(sectionContainer.querySelector('#soil_texture_svg__d'), 'sand');
-    const siltSvg = makeInteractive(sectionContainer.querySelector('#soil_texture_svg__e'), 'silt');
-    const claySvg = makeInteractive(sectionContainer.querySelector('#soil_texture_svg__f'), 'clay');
+
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      sandSvg?.unmount();
-      siltSvg?.unmount();
-      claySvg?.unmount();
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 

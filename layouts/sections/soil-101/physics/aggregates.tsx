@@ -1,5 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 import { FullImage } from 'design-system/components/soil-101-modals/full-image';
@@ -16,34 +19,29 @@ export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal() {
-      const body = document.querySelector('body');
-      if (body) {
-        body.style.overflow = 'hidden';
-      }
+    function openModal() {
       setIsModalOpen(true);
     }
 
+    const svgs = ['#aggregation_svg__Layer_94', '#aggregation_svg__Layer_91'];
+
     const sectionContainer = sectionRef.current;
-    const aggregatesSvg = sectionContainer.querySelector('#aggregation_svg__Layer_94') as SVGGElement | null;
-    aggregatesSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    aggregatesSvg?.addEventListener('click', handleOpenModal);
-    const aggregatesSvg2 = sectionContainer.querySelector('#aggregation_svg__Layer_91') as SVGGElement | null;
-    aggregatesSvg2?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    aggregatesSvg2?.addEventListener('click', handleOpenModal);
+    const interactiveSvgs = svgs.map((id) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal,
+        onKeydown: openModal,
+        ariaLabel: 'open aggregation modal',
+      })
+    );
 
     return () => {
-      aggregatesSvg?.removeEventListener('click', handleOpenModal);
-      aggregatesSvg2?.removeEventListener('click', handleOpenModal);
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
   function handleCloseModal() {
     setIsModalOpen(false);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (

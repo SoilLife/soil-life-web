@@ -1,5 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 import { FullImage } from 'design-system/components/soil-101-modals/full-image';
@@ -47,49 +50,34 @@ export const PmTypesSection = () => {
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
+    const svgs: [string, typeof modalType][] = [
+      ['#pm_types_svg__Layer_31', 'coarse-mafic'],
+      ['#pm_types_svg__Layer_33', 'coarse-intermediate'],
+      ['#pm_types_svg__Layer_34', 'coarse-felsic'],
+      ['#pm_types_svg__Layer_30', 'fine-mafic'],
+      ['#pm_types_svg__Layer_29', 'fine-intermediate'],
+      ['#pm_types_svg__Layer_28', 'fine-felsic'],
+    ];
+
     const sectionContainer = sectionRef.current;
 
-    const coarseMaficSvg = sectionContainer.querySelector('#pm_types_svg__Layer_31') as SVGGElement | null;
-    coarseMaficSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    coarseMaficSvg?.addEventListener('click', handleOpenModal('coarse-mafic'));
-
-    const coarseIntermediate = sectionContainer.querySelector('#pm_types_svg__Layer_33') as SVGGElement | null;
-    coarseIntermediate?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    coarseIntermediate?.addEventListener('click', handleOpenModal('coarse-intermediate'));
-
-    const coarseFelsic = sectionContainer.querySelector('#pm_types_svg__Layer_34') as SVGGElement | null;
-    coarseFelsic?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    coarseFelsic?.addEventListener('click', handleOpenModal('coarse-felsic'));
-
-    const fineMafic = sectionContainer.querySelector('#pm_types_svg__Layer_30') as SVGGElement | null;
-    fineMafic?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    fineMafic?.addEventListener('click', handleOpenModal('fine-mafic'));
-
-    const fineIntermediate = sectionContainer.querySelector('#pm_types_svg__Layer_29') as SVGGElement | null;
-    fineIntermediate?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    fineIntermediate?.addEventListener('click', handleOpenModal('fine-intermediate'));
-
-    const fineFelsic = sectionContainer.querySelector('#pm_types_svg__Layer_28') as SVGGElement | null;
-    fineFelsic?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    fineFelsic?.addEventListener('click', handleOpenModal('fine-felsic'));
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      coarseMaficSvg?.removeEventListener('click', handleOpenModal('coarse-mafic'));
-      coarseIntermediate?.removeEventListener('click', handleOpenModal('coarse-intermediate'));
-      coarseFelsic?.removeEventListener('click', handleOpenModal('coarse-felsic'));
-      fineMafic?.removeEventListener('click', handleOpenModal('fine-mafic'));
-      fineIntermediate?.removeEventListener('click', handleOpenModal('fine-intermediate'));
-      fineFelsic?.removeEventListener('click', handleOpenModal('fine-felsic'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 

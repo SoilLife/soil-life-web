@@ -6,7 +6,7 @@ import { useMedia } from 'react-use';
 // components
 import { Icon, Image, Text } from 'design-system/atoms';
 
-const imageClassName = 'h-full object-contain max-h-[80vh] sm:w-3/4 ';
+const imageClassName = 'h-full object-contain max-h-[65vh] sm:w-3/4 ';
 
 export function FullImage({
   image,

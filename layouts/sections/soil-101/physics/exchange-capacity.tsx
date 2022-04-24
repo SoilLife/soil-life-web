@@ -1,12 +1,15 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
+import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import ClaySvg from 'public/images/soil-101/physics/exchange_capacity_clay.svg';
-
 import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
 import AnionExchangeSvg from 'public/images/soil-101/physics/anion_exchange_capacity.svg';
 import MetalOxideExchangeSvg from 'public/images/soil-101/physics/metal_oxides_exchange_capacity.svg';
@@ -35,7 +38,7 @@ export const ExchangeCapacitySection = () => {
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
-  const handleOpenModal = useCallback(function (type: typeof modalType) {
+  const openModal = useCallback(function (type: typeof modalType) {
     return () => {
       setModalType(type);
     };
@@ -44,20 +47,22 @@ export const ExchangeCapacitySection = () => {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    const svgs: [string, typeof modalType][] = [['#exchange_capacity_clay_svg__Layer_2', 'cation exchange']];
     const sectionContainer = sectionRef.current;
-    const cationExchangeSvg = sectionContainer.querySelector(
-      '#exchange_capacity_clay_svg__Layer_2'
-    ) as SVGGElement | null;
-    if (cationExchangeSvg) {
-      cationExchangeSvg.classList.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-      cationExchangeSvg.addEventListener('click', handleOpenModal('cation exchange'));
-      cationExchangeSvg.tabIndex = 0;
-    }
+
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      cationExchangeSvg?.removeEventListener('click', handleOpenModal('cation exchange'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
-  }, [handleOpenModal]);
+  }, [openModal]);
 
   function handleCloseModal() {
     setModalType(null);
@@ -88,7 +93,7 @@ export const ExchangeCapacitySection = () => {
           <img
             src='/images/soil-101/physics/exchange_capacity_organic_matter.png'
             className='cursor-pointer hover:opacity-50 active:opacity-100 mb-4 sm:mb-0 sm:w-1/2'
-            onClick={handleOpenModal('anion exchange')}
+            onClick={openModal('anion exchange')}
           />
         </div>
         <div
@@ -97,7 +102,7 @@ export const ExchangeCapacitySection = () => {
           <img
             src='/images/soil-101/physics/exchange_capacity_metal_oxides.png'
             className='cursor-pointer hover:opacity-50 active:opacity-100 sm:w-1/2'
-            onClick={handleOpenModal('metal oxide exchange')}
+            onClick={openModal('metal oxide exchange')}
           />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
             iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
@@ -105,14 +110,18 @@ export const ExchangeCapacitySection = () => {
           </Text>
         </div>
       </div>
-      {modalType && (
-        <GenericModal
-          title={modalTypeMap[modalType].title}
-          description={modalTypeMap[modalType].text}
-          image={{ type: 'svg', element: modalTypeMap[modalType].image }}
-          onClose={handleCloseModal}
-        />
-      )}
+      {modalType ? (
+        modalType === 'metal oxide exchange' ? (
+          <FullImage image={{ type: 'svg', element: modalTypeMap[modalType].image }} onClose={handleCloseModal} />
+        ) : (
+          <GenericModal
+            title={modalTypeMap[modalType].title}
+            description={modalTypeMap[modalType].text}
+            image={{ type: 'svg', element: modalTypeMap[modalType].image }}
+            onClose={handleCloseModal}
+          />
+        )
+      ) : null}
     </>
   );
 };

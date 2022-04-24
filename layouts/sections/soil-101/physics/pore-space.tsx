@@ -3,6 +3,9 @@ import { useOrientation, useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text, Icon } from 'design-system/atoms';
 
@@ -45,109 +48,59 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenGraphicModalClick(type: typeof modalType) {
+    function openModal(type: typeof modalType) {
       return () => {
         setModalType(type);
       };
     }
 
-    function handleOpenGraphicModalKeydown(type: typeof modalType) {
-      return (event: KeyboardEvent) => {
-        if (event.code === 'Enter') {
-          setModalType(type);
-        }
-      };
-    }
-
-    function makeInteractive(svg: SVGGElement | null, type: keyof typeof modalTypeMap) {
-      if (!svg) return;
-      svg.classList.add('cursor-pointer', 'focus:opacity-50', 'hover:opacity-50', 'active:opacity-100');
-      svg.tabIndex = 0;
-      svg.addEventListener('click', handleOpenGraphicModalClick(type));
-      svg.addEventListener('keydown', handleOpenGraphicModalKeydown(type));
-      return {
-        unmount() {
-          svg.removeEventListener('click', handleOpenGraphicModalClick(type));
-          svg.removeEventListener('keydown', handleOpenGraphicModalKeydown(type));
-        },
-      };
-    }
-
-    function handlePopupClick(popupSvg: SVGGElement | null) {
+    function showPopup(popupSvg: SVGGElement | null) {
       return () => {
         if (!popupSvg) return;
         popupSvg.classList.toggle('hidden');
       };
     }
 
-    function handlePopupKeydown(popupSvg: SVGGElement | null) {
-      return (event: KeyboardEvent) => {
-        if (!popupSvg) return;
-        if (event.code === 'Enter') {
-          popupSvg.classList.toggle('hidden');
-        }
-      };
-    }
-
-    function handleShowPopup(svg: SVGGElement | null, popupSvg: SVGGElement | null) {
-      if (!svg) return;
-      svg.classList?.add(
-        'cursor-pointer',
-        'focus:fill-pink-100',
-        'focus:opacity-50',
-        'hover:fill-pink-100',
-        'hover:opacity-50',
-        'active:opacity-100'
-      );
-      svg.tabIndex = 0;
-      svg.addEventListener('click', handlePopupClick(popupSvg));
-      svg.addEventListener('keydown', handlePopupKeydown(popupSvg));
-      return {
-        unmount() {
-          svg.removeEventListener('click', handlePopupClick(popupSvg));
-          svg.removeEventListener('keydown', handlePopupKeydown(popupSvg));
-        },
-      };
-    }
-
     const sectionContainer = sectionRef.current;
+    const modalSvgs: [string, typeof modalType][] = [
+      ['#pore_space_svg__Layer_5', 'hygroscopic'],
+      ['#pore_space_svg__Layer_3', 'gravitational'],
+      ['#pore_space_svg__Layer_4', 'plant'],
+    ];
+    const popupSvgs: [string, string][] = [
+      ['#pore_space_svg__Layer_2', '#pore_space_svg__Layer_10'],
+      ['#pore_space_svg__Layer_9-2', '#pore_space_svg__Layer_11'],
+      ['.pore_space_svg__cls-2', '#pore_space_svg__Layer_12'],
+    ];
 
-    const liquidSvg = sectionContainer.querySelector('#pore_space_svg__Layer_10') as SVGGElement | null;
-    const solidSvg = sectionContainer.querySelector('#pore_space_svg__Layer_11') as SVGGElement | null;
-    const gasSvg = sectionContainer.querySelector('#pore_space_svg__Layer_12') as SVGGElement | null;
-
-    // initially hide popup
-    liquidSvg?.classList?.add('hidden');
-    solidSvg?.classList?.add('hidden');
-    gasSvg?.classList?.add('hidden');
-
-    const waterAreaSvg = handleShowPopup(sectionContainer.querySelector('#pore_space_svg__Layer_2'), liquidSvg);
-    const solidAreaSvg = handleShowPopup(sectionContainer.querySelector('#pore_space_svg__Layer_9-2'), solidSvg);
-    const gasAreaSvg = handleShowPopup(sectionContainer.querySelector('.pore_space_svg__cls-2'), gasSvg);
-
-    const hygroscopicSvg = makeInteractive(sectionContainer.querySelector('#pore_space_svg__Layer_5'), 'hygroscopic');
-    const gravitationalSvg = makeInteractive(
-      sectionContainer.querySelector('#pore_space_svg__Layer_3'),
-      'gravitational'
+    const interactiveModalSvgs = modalSvgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
     );
-    const plantAvailableSvg = makeInteractive(sectionContainer.querySelector('#pore_space_svg__Layer_4'), 'plant');
-    return () => {
-      waterAreaSvg?.unmount();
-      solidAreaSvg?.unmount();
-      gasAreaSvg?.unmount();
+    const interactivePopupSvgs = popupSvgs.map(([id, popupId]) => {
+      const popupSvg = sectionContainer.querySelector(popupId) as SVGGElement | null;
+      popupSvg?.classList?.add('hidden');
+      return makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: showPopup(popupSvg),
+        onKeydown: showPopup(popupSvg),
+        ariaLabel: `show popup`,
+        classList: ['focus:fill-pink-200', 'hover:fill-pink-200'],
+      });
+    });
 
-      hygroscopicSvg?.unmount();
-      gravitationalSvg?.unmount();
-      plantAvailableSvg?.unmount();
+    return () => {
+      interactiveModalSvgs.forEach((svg) => svg?.unmount());
+      interactivePopupSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -169,7 +122,7 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
         >
           pore space
         </Text>
-        <PoreSpaceSvg />
+        <PoreSpaceSvg className='mx-auto h-[80vh]' />
       </div>
       {modalType && (
         <ReactModal

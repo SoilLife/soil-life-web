@@ -1,10 +1,11 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
-import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
-import ReactModal from 'react-modal';
+
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
-import { Text, Icon, Image } from 'design-system/atoms';
+import { Text } from 'design-system/atoms';
+import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 
 // assets
 import StructureSvg from 'public/images/soil-101/physics/structure.svg';
@@ -55,76 +56,46 @@ const modalTypeMap = {
 };
 
 export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  useFullpageOverflow();
-  const orientation = useOrientation();
-  const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
-        const body = document.querySelector('body');
-        if (body) {
-          body.style.overflow = 'hidden';
-        }
+    function openModal(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
+    const svgs: [string, typeof modalType][] = [
+      ['#structure_svg__Layer_116', 'granular'],
+      ['#structure_svg__Layer_115', 'wedge'],
+      ['#structure_svg__Layer_114', 'platy'],
+      ['#structure_svg__Layer_113', 'prismatic'],
+      ['#structure_svg__Layer_112', 'massive'],
+      ['#structure_svg__Layer_111', 'columnar'],
+      ['#structure_svg__Layer_110', 'blocky'],
+      ['#structure_svg__Layer_109', 'single grain'],
+    ];
+
     const sectionContainer = sectionRef.current;
-    const granularSvg = sectionContainer.querySelector('#structure_svg__Layer_116') as SVGGElement | null;
-    granularSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    granularSvg?.addEventListener('click', handleOpenModal('granular'));
 
-    const wedgeSvg = sectionContainer.querySelector('#structure_svg__Layer_115') as SVGGElement | null;
-    wedgeSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    wedgeSvg?.addEventListener('click', handleOpenModal('wedge'));
-
-    const platySvg = sectionContainer.querySelector('#structure_svg__Layer_114') as SVGGElement | null;
-    platySvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    platySvg?.addEventListener('click', handleOpenModal('platy'));
-
-    const prismaticSvg = sectionContainer.querySelector('#structure_svg__Layer_113') as SVGGElement | null;
-    prismaticSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    prismaticSvg?.addEventListener('click', handleOpenModal('prismatic'));
-
-    const massiveSvg = sectionContainer.querySelector('#structure_svg__Layer_112') as SVGGElement | null;
-    massiveSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    massiveSvg?.addEventListener('click', handleOpenModal('massive'));
-
-    const columnarSvg = sectionContainer.querySelector('#structure_svg__Layer_111') as SVGGElement | null;
-    columnarSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    columnarSvg?.addEventListener('click', handleOpenModal('columnar'));
-
-    const blockySvg = sectionContainer.querySelector('#structure_svg__Layer_110') as SVGGElement | null;
-    blockySvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    blockySvg?.addEventListener('click', handleOpenModal('blocky'));
-
-    const singleGrainedSvg = sectionContainer.querySelector('#structure_svg__Layer_109') as SVGGElement | null;
-    singleGrainedSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    singleGrainedSvg?.addEventListener('click', handleOpenModal('single grain'));
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: openModal(type),
+        onKeydown: openModal(type),
+        ariaLabel: `open ${type} modal`,
+      })
+    );
 
     return () => {
-      granularSvg?.removeEventListener('click', handleOpenModal('granular'));
-      wedgeSvg?.removeEventListener('click', handleOpenModal('wedge'));
-      platySvg?.removeEventListener('click', handleOpenModal('platy'));
-      prismaticSvg?.removeEventListener('click', handleOpenModal('prismatic'));
-      massiveSvg?.removeEventListener('click', handleOpenModal('massive'));
-      columnarSvg?.removeEventListener('click', handleOpenModal('columnar'));
-      blockySvg?.removeEventListener('click', handleOpenModal('blocky'));
-      singleGrainedSvg?.removeEventListener('click', handleOpenModal('single grain'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
   function handleCloseModal() {
     setModalType(null);
-    const body = document.querySelector('body');
-    if (body) {
-      body.style.overflow = 'auto';
-    }
   }
 
   return (
@@ -154,49 +125,15 @@ export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement)
         <StructureSvg className='mx-auto max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)]' />
       </div>
       {modalType && (
-        <ReactModal
-          isOpen
-          shouldCloseOnOverlayClick
-          shouldCloseOnEsc
-          style={{
-            content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-            },
-            overlay: {
-              zIndex: 2,
-            },
+        <GenericModal
+          title={modalTypeMap[modalType].title}
+          description={modalTypeMap[modalType].text}
+          image={{
+            type: 'imagekit',
+            url: modalTypeMap[modalType].imageUrl,
           }}
-          onRequestClose={handleCloseModal}
-        >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
-            <Icon icon='x' size={32} className='text-gray-500' />
-          </button>
-          <div className='space-y-10'>
-            <Text type='h1' weight='thin' size='xl'>
-              {modalTypeMap[modalType].title}
-            </Text>
-
-            <div className='flex flex-col items-center sm:space-x-6 sm:flex-row'>
-              <Image
-                url={modalTypeMap[modalType].imageUrl}
-                className='flex-shrink-0 object-contain mb-10 max-h-[50vh] sm:mb-0 sm:w-3/5'
-              />
-              <Text
-                type='p'
-                weight='light'
-                size='lg'
-                className={`flex-shrink-0 text-center sm:w-2/5 ${styles['p-50']}`}
-              >
-                {modalTypeMap[modalType].text}
-              </Text>
-            </div>
-          </div>
-        </ReactModal>
+          onClose={handleCloseModal}
+        />
       )}
     </>
   );

@@ -19,7 +19,7 @@ export const SymbiosesSection = (props: { assignRef: (el: null | HTMLDivElement)
       >
         symbioses
       </Text>
-      <BetterTogetherSvg className='w-1/2 mx-auto' />
+      <BetterTogetherSvg className='mx-auto h-[65vh]' />
     </div>
   );
 };

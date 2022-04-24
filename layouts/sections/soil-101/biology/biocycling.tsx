@@ -1,5 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 
@@ -27,7 +30,7 @@ const popupMap = {
   },
   respiration: {
     color: 'pink',
-    text: 'as microbes feed on roots, residues, and organic matter and organisms prey on each other, nutrients are released for plant uptake.',
+    text: 'as organisms feed on roots, residues, organic matter and each other (breathing out CO2), nutrients are released for plant uptake.',
     className: 'top-1/3 right-0',
   },
   'litter decomposition': {
@@ -40,69 +43,55 @@ const popupMap = {
     text: 'macrofauna like earthworms and gophers move large amounts of soil, combining organic and mineral matter and mixing it deep into the soil profile.',
     className: 'top-3/4 right-0',
   },
+  'nitrogen fixation': {
+    color: 'pink',
+    text: "some microbes form beneficial relationships with certain plants and are able to break apart nitrogen (N2) in the atmosphere and 'fix' it into the soil.",
+    className: 'top-0 left-0',
+  },
 } as const;
 
 export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  const [popups, setPopups] = useState<null | keyof typeof popupMap>(null);
-  const [, setIsImagePopupOpen] = useState(false);
+  const [popup, setPopup] = useState<null | keyof typeof popupMap>(null);
   const svgContainerRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (!svgContainerRef.current) return;
-    function handleOpenPopup(type: typeof popups) {
+    function showPopup(type: typeof popup) {
       return () => {
-        setPopups(type);
+        setPopup(type);
       };
     }
 
-    function handleImagePopup() {
-      setIsImagePopupOpen((prevState) => !prevState);
-    }
+    const svgs: [string, typeof popup][] = [
+      ['#biocycling_svg__Layer_63', 'plant respiration'],
+      ['#biocycling_svg__Layer_61', 'plant uptake'],
+      ['#biocycling_svg__Layer_65', 'photosynthesis'],
+      ['#biocycling_svg__Layer_64', 'respiration'],
+      ['#biocycling_svg__Layer_62', 'litter decomposition'],
+      ['#biocycling_svg__Layer_54', 'bioperturbation'],
+      ['#biocycling_svg__Layer_60', 'nitrogen fixation'],
+    ];
 
     const sectionContainer = svgContainerRef.current;
-    const plantRespirationSvg = sectionContainer.querySelector('#biocycling_svg__Layer_63') as SVGGElement | null;
-    plantRespirationSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    plantRespirationSvg?.addEventListener('click', handleOpenPopup('plant respiration'));
 
-    const plantUptakeSvg = sectionContainer.querySelector('#biocycling_svg__Layer_61') as SVGGElement | null;
-    plantUptakeSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    plantUptakeSvg?.addEventListener('click', handleOpenPopup('plant uptake'));
-
-    const photosynthesisSvg = sectionContainer.querySelector('#biocycling_svg__Layer_65') as SVGGElement | null;
-    photosynthesisSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    photosynthesisSvg?.addEventListener('click', handleOpenPopup('photosynthesis'));
-
-    const respirationSvg = sectionContainer.querySelector('#biocycling_svg__Layer_64') as SVGGElement | null;
-    respirationSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    respirationSvg?.addEventListener('click', handleOpenPopup('respiration'));
-
-    const decompositionSvg = sectionContainer.querySelector('#biocycling_svg__Layer_62') as SVGGElement | null;
-    decompositionSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    decompositionSvg?.addEventListener('click', handleOpenPopup('litter decomposition'));
-
-    const bioperturbationSvg = sectionContainer.querySelector('#biocycling_svg__Layer_54') as SVGGElement | null;
-    bioperturbationSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    bioperturbationSvg?.addEventListener('click', handleOpenPopup('bioperturbation'));
-
-    const imagePopupSvg = sectionContainer.querySelector('#biocycling_svg__Layer_59') as SVGGElement | null;
-    imagePopupSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    imagePopupSvg?.addEventListener('click', handleImagePopup);
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: showPopup(type),
+        onKeydown: showPopup(type),
+        ariaLabel: `show ${type} popup`,
+      })
+    );
 
     function handleOutsideClick(e: MouseEvent) {
       if (!svgContainerRef.current?.contains(e.target as HTMLElement)) {
-        setPopups(null);
+        setPopup(null);
       }
     }
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      plantRespirationSvg?.removeEventListener('click', handleOpenPopup('plant respiration'));
-      plantUptakeSvg?.removeEventListener('click', handleOpenPopup('plant uptake'));
-      photosynthesisSvg?.removeEventListener('click', handleOpenPopup('photosynthesis'));
-      respirationSvg?.removeEventListener('click', handleOpenPopup('respiration'));
-      decompositionSvg?.removeEventListener('click', handleOpenPopup('litter decomposition'));
-      bioperturbationSvg?.removeEventListener('click', handleOpenPopup('bioperturbation'));
-      imagePopupSvg?.removeEventListener('click', handleImagePopup);
+      interactiveSvgs.forEach((svg) => svg?.unmount());
       document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
@@ -127,7 +116,7 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
 
         <div className='relative' ref={svgContainerRef}>
           <Biocycling />
-          {popups && <Popup {...popupMap[popups]} title={popups} />}
+          {popup && <Popup {...popupMap[popup]} title={popup} />}
         </div>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
           plant biomass is eaten and excreted by animals or it decomposes when the plant dies. carbon is also pumped

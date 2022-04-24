@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 
+// helpers
+import { makeSvgInteractive } from 'helpers/make-svg-interactive';
+
 // components
 import { Text } from 'design-system/atoms';
 
@@ -71,59 +74,36 @@ export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDiv
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    function handleOpenModal(type: typeof modalType) {
-      return (_e: MouseEvent) => {
+    function showPopup(type: typeof modalType) {
+      return () => {
         setModalType(type);
       };
     }
 
-    const sectionContainer = sectionRef.current;
-    const climateRegulationsSvg = sectionContainer.querySelector(
-      '#ecosystem_services_svg__Layer_1-2'
-    ) as SVGGElement | null;
-    const plantGrowthSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_2-2') as SVGGElement | null;
-    const waterFiltrationSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_3') as SVGGElement | null;
-    const nutrientCyclingSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_4') as SVGGElement | null;
-    const waterStorageSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_5') as SVGGElement | null;
-    const historicalRecordSvg = sectionContainer.querySelector(
-      '#ecosystem_services_svg__Layer_6'
-    ) as SVGGElement | null;
-    const biodiversitySvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_7') as SVGGElement | null;
-    const carbonStorageSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_8') as SVGGElement | null;
-    const engineeringSvg = sectionContainer.querySelector('#ecosystem_services_svg__Layer_9') as SVGGElement | null;
+    const svgs: [string, typeof modalType][] = [
+      ['#ecosystem_services_svg__Layer_1-2', 'climate regulation'],
+      ['#ecosystem_services_svg__Layer_2-2', 'plant growth'],
+      ['#ecosystem_services_svg__Layer_3', 'nutrient cycling'],
+      ['#ecosystem_services_svg__Layer_5', 'water storage'],
+      ['#ecosystem_services_svg__Layer_6', 'historical record'],
+      ['#ecosystem_services_svg__Layer_7', 'biodiversity'],
+      ['#ecosystem_services_svg__Layer_8', 'carbon storage'],
+      ['#ecosystem_services_svg__Layer_9', 'engineering'],
+    ];
 
-    if (climateRegulationsSvg) {
-      climateRegulationsSvg.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-      climateRegulationsSvg.addEventListener('click', handleOpenModal('climate regulation'));
-      climateRegulationsSvg.tabIndex = 0;
-    }
-    plantGrowthSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    plantGrowthSvg?.addEventListener('click', handleOpenModal('plant growth'));
-    waterFiltrationSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    waterFiltrationSvg?.addEventListener('click', handleOpenModal('water filtration'));
-    nutrientCyclingSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    nutrientCyclingSvg?.addEventListener('click', handleOpenModal('nutrient cycling'));
-    waterStorageSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    waterStorageSvg?.addEventListener('click', handleOpenModal('water storage'));
-    historicalRecordSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    historicalRecordSvg?.addEventListener('click', handleOpenModal('historical record'));
-    biodiversitySvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    biodiversitySvg?.addEventListener('click', handleOpenModal('biodiversity'));
-    carbonStorageSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    carbonStorageSvg?.addEventListener('click', handleOpenModal('carbon storage'));
-    engineeringSvg?.classList?.add('cursor-pointer', 'hover:opacity-50', 'active:opacity-100');
-    engineeringSvg?.addEventListener('click', handleOpenModal('engineering'));
+    const sectionContainer = sectionRef.current;
+
+    const interactiveSvgs = svgs.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: showPopup(type),
+        onKeydown: showPopup(type),
+        ariaLabel: `open ${type} popup`,
+      })
+    );
 
     return () => {
-      climateRegulationsSvg?.removeEventListener('click', handleOpenModal('climate regulation'));
-      plantGrowthSvg?.removeEventListener('click', handleOpenModal('plant growth'));
-      waterFiltrationSvg?.removeEventListener('click', handleOpenModal('water filtration'));
-      nutrientCyclingSvg?.removeEventListener('click', handleOpenModal('nutrient cycling'));
-      waterStorageSvg?.removeEventListener('click', handleOpenModal('water storage'));
-      historicalRecordSvg?.removeEventListener('click', handleOpenModal('historical record'));
-      biodiversitySvg?.removeEventListener('click', handleOpenModal('biodiversity'));
-      carbonStorageSvg?.removeEventListener('click', handleOpenModal('carbon storage'));
-      engineeringSvg?.removeEventListener('click', handleOpenModal('engineering'));
+      interactiveSvgs.forEach((svg) => svg?.unmount());
     };
   }, []);
 
