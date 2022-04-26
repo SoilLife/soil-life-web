@@ -81,8 +81,24 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
       })
     );
 
+    function handleOutsideClick(e: MouseEvent) {
+      if (!sectionContainer.contains(e.target as HTMLElement)) {
+        setPopups({
+          organic: false,
+          topsoil: false,
+          'eluviated zone': false,
+          'accumulation zone': false,
+          'parent material': false,
+          bedrock: false,
+        });
+      }
+    }
+
+    window.addEventListener('click', handleOutsideClick);
+
     return () => {
       interactiveSvgs.forEach((svg) => svg?.unmount());
+      window.removeEventListener('click', handleOutsideClick);
     };
   }, []);
 

@@ -9,7 +9,6 @@ import { DefaultLayout } from 'layouts';
 // sections
 import {
   HeroSection,
-  CircleOfLifeSection,
   PlantGrowthSection,
   PhotosynthesisSection,
   NutrientUptakeSection,
@@ -67,21 +66,13 @@ export default function SoilChemistryPage() {
     };
   }
 
-  function handleDownArrowClick() {
-    const headerOffsetTop = 141;
-    if (refs.current['circle of life']) {
-      window.scrollTo({ behavior: 'smooth', top: refs.current['circle of life'].offsetTop - headerOffsetTop });
-    }
-  }
-
   return (
     <DefaultLayout>
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-orange-500' />
-      <HeroSection onDownArrowClick={handleDownArrowClick} />
+      <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} currentSection={currentSection} color='orange' />
         <div className={styles['sections-container']}>
-          <CircleOfLifeSection assignRef={assignRefs('circle of life')} />
           <PlantGrowthSection assignRef={assignRefs('plant growth')} />
           <PhotosynthesisSection />
           <NutrientUptakeSection />

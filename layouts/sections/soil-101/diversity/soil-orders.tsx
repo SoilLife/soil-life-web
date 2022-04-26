@@ -186,7 +186,7 @@ export const SoilOrdersSection = (props: { assignRef: (el: null | HTMLDivElement
           .
         </Text>
 
-        <div className='space-y-28'>
+        <div className='space-y-44' style={{ marginTop: '11rem' }}>
           {Object.entries(data).map(([soilType, soilData]) => {
             return (
               <div key={soilType}>

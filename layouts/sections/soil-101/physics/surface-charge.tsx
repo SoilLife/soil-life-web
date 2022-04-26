@@ -116,13 +116,12 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
         >
           surface charge
         </Text>
-        <div className='flex flex-col gap-8 sm:flex-row sm:justify-between sm:items-center'>
-          <Text type='p' weight='thin' size='md' className={`flex-shrink-0 sm:w-3/5`}>
-            the smaller the particles, the greater the surface area. the smallest particles, clays, not only have high
-            surface area, but carry an electrical charge, as well.
-          </Text>
-          <SurfaceAreaSvg className='max-w-[834px]' />
-        </div>
+        <Text type='p' weight='thin' size='md' className='text-center'>
+          of the 3 particle sizes, clays are considered the “active” portion of soil. they have higher total surface
+          area and, like magnets, are often electrically charged, allowing chemical reactions to occur on their large
+          surfaces
+        </Text>
+
         <div ref={imgRef}>
           <SurfaceAreaChargedSvg />
         </div>

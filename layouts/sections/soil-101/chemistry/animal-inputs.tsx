@@ -65,7 +65,7 @@ export const AnimalInputsSection = (props: { assignRef: (el: null | HTMLDivEleme
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           above ground, animals nibble on plants. in response, plants change their root growth patterns and pump more
           carbon underground, in search of nutrients for regrowth. this herbivory has been shown to increase soil
-          microbial biomass and activy.
+          microbial biomass and activity.
         </Text>
         <AnimalInputs2Svg className='mx-auto max-w-[800px]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>

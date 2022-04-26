@@ -67,25 +67,18 @@ export default function SoilPhysicsPage() {
     };
   }
 
-  function handleDownArrowClick() {
-    const headerOffsetTop = 141;
-    if (refs.current['texture']) {
-      window.scrollTo({ behavior: 'smooth', top: refs.current['texture'].offsetTop - headerOffsetTop });
-    }
-  }
-
   return (
     <DefaultLayout>
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-yellow-500' />
-      <HeroSection onDownArrowClick={handleDownArrowClick} />
+      <HeroSection />
       <div className='container'>
         <SectionsNavBar sections={sections} currentSection={currentSection} color='yellow' />
         <div className={styles['sections-container']}>
           <TextureSection assignRef={assignRefs('texture')} />
           <TexturalClassSection />
-          <OrganicMatterSection />
           <SurfaceChargeSection assignRef={assignRefs('charge')} />
           <WaterDynamicsSection />
+          <OrganicMatterSection />
           <ExchangeCapacitySection />
           <AggregatesSection assignRef={assignRefs('aggregation')} />
           <AggregateFormationSection />

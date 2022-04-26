@@ -1,5 +1,4 @@
 export * from './hero';
-export * from './circle-of-life';
 export * from './plant-growth';
 export * from './photosynthesis';
 export * from './nutrient-uptake';

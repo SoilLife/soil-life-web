@@ -4,7 +4,7 @@ import { Image, Text } from 'design-system/atoms';
 // assets
 import DownArrow from 'public/images/down_arrow_white.svg';
 
-export function HeroSection({ onDownArrowClick }: { onDownArrowClick: () => void }) {
+export function HeroSection() {
   return (
     <div className='relative h-screen overflow-hidden'>
       <div className='absolute top-1/2 transform -translate-y-1/2 text-center text-white w-full z-10'>
@@ -19,12 +19,12 @@ export function HeroSection({ onDownArrowClick }: { onDownArrowClick: () => void
         url='Soil_101/soil_chemistry/soil_chemistry_hero.JPG?updatedAt=1630600714426'
         className='absolute object-cover'
       />
-      <button
+      <a
         className='absolute bottom-4 left-1/2 transform -translate-x-1/2 hover:scale-105 active:scale-100'
-        onClick={onDownArrowClick}
+        href='#plant-growth'
       >
         <DownArrow height={30} />
-      </button>
+      </a>
     </div>
   );
 }

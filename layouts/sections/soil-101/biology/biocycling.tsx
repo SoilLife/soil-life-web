@@ -15,37 +15,72 @@ import { TextProps } from 'design-system/atoms/text/text.interfaces';
 const popupMap = {
   'plant respiration': {
     color: 'yellow',
-    text: 'as opposed to animal or microbial respiration, which releases CO2, plants respire O2, which keeps our air safe for life on earth!',
+    text: (
+      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
+        'as opposed to animal or microbial respiration, which releases CO<sub>2</sub>, plants respire O<sub>2</sub>,
+        which keeps our air safe for life on earth!
+      </Text>
+    ),
     className: 'top-20 left-0',
   },
   'plant uptake': {
     color: 'pink',
-    text: 'plants move nutrients from the soil into their leaves, roots, shoots, and fruits, where they are temporarily held against losses.',
+    text: (
+      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
+        plants move nutrients from the soil into their leaves, roots, shoots, and fruits, where they are temporarily
+        held against losses.
+      </Text>
+    ),
     className: 'top-1/2 left-0',
   },
   photosynthesis: {
     color: 'teal',
-    text: 'all carbon that enters soil starts as atmospheric CO2, fixed by plants via photosynthesis and either pumped underground by roots or held aboveground in residues, until they fall to the ground, as plant litter.',
+    text: (
+      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
+        all carbon that enters soil starts as atmospheric CO<sub>2</sub>, fixed by plants via photosynthesis and either
+        pumped underground by roots or held aboveground in residues, until they fall to the ground, as plant litter.
+      </Text>
+    ),
     className: 'top-20 right-0',
   },
   respiration: {
     color: 'pink',
-    text: 'as organisms feed on roots, residues, organic matter and each other (breathing out CO2), nutrients are released for plant uptake.',
+    text: (
+      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
+        as organisms feed on roots, residues, organic matter and each other (breathing out CO<sub>2</sub>), nutrients
+        are released for plant uptake.
+      </Text>
+    ),
     className: 'top-1/3 right-0',
   },
   'litter decomposition': {
     color: 'blue',
-    text: 'decomposition of organic materials (i.e. plant and animal residues) releases nutrients for microbial growth and plant uptake.',
+    text: (
+      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
+        decomposition of organic materials (i.e. plant and animal residues) releases nutrients for microbial growth and
+        plant uptake.
+      </Text>
+    ),
     className: 'top-1/2 right-0',
   },
   bioperturbation: {
     color: 'gray',
-    text: 'macrofauna like earthworms and gophers move large amounts of soil, combining organic and mineral matter and mixing it deep into the soil profile.',
+    text: (
+      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
+        macrofauna like earthworms and gophers move large amounts of soil, combining organic and mineral matter and
+        mixing it deep into the soil profile.
+      </Text>
+    ),
     className: 'top-3/4 right-0',
   },
   'nitrogen fixation': {
     color: 'pink',
-    text: "some microbes form beneficial relationships with certain plants and are able to break apart nitrogen (N2) in the atmosphere and 'fix' it into the soil.",
+    text: (
+      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
+        some microbes form beneficial relationships with certain plants and are able to break apart nitrogen (N
+        <sub>2</sub>) in the atmosphere and 'fix' it into the soil.
+      </Text>
+    ),
     className: 'top-0 left-0',
   },
 } as const;
@@ -136,7 +171,7 @@ function Popup({
 }: {
   title: string;
   color: Required<TextProps>['color'];
-  text: string;
+  text: JSX.Element;
   className: string;
 }) {
   return (
@@ -144,9 +179,8 @@ function Popup({
       <Text type='h3' weight='light' size='sm' color={color} style={{ lineHeight: '32px' }}>
         {title}:
       </Text>
-      <Text type='p' weight='light' size='sm' style={{ lineHeight: '32px' }}>
-        {text}
-      </Text>
+
+      {text}
     </div>
   );
 }

@@ -29,13 +29,15 @@ import CoveredBottomSvg from 'public/images/soil-101/health/covered_bottom.svg';
 import AnimalsSvg from 'public/images/soil-101/health/wild_soil.svg';
 import TimingSvg from 'public/images/soil-101/health/prescribed_graze_soil.svg';
 import IntensitySvg from 'public/images/soil-101/health/timing_duration.svg';
+import LeftArrow from 'public/images/left_arrow_pink_thick.svg';
+import RightArrow from 'public/images/right_arrow_pink_thick.svg';
 
 import styles from '../soil-101.module.css';
 
 const integrateAnimalsMap = {
   animals: <AnimalsSvg className='mx-auto max-h-[60vh]' />,
-  timing: <IntensitySvg className='mx-auto max-h-[60vh]' />,
-  intensity: <TimingSvg className='mx-auto max-h-[60vh]' />,
+  timing: <TimingSvg className='mx-auto max-h-[60vh]' />,
+  intensity: <IntensitySvg className='mx-auto max-h-[60vh]' />,
 };
 
 const integrateAnimalsHeadings: (keyof typeof integrateAnimalsMap)[] = ['animals', 'timing', 'intensity'];
@@ -226,7 +228,41 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
             </li>
           ))}
         </ul>
-        {integrateAnimalsMap[activeHeading]}
+        <div className='mx-auto relative max-w-[50vw]'>
+          <button
+            className='absolute top-1/2 -translate-y-1/2 -left-8'
+            onClick={() => {
+              setActiveHeading((heading) => {
+                if (heading === 'animals') {
+                  return 'intensity';
+                } else if (heading === 'intensity') {
+                  return 'timing';
+                } else if (heading === 'timing') {
+                  return 'animals';
+                } else return heading;
+              });
+            }}
+          >
+            <LeftArrow height={60} />
+          </button>
+          <button
+            className='absolute top-1/2 -translate-y-1/2 -right-8'
+            onClick={() => {
+              setActiveHeading((heading) => {
+                if (heading === 'animals') {
+                  return 'timing';
+                } else if (heading === 'intensity') {
+                  return 'animals';
+                } else if (heading === 'timing') {
+                  return 'intensity';
+                } else return heading;
+              });
+            }}
+          >
+            <RightArrow height={60} />
+          </button>
+          {integrateAnimalsMap[activeHeading]}
+        </div>
       </div>
     </div>
   );

@@ -43,11 +43,7 @@ export const RisksSection = (props: { assignRef: (el: null | HTMLDivElement) => 
     setTimeout(() => {
       if (!modalRef.current || !modalType) return;
 
-      const modalTypeNode = modalRef.current.querySelector(`#${modalType?.replaceAll(' ', '-')}`) as HTMLDivElement;
-      const parent = modalRef.current.parentElement;
-      if (parent) {
-        parent.scrollTop = modalTypeNode?.offsetTop - 40 ?? 0;
-      }
+      modalRef.current.querySelector(`#${modalType.replaceAll(' ', '-')}`)?.scrollIntoView({ behavior: 'smooth' });
     }, 50);
   }, [modalType]);
 
