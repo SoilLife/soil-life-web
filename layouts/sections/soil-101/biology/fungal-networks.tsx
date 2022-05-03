@@ -89,7 +89,7 @@ export const FungalNetworksSection = () => {
         <FullImage
           image={{
             type: 'svg',
-            element: <MycorrhizaSvg />,
+            element: <MycorrhizaSvg className='w-full h-full' />,
           }}
           onClose={handleCloseModal}
         />

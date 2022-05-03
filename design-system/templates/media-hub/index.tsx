@@ -206,7 +206,7 @@ export function MediaHub({
           />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'image' ? (
           <img
-            className={'h-full w-full object-contain max-w-[75%] mx-auto'}
+            className={'h-full w-full object-contain lg:max-w-[75%] mx-auto'}
             src={modalMedia[mediaIndex]?.URL as string}
             loading='lazy'
           />

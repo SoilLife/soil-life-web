@@ -63,7 +63,7 @@ export const NutrientCyclingSection = (props: { assignRef: (el: null | HTMLDivEl
           some nutrients are more mobile than others, making it easier for plants to access and take them up
         </Text>
 
-        <NutrientCyclingSvg className='mx-auto max-h-[50vh]' />
+        <NutrientCyclingSvg className='mx-auto lg:max-w-[75%]' />
       </div>
       {isModalOpen && (
         <FullImage

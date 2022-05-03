@@ -19,7 +19,7 @@ export const MineralWeatheringSection = (props: { assignRef: (el: null | HTMLDiv
       >
         mineral weathering
       </Text>
-      <MineralWeatheringSvg className='mx-auto max-h-[50vh]' />
+      <MineralWeatheringSvg className='mx-auto lg:max-w-[75%]' />
     </div>
   );
 };

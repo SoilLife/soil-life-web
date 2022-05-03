@@ -46,7 +46,7 @@ export const CarbonicAcidSection = () => {
         <Text type='h1' weight='regular' size='4xl' color='orange' className={styles['heading']}>
           carbonic acid
         </Text>
-        <CarbonicAcidSvg className='mx-auto max-h-[50vh]' />
+        <CarbonicAcidSvg className='mx-auto lg:max-w-[75%]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           plant roots respire some carbon as CO<sub>2</sub> out of their roots, leading to the production of carbonic
           acid and increased mineral weathering.
