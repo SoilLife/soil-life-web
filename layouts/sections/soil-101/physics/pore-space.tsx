@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { useOrientation, useMedia } from 'react-use';
+import { useMedia } from 'react-use';
 import { useFullpageOverflow } from 'helpers/use-fullpage-overflow';
 import ReactModal from 'react-modal';
 
@@ -40,9 +40,7 @@ const modalTypeMap = {
 
 export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
-  const orientation = useOrientation();
   const isMobile = useMedia('(max-width: 640px)');
-  const isLandscape = orientation.type.includes('landscape');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 

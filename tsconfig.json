@@ -3,11 +3,7 @@
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     "target": "esnext",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
     "jsxFragmentFactory": "React.Fragment",
     "jsxFactory": "React.createElement",
@@ -30,12 +26,6 @@
     "paths": {},
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
