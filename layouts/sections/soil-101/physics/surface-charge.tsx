@@ -51,12 +51,10 @@ const modalMap = {
     description: (
       <>
         <Text type='p' weight='thin' size='xs'>
-          clay minerals are composed of <b>silica tetrahedra</b> (silica bound to 4 oxygen atoms) and{' '}
-          <b>aluminum octahedra</b> (aluminum surrounded by 6 oxygens or hydroxyls: OH<sup>-</sup>) layered in sheets
-          (1:1, 2:1, etc.). when these minerals form, silica (4<sup>+</sup>) is often substituted for aluminum (3
-          <sup>+</sup>) or aluminum (3<sup>+</sup>) is substituted for magnesium (2<sup>+</sup> or iron (2<sup>+</sup>
-          ). this creates a charge imbalance, which leaves the mineral with a permanent negative charge, allowing
-          positively charged cations to bind to clays.
+          clay minerals are composed of <b>silica tetrahedra</b> and <b>aluminum octahedra</b> layered in sheets (1:1,
+          2:1, etc.). when these minerals form, silica (4<sup>+</sup>) is often substituted for aluminum (3<sup>+</sup>)
+          or aluminum (3<sup>+</sup>) is substituted for magnesium (2<sup>+</sup>) or iron (2<sup>+</sup>). this creates
+          a charge imbalance, which leaves the mineral with a permanent negative charge.
         </Text>
       </>
     ),
