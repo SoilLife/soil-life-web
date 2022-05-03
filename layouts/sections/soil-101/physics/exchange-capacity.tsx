@@ -6,33 +6,38 @@ import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 // components
 import { Text } from 'design-system/atoms';
 import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
-import { FullImage } from 'design-system/components/soil-101-modals/full-image';
 
 // assets
 import ClaySvg from 'public/images/soil-101/physics/exchange_capacity_clay.svg';
 import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
 import AnionExchangeSvg from 'public/images/soil-101/physics/anion_exchange_capacity.svg';
-import MetalOxideExchangeSvg from 'public/images/soil-101/physics/metal_oxides_exchange_capacity.svg';
+import SomSvg from 'public/images/soil-101/physics/som_cation_anion.svg';
 
 import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
   'cation exchange': {
     title: 'cation exchange capacity',
-    image: <CationExchangeSvg className='mx-auto sm:w-3/4' />,
-    text: 'cations are positively charged ions. cation exchange capacity is the number of negatively charged sites (on clays or organic matter) that can hold onto these ions.',
+    image: { type: 'svg', element: <CationExchangeSvg className='mx-auto sm:w-1/2' /> },
+    description:
+      'cations are positively charged ions. cation exchange capacity is the number of negatively charged sites (on clays or organic matter) that can hold onto these ions.',
+    reverseContent: true,
   },
   'anion exchange': {
-    title: 'anion exchange capacity',
-    image: <AnionExchangeSvg className='mx-auto sm:w-3/4' />,
-    text: 'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions.',
+    title: 'soil & anion exchange capacity',
+    image: { type: 'svg', element: <SomSvg className='mx-auto sm:w-1/2' /> },
+    description:
+      'soil organic matter is composed of a diversity of complex molecules that have both positively and negatively charged sites and can hold onto both negatively and positively charged ions!',
+    reverseContent: true,
   },
   'metal oxide exchange': {
-    title: '',
-    image: <MetalOxideExchangeSvg className='mx-auto h-[50%]' />,
-    text: '',
+    title: 'anion exchange capacity',
+    image: { type: 'svg', element: <AnionExchangeSvg className='mx-auto sm:w-1/2' /> },
+    description:
+      'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions',
+    reverseContent: true,
   },
-};
+} as const;
 
 export const ExchangeCapacitySection = () => {
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
@@ -110,18 +115,7 @@ export const ExchangeCapacitySection = () => {
           </Text>
         </div>
       </div>
-      {modalType ? (
-        modalType === 'metal oxide exchange' ? (
-          <FullImage image={{ type: 'svg', element: modalTypeMap[modalType].image }} onClose={handleCloseModal} />
-        ) : (
-          <GenericModal
-            title={modalTypeMap[modalType].title}
-            description={modalTypeMap[modalType].text}
-            image={{ type: 'svg', element: modalTypeMap[modalType].image }}
-            onClose={handleCloseModal}
-          />
-        )
-      ) : null}
+      {modalType && <GenericModal {...modalTypeMap[modalType]} onClose={handleCloseModal} />}
     </>
   );
 };

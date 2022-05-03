@@ -5,70 +5,70 @@ import { makeSvgInteractive } from 'helpers/make-svg-interactive';
 
 // components
 import { Text } from 'design-system/atoms';
-import ReactModal from 'react-modal';
-import { SurfaceChargeModal } from './modals/surface-charge';
+import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 
 // assets
 import SurfaceAreaSvg from 'public/images/soil-101/physics/surface_area.svg';
 import SurfaceAreaChargedSvg from 'public/images/soil-101/physics/surface_area_charged.svg';
+import PermanentChargeSvg from 'public/images/soil-101/physics/permanent_charge.svg';
+import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
 
 import styles from '../soil-101.module.css';
 
 const modalMap = {
-  'high surface area': (
-    <div className='h-full flex flex-col justify-between text-center gap-10'>
-      <div>
-        <Text type='h2' weight='light' size='2xl' color='teal'>
-          surface area
+  'cation exchange': {
+    title: 'cation exchange',
+    description:
+      'cations are positively charged ions. cation exchange capacity is the number of negatively charged sites (on clays or organic matter) that can hold onto these ions.',
+    image: {
+      type: 'svg',
+      element: <CationExchangeSvg className='mx-auto sm:w-1/2' />,
+    },
+    reverseContent: true,
+  },
+  'high surface area': {
+    title: 'surface area',
+    description:
+      'the smaller the particles, the greater the surface area. the smallest particles, clays, not only have high surface area, but carry an electrical charge, as well.',
+    image: {
+      type: 'svg',
+      element: <SurfaceAreaSvg className='mx-auto max-h-[457px] sm:w-1/2' />,
+    },
+    reverseContent: true,
+  },
+  'water holding capacity': {
+    title: 'water holding capacity',
+    description:
+      'the amount of water that a soil can hold against gravity, driven by clay and organic matter content -- water molecules attracted to negatively charged particles.',
+    image: {
+      type: 'img',
+      url: '/images/soil-101/physics/water_holding.png',
+    },
+    reverseContent: true,
+  },
+  'electrically charged': {
+    title: '',
+    description: (
+      <>
+        <Text type='p' weight='thin' size='xs'>
+          clay minerals are composed of <b>silica tetrahedra</b> (silica bound to 4 oxygen atoms) and{' '}
+          <b>aluminum octahedra</b> (aluminum surrounded by 6 oxygens or hydroxyls: OH<sup>-</sup>) layered in sheets
+          (1:1, 2:1, etc.). when these minerals form, silica (4<sup>+</sup>) is often substituted for aluminum (3
+          <sup>+</sup>) or aluminum (3<sup>+</sup>) is substituted for magnesium (2<sup>+</sup> or iron (2<sup>+</sup>
+          ). this creates a charge imbalance, which leaves the mineral with a permanent negative charge, allowing
+          positively charged cations to bind to clays.
         </Text>
-        <Text type='p' weight='thin' size='md'>
-          the smaller the particles, the greater the surface area. the smallest particles, clays, not only have high
-          surface area, but carry an electrical charge, as well.
-        </Text>
-      </div>
-      <SurfaceAreaSvg className='mx-auto max-h-[457px]' />
-    </div>
-  ),
-  'water holding capacity': (
-    <div className='h-full flex flex-col justify-between text-center'>
-      <Text type='h2' weight='light' size='2xl' color='yellow'>
-        water-holding capacity
-      </Text>
-
-      <Text type='p' weight='thin' size='md'>
-        the amount of water that a soil can hold against gravity, driven by clay and organic matter content -- water
-        molecules attracted to negatively charged particles
-      </Text>
-    </div>
-  ),
-  'electrically charged': (
-    <div className='h-full flex flex-col justify-between text-center'>
-      <Text type='h2' weight='light' size='2xl' color='teal'>
-        clay minerals
-      </Text>
-
-      <Text type='p' weight='thin' size='md'>
-        in addition to the clay particle size and clay textural class, clay also refers to the minerals that soils are
-        made up of. clay minerals are composed of the following compounds organized as
-      </Text>
-
-      <div className='flex justify-between gap-10'>
-        <Text type='p' weight='thin' size='md'>
-          silica bound to 4 oxygen atoms. tetrahedra link up in chains, sheets, or frameworks to form minerals that make
-          up much of the earth's crust (~90%).
-        </Text>
-
-        <Text type='p' weight='thin' size='md'>
-          aluminum surrounded by 6 oxygen or hydroxyls (OH). combine in sheets with silica tetrahedra to form clay
-          minerals{' '}
-        </Text>
-      </div>
-    </div>
-  ),
-};
+      </>
+    ),
+    image: {
+      type: 'svg',
+      element: <PermanentChargeSvg className='mx-auto w-3/4' />,
+    },
+  },
+} as const;
 
 export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
-  const [type, setType] = useState<'cation exchange' | keyof typeof modalMap | null>(null);
+  const [type, setType] = useState<keyof typeof modalMap | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
 
   const openModal = useCallback(function (modalType: typeof type) {
@@ -143,22 +143,7 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
         </div>
       </div>
 
-      {type === 'cation exchange' ? (
-        <SurfaceChargeModal onClose={handleModalClose} type={type} />
-      ) : (
-        type && (
-          <ReactModal
-            isOpen
-            preventScroll
-            shouldCloseOnOverlayClick
-            shouldCloseOnEsc
-            onRequestClose={handleModalClose}
-            style={{ content: { inset: '15%' } }}
-          >
-            {modalMap[type]}
-          </ReactModal>
-        )
-      )}
+      {type && <GenericModal {...modalMap[type]} onClose={handleModalClose} />}
     </>
   );
 };

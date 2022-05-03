@@ -6,16 +6,17 @@ import { useMedia } from 'react-use';
 // components
 import { Text, Icon, Image } from 'design-system/atoms';
 
-const imageClassName = 'object-cover mx-auto h-auto w-3/4 md:max-h-[calc(100vh-100px)] md:w-1/2';
+const imageClassName = 'object-contain mx-auto h-auto w-3/4 md:max-h-[40vh] md:w-3/4';
 
 export function GenericModal({
   title,
   description,
   image,
   onClose,
+  reverseContent,
 }: {
   title: string;
-  description: string;
+  description: string | JSX.Element;
   image:
     | {
         type: 'svg';
@@ -24,6 +25,7 @@ export function GenericModal({
       }
     | { type: 'imagekit' | 'img'; url: string; element?: never };
   onClose: () => void;
+  reverseContent?: boolean;
 }) {
   const isMobile = useMedia('(max-width: 640px)');
 
@@ -49,16 +51,22 @@ export function GenericModal({
           <Text type='h1' weight='bold' size='2xl' color='pink'>
             {title}
           </Text>
-          {image.type === 'svg' ? (
-            image.element
-          ) : image.type === 'imagekit' ? (
-            <Image url={image.url} className={imageClassName} />
-          ) : (
-            <img src={image.url} className={imageClassName} />
-          )}
-          <Text type='p' weight='light' size='xs' style={{ lineHeight: '38px' }}>
-            {description}
-          </Text>
+          <div className={` ${reverseContent ? 'flex flex-col-reverse gap-4' : 'space-y-4'}`}>
+            {image.type === 'svg' ? (
+              image.element
+            ) : image.type === 'imagekit' ? (
+              <Image url={image.url} className={imageClassName} />
+            ) : (
+              <img src={image.url} className={imageClassName} />
+            )}
+            {typeof description === 'string' ? (
+              <Text type='p' weight='light' size='xs' style={{ lineHeight: '38px' }}>
+                {description}
+              </Text>
+            ) : (
+              description
+            )}
+          </div>
         </div>
       </div>
     </ReactModal>
