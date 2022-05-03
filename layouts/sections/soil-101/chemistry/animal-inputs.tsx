@@ -61,18 +61,18 @@ export const AnimalInputsSection = (props: { assignRef: (el: null | HTMLDivEleme
         >
           animal inputs
         </Text>
-        <AnimalInputs1Svg className='mx-auto lg:max-w-[75%]' />
+        <AnimalInputs1Svg className='mx-auto lg:max-w-[75vw]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           above ground, animals nibble on plants. in response, plants change their root growth patterns and pump more
           carbon underground, in search of nutrients for regrowth. this herbivory has been shown to increase soil
           microbial biomass and activity.
         </Text>
-        <AnimalInputs2Svg className='mx-auto lg:max-w-[75%]' />
+        <AnimalInputs2Svg className='mx-auto lg:max-w-[75vw]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           urine and feces that grazers leave behind provides nutrient-rich food for microbes, enhancing nutrient
           cycling/availability. applications of these inputs have been found to increase soil organic matter.
         </Text>
-        <AnimalInputs3Svg className='mx-auto lg:max-w-[75%]' />
+        <AnimalInputs3Svg className='mx-auto lg:max-w-[75vw]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           trampling from animal hooves helps break up the soil and vegetation. this increases water infiltration,
           promoting decomposition and seed germination, allowing the cycle to begin again!

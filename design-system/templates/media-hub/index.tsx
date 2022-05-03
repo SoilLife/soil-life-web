@@ -206,12 +206,12 @@ export function MediaHub({
           />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'image' ? (
           <img
-            className={'h-full w-full object-contain lg:max-w-[75%] mx-auto'}
+            className={'h-full w-full object-contain mx-auto lg:max-w-[75vw]'}
             src={modalMedia[mediaIndex]?.URL as string}
             loading='lazy'
           />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'imagekit' ? (
-          <div className='overflow-y-auto max-h-[90%] max-w-full mx-auto' ref={imageKitContainerRef}>
+          <div className='overflow-y-auto max-w-full mx-auto max-h-[90%] ' ref={imageKitContainerRef}>
             <Image
               key={modalMedia[mediaIndex]?.URL}
               url={modalMedia?.[mediaIndex]?.URL as string}

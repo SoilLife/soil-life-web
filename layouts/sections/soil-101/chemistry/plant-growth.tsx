@@ -19,7 +19,7 @@ export const PlantGrowthSection = (props: { assignRef: (el: null | HTMLDivElemen
       >
         plant growth
       </Text>
-      <PlantGrowthSvg className='mx-auto lg:max-w-[75%]' />
+      <PlantGrowthSvg className='mx-auto lg:max-w-[75vw]' />
     </div>
   );
 };

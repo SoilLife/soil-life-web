@@ -152,7 +152,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         </Text>
 
         <div className='grid grid-cols-2 grid-rows-4 gap-4 place-items-center sm:flex sm:items-center sm:gap-0 sm:space-x-8'>
-          <HumanProfileSvg className='mx-auto row-span-3 max-h-[800px]' />
+          <HumanProfileSvg className='mx-auto row-span-3 max-h-[800px] w-full' />
           <Text
             type='p'
             weight='light'

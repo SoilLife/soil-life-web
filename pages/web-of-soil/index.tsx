@@ -483,7 +483,10 @@ export default function WebOfSoilPage() {
                     </div>
                   </Slide>
                   <Slide className='relative'>
-                    <Image className='object-cover object-left' url='/6Fs/cup_of_pills_ioFvZZ0lo.png' />
+                    <Image
+                      className='object-cover md:object-[-120px] 2xl:object-left'
+                      url='/6Fs/cup_of_pills_ioFvZZ0lo.png'
+                    />
                     <div
                       className={`p-6 flex flex-col h-full w-full items-center justify-center absolute top-0 left-0
                     lg:p-0 lg:block lg:h-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/4 lg:max-w-[828px]`}
@@ -518,7 +521,7 @@ export default function WebOfSoilPage() {
                     <Image className='object-cover' url='/6Fs/Fun_XHWRw699s.jpg' />
                     <div
                       className={`p-6 flex flex-col items-center justify-center h-full w-full absolute top-0 left-0
-                   lg:p-0 lg:h-auto lg:left-auto lg:top-auto lg:flex-row lg:bottom-1/4`}
+                   lg:p-0 lg:h-auto lg:left-auto lg:top-auto lg:flex-row lg:bottom-[20%]`}
                     >
                       <img
                         className='relative top-10 h-[168px] w-[168px] lg:top-auto lg:h-[241px] lg:w-[241px]'

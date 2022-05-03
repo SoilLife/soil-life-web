@@ -202,7 +202,7 @@ export const WebOfSoilMedia = memo(function ({ filter }: { filter: string }) {
           />
         ) : modalMedia?.[mediaIndex]?.mediaType === 'image' ? (
           <img
-            className={'h-full w-full object-contain lg:max-w-[75%] mx-auto'}
+            className={'h-full w-full object-contain lg:max-w-[75vw] mx-auto'}
             src={modalMedia[mediaIndex]?.URL as string}
             loading='lazy'
           />

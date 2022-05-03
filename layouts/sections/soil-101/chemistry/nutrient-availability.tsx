@@ -89,7 +89,7 @@ export const NutrientAvailabilitySection = () => {
           well as the amount of protons or hydroxyls in the soil solution, which can kick plant nutrients off the
           complex.
         </Text>
-        <NutrientAvailabilitySvg className='mx-auto lg:max-w-[75%]' />
+        <NutrientAvailabilitySvg className='mx-auto lg:max-w-[75vw]' />
       </div>
       {modalType && (
         <ReactModal

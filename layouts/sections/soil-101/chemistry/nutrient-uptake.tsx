@@ -49,7 +49,7 @@ export const NutrientUptakeSection = () => {
         <Text type='h1' weight='light' size='4xl' color='orange' className={styles['heading']}>
           nutrient uptake
         </Text>
-        <NutrientUptakeSvg className='mx-auto lg:max-w-[75%]' />
+        <NutrientUptakeSvg className='mx-auto lg:max-w-[75vw]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           building these compounds also requires water and nutrients. as roots grow, they take up nutrients dissolved in
           water{' '}

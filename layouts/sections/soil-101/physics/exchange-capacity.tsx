@@ -24,7 +24,7 @@ const modalTypeMap = {
     reverseContent: true,
   },
   'anion exchange': {
-    title: 'soil & anion exchange capacity',
+    title: 'cation & anion exchange capacity',
     image: { type: 'svg', element: <SomSvg className='mx-auto sm:w-1/2' /> },
     description:
       'soil organic matter is composed of a diversity of complex molecules that have both positively and negatively charged sites and can hold onto both negatively and positively charged ions!',

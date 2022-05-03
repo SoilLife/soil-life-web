@@ -150,7 +150,7 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
         </Text>
 
         <div className='relative' ref={svgContainerRef}>
-          <Biocycling />
+          <Biocycling className='mx-auto lg:max-w-[50vw]' />
           {popup && <Popup {...popupMap[popup]} title={popup} />}
         </div>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>

@@ -122,7 +122,7 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
         >
           pore space
         </Text>
-        <PoreSpaceSvg className='mx-auto h-[80vh]' />
+        <PoreSpaceSvg className='mx-auto lg:max-w-[50vw]' />
       </div>
       {modalType && (
         <ReactModal
@@ -130,36 +130,29 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
           shouldCloseOnOverlayClick
           shouldCloseOnEsc
           style={{
+            overlay: { zIndex: 2 },
             content: {
-              padding: 40,
-              height: isMobile ? '100%' : isLandscape ? '80vh' : '50vh',
-              width: isMobile ? '100%' : isLandscape ? '50vw' : '80vw',
-              left: isMobile ? 0 : '50%',
-              top: isMobile ? '40px' : '50%',
-              transform: isMobile ? undefined : 'translate(-50%, -50%)',
-            },
-            overlay: {
-              zIndex: 2,
+              inset: isMobile ? '40px 0 0 0' : '10%',
             },
           }}
           onRequestClose={handleCloseModal}
         >
-          <button className='absolute top-4 right-4' onClick={handleCloseModal}>
+          <button aria-label='Close Modal' className='absolute top-4 right-4' onClick={handleCloseModal}>
             <Icon icon='x' size={32} className='text-gray-500' />
           </button>
-          <div className='space-y-4 text-center'>
-            <Text type='h1' weight='light' size='xl' color='pink'>
-              {modalTypeMap[modalType].title}
-            </Text>
-
-            <div className='w-1/2 mx-auto'>{modalTypeMap[modalType].image}</div>
-
-            <Text type='p' weight='medium' size='lg' color='pink'>
-              {modalTypeMap[modalType].heading}
-            </Text>
-            <Text type='p' weight='light' size='lg'>
-              {modalTypeMap[modalType].text}
-            </Text>
+          <div className='h-full grid place-items-center text-center'>
+            <div className='space-y-4'>
+              <Text type='h1' weight='bold' size='2xl' color='pink'>
+                {modalTypeMap[modalType].title}
+              </Text>
+              <div className='w-1/2 mx-auto'>{modalTypeMap[modalType].image}</div>
+              <Text type='p' weight='medium' size='lg' color='pink'>
+                {modalTypeMap[modalType].heading}
+              </Text>
+              <Text type='p' weight='light' size='lg'>
+                {modalTypeMap[modalType].text}
+              </Text>
+            </div>
           </div>
         </ReactModal>
       )}
