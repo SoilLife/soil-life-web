@@ -74,12 +74,12 @@ function getBgColorFromActiveHeader(index: number) {
 }
 
 const videos = [
-  'https://www.youtube.com/watch?v=GqNmbgfDTGE',
-  'https://www.youtube.com/watch?v=q6qtZhrKgU4',
-  'https://www.youtube.com/watch?v=Rl18Ss4dOdI',
-  'https://www.youtube.com/watch?v=6T9AMtKEAY8',
-  'https://www.youtube.com/watch?v=XA7aeMwTCks',
-  'https://www.youtube.com/watch?v=rkOQ5PfQe1k',
+  'https://www.youtube.com/watch?v=bt6bNTVXFss',
+  'https://www.youtube.com/watch?v=Nf3VgIiymKw',
+  'https://www.youtube.com/watch?v=5Qy-rzIsBWo',
+  'https://www.youtube.com/watch?v=wb58okKU8xM',
+  'https://www.youtube.com/watch?v=AknCWP16gVk',
+  'https://www.youtube.com/watch?v=ABWz6tfChY4',
 ];
 
 export default function WebOfSoilPage() {
