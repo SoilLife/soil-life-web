@@ -152,7 +152,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         </Text>
 
         <div className='grid grid-cols-2 grid-rows-4 gap-4 place-items-center sm:flex sm:items-center sm:gap-0 sm:space-x-8'>
-          <HumanProfileSvg className='mx-auto row-span-3 max-h-[800px] w-full' />
+          <HumanProfileSvg className='w-full mx-auto row-span-3 max-h-[800px] lg:w-auto' />
           <Text
             type='p'
             weight='light'
@@ -175,7 +175,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
             major impact on soil organic matter, soil structure, and overall soil health!
           </Text>
 
-          <SoilProfileSvg className='mx-auto row-span-3 col-start-2 max-h-[800px] sm:col-start-auto' />
+          <SoilProfileSvg className='w-full mx-auto row-span-3 col-start-2 max-h-[800px] sm:col-start-auto lg:w-auto' />
         </div>
 
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-60']}`}>
