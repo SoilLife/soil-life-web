@@ -31,8 +31,30 @@ const modalTypeMap = {
   biodegradation: <BiodegradationSvg className='h-full w-full' />,
 };
 
+const popupMap = {
+  physical: {
+    color: 'yellow',
+    functions: ['structural stability', 'erosion control', 'water storage', 'air storage'],
+    metrics: ['aggregate stability', 'infiltration rate', 'water-holding capacity', 'bulk density', 'surface hardness'],
+    className: 'sm:absolute sm:top-0 sm:right-[80%]',
+  },
+  chemical: {
+    color: 'pink',
+    functions: ['fertility', 'nutrient cycling', 'buffering capacity', 'water infiltration'],
+    metrics: ['cation exchange', 'capacity', 'nutrient analysis', 'pH', 'ec/sar'],
+    className: 'sm:absolute sm:top-0 sm:right-[80%]',
+  },
+  biological: {
+    color: 'teal',
+    functions: ['carbon storage', 'nutrient storage', 'pest suppression', 'disease suppression', 'biodiversity'],
+    metrics: ['soil carbon/som', 'microbial biomass/diversity', 'enzyme activity', 'invertebrate counts'],
+    className: 'sm:absolute sm:top-0 sm:right-[80%]',
+  },
+};
+
 export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
+  const [popup, setPopup] = useState<null | keyof typeof popupMap>(null);
   const [isSomModalOpen, setIsSomModalOpen] = useState(false);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -42,6 +64,19 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
       return () => {
         setModalType(type);
       };
+    }
+
+    function showPopup(type: typeof popup) {
+      return () => {
+        setPopup(type);
+      };
+    }
+
+    function hidePopup(e: MouseEvent) {
+      const physicalBiologicalChemicalSvg = sectionContainer.querySelector('#tri-bubble');
+      if (!physicalBiologicalChemicalSvg?.contains(e.target as HTMLElement)) {
+        setPopup(null);
+      }
     }
 
     const sectionContainer = sectionRef.current;
@@ -60,12 +95,27 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
       ['#soil_profile_svg__Layer_28', 'physical'],
     ];
 
+    const popups: [string, typeof popup][] = [
+      ['#what_is_soil_health_svg__Layer_32', 'biological'],
+      ['#what_is_soil_health_svg__Layer_31', 'chemical'],
+      ['#what_is_soil_health_svg__Layer_30', 'physical'],
+    ];
+
     const interactiveSvgs = svgs.map(([id, type]) =>
       makeSvgInteractive({
         svg: sectionContainer.querySelector(id),
         onClick: openModal(type),
         onKeydown: openModal(type),
         ariaLabel: `open ${type} modal`,
+      })
+    );
+
+    const interactivePopups = popups.map(([id, type]) =>
+      makeSvgInteractive({
+        svg: sectionContainer.querySelector(id),
+        onClick: showPopup(type),
+        onKeydown: showPopup(type),
+        ariaLabel: `show ${type} popup`,
       })
     );
 
@@ -80,9 +130,13 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
       ariaLabel: 'toggle soil organic matter modal',
     });
 
+    window.addEventListener('click', hidePopup);
+
     return () => {
       interactiveSvgs.forEach((svg) => svg?.unmount());
+      interactivePopups.forEach((popup) => popup?.unmount());
       somSvg?.unmount();
+      window.removeEventListener('click', hidePopup);
     };
   }, []);
 
@@ -125,23 +179,26 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           </Text>{' '}
           and can be directly influenced by management (i.e structure, organic matter).
         </Text>
-        <div className='flex items-center justify-center space-x-4'>
-          <Text type='p' size='sm' weight='light' className={`text-center max-w-[311px] ${styles['p-60']}`}>
+        <div className='flex flex-col-reverse items-center justify-center gap-10 sm:flex-row sm:space-x-4 sm:space-y-4'>
+          <Text type='p' size='md' weight='light' className={`text-center max-w-[311px] ${styles['p-60']}`}>
             soil health lies at the intersection of the{' '}
-            <Text type='span' size='sm' weight='bold' color='teal'>
+            <Text type='span' size='md' weight='bold' color='teal'>
               biological
             </Text>
             ,{' '}
-            <Text type='span' size='sm' weight='bold' color='pink'>
+            <Text type='span' size='md' weight='bold' color='pink'>
               chemical
             </Text>
             , and{' '}
-            <Text type='span' size='sm' weight='bold' color='yellow'>
+            <Text type='span' size='md' weight='bold' color='yellow'>
               physical
             </Text>{' '}
             state of the soil
           </Text>
-          <WhatIsSoilHealthSvg className='max-w-[595px]' />
+          <div id='tri-bubble' className='relative w-full max-w-[595px]'>
+            <WhatIsSoilHealthSvg />
+            {popup && <Popup title={popup} {...popupMap[popup]} />}
+          </div>
         </div>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-60']}`}>
           just like our organs provide services that keep us healthy, healthy soil provides important ecosystem services{' '}
@@ -224,3 +281,51 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
     </>
   );
 };
+
+function Popup({
+  className,
+  title,
+  color,
+  functions,
+  metrics,
+}: {
+  className: string;
+  title: string;
+  color: any;
+  functions: string[];
+  metrics: string[];
+}) {
+  return (
+    <div className={`p-4 text-center space-y-4 w-fit sm:bg-white sm:shadow  ${className}`}>
+      <Text size='md' weight='bold' type='h2'>
+        {title}
+      </Text>
+      <div className='space-y-4'>
+        <div className='flex'>
+          <Text size='sm' weight='medium' type='h3' className='underline w-full' color={color}>
+            Functions
+          </Text>
+          <Text size='sm' weight='medium' type='h3' className='underline w-full' color={color}>
+            Metrics
+          </Text>
+        </div>
+        <div className='flex divide-x divide-solid divide-gray-500'>
+          <div className='flex-grow w-full p-4'>
+            <ul className='text-left space-y-2'>
+              {functions.map((f, i) => (
+                <li key={i}>{f}</li>
+              ))}
+            </ul>
+          </div>
+          <div className='flex-grow w-full p-4'>
+            <ul className='text-left space-y-2'>
+              {metrics.map((m, i) => (
+                <li key={i}>{m}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
