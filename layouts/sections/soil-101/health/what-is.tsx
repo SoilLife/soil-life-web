@@ -83,16 +83,18 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
 
     const svgs: [string, typeof modalType][] = [
       ['#human_profile_svg__Layer_40', 'protection'],
-      ['#soil_profile_svg__Layer_28', 'protection'],
+      // ['.soil_profile_svg__cls-9', 'protection'],
       ['#human_profile_svg__Layer_37', 'respiration'],
+      ['#human_profile_svg__Layer_38', 'respiration'],
+      ['#human_profile_svg__Layer_36', 'respiration'],
+      ['#soil_profile_svg__Layer_27', 'respiration'],
       ['#human_profile_svg__Layer_39', 'filtration'],
       ['#soil_profile_svg__Layer_24', 'filtration'],
       ['#human_profile_svg__Layer_35', 'circulation'],
       ['#soil_profile_svg__Layer_26', 'circulation'],
-      ['#ecosystem_services_svg__Layer_6', 'biodegradation'],
       ['#soil_profile_svg__Layer_25', 'biodegradation'],
+      // ['.soil_profile_svg__cls-1', 'physical'],
       ['#human_profile_svg__Layer_85', 'physical'],
-      ['#soil_profile_svg__Layer_28', 'physical'],
     ];
 
     const popups: [string, typeof popup][] = [
@@ -208,13 +210,13 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           life on earth!
         </Text>
 
-        <div className='grid grid-cols-2 grid-rows-4 gap-4 place-items-center sm:flex sm:items-center sm:gap-0 sm:space-x-8'>
+        <div className='grid grid-cols-2 grid-rows-4 gap-4 place-items-center xl:flex xl:items-center xl:gap-0 xl:space-x-8'>
           <HumanProfileSvg className='w-full mx-auto row-span-3 max-h-[800px] lg:w-auto' />
           <Text
             type='p'
             weight='light'
             size='sm'
-            className={`text-center row-start-4 col-span-2 sm:row-start-auto sm:w-2/5 ${styles['p-60']}`}
+            className={`text-center row-start-4 col-span-2 xl:row-start-auto xl:w-2/5 ${styles['p-60']}`}
           >
             just like we inherit{' '}
             <Text type='span' weight='bold' size='sm' color='blue'>
@@ -232,7 +234,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
             major impact on soil organic matter, soil structure, and overall soil health!
           </Text>
 
-          <SoilProfileSvg className='w-full mx-auto row-span-3 col-start-2 max-h-[800px] sm:col-start-auto lg:w-auto' />
+          <SoilProfileSvg className='w-full mx-auto row-span-3 col-start-2 max-h-[800px] lg:w-auto xl:col-start-auto ' />
         </div>
 
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-60']}`}>
@@ -303,24 +305,32 @@ function Popup({
       <div className='space-y-4'>
         <div className='flex'>
           <Text size='sm' weight='medium' type='h3' className='underline w-full' color={color}>
-            Functions
+            functions
           </Text>
           <Text size='sm' weight='medium' type='h3' className='underline w-full' color={color}>
-            Metrics
+            metrics
           </Text>
         </div>
-        <div className='flex divide-x divide-solid divide-gray-500'>
+        <div className='flex divide-x divide-solid divide-gray-500 whitespace-pre'>
           <div className='flex-grow w-full p-4'>
             <ul className='text-left space-y-2'>
               {functions.map((f, i) => (
-                <li key={i}>{f}</li>
+                <li key={i}>
+                  <Text size='xs' weight='thin' type='span'>
+                    {f}
+                  </Text>
+                </li>
               ))}
             </ul>
           </div>
           <div className='flex-grow w-full p-4'>
             <ul className='text-left space-y-2'>
               {metrics.map((m, i) => (
-                <li key={i}>{m}</li>
+                <li key={i}>
+                  <Text size='xs' weight='thin' type='span'>
+                    {m}
+                  </Text>
+                </li>
               ))}
             </ul>
           </div>
