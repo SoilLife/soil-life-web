@@ -128,7 +128,7 @@ export const FoodWebSection = () => {
   function handleCloseModal() {
     setModalType(null);
   }
-  console.log(modalType);
+
   return (
     <>
       <div ref={sectionRef} className={styles['section']}>
