@@ -83,7 +83,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
 
     const svgs: [string, typeof modalType][] = [
       ['#human_profile_svg__Layer_40', 'protection'],
-      // ['.soil_profile_svg__cls-9', 'protection'],
+      ['#soil_profile_svg__Layer_66', 'protection'],
       ['#human_profile_svg__Layer_37', 'respiration'],
       ['#human_profile_svg__Layer_38', 'respiration'],
       ['#human_profile_svg__Layer_36', 'respiration'],
@@ -93,7 +93,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
       ['#human_profile_svg__Layer_35', 'circulation'],
       ['#soil_profile_svg__Layer_26', 'circulation'],
       ['#soil_profile_svg__Layer_25', 'biodegradation'],
-      // ['.soil_profile_svg__cls-1', 'physical'],
+      ['#soil_profile_svg__Layer_28', 'physical'],
       ['#human_profile_svg__Layer_85', 'physical'],
     ];
 

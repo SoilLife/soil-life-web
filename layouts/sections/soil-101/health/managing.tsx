@@ -69,9 +69,9 @@ export const ManagingSection = (props: { assignRef: (el: null | HTMLDivElement) 
     const svgs: [string, typeof popup][] = [
       ['#management_no_tillage_svg__Layer_2', 'no-tillage'],
       ['#management_cover_svg__Layer_2', 'cover cropping'],
-      ['#management_nutrient_svg__Layer_2', 'hedgerows'],
-      ['#management_organic_svg__Layer_2', 'nutrient management'],
-      ['#management_hedgerows_svg__Layer_2', 'organic amendments'],
+      ['#management_nutrient_svg__Layer_2', 'nutrient management'],
+      ['#management_organic_svg__Layer_2', 'organic amendments'],
+      ['#management_hedgerows_svg__Layer_2', 'hedgerows'],
     ];
 
     function showPopup(type: typeof popup) {

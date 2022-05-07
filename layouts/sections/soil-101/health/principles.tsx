@@ -217,14 +217,17 @@ export const PrinciplesSection = (props: { assignRef: (el: null | HTMLDivElement
                 setActiveHeading(heading);
               }}
             >
+              <a href={`#${heading}`}>
+
               <Text
                 type='h2'
                 weight={heading === activeHeading ? 'bold' : 'light'}
                 size='md'
                 className={heading === activeHeading ? 'cursor-default' : 'cursor-pointer'}
-              >
+                >
                 {heading}
               </Text>
+                </a>
             </li>
           ))}
         </ul>
