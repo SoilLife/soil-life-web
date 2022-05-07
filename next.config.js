@@ -1,3 +1,5 @@
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+
 module.exports = {
   images: {
     domains: process.env.NODE_ENV === 'production' ? ['thesoillife.org', 'netlify.com'] : ['localhost'],
@@ -7,6 +9,7 @@ module.exports = {
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
+    config.plugins.push(new FaviconsWebpackPlugin({logo: './public/images/logo.png', cache: true, publicPath: '/images', prefix: 'images/'}))
 
     return config;
   },
