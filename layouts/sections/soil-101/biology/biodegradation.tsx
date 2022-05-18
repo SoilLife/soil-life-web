@@ -23,7 +23,7 @@ export const BiodegradationSection = (props: { assignRef: (el: null | HTMLDivEle
       <div className='text-center grid grid-cols-3 gap-4 max-h-[950px]'>
         <div className='col-span-full sm:col-span-2'>
           <Text type='p' weight='light' size='sm' className={`mb-10 ${styles['p-50']}`}>
-            as with plant and animal residues, microbes in the soil have the ability to break down organic compounds,
+            microbes in the soil also have the ability to break down organic compounds,
             considered toxic to humans. they can even transform heavy metals into less toxic or less mobile forms.
           </Text>
 
