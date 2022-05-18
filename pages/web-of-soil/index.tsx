@@ -439,7 +439,7 @@ export default function WebOfSoilPage() {
                         size="lg"
                         className="leading-9 bg-white rounded-lg p-6 max-w-md lg:bg-transparent lg:p-0"
                       >
-                        whether it is a plant that grew in it or an animal that
+                        whether a plant that grew in it or an animal that
                         grew from plants, 95% of all food can be traced back to
                         soil!
                       </Text>
@@ -479,7 +479,7 @@ export default function WebOfSoilPage() {
                         className="leading-9 bg-white rounded-lg p-6 max-w-md lg:bg-transparent lg:p-0"
                       >
                         natural? synthetic? paper or plastic? from clothing to
-                        accessories to wood and oil, all that warms and protects
+                        accessories, wood to oil; all that warms and protects
                         us, starts in the soil.
                       </Text>
                       <div className="mt-[15%] flex justify-center sm:mt-10">
@@ -519,8 +519,8 @@ export default function WebOfSoilPage() {
                         className="leading-9 bg-white rounded-lg p-6 lg:bg-transparent lg:p-0"
                       >
                         soils are the lungs and liver of the earth, removing
-                        contaminants from the air we breathe and the water we
-                        drink, free of charge!
+                        contaminants from the air we breathe and water we
+                        drink -- free of charge!
                       </Text>
                       <div className="mt-[15%] flex justify-center sm:mt-10">
                         <button
@@ -560,7 +560,7 @@ export default function WebOfSoilPage() {
                         >
                           the base of our economy, the base of food webs, and
                           the physical base of our cities, soils are literally
-                          the foundation for life and civilization—past and
+                          the foundation of life -— past and
                           present!
                         </Text>
                         <div className="mt-[15%] flex justify-center sm:mt-10">
@@ -600,8 +600,8 @@ export default function WebOfSoilPage() {
                         className="bg-white rounded-lg p-6 lg:bg-transparent lg:p-0"
                       >
                         soils are home to the plants, fungi, & bacteria that
-                        produce most of the world’s medicine — and ~98% of the
-                        microbes that inhabit it are yet to be discovered!
+                        produce most of the world’s medicine — and nearly 98% of the
+                        microbes that inhabit it have yet to be discovered!
                       </Text>
                       <div className="mt-[15%] flex justify-center sm:mt-10">
                         <button
