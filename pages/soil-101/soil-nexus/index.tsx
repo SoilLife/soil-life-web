@@ -11,17 +11,17 @@ import {
   HeroSection,
   IntroSection,
   EcosystemServicesSection,
+  FormationSection,
   ParentMaterialSection,
   PmTypesSection,
   RockWeatheringSection,
-  FormationSection,
   FormingFactorsSection,
   ProcessesSection,
 } from 'layouts/sections/soil-101/nexus';
 
 import styles from '../soil-101.module.css';
 
-const sections = ['soil nexus', 'soil services', 'rock weathering', 'soil formation', 'soil processes'];
+const sections = ['soil nexus', 'soil services', 'soil formation', 'rock weathering', 'soil processes'];
 
 export default function SoilNexusPage() {
   const [currentSection, setCurrentSection] = useState('soil nexus');
@@ -79,10 +79,10 @@ export default function SoilNexusPage() {
         <div className={styles['sections-container']}>
           <IntroSection assignRef={assignRefs('soil nexus')} />
           <EcosystemServicesSection assignRef={assignRefs('soil services')} />
+          <FormationSection assignRef={assignRefs('soil formation')} />
           <RockWeatheringSection assignRef={assignRefs('rock weathering')} />
           <ParentMaterialSection />
           <PmTypesSection />
-          <FormationSection assignRef={assignRefs('soil formation')} />
           <FormingFactorsSection />
           <ProcessesSection assignRef={assignRefs('soil processes')} />
         </div>
