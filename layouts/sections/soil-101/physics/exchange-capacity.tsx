@@ -23,18 +23,18 @@ const modalTypeMap = {
       'cations are positively charged ions. cation exchange capacity is the number of negatively charged sites (on clays or organic matter) that can hold onto these ions.',
     reverseContent: true,
   },
-  'anion exchange': {
-    title: 'cation & anion exchange capacity',
-    image: { type: 'svg', element: <SomSvg className='mx-auto sm:w-1/2' /> },
-    description:
-      'soil organic matter is composed of a diversity of complex molecules that have both positively and negatively charged sites and can hold onto both negatively and positively charged ions!',
-    reverseContent: true,
-  },
   'metal oxide exchange': {
     title: 'anion exchange capacity',
     image: { type: 'svg', element: <AnionExchangeSvg className='mx-auto sm:w-1/2' /> },
     description:
       'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions',
+    reverseContent: true,
+   },
+  'anion exchange': {
+    title: 'cation & anion exchange capacity',
+    image: { type: 'svg', element: <SomSvg className='mx-auto sm:w-1/2' /> },
+    description:
+      'soil organic matter is composed of a diversity of complex molecules that have both positively and negatively charged sites and can hold onto both negatively and positively charged ions!',
     reverseContent: true,
   },
 } as const;
@@ -89,19 +89,6 @@ export const ExchangeCapacitySection = () => {
           </Text>
         </div>
         <div
-          className={`flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16 ${styles['p-48']}`}
-        >
-          <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-            som also has high surface area and charge, holding on to both positive and negatively charged ions
-            (depending on pH) and contributing significantly to water holding capacity.
-          </Text>
-          <img
-            src='/images/soil-101/physics/exchange_capacity_organic_matter.png'
-            className='cursor-pointer hover:opacity-50 active:opacity-100 mb-4 sm:mb-0 sm:w-1/2'
-            onClick={openModal('anion exchange')}
-          />
-        </div>
-        <div
           className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
         >
           <img
@@ -113,6 +100,19 @@ export const ExchangeCapacitySection = () => {
             iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
             capacity (i.e. NO3-, BO3-, Cl-).
           </Text>
+        </div>
+        <div
+          className={`flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16 ${styles['p-48']}`}
+        >
+          <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
+            som also has high surface area and charge, holding on to both positive and negatively charged ions
+            (depending on pH) and contributing significantly to water holding capacity.
+          </Text>
+          <img
+            src='/images/soil-101/physics/exchange_capacity_organic_matter.png'
+            className='cursor-pointer hover:opacity-50 active:opacity-100 mb-4 sm:mb-0 sm:w-1/2'
+            onClick={openModal('anion exchange')}
+          />
         </div>
       </div>
       {modalType && <GenericModal {...modalTypeMap[modalType]} onClose={handleCloseModal} />}
