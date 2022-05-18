@@ -164,7 +164,7 @@ export const RockWeatheringSection = (props: { assignRef: (el: null | HTMLDivEle
             <RockWeathering className='mx-auto max-h-[189px]' />
           </div>
           <Text type='p' weight='light' size='md' className={`sm:col-span-3 ${styles['p-60']}`}>
-            over time, through a combination of physical, biological, and chemical processes, rocks break down into
+            through a combination of physical, biological, and chemical processes, rocks break down into
             smaller and smaller pieces.
           </Text>
         </div>
