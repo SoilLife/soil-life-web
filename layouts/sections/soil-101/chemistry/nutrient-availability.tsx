@@ -86,7 +86,7 @@ export const NutrientAvailabilitySection = () => {
         </Text>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           ph determines the amount and type of charge on soil minerals and organic matter (the exchange complex), as
-          well as the amount of protons or hydroxyls in the soil solution; driving overall nutrient availability.
+          well as the amount of protons (H+) or hydroxyls (OH-) in the soil solution; driving overall nutrient availability.
         </Text>
         <NutrientAvailabilitySvg className='mx-auto lg:max-w-[75vw]' />
       </div>
