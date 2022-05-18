@@ -13,7 +13,7 @@ export const DecompositionSection = () => {
         decomposition
       </Text>
       <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
-        aboveground, plant residues fall to the surface; belowground, roots slough off; 
+        plant residues fall to the surface, roots slough off, 
         and the soil food web eats and is eaten; cycling carbon and nutrients throughout the soil system.
         </Text>
       <DecompositionSvg />
