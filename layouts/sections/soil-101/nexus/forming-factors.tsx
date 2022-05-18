@@ -17,8 +17,8 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   'parent material': (
     <div className='space-y-4'>
       <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
-        as temperature and precipitation increase, organisms are more active, chemical reactions are faster, and more
-        weathering occurs over time.
+        the finer the particles, the faster the weathering, but mineralogy matters! silica is one of the least
+        weatherable minerals, while minerals high in iron and magnesium weather more readily.
       </Text>
       <ParentMaterialSvg />
     </div>
@@ -26,8 +26,8 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   climate: (
     <div className='space-y-4'>
       <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
-        the finer the particles, the faster the weathering, but mineralogy matters! silica is one of the least
-        weatherable minerals, while minerals high in iron and magnesium weather readily.
+        as temperature and precipitation increase, organisms become more active; chemical reactions happen faster; and more
+        weathering occurs overall.
       </Text>
       <ClimateSvg />
     </div>
@@ -63,8 +63,8 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   humans: (
     <div className='space-y-4'>
       <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
-        soils form on geologic time scales that extends far beyond a human lifetime. however, while it takes 1,000 years
-        to build an inch of topsoil, the same amount can be washed away in just a few decades when poorly managed
+        soils form on geologic time scales that extend far beyond a human lifetime. while it takes 1,000 years
+        to build an inch of topsoil, the same amount can be washed away in just a few decades when poorly managed!
       </Text>
       <HumansSvg className='p-4' />
     </div>
