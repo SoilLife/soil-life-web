@@ -49,7 +49,7 @@ export const CarbonicAcidSection = () => {
         <CarbonicAcidSvg className='mx-auto lg:max-w-[75vw]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           plants respire some carbon out of their roots as CO<sub>2</sub>, which forms carbonic
-          acid in water and can lead to increased mineral weathering and nutrient availability.
+          acid in water, and can lead to increased mineral weathering and nutrient availability.
         </Text>
       </div>
       {isModalOpen && (
