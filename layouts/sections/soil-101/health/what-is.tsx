@@ -203,11 +203,19 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           </div>
         </div>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-60']}`}>
-          just like our organs provide important functions that keep us healthy, healthy soil provides important ecosystem functions{' '}
+          just like our {' '}
           <Text type='span' weight='bold' size='md' color='blue'>
-            that promote
+          organs 
+           </Text>{' '}
+          provide important functions that keep us {' '}
+          <Text type='span' weight='bold' size='md' color='blue'>
+          healthy
+           </Text>{' '}
+         , healthy soil provides important {' '}
+          <Text type='span' weight='bold' size='md' color='blue'>
+          ecosystem functions
           </Text>{' '}
-          a healthy environment!
+          that promote a healthy environment!
         </Text>
 
         <div className='grid grid-cols-2 grid-rows-4 gap-4 place-items-center xl:flex xl:items-center xl:gap-0 xl:space-x-8'>
@@ -238,11 +246,19 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         </div>
 
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-60']}`}>
-          in sandy soils, increasing soil organic matter (SOM) improves soil structure by {' '}
+          in {' '}
+          <Text type='span' weight='bold' size='sm' color='blue'>
+          sandy soils
+          </Text>{' '}
+          , increasing soil organic matter (SOM) improves soil structure by {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
           sticking particles 
           </Text>{' '}
-          together; while in clayey soils, SOM helps open up the soil, creating more {' '}
+          together; while in {' '}
+          <Text type='span' weight='bold' size='sm' color='blue'>
+          clayey soils
+           </Text>{' '}
+          , SOM helps open up the soil, creating more {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
           pore space
           </Text>
