@@ -61,8 +61,8 @@ const homeSectionCards = [
     links: [
       { name: 'EPA', href: 'https://www.epa.gov/recycle/composting-home' },
       { name: 'NPR', href: 'https://www.npr.org/2020/04/07/828918397/how-to-compost-at-home' },
-      { name: 'Cal Recycle', href: 'http://www.calrecycle.ca.gov/organics/HomeCompost/default.htm' },
-      { name: 'Mind Body Green', href: 'https://www.mindbodygreen.com/articles/how-to-make-a-diy-compost-bin' },
+      { name: 'Kiss the Ground', href: 'https://kisstheground.com/how-to-compost-at-home/' },
+      { name: 'MakeSoil', href: 'https://www.makesoil.org/map' },
     ],
   },
   {
@@ -304,7 +304,7 @@ const educationSectionCards = [
     links: 'https://soilsrevealed.org/explore',
   },
   {
-    imageUrl: '/Get_Involved/For_Your_Education/4_For_Your_Education_5_NRCS_Resources_NHA82T4zL.jpg',
+    imageUrl: '/Get_Involved/For_Your_Education/For_Your_Education/USDA_logo_5RyuVN4Kr.png',
     imageContain: true,
     text: 'browse NRCS resources',
     links: 'https://www.nrcs.usda.gov/wps/portal/nrcs/site/national/home/',
@@ -427,7 +427,7 @@ const donationsSectionCards = [
     text: 'fund soil health research',
     links: [
       {
-        name: 'Russel Ranch',
+        name: 'Russell Ranch',
         href: 'http://asi.ucdavis.edu/programs/rr/support-russell-ranch',
       },
       { name: 'Soil Health Institute', href: 'https://soilhealthinstitute.org/support-shi/' },
