@@ -210,11 +210,11 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           provide important functions that keep us {' '}
           <Text type='span' weight='bold' size='md' color='blue'>
           healthy
-          </Text>{' '}
+          </Text>
           , healthy soil provides important {' '}
           <Text type='span' weight='bold' size='md' color='blue'>
           ecosystem functions
-          </Text>{' '}
+          </Text>
           that promote a healthy environment!
         </Text>
 
@@ -249,7 +249,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           in {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
           sandy soils
-          </Text>{' '}
+          </Text>
           , increasing soil organic matter (SOM) improves soil structure by {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
           sticking particles 
@@ -257,7 +257,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           together; while in {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
           clayey soils
-           </Text>{' '}
+           </Text>
           , SOM helps open up the soil, creating more {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
           pore space
