@@ -256,7 +256,7 @@ export const PrinciplesSection = (props: {
             </li>
           ))}
         </ul>
-        <div className="mx-auto relative max-w-[50vw]">
+        <div className="mx-auto relative max-w-[75vw]">
           <button
             className="absolute top-1/2 -translate-y-1/2 -left-8"
             onClick={() => {
