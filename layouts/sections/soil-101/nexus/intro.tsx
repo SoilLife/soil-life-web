@@ -96,17 +96,17 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
         </Text>
         <div>
           <Text type='p' weight='light' size='md' className={styles['p-60']}>
-            the{' '}
+            soil is the nexus of the atmosphere, hydrosphere, lithosphere, and biosphere. the{' '}
             <Text type='span' weight='light' size='md' color='pink'>
               "solid ground"
             </Text>{' '}
             we walk on is only about{' '}
             <Text type='span' weight='light' size='md' color='pink'>
-              50% solid
+              50% solid,
             </Text>{' '}
-            material made of mostly mineral and 1-10% organic matter. the remaining{' '}
+            made mostly of minerals and 1-10% organic matter. the remaining{' '}
             <Text type='span' weight='light' size='md' color='pink'>
-              50% is empty, pore space
+              50% is pore space
             </Text>{' '}
             — filled with either air or water.
           </Text>
