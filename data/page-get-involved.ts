@@ -93,8 +93,8 @@ const homeSectionCards = [
     imageUrl: '/Get_Involved/At_Home/At_Home_Paint_with_Soil_0ONI0hdafWa.png',
     text: 'paint with soils',
     links: [
-      { name: 'make your own', href: 'https://www.fortheloveofsoil.org/pigment-process' },
-      { name: 'buy them', href: 'https://www.theartofsoil.com/' },
+      { name: 'Make your Own', href: 'https://www.fortheloveofsoil.org/pigment-process' },
+      { name: 'The Art of Soil', href: 'https://www.theartofsoil.com/shop' },
     ],
   },
   
