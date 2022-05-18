@@ -230,7 +230,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
             <Text type='span' weight='bold' size='sm' color='blue'>
               diet and lifestyle
             </Text>{' '}
-            have the power to modify our DNA (via epigenetics) and promote overall health, the way we manage soil has a
+            have the power to modify our DNA and promote overall health, the way we manage soil has a
             major impact on soil organic matter, soil structure, and overall soil health!
           </Text>
 
@@ -238,9 +238,13 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         </div>
 
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-60']}`}>
-          whether sandy or clayey, increasing soil organic matter (SOM) improves structure, and overall{' '}
+          in sandy soils, increasing soil organic matter (SOM) improves soil structure by {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
-          soil health
+          sticking particles 
+          </Text>{' '}
+          together; while in clayey soils, SOM helps open up the soil, creating more {' '}
+          <Text type='span' weight='bold' size='sm' color='blue'>
+          pore space
           </Text>
           . while many conservation practices can improve soil structure, the ability to build and store SOM may be limited in some soils or climates.  
         </Text>
