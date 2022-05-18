@@ -39,7 +39,7 @@ const modalMap = {
   'water holding capacity': {
     title: 'water holding capacity',
     description:
-      'the amount of water that a soil can hold against gravity, driven by clay and organic matter content -- water molecules attracted to negatively charged particles.',
+      'the amount of water that a soil can hold against gravity -- water molecules are attracted to negatively charged particles (on clays and organic matter).',
     image: {
       type: 'img',
       url: '/images/soil-101/physics/water_holding.png',
@@ -115,17 +115,15 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
           surface charge
         </Text>
         <Text type='p' weight='thin' size='md' className='text-center'>
-          of the 3 particle sizes, clays are considered the “active” portion of soil. they have higher total surface
-          area and, like magnets, are often electrically charged, allowing chemical reactions to occur on their large
-          surfaces
+          clays are considered the “active” portion of soil. they have higher total surface
+          area and, like magnets, are often electrically charged, allowing physical and chemical reactions to occur on their surfaces.
         </Text>
 
         <div ref={imgRef}>
           <SurfaceAreaChargedSvg />
         </div>
         <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-          the large, charged surface of clays creates nutrient and water-holding capacity that can hold valuable
-          resources against losses to gravity (or leaching).
+          the large, charged surface of clays creates nutrient and water-holding capacity that can hold these valuable resources and prevent their loss to gravity (or leaching).
         </Text>
         <div className='flex flex-col space-between gap-10 sm:gap-20 sm:flex-row'>
           <div className='flex-grow'>
