@@ -22,19 +22,19 @@ const modalTypeMap = {
     title: 'gravitational water',
     image: <GravitationalWaterSvg className='mx-auto max-h-[35vh]' />,
     heading: 'saturation',
-    text: 'all pores are full of water. lost to gravity',
+    text: 'when all pores are full of water; the excess water lost to gravity',
   },
   plant: {
     title: 'plant available water',
     image: <PlantAvailableWaterSvg className='mx-auto max-h-[35vh]' />,
     heading: 'field capacity',
-    text: 'available water for plant growth',
+    text: 'this is the water available for plant uptake/growth',
   },
   hygroscopic: {
     title: 'hygroscopic water',
     image: <HygroscopicWaterSvg className='mx-auto max-h-[35vh]' />,
     heading: 'wilting point',
-    text: 'no more water available for plants',
+    text: 'only water remaining is bound to clays; not available for plants',
   },
 };
 
