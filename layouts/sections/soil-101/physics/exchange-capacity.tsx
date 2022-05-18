@@ -89,30 +89,30 @@ export const ExchangeCapacitySection = () => {
           </Text>
         </div>
         <div
-          className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
+          className={`flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16 ${styles['p-48']}`}
         >
-          <img
-            src='/images/soil-101/physics/exchange_capacity_metal_oxides.png'
-            className='cursor-pointer hover:opacity-50 active:opacity-100 sm:w-1/2'
-            onClick={openModal('metal oxide exchange')}
-          />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
             iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
             capacity (i.e. NO3-, BO3-, Cl-).
           </Text>
+          <img
+            src='/images/soil-101/physics/exchange_capacity_metal_oxides.png'
+            className='cursor-pointer hover:opacity-50 active:opacity-100 mb-4 sm:mb-0 sm:w-1/2'
+            onClick={openModal('metal oxide exchange')}
+          />
         </div>
         <div
-          className={`flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16 ${styles['p-48']}`}
+          className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
         >
+          <img
+            src='/images/soil-101/physics/exchange_capacity_organic_matter.png'
+            className='cursor-pointer hover:opacity-50 active:opacity-100 sm:w-1/2'
+            onClick={openModal('anion exchange')}
+          />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
             som also has high surface area and charge, holding on to both positive and negatively charged ions
             (depending on pH) and contributing significantly to water holding capacity.
           </Text>
-          <img
-            src='/images/soil-101/physics/exchange_capacity_organic_matter.png'
-            className='cursor-pointer hover:opacity-50 active:opacity-100 mb-4 sm:mb-0 sm:w-1/2'
-            onClick={openModal('anion exchange')}
-          />
         </div>
       </div>
       {modalType && <GenericModal {...modalTypeMap[modalType]} onClose={handleCloseModal} />}
