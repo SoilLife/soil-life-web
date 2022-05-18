@@ -210,8 +210,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           provide important functions that keep us {' '}
           <Text type='span' weight='bold' size='md' color='blue'>
           healthy
-          </Text>
-          , healthy soil provides important {' '}
+          </Text>, healthy soil provides important {' '}
           <Text type='span' weight='bold' size='md' color='blue'>
           ecosystem functions
           </Text>
