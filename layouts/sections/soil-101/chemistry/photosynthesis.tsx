@@ -50,7 +50,7 @@ export const PhotosynthesisSection = () => {
         <PhotosynthesisSvg className='mx-auto lg:max-w-[75vw]' />
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-48']}`}>
           as plant shoots grow aboveground, they act like solar panels, using energy from the sun to convert CO<sub>2</sub> from the
-          atmosphere into the building blocks of life (carbohydrates, proteins, fats, etc).
+          atmosphere into the building blocks of life (i.e. carbohydrates, proteins, fats, nucleic acids).
         </Text>
       </div>
       {isModalOpen && (
