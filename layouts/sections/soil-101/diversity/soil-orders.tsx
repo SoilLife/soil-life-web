@@ -233,12 +233,12 @@ export const SoilOrdersSection = (props: {
           <Text type="span" weight="bold" size="md">
             pedogenic processes
           </Text>{" "}
-          give rise to a diversity of soils, which are classified into 12
+          gives rise to a diversity of soils, which are classified into 12
           distinct groups called{" "}
           <Text type="span" weight="bold" size="md">
             soil orders
           </Text>
-          . the 12 soil orders can be found all over the world with{" "}
+          . the 12 soil orders are found all over the world with{" "}
           <Text type="span" weight="bold" size="md">
             similar soils
           </Text>{" "}
