@@ -304,7 +304,7 @@ const educationSectionCards = [
     links: 'https://soilsrevealed.org/explore',
   },
   {
-    imageUrl: '/Get_Involved/For_Your_Education/For_Your_Education/USDA_logo_5RyuVN4Kr.png',
+    imageUrl: '/Get_Involved/For_Your_Education/4_For_Your_Education_5_NRCS_Resources_NHA82T4zL.jpg',
     imageContain: true,
     text: 'browse NRCS resources',
     links: 'https://www.nrcs.usda.gov/wps/portal/nrcs/site/national/home/',
