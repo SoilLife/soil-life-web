@@ -21,7 +21,7 @@ const modalTypeMap = {
   wedge: {
     title: 'wedge',
     imageUrl: 'Soil_101/Soil_Physics/wedge_structure_okJkM6JmU.png',
-    text: 'elongated structure caused by clays that shrink and swell,  churning/sliding over each other again and again',
+    text: 'elongated structure caused by clays that shrink and swell; churning and sliding over each other again and again',
   },
   platy: {
     title: 'platy',
@@ -31,7 +31,7 @@ const modalTypeMap = {
   prismatic: {
     title: 'prismatic',
     imageUrl: 'Soil_101/Soil_Physics/Structure_Prismatic_2s1S3USk6.JPG',
-    text: 'large, vertical columns with flat tops, found in subsoils with accumulation of clay',
+    text: 'large, vertical columns with flat tops, found in subsoils with accumulations of clay',
   },
   massive: {
     title: 'massive',
@@ -46,7 +46,7 @@ const modalTypeMap = {
   blocky: {
     title: 'blocky',
     imageUrl: 'Soil_101/Soil_Physics/blocky.jpg',
-    text: 'well-aggregated with rounded or sharp edges, common with clay',
+    text: 'well-aggregated with rounded or sharp edges, common with moderate to high clay',
   },
   'single grain': {
     title: 'single grain',
@@ -118,9 +118,7 @@ export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement)
           structure
         </Text>
         <Text type='p' weight='thin' size='md' className={styles['p-60']}>
-          the way these structural units stack together determines the size, shape, and distribution of pore space
-          within the soil profile. the density of the individual soil particles and the amount of empty space within and
-          between them determines the bulk density, or mass per unit volume of the soil.
+          the way that individual soil particles (mineral and/or organic) stack together determines the size, shape, and distribution of soil aggregates and the pore space between them. this is known as soil structure.
         </Text>
         <StructureSvg className='mx-auto max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)]' />
       </div>
