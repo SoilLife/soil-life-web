@@ -17,7 +17,7 @@ export const PedogenesisSection = (props: { assignRef: (el: null | HTMLDivElemen
         <Text type='span' weight='bold' size='md'>
           soil
         </Text>
-        . over time, as energy flows through the system, in the form of heat, precipitation, biological activity, etc., soils{' '}
+        . over time, as energy flows through the system, in the form of heat, precipitation, biological activity, etc; soils{' '}
         <Text type='span' weight='bold' size='md'>
           weather and evolve
         </Text>
