@@ -113,7 +113,8 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
           <Text type='span' weight='bold' size='md'>
             horizons
           </Text>
-          , and they provide both a{' '}
+          , and the way they are arranged is called a soil profile.
+          the soil profile provides both a{' '}
           <Text type='span' weight='bold' size='md'>
             history of the landscape
           </Text>{' '}
@@ -121,11 +122,7 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
           <Text type='span' weight='bold' size='md'>
             soil might function
           </Text>{' '}
-          in the present.{' '}
-          <Text type='span' weight='semibold' size='md'>
-            soils are classified into 12 groups
-          </Text>{' '}
-          based on these similar layers, features, and behaviors.
+          in the present.
         </Text>
         <div ref={svgContainerRef} className='relative w-full h-full sm:w-1/2'>
           <ProfileSvg className='h-full w-full' />
