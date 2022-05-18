@@ -114,11 +114,11 @@ export const ProfileSection = (props: { assignRef: (el: null | HTMLDivElement) =
             horizons
           </Text>
           , and the way they are arranged is called a soil profile.
-          the soil profile provides both a{' '}
+          like chapters in a book, soil horizons provide a{' '}
           <Text type='span' weight='bold' size='md'>
             history of the landscape
           </Text>{' '}
-          and an indication of how a{' '}
+          and indicate how a{' '}
           <Text type='span' weight='bold' size='md'>
             soil might function
           </Text>{' '}
