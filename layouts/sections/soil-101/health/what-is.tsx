@@ -203,11 +203,11 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           </div>
         </div>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-60']}`}>
-          just like our organs provide services that keep us healthy, healthy soil provides important ecosystem services{' '}
+          just like our organs provide important functions that keep us healthy, healthy soil provides important ecosystem functions{' '}
           <Text type='span' weight='bold' size='md' color='blue'>
             that promote
           </Text>{' '}
-          life on earth!
+          a healthy environment!
         </Text>
 
         <div className='grid grid-cols-2 grid-rows-4 gap-4 place-items-center xl:flex xl:items-center xl:gap-0 xl:space-x-8'>
@@ -238,13 +238,11 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
         </div>
 
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-60']}`}>
-          organic matter (SOM) is key to soil health, as it greatly improves most soil functions. whether sandy or
-          clayey, SOM improves structure, which may be the real{' '}
+          whether sandy or clayey, increasing soil organic matter (SOM) improves structure, and overall{' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
-            secret to soil health
+          soil health
           </Text>
-          . while many conservation practices can improve soil structure, the ability to build and store SOM varies from
-          soil to soil.
+          . while many conservation practices can improve soil structure, the ability to build and store SOM may be limited in some soils or climates.  
         </Text>
         <CarbonSequestSvg />
 
@@ -253,7 +251,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <Text type='span' weight='bold' size='md' color='blue'>
             store more of the carbon
           </Text>{' '}
-          they consume as living biomass{' '}
+          they consume in their biomass{' '}
           <Text type='span' weight='bold' size='md' color='blue'>
             than they respire as CO<sub>2</sub>
           </Text>
