@@ -154,8 +154,8 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
           {popup && <Popup {...popupMap[popup]} title={popup} />}
         </div>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
-          these organic materials then move up and down the food chain — plant biomass is eaten and excreted by microbes, insects and animals, 
-          which are eaten and excreted by other microbes, insects and animals.
+          these organic materials move up and down the food chain — plant biomass is eaten and excreted by microbes, insects and animals, 
+          which are eaten and excreted by other organisms.
           as things die or decompose, nutrients are made available for new growth and the cycle continues.
         </Text>
       </div>
