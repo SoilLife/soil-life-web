@@ -58,7 +58,7 @@ export const TexturalClassSection = () => {
         textural class
       </Text>
       <Text type='p' weight='thin' size='lg' className='ml-8'>
-        the proportions of these 3 particle sizes, groups soils into categories that feel and behave similarly - the way water moves through them, their ability to hold nutrients, and much, much more!
+        the proportions of these particle sizes, groups soils into categories that behave similarly. texture is a fixed property that can't be changed over human timescales.
       </Text>
       <div className='sm:grid sm:grid-cols-2'>
         <div className='mb-10 sm:mb-0'>
