@@ -91,9 +91,13 @@ const homeSectionCards = [
   },
   {
     imageUrl: '/Get_Involved/At_Home/At_Home_Paint_with_Soil_0ONI0hdafWa.png',
-    text: 'make your own soil paints',
-    links: 'https://www.fortheloveofsoil.org/pigment-process',
+    text: 'paint with soils',
+    links: [
+      { name: 'make your own', href: 'https://www.fortheloveofsoil.org/pigment-process' },
+      { name: 'buy them', href: 'https://www.theartofsoil.com/' },
+    ],
   },
+  
   {
     imageUrl: '/Get_Involved/At_Home/Find_Your_Soil_uN58w4fF_.png',
     text: 'learn what soil is under your feet',
