@@ -58,7 +58,7 @@ export const TexturalClassSection = () => {
         textural class
       </Text>
       <Text type='p' weight='thin' size='lg' className='ml-8'>
-        the proportion of these 3 particle sizes, groups soils into categories that feel and behave similarly - how water moves through them, how fertile they are, and much, much more!
+        the proportions of these 3 particle sizes, groups soils into categories that feel and behave similarly - the way water moves through them, their ability to hold nutrients, and much, much more!
       </Text>
       <div className='sm:grid sm:grid-cols-2'>
         <div className='mb-10 sm:mb-0'>
