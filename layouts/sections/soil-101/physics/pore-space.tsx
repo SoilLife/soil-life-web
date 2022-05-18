@@ -121,9 +121,9 @@ export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement)
           pore space
         </Text>
         <Text type='p' weight='thin' size='md' className={styles['p-60']}>
-          the open space between soil particles and aggregates. the more pore space, the less dense the soil, and the easier for roots to grow and air/water to flow.
+          the open spaces within and between soil aggregates. the more pore space, the less dense the soil, and the easier for roots to grow and air/water to flow.
         </Text>
-        <PoreSpaceSvg className='mx-auto lg:max-w-[50vw]' />
+        <PoreSpaceSvg className='mx-auto lg:max-w-[60vw]' />
       </div>
       {modalType && (
         <ReactModal
