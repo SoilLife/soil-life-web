@@ -92,7 +92,7 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
           <Text type='p' weight='light' size='lg' className={`max-w-lg sm:w-1/2 ${styles['p-48']}`}>
             the particles in soil are classified by size into{' '}
             <Text type='span' weight='bold' size='lg' style={{ color: '#EEA117' }}>
-              sand
+              sands
             </Text>
             ,{' '}
             <Text type='span' weight='bold' size='lg' style={{ color: '#C17443' }}>
@@ -100,13 +100,13 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
             </Text>
             , and{' '}
             <Text type='span' weight='bold' size='lg' style={{ color: '#5C5052' }}>
-              clay
+              clays
             </Text>
             . the proportion of these three particle sizes determines the{' '}
             <Text type='span' weight='bold' size='lg' style={{ color: '#FFCF01' }}>
               texture
             </Text>{' '}
-            of the soil -- an inherent property that cannot be changed over human timescales. 
+            of the soil -- how it feels in your hand, how water moves into and through it, how fertile it is, and much, much more.
           </Text>
         </div>
       </div>
