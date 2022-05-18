@@ -64,20 +64,6 @@ export const FinalFrontierSection = (props: { assignRef: (el: null | HTMLDivElem
       </Text>
       <FinalFrontierSvg />
 
-      {/* <Text type='p' weight='light' size='md' className={`text-center ${styles['p-80']}`}>
-        "essentially,{' '}
-        <Text type='span' weight='bold' size='md' color='pink'>
-          all life depends upon the soil...
-        </Text>{' '}
-        there can be no life without soil and{' '}
-        <Text type='span' weight='bold' size='md' color='pink'>
-          no soil without life;
-        </Text>{' '}
-        they have evolved together."{' '}
-        <Text type='span' weight='light' size='md' color='pink'>
-          - charles kellogg
-        </Text>
-      </Text> */}
     </div>
   );
 };
