@@ -106,7 +106,7 @@ export const TextureSection = (props: { assignRef: (el: null | HTMLDivElement) =
             <Text type='span' weight='bold' size='lg' style={{ color: '#FFCF01' }}>
               texture
             </Text>{' '}
-            of the soil - how it feels in your hand, how water moves through it, how fertile it is, and much, much more!
+            of the soil - a fixed property that can't be changed over human timescales!
           </Text>
         </div>
       </div>
