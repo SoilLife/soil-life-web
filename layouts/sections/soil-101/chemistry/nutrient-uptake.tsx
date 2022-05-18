@@ -56,7 +56,7 @@ export const NutrientUptakeSection = () => {
           <Text type='span' weight='bold' size='md'>
             (the "soil solution")
           </Text>{' '}
-          or from particle surfaces.
+          or from the surfaces of soil particles.
         </Text>
       </div>
       {isModalOpen && (
