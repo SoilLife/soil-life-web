@@ -104,11 +104,15 @@ export const ParentMaterialSection = () => {
             sources
           </Text>
           <Text type='p' weight='thin' size='xs' className={styles['p-60']}>
-            - rocks{' '}
+            - rocks either {' '}
             <Text type='span' weight='bold' size='xs'>
-              break down (weather)
+              weather
             </Text>{' '}
-            in place or are deposited in one of the following ways:
+            in place or are {' '}
+            <Text type='span' weight='bold' size='xs'>
+              deposited 
+            </Text>{' '}
+            in one of the following ways:
           </Text>
         </div>
         <ParentMaterial className='mx-auto max-h-[700px]' />
