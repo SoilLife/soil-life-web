@@ -132,7 +132,7 @@ export const EcosystemServicesSection = (props: { assignRef: (el: null | HTMLDiv
         </Text>
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>
           soils are the foundation of nearly every ecosystem on the planet, providing
-          ecosystem services that give rise to healthy plants, healthy people, and a healthy planet!
+          important services that give rise to healthy plants, healthy people, and a healthy planet!
         </Text>
         <div className='relative' style={{ height: 'fit-content' }}>
           <EcosystemServices className='mx-auto object-contain max-h-[calc(100vh-60px)] sm:max-h-[calc(100vh-80px)]' />
