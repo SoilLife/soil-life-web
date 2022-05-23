@@ -35,8 +35,8 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   topography: (
     <div className='space-y-4'>
       <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
-        in the northern hemisphere, north facing slopes receives less sun and are often cooler and wetter; south-facing
-        slopes receives more sun and are often, warmer and drier.
+        slope, aspect, and elevation impact the amount of heat, water, and more that moves through the system; creating a "microclimate" effect. i.e. slopes that face away from the sun are often cooler and wetter; 
+        slopes that face the sun and are often, warmer and drier. 
       </Text>
 
       <TopographySvg />
@@ -54,8 +54,8 @@ const factorSvgMap: { [key: string]: React.ReactElement } = {
   time: (
     <div className='space-y-4'>
       <Text type='h2' weight='light' size='xs' className='p-4 text-center'>
-        like us, soil ages! but time is relative to all other factors. for instance, a soil in a hot/wet climate will
-        weather far more in 100 years than a soil in a cold/dry climate.
+        all the previous factors are relative to time. for instance, a soil in a hot/wet climate or at the bottom of a slope will
+        weather far more in 100 years than a soil in a cold/dry climate or on a backslope. 
       </Text>
       <TimeSvg />
     </div>
