@@ -29,8 +29,6 @@ export function ContactUsSection() {
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                 e-mail: jessica@soillife.org
-                link='mailto: jessica@soillife.org'
-            />
               </Text>
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
