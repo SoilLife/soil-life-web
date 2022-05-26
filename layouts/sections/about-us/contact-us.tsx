@@ -1,4 +1,4 @@
-import { Section, Image, Text, Input } from 'design-system/atoms';
+import { Section, Image, Text} from 'design-system/atoms';
 
 export function ContactUsSection() {
   return (
