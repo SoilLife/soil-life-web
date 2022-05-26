@@ -28,10 +28,14 @@ export function ContactUsSection() {
             </Text>
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
-                e-mail: jessica@soillife.org
-          <Link href='mailto:jessica@soillife.org'>
-          </Link>
+                e-mail: 
                 </Text>
+              
+            <div className='flex justify-center'>
+          <Link href='mailto:jessica@soillife.org'>
+            <Button as='link' size='md' type='neutral' label='jessica@soillife.org' />
+          </Link>
+                
         </div>
               
               
