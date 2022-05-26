@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Section, Image, Text } from 'design-system/atoms';
 
 export function ContactUsSection() {
