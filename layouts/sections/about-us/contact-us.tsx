@@ -1,44 +1,50 @@
 import { Section, Image, Text, Input } from 'design-system/atoms';
 
 export function ContactUsSection() {
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-  }
   return (
-    <Section className='relative'>
-      <div className='relative h-3/4 w-full sm:h-full sm:absolute'>
-        <Text
-          type='h1'
-          weight='regular'
-          size='3xl'
-          color='white'
-          className='absolute top-10 inset-x-0 text-center sm:hidden'
+    <Section>
+      <div className={`h-full w-full sm:flex sm:flex-col-reverse xl:flex-row`}>
+        <div
+          className={`absolute h-full w-full flex items-center justify-center
+        sm:static`}
         >
-          contact us
-        </Text>
-        <Image url='/About_Us/About_Us_Contact_Us_qr_gIU5QC.jpeg' className='object-cover' />
-      </div>
-
-      <div className='px-10 absolute bottom-10 w-full sm:bottom-auto sm:top-1/2 sm:max-w-3xl sm:transform sm:-translate-y-1/2'>
-        <form className='rounded-lg p-4 bg-white shadow-lg sm:p-10' onSubmit={handleSubmit}>
-          <Text type='h1' weight='regular' size='2xl' color='pink' className='hidden mb-10 sm:block'>
-            contact us
-          </Text>
+          <div
+            className={`rounded-3xl shadow-lg bg-white max-w-xs mx-auto p-4 text-center transform translate-y-20
+          sm:translate-y-0 sm:max-w-lg sm:shadow-none
+          2xl:max-w-3xl`}
+          >
+            <Text type='h1' weight='regular' size='3xl' color='pink' className='mb-4 sm:mb-10'>
+              contact us
+            </Text>
+            <div className='space-y-10'>
+              <div>
                 <Text type='p' weight='light' size='sm'>
-                  e-mail: jessica@soillife.org
+                  jessica@soillife.org
                 </Text>
               </div>
-        
-        <div className='px-10 absolute bottom-10 w-full sm:bottom-auto sm:top-1/2 sm:max-w-3xl sm:transform sm:-translate-y-1/2'>
-        <form className='rounded-lg p-4 bg-white shadow-lg sm:p-10' onSubmit={handleSubmit}>
-          <Text type='h1' weight='regular' size='2xl' color='pink' className='hidden mb-10 sm:block'>
-            credits
-          </Text>
-          <Text type='p' weight='light' size='sm'>
-            The Nature and Properties of Soil - Nail Brady & Ray Weil      
-            For the Love of Soil - Karen Vaughn & Yamina Pressler
-            The Nito Project
+   className={`rounded-3xl shadow-lg bg-white max-w-xs mx-auto p-4 text-center transform translate-y-20
+          sm:translate-y-0 sm:max-w-lg sm:shadow-none
+          2xl:max-w-3xl`}
+          >
+            <Text type='h1' weight='regular' size='3xl' color='pink' className='mb-4 sm:mb-10'>
+              contact us
+            </Text>
+            <div className='space-y-10'>
+              <div>
+                <Text type='p' weight='light' size='sm'>
+                  The Nature and Property of Soils - Brady & Ray Weil
+                  For the Love of Soil - Karen Vaughn and Yamina Pressler
+                  The Nito Project
                 </Text>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Image
+          className={`h-1/3 sm:h-1/2 object-cover
+        xl:h-full xl:w-1/2`}
+          url='/About_Us/About_Us_Contact_Us_qr_gIU5QC.jpeg' className='object-cover'
+        />
       </div>
     </Section>
   );
