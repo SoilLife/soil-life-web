@@ -1,50 +1,50 @@
-import { Section, Image, Text} from 'design-system/atoms';
+import { Section, Image, Text } from 'design-system/atoms';
 
 export function ContactUsSection() {
   return (
     <Section>
-      <div className={`h-full w-full sm:flex sm:flex-col-reverse xl:flex-row`}>
+      <div className='relative h-full flex flex-col xl:flex-row'>
+        <Image
+          className={`absolute top-0 left-0 h-1/3 object-cover
+          sm:static sm:h-1/2
+          xl:h-full xl:w-1/2
+          `}
+          url='/About_Us/About_Us_Contact_Us_qr_gIU5QC.jpeg'
+        />
         <div
-          className={`absolute h-full w-full flex items-center justify-center
-        sm:static`}
+          className={`z-10 max-w-xs mx-auto flex items-center justify-center w-full h-full transform translate-y-6 
+     sm:translate-y-0 sm:max-w-lg
+     xl:max-w-2xl
+     2xl:max-w-3xl
+          `}
         >
           <div
-            className={`rounded-3xl shadow-lg bg-white max-w-xs mx-auto p-4 text-center transform translate-y-20
-          sm:translate-y-0 sm:max-w-lg sm:shadow-none
-          2xl:max-w-3xl`}
+            className={`p-4 bg-white text-center rounded-3xl shadow-xl
+          sm:shadow-none
+          `}
           >
-            <Text type='h1' weight='regular' size='3xl' color='pink' className='mb-4 sm:mb-10'>
+            <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               contact us
             </Text>
-            <div className='space-y-10'>
-              <div>
-                <Text type='p' weight='light' size='sm'>
-                  jessica@soillife.org
-                </Text>
-              </div>
-   className={`rounded-3xl shadow-lg bg-white max-w-xs mx-auto p-4 text-center transform translate-y-20
-          sm:translate-y-0 sm:max-w-lg sm:shadow-none
-          2xl:max-w-3xl`}
-          >
-            <Text type='h1' weight='regular' size='3xl' color='pink' className='mb-4 sm:mb-10'>
-              contact us
-            </Text>
-            <div className='space-y-10'>
-              <div>
-                <Text type='p' weight='light' size='sm'>
-                  The Nature and Property of Soils - Brady & Ray Weil
+            <div className='space-y-2 xl:space-y-8'>
+              <Text type='p' weight='thin' size='xs'>
+                e-mail: jessica@soillife.org
+              </Text>
+               <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
+              credits
+              </Text>
+              <Text type='p' weight='thin' size='xs'>
+               We would like to give credit to the following for content contributions (with gratitude for their inspiration):
+                The Nature and Property of Soils - Brady & Ray Weil
                   For the Love of Soil - Karen Vaughn and Yamina Pressler
                   The Nito Project
-                </Text>
-              </div>
+              </Text>{' '}
+              <Text type='p' weight='thin' size='xs'>
+                Thank you for visiting!
+              </Text>
             </div>
           </div>
         </div>
-        <Image
-          className={`h-1/3 sm:h-1/2 object-cover
-        xl:h-full xl:w-1/2`}
-          url='/About_Us/About_Us_Contact_Us_qr_gIU5QC.jpeg' className='object-cover'
-        />
       </div>
     </Section>
   );
