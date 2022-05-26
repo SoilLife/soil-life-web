@@ -31,6 +31,7 @@ export function ContactUsSection() {
                 e-mail: jessica@soillife.org
           <Link href='mailto:jessica@soillife.org'>
           </Link>
+                </Text>
         </div>
               
               
