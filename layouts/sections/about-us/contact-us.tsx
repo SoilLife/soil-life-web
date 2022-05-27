@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Section, Image, Text } from 'design-system/atoms';
 
 export function ContactUsSection() {
@@ -31,11 +30,6 @@ export function ContactUsSection() {
               <Text type='p' weight='thin' size='xs'>
                 e-mail: 
                 </Text>
-              
-            <div className='flex justify-center'>
-          <Link href='mailto:jessica@soillife.org'>
-            <Button as='link' size='md' type='neutral' label='jessica@soillife.org' />
-          </Link>
                 
         </div>
               
@@ -44,10 +38,14 @@ export function ContactUsSection() {
               credits
               </Text>
               <Text type='p' weight='thin' size='xs'>
-               We would like to give credit to the following for content contributions (with gratitude for their inspiration):
-                The Nature and Property of Soils - Brady & Ray Weil
-                  For the Love of Soil - Karen Vaughn and Yamina Pressler
-                  The Nito Project
+                
+                We would like to give credit to the following for content contributions :
+                
+                Jim Richardson & National Geographic (Home Page; Soil 101>Soil Diversity)
+                
+                The Nature and Property of Soils - Brady & Ray Weil (inspiration for several figures - Soil 101>Soil Nexus>Soil Forming Factors; Soil 101>Soil Diversity>Pedogenesis) 
+                
+                For the Love of Soil - Karen Vaughn and Yamina Pressler (Soil 101>Soil Physics>Wedge structure)
               </Text>{' '}
               <Text type='p' weight='thin' size='xs'>
                 Thank you for visiting!
