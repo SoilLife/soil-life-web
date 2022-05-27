@@ -28,18 +28,13 @@ export function ContactUsSection() {
             </Text>
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
-                e-mail: 
-                </Text>
-                
-        </div>
-              
-              
+                e-mail: jessica@soillife.org
+              </Text>
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
               </Text>
               <Text type='p' weight='thin' size='xs'>
-                
-                We would like to give credit to the following for content contributions :
+             We would like to acknowldege and credit the following for content contributions :
                 
                 Jim Richardson & National Geographic (Home Page; Soil 101/Soil Diversity)
                 
@@ -53,6 +48,7 @@ export function ContactUsSection() {
             </div>
           </div>
         </div>
+      </div>
     </Section>
   );
 }
