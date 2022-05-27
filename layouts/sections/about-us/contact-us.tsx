@@ -41,9 +41,9 @@ export function ContactUsSection() {
                 
                 We would like to give credit to the following for content contributions :
                 
-                Jim Richardson & National Geographic (Home Page; Soil 101>Soil Diversity)
+                Jim Richardson & National Geographic (Home Page; Soil 101/Soil Diversity)
                 
-                The Nature and Property of Soils - Brady & Ray Weil (inspiration for several figures - Soil 101>Soil Nexus>Soil Forming Factors; Soil 101>Soil Diversity>Pedogenesis) 
+                The Nature and Property of Soils - Brady & Ray Weil (inspiration for several figures - Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
                 
                 For the Love of Soil - Karen Vaughn and Yamina Pressler (Soil 101>Soil Physics>Wedge structure)
               </Text>{' '}
