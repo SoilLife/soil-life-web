@@ -1,5 +1,17 @@
 import { Section, Image, Text } from 'design-system/atoms';
 
+function Paragraph(props: React.PropsWithChildren<{ className?: string }>) {
+  return (
+    <p
+      className={`font-acre-thin font-[18px] leading-[28px] xl:font-[22px] 2xl:font-[28px] 2xl:leading-[36px] ${
+        props.className ?? ''
+      }`}
+    >
+      {props.children}
+    </p>
+  );
+}
+
 export function ContactUsSection() {
   return (
     <Section>
