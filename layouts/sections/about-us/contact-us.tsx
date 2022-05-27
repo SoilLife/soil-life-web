@@ -53,13 +53,7 @@ export function ContactUsSection() {
              We would like to acknowldege and credit the following for their content contributions :
                 </Paragraph>
                 <Paragraph>
-                  </Text>
-              <Text type='p' weight='semibold' size='xs'>
-                Jim Richardson & National Geographic 
-                   </Text>
-              <Text type='p' weight='thin' size='xs'>
-                  (photo credit: Home Page (Hero Image, Dig Deeper); Soil 101/Soil Diversity (Hero Image), Soil 101/Soil Health (Hero Image), Soils at Risk - Erosion, Salinization)
-                </Text>
+                Jim Richardson & National Geographic (photo credit: Home Page (Hero Image, Dig Deeper); Soil 101/Soil Diversity (Hero Image), Soil 101/Soil Health (Hero Image), Soils at Risk - Erosion, Salinization)
                 </Paragraph>
                  <Paragraph>
                 The Nature and Property of Soils by Nyle Brady & Ray Weil (adapted figures - Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
