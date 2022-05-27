@@ -62,7 +62,7 @@ export function ContactUsSection() {
                 For the Love of Soil - Karen Vaughn and Yamina Pressler (photo - Soil 101/Soil Physics/Wedge structure)
                    </Paragraph>
                 <Paragraph>
-                  All other photos were licensed from Adobe Stock or sourced under creative commons. All content is protected under fair use, as this website is not for profit, but educational purposes only. 
+                  All other photos were licensed from Adobe Stock or sourced under creative commons. All content is protected under fair use, as this website is not for profit and intended for educational purposes only. 
               </Paragraph>
                   </Text>{' '}
               <Text type='p' weight='thin' size='xs'>
