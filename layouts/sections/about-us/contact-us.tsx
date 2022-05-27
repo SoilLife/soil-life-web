@@ -28,19 +28,27 @@ export function ContactUsSection() {
             </Text>
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
+                  <Paragraph>
                 e-mail: jessica@soillife.org
+                    </Paragraph>
               </Text>
+             
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
               </Text>
               <Text type='p' weight='thin' size='xs'>
+                <Paragraph>
              We would like to acknowldege and credit the following for content contributions :
-                
+                </Paragraph>
+                <Paragraph>
                 Jim Richardson & National Geographic (Home Page; Soil 101/Soil Diversity)
-                
+                </Paragraph>
+                 <Paragraph>
                 The Nature and Property of Soils - Brady & Ray Weil (inspiration for several figures - Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
-                
+                </Paragraph>
+                 <Paragraph>
                 For the Love of Soil - Karen Vaughn and Yamina Pressler (Soil 101/Soil Physics/Wedge structure)
+                   </Paragraph>
               </Text>{' '}
               <Text type='p' weight='thin' size='xs'>
                 Thank you for visiting!
