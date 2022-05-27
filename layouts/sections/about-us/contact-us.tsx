@@ -52,9 +52,9 @@ export function ContactUsSection() {
                 <Paragraph>
              We would like to acknowldege and credit the following for their content contributions :
                 </Paragraph>
-                </Text>
-              <Text type='p' weight='semibold' size='xs'>
                 <Paragraph>
+                  </Text>
+              <Text type='p' weight='semibold' size='xs'>
                 Jim Richardson & National Geographic 
                    </Text>
               <Text type='p' weight='thin' size='xs'>
