@@ -53,7 +53,6 @@ export function ContactUsSection() {
             </div>
           </div>
         </div>
-      </div>
     </Section>
   );
 }
