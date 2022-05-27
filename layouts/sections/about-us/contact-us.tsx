@@ -50,7 +50,7 @@ export function ContactUsSection() {
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 <Paragraph>
-             We would like to acknowldege and credit the following for their content contributions :
+             We would like to acknowldege and appreciate the following for their content contributions :
                 </Paragraph>
                 <Paragraph>
                 Jim Richardson & National Geographic (photo credit: Home Page (Hero Image, Dig Deeper); Soil 101/Soil Diversity (Hero Image), Soil 101/Soil Health (Hero Image), Soils at Risk - Erosion, Salinization)
