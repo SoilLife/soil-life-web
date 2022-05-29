@@ -41,7 +41,7 @@ export function ContactUsSection() {
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                   <Paragraph>
-                e-mail: jessica@soillife.org
+                e-mail: jessica@soillife.org 
                     </Paragraph>
               </Text>
              
@@ -50,24 +50,18 @@ export function ContactUsSection() {
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 <Paragraph>
-             We would like to acknowldege the following for their content contributions --
-                 </Paragraph>
-                <Paragraph>
-                   Adapted Figures:
-                   </Paragraph>
-                 <Paragraph>
+             We would like to acknowldege the following for their content contributions -- <br/>
+                
+                   Adapted Figures: <br/>
+             
                 The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
-                </Paragraph>
-                <Paragraph>
+                <br/>
                   Photo Credits: 
-                   </Paragraph>
-                <Paragraph>
+                  <br/>
                 Jim Richardson (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
-                </Paragraph>
-                    <Paragraph>
+               <br/>
                 For the Love of Soil - Yamina Pressler (Soil 101/Soil Physics/Structure - Wedge)
-                </Paragraph>
-                <Paragraph>
+                <br/>
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or are protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               </Paragraph>
                   </Text>{' '}
