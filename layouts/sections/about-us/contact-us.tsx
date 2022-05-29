@@ -65,7 +65,7 @@ export function ContactUsSection() {
                 Jim Richardson (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
                 </Paragraph>
                     <Paragraph>
-                For the Love of Soil - Karen Vaughn and Yamina Pressler (Soil 101/Soil Physics/Structure - Wedge)
+                For the Love of Soil - Yamina Pressler (Soil 101/Soil Physics/Structure - Wedge)
                 </Paragraph>
                 <Paragraph>
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or are protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
