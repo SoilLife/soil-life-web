@@ -1,5 +1,5 @@
-import { Section, Image, Text } from 'design-system/atoms';
-import { Link } from 'next/link';
+import { Section, Image, Text, Button } from 'design-system/atoms';
+import Link from "next/link";
 
 function Paragraph(props: React.PropsWithChildren<{ className?: string }>) {
   return (
