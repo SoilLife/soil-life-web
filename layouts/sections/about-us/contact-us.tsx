@@ -30,7 +30,6 @@ export function ContactUsSection() {
      2xl:max-w-3xl
           `}
         >
-           </div>
           <div
             className={`p-4 bg-white text-center rounded-3xl shadow-xl
           sm:shadow-none
@@ -53,11 +52,9 @@ export function ContactUsSection() {
                 <Paragraph>
              We would like to acknowldege the following for their content contributions :
                  </Paragraph>
-                <Text type='p' weight='semibold' size='xs'> 
                 <Paragraph>
                    adapted figures:
                    </Paragraph>
-                  <Text type='p' weight='thin' size='xs'>
                  <Paragraph>
                 The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
                 </Paragraph>
