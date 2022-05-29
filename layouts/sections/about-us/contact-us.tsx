@@ -1,4 +1,4 @@
-import { Section, Image, Text, Button } from 'design-system/atoms';
+import { Section, Image, Text} from 'design-system/atoms';
 import Link from 'next/link';
 
 function Paragraph(props: React.PropsWithChildren<{ className?: string }>) {
@@ -41,16 +41,20 @@ export function ContactUsSection() {
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                   <Paragraph>
-                e-mail: 
-                    </div>
-        <div className='flex justify-center'>
-          <Link href='/media'>
-            <Button as='link' size='md' type='neutral' label='jessica@soillife.org' />
-          </Link>
-        </div>
+                e-mail:               
                     </Paragraph>
               </Text>
-             
+              
+              <Link href="mailto:jessica@soillife.org">
+        <a className='space-y-2 xl:space-y-8'>
+              <Text type='p' weight='thin' size='xs'>
+                jessica@soillife.org
+              </Text> 
+        </a>
+      </Link>
+          <div className={`p-4 bg-white text-center rounded-3xl shadow-xl
+          sm:shadow-none
+          `}
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
               </Text>
