@@ -30,6 +30,7 @@ export function ContactUsSection() {
      2xl:max-w-3xl
           `}
         >
+           </div>
           <div
             className={`p-4 bg-white text-center rounded-3xl shadow-xl
           sm:shadow-none
