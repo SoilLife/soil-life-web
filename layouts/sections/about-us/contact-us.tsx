@@ -41,13 +41,16 @@ export function ContactUsSection() {
              We would like to acknowldege the following for their contributions and inspiration -- <br/>
                 </Text>
               <Text type='p' weight='semibold' size='xs'>
-                   Adapted Figures: <br/>
+                   Adapted Figures: 
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
                 <br/>
-                  Photo Credits: 
-                  <br/>
+                    </Text>
+              <Text type='p' weight='semibold' size='xs'>  
+                Photo Credits: 
+                 </Text>
+              <Text type='p' weight='thin' size='xs'> 
                 Jim Richardson (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
                <br/>
                 For the Love of Soil - Yamina Pressler (Soil 101/Soil Physics/Structure - Wedge)
