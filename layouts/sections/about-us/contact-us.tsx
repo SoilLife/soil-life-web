@@ -50,6 +50,9 @@ export function ContactUsSection() {
                <br/>
                 For the Love of Soil - Yamina Pressler (Soil 101/Soil Physics/Structure - Wedge)
                 <br/>
+                
+                </Text>
+              <Text type='p' weight='thin' size='xxs'>
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or are protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               
                   </Text>{' '}
