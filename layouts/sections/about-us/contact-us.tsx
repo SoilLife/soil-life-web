@@ -52,7 +52,6 @@ export function ContactUsSection() {
               </Link>
          
             </div>
-              </Text>
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
               </Text>
