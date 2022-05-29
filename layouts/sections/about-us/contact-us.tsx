@@ -42,28 +42,40 @@ export function ContactUsSection() {
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                   <Paragraph>
-                e-mail: jessica@soillife.org
+                e-mail: 
+                </Text>    
+                    <div className='xl:w-full'>
+            <div className='text-center lg:text-left lg:pl-[15%]'>
+              <Link href='https://soillife.org/'>
+                <Button as='link' size='lg' type='secondary' label='jessica@soillife.org' />
+              </Link>
+            </div>
                     </Paragraph>
               </Text>
-             
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 <Paragraph>
              We would like to acknowldege and appreciate the following for their content contributions :
+                   </Paragraph>
+                 <Paragraph>
+                   adapted figures:
+                   </Paragraph>
+                 <Paragraph>
+                The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
                 </Paragraph>
                 <Paragraph>
-                Jim Richardson & National Geographic (photo credit: Home Page (Hero Image, Dig Deeper); Soil 101/Soil Diversity (Hero Image), Soil 101/Soil Health (Hero Image), Soils at Risk - Erosion, Salinization)
-                </Paragraph>
-                 <Paragraph>
-                The Nature and Property of Soils by Nyle Brady & Ray Weil (adapted figures - Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
-                </Paragraph>
-                 <Paragraph>
-                For the Love of Soil - Karen Vaughn and Yamina Pressler (photo credit: Soil 101/Soil Physics/Structure - Wedge)
+                  photo credit: 
                    </Paragraph>
                 <Paragraph>
-                  All other photos were licensed from Adobe Stock or sourced under creative commons. All content is protected under fair use, as this website is not for profit and intended for educational purposes only. 
+                Jim Richardson & National Geographic (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
+                </Paragraph>
+                    <Paragraph>
+                For the Love of Soil - Karen Vaughn and Yamina Pressler (photo credit: Soil 101/Soil Physics/Structure - Wedge)
+                </Paragraph>
+                <Paragraph>
+                  All other photos were licensed from Adobe Stock, sourced under creative commons, or is protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               </Paragraph>
                   </Text>{' '}
             </div>
