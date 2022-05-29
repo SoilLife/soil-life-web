@@ -44,36 +44,22 @@ export function ContactUsSection() {
                 e-mail: jessica@soillife.org
                     </Paragraph>
               </Text>
-             <Section>
-               <Section>
-               <div
-            className={`p-4 bg-white text-center rounded-3xl shadow-xl
-          sm:shadow-none
-          `}
-          >
-            <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
+             
+               <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
               </Text>
-              <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                 <Paragraph>
              We would like to acknowldege the following for their content contributions :
                  </Paragraph>
-                 </Text>
-               <div className='space-y-2 xl:space-y-8'>
-               <Text type='p' weight='bold' size='xs'>
-                 <Paragraph>
+                <Paragraph>
                    adapted figures:
                    </Paragraph>
-                     </Text>
-                 <div className='space-y-2 xl:space-y-8'>
-                   <Text type='p' weight='thin' size='xs'>
-                     <Paragraph>
+                 <Paragraph>
                 The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
-                     </Paragraph>
-                   </Text>
+                </Paragraph>
                 <Paragraph>
-                  photo credits: 
+                  photo credit: 
                    </Paragraph>
                 <Paragraph>
                 Jim Richardson & National Geographic (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
@@ -84,7 +70,7 @@ export function ContactUsSection() {
                 <Paragraph>
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or is protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               </Paragraph>
-                    </Text>
+                  </Text>{' '}
             </div>
           </div>
         </div>
