@@ -36,21 +36,21 @@ export function ContactUsSection() {
           `}
           >
             <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
-              contact us
+              contact us <br/>
             </Text>
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
-                  <Paragraph>
-                e-mail: jessica@soillife.org 
-                    </Paragraph>
+                 
+                e-mail:  <a href="mailto:email@example.com?subject=Soil Life Web Contact">jessica@soillife.org</a>
+                    
               </Text>
              
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
-              credits
+              credits <br/>
               </Text>
               <Text type='p' weight='thin' size='xs'>
-                <Paragraph>
-             We would like to acknowldege the following for their content contributions -- <br/>
+                
+             We would like to acknowldege the following for their contributions and inspiration -- <br/>
                 
                    Adapted Figures: <br/>
              
@@ -63,7 +63,7 @@ export function ContactUsSection() {
                 For the Love of Soil - Yamina Pressler (Soil 101/Soil Physics/Structure - Wedge)
                 <br/>
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or are protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
-              </Paragraph>
+              
                   </Text>{' '}
             </div>
           </div>
