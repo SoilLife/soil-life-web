@@ -26,7 +26,7 @@ export function ContactUsSection() {
             <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               contact us <br/>
             </Text>
-            <div className='space-y-2 xl:space-y-4'>
+            <div className='space-y-2 xl:space-y-2'>
               <Text type='p' weight='thin' size='xs'>
                  
                 e-mail:  <a href="mailto:jessica@soillife.org?subject=Soil Life Web Contact">jessica@soillife.org</a>
