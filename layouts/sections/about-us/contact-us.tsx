@@ -24,6 +24,7 @@ export function ContactUsSection() {
           `}
           url='/About_Us/About_Us_Contact_Us_qr_gIU5QC.jpeg'
         />
+        </Section>
         <div
           className={`z-10 max-w-xs mx-auto flex items-center justify-center w-full h-full transform translate-y-6 
      sm:translate-y-0 sm:max-w-lg
@@ -81,5 +82,6 @@ export function ContactUsSection() {
           </div>
         </div>
       </div>
+         </Section>
   );
 }
