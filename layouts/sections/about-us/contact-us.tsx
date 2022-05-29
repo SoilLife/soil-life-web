@@ -1,5 +1,4 @@
-import { Section, Image, Text, Button } from 'design-system/atoms';
-import Link from "next/link";
+import { Section, Image, Text } from 'design-system/atoms';
 
 function Paragraph(props: React.PropsWithChildren<{ className?: string }>) {
   return (
@@ -24,7 +23,6 @@ export function ContactUsSection() {
           `}
           url='/About_Us/About_Us_Contact_Us_qr_gIU5QC.jpeg'
         />
-        </Section>
         <div
           className={`z-10 max-w-xs mx-auto flex items-center justify-center w-full h-full transform translate-y-6 
      sm:translate-y-0 sm:max-w-lg
@@ -43,21 +41,17 @@ export function ContactUsSection() {
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                   <Paragraph>
-                e-mail: 
-                     </Paragraph>
-                </Text>    
-                    <div className='xl:w-full'>
-            <div className='text-center lg:text-left lg:pl-[15%]'>
-              <Link href='https://soillife.org/'>
-                <Button as='link' size='lg' type='secondary' label='jessica@soillife.org' />
-              </Link>
+                e-mail: jessica@soillife.org
+                    </Paragraph>
+              </Text>
+             
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 <Paragraph>
              We would like to acknowldege and appreciate the following for their content contributions :
-                   </Paragraph>
+                 </Paragraph>
                  <Paragraph>
                    adapted figures:
                    </Paragraph>
@@ -77,11 +71,10 @@ export function ContactUsSection() {
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or is protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               </Paragraph>
                   </Text>{' '}
-               </Section>
             </div>
           </div>
         </div>
       </div>
-         </Section>
+    </Section>
   );
 }
