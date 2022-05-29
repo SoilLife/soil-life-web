@@ -24,7 +24,7 @@ export function ContactUsSection() {
           `}
           >
             <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
-              contact us <br/>
+              contact us
             </Text>
             <div className='space-y-2 xl:space-y-2'>
               <Text type='p' weight='thin' size='xs'>
@@ -66,7 +66,7 @@ export function ContactUsSection() {
               <Text type='p' weight='thin' size='2xs'>
                 (Soil 101/Soil Physics/Structure - Wedge)
                 <br/>
-               
+                <br/>
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or are protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               
                   </Text>{' '}
