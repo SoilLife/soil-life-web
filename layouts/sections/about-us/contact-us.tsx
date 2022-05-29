@@ -39,9 +39,11 @@ export function ContactUsSection() {
               <Text type='p' weight='thin' size='xs'>
                 
              We would like to acknowldege the following for their contributions and inspiration -- <br/>
-                
+                </Text>
+              <Text type='p' weight='semibold' size='xs'>
                    Adapted Figures: <br/>
-             
+              </Text>
+              <Text type='p' weight='thin' size='xs'>
                 The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
                 <br/>
                   Photo Credits: 
