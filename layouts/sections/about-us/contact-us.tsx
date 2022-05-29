@@ -1,5 +1,4 @@
-import { Section, Image, Text} from 'design-system/atoms';
-import Link from 'next/link';
+import { Section, Image, Text } from 'design-system/atoms';
 
 function Paragraph(props: React.PropsWithChildren<{ className?: string }>) {
   return (
@@ -31,7 +30,8 @@ export function ContactUsSection() {
      2xl:max-w-3xl
           `}
         >
-          <div className={`p-4 bg-white text-center rounded-3xl shadow-xl
+          <div
+            className={`p-4 bg-white text-center rounded-3xl shadow-xl
           sm:shadow-none
           `}
           >
@@ -41,20 +41,10 @@ export function ContactUsSection() {
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                   <Paragraph>
-                e-mail:               
+                e-mail: jessica@soillife.org
                     </Paragraph>
               </Text>
-              
-              <Link href="mailto:jessica@soillife.org">
-        <a className='space-y-2 xl:space-y-8'>
-              <Text type='p' weight='thin' size='xs'>
-                jessica@soillife.org
-              </Text> 
-        </a>
-      </Link>
-          <div className={`p-4 bg-white text-center rounded-3xl shadow-xl
-          sm:shadow-none
-          `}
+             
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               credits
               </Text>
@@ -63,13 +53,15 @@ export function ContactUsSection() {
              We would like to acknowldege the following for their content contributions :
                  </Paragraph>
                 <Paragraph>
+                  <Text type='p' weight='bold' size='xs'>
                    adapted figures:
                    </Paragraph>
                  <Paragraph>
+                   <Text type='p' weight='thin' size='xs'>
                 The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
                 </Paragraph>
                 <Paragraph>
-                  photo credit: 
+                  photo credits: 
                    </Paragraph>
                 <Paragraph>
                 Jim Richardson & National Geographic (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
