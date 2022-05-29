@@ -50,19 +50,19 @@ export function ContactUsSection() {
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 <Paragraph>
-             We would like to acknowldege the following for their content contributions :
+             We would like to acknowldege the following for their content contributions --
                  </Paragraph>
                 <Paragraph>
-                   adapted figures:
+                   Adapted Figures:
                    </Paragraph>
                  <Paragraph>
-                The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Soil Nexus/Soil Forming Factors; Soil 101/Soil Diversity/Pedogenesis, Soil 101/Soil Physics/Soil Organic Matter) 
+                The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
                 </Paragraph>
                 <Paragraph>
-                  photo credits: 
+                  Photo Credits: 
                    </Paragraph>
                 <Paragraph>
-                Jim Richardson & National Geographic (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
+                Jim Richardson (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
                 </Paragraph>
                     <Paragraph>
                 For the Love of Soil - Karen Vaughn and Yamina Pressler (Soil 101/Soil Physics/Structure - Wedge)
