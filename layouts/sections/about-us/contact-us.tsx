@@ -1,4 +1,5 @@
-import { Section, Image, Text } from 'design-system/atoms';
+import { Section, Image, Text, Button } from 'design-system/atoms';
+import Link from 'next/link';
 
 function Paragraph(props: React.PropsWithChildren<{ className?: string }>) {
   return (
@@ -30,8 +31,7 @@ export function ContactUsSection() {
      2xl:max-w-3xl
           `}
         >
-          <div
-            className={`p-4 bg-white text-center rounded-3xl shadow-xl
+          <div className={`p-4 bg-white text-center rounded-3xl shadow-xl
           sm:shadow-none
           `}
           >
@@ -41,7 +41,13 @@ export function ContactUsSection() {
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                   <Paragraph>
-                e-mail: jessica@soillife.org
+                e-mail: 
+                    </div>
+        <div className='flex justify-center'>
+          <Link href='/media'>
+            <Button as='link' size='md' type='neutral' label='jessica@soillife.org' />
+          </Link>
+        </div>
                     </Paragraph>
               </Text>
              
