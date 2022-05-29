@@ -81,6 +81,5 @@ export function ContactUsSection() {
           </div>
         </div>
       </div>
-    </Section>
   );
 }
