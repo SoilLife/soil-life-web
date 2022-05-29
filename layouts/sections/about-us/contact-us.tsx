@@ -43,21 +43,30 @@ export function ContactUsSection() {
               <Text type='p' weight='semibold' size='xs'>
                    Adapted Figures: 
               </Text>
+              <Text type='p' weight='thin' size='xs'>
+                The Nature and Property of Soils by Nyle Brady & Ray Weil 
+                </Text>
               <Text type='p' weight='thin' size='2xs'>
-                The Nature and Property of Soils by Nyle Brady & Ray Weil (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
+                (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
                 <br/>
                     </Text>
               <Text type='p' weight='semibold' size='xs'>  
                 Photo Credits: 
                  </Text>
-              <Text type='p' weight='thin' size='2xs'> 
-                Jim Richardson (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
-               <br/>
-                For the Love of Soil - Yamina Pressler (Soil 101/Soil Physics/Structure - Wedge)
-                <br/>
-                
+              <Text type='p' weight='thin' size='xs'> 
+                Jim Richardson 
                 </Text>
               <Text type='p' weight='thin' size='2xs'>
+                (Home Page (Header Photo, Dig Deeper); Soil 101/Soil Diversity (Header Photo), Soil 101/Soil Health (Header Photo), Soils at Risk - Erosion, Salinization)
+               <br/>
+                </Text>
+              <Text type='p' weight='thin' size='xs'> 
+                For the Love of Soil - Yamina Pressler 
+                </Text>
+              <Text type='p' weight='thin' size='2xs'>
+                (Soil 101/Soil Physics/Structure - Wedge)
+                <br/>
+               
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or are protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               
                   </Text>{' '}
