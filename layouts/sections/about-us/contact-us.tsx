@@ -76,6 +76,7 @@ export function ContactUsSection() {
                   All other photos were licensed from Adobe Stock, sourced under creative commons, or is protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               </Paragraph>
                   </Text>{' '}
+               </Section>
             </div>
           </div>
         </div>
