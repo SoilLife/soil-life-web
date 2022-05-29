@@ -29,7 +29,7 @@ export function ContactUsSection() {
             <div className='space-y-2 xl:space-y-8'>
               <Text type='p' weight='thin' size='xs'>
                  
-                e-mail:  <a href="mailto:email@example.com?subject=Soil Life Web Contact">jessica@soillife.org</a>
+                e-mail:  <a href="mailto:jessica@soillife.org?subject=Soil Life Web Contact">jessica@soillife.org</a>
                     
               </Text>
              
