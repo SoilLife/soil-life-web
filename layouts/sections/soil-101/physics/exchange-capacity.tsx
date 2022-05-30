@@ -85,7 +85,7 @@ export const ExchangeCapacitySection = () => {
           <ClaySvg className='sm:w-1/2' />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
             the large, negatively charged surface area of clays holds on to important plant nutrients, called cations,
-            preserving them against losses to gravity.
+            preserving them against losses due to gravity (leaching).
           </Text>
         </div>
         <div
@@ -110,7 +110,7 @@ export const ExchangeCapacitySection = () => {
             onClick={openModal('anion exchange')}
           />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-            som also has high surface area and charge, holding on to both positive and negatively charged ions
+            som also has large surface area and charge, holding on to both positive and negatively charged ions
             (depending on pH) and contributing significantly to water holding capacity.
           </Text>
         </div>
