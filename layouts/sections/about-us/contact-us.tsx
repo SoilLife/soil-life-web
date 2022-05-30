@@ -70,6 +70,7 @@ export function ContactUsSection() {
               
                   </Text>{' '}
             </div>
+              </div>
           </div>
         </div>
       </div>
