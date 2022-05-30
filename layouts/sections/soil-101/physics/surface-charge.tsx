@@ -107,12 +107,13 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
         <Text
           id='charge'
           type='h1'
-          weight='bold'
+          weight='light'
           size='4xl'
           color='yellow'
-          className={`${styles['anchor']} ${styles['heading']}`}
+          className={styles['heading']}
+         
         >
-          surface charge
+          clay properties
         </Text>
         <Text type='p' weight='thin' size='md' className='text-center'>
           clays are considered the “active” portion of soil. they have higher total surface
