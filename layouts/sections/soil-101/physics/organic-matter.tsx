@@ -95,8 +95,8 @@ export const OrganicMatterSection = () => {
           organic matter
         </Text>
         <Text type='p' weight='thin' size='md' className={`text-center ${styles['p-48']}`}>
-          supramolecular aggregation of plant, animal, and microbially-based compounds in varying stages of
-          decomposition. stable organic matter can last in the soil for 100s to 1000s of years.
+          the supra-molecular aggregation of plant, animal, and microbially-based compounds. organic matter in soil exists in various stages of
+          decomposition (or break down), when bound to a clay or trapped inside an aggregate, it can last in the soil for 100's to 1000's of years.
         </Text>
         <OrganicMatterSvg className='mx-auto max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)]' />
       </div>
