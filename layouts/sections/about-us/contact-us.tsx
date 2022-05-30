@@ -49,7 +49,7 @@ export function ContactUsSection() {
                 (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
                 <br/>
                     </Text>
-              <Text type='p' weight='regular' size='xs'>  
+              <Text type='p' weight='regular' size='xs' className='underline w-full'>  
                 Photos 
                  </Text>
               <Text type='p' weight='thin' size='xs'> 
