@@ -123,7 +123,7 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
           <SurfaceAreaChargedSvg />
         </div>
         <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-          the large, charged surface of clays creates nutrient and water-holding capacity that can hold onto these valuable resources; preventing their loss to gravity (known as leaching).
+          the large, charged surface of clays creates nutrient and water-holding capacity that can hold onto these valuable resources; preventing their loss to gravity (or leaching).
         </Text>
         <div className='flex flex-col space-between gap-10 sm:gap-20 sm:flex-row'>
           <div className='flex-grow'>
