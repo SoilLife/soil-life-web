@@ -39,7 +39,7 @@ export function ContactUsSection() {
                 
              We would like to acknowldege the following for their contributions and inspiration: <br/>
                 </Text>
-              <Text type='p' weight='regular' size='xs'>
+              <Text type='p' weight='regular' size='xs' style='underline'>
                    Adapted Figures
               </Text>
               <Text type='p' weight='thin' size='xs'>
@@ -50,7 +50,7 @@ export function ContactUsSection() {
                 <br/>
                     </Text>
               <Text type='p' weight='regular' size='xs'>  
-                Photo Credits 
+                Photos 
                  </Text>
               <Text type='p' weight='thin' size='xs'> 
                 Jim Richardson - National Geographic
