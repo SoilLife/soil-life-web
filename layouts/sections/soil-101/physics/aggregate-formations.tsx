@@ -10,7 +10,7 @@ export const AggregateFormationSection = () => {
   return (
     <div className={styles['section']}>
       <Text type='h1' weight='light' size='3xl' color='yellow' className={styles['heading']}>
-        aggregate formations
+        aggregate formation
       </Text>
       <AggregateFormationSvg />
     </div>
