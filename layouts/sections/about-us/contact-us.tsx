@@ -23,7 +23,7 @@ export function ContactUsSection() {
           sm:shadow-none
           `}
           >
-            <div className='space-y-1 xl:space-y-1'>
+            <div className='space-y-2 xl:space-y-2'>
             <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               contact us
             </Text>
