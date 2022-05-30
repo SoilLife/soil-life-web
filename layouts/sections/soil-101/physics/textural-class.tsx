@@ -58,7 +58,7 @@ export const TexturalClassSection = () => {
         textural class
       </Text>
       <Text type='p' weight='thin' size='lg' className='ml-8'>
-        based on the percent of sand, silt, and clay; soils are categorized into groups that behave similarly. textural class is a fixed property that can't be changed over human timescales.
+        soil texture can be grouped into 12 different classes that behave similarly; each with its own range of sand, silt, and clay. texture is a fixed (or inherent) property that doesn't change over human timescales.
       </Text>
       <div className='sm:grid sm:grid-cols-2'>
         <div className='mb-10 sm:mb-0'>
