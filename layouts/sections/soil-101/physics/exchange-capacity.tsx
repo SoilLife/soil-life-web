@@ -92,8 +92,8 @@ export const ExchangeCapacitySection = () => {
           className={`flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16 ${styles['p-48']}`}
         >
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-            iron/aluminum oxides carry a charge, as well, but generally a positive charge, providing anion exchange
-            capacity (i.e. NO3-, BO3-, Cl-).
+            iron/aluminum oxides carry a positive charge (oxidation is a loss of electrons!!), instead, providing anion exchange
+            capacity (i.e. NO<sub>3</sub><sup>-</sup>, BO<sub>3</sub><sup>-</sup>, Cl<sup>-</sup>).
           </Text>
           <img
             src='/images/soil-101/physics/exchange_capacity_metal_oxides.png'
