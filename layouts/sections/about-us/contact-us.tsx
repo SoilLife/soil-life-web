@@ -37,9 +37,9 @@ export function ContactUsSection() {
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 
-             We would like to acknowldege the following for their contributions and inspiration: <br/>
+             We would like to acknowldege the following for their contributions: <br/>
                 </Text>
-              <Text type='p' weight='regular' size='xs' className='underline w-full'>
+              <Text type='p' weight='light' size='xs' className='underline w-full'>
                    Adapted Figures
               </Text>
               <Text type='p' weight='thin' size='xs'>
@@ -49,7 +49,7 @@ export function ContactUsSection() {
                 (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
                 <br/>
                     </Text>
-              <Text type='p' weight='regular' size='xs' className='underline w-full'>  
+              <Text type='p' weight='light' size='xs' className='underline w-full'>  
                 Photos 
                  </Text>
               <Text type='p' weight='thin' size='xs'> 
