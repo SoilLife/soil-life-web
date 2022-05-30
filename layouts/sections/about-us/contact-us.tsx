@@ -38,7 +38,7 @@ export function ContactUsSection() {
                 
              We would like to acknowldege the following for their contributions and inspiration -- <br/>
                 </Text>
-              <Text type='p' weight='semibold' size='xs'>
+              <Text type='p' weight='regular' size='xs'>
                    Adapted Figures: 
               </Text>
               <Text type='p' weight='thin' size='xs'>
@@ -48,7 +48,7 @@ export function ContactUsSection() {
                 (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
                 <br/>
                     </Text>
-              <Text type='p' weight='semibold' size='xs'>  
+              <Text type='p' weight='regular' size='xs'>  
                 Photo Credits: 
                  </Text>
               <Text type='p' weight='thin' size='xs'> 
