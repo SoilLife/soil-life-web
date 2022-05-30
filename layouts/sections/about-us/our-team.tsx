@@ -6,7 +6,7 @@ export function OurTeamSection() {
   return (
     <Section className="relative h-full overflow-hidden">
       <Image
-        url="/About_Us/Our_Team_About_Us_NIPGMI969.jpg"
+        url="/About_Us/Our_Team_About_Us_NIPGMI969_vRc-zJfAV.jpg"
         className="absolute top-0 left-0 object-cover z-[-1]"
       />
       <div className="container h-full">
