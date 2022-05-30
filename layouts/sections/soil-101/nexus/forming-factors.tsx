@@ -88,7 +88,7 @@ export const FormingFactorsSection = () => {
       </Text>
       <Text type='p' weight='light' size='md' className={styles['p-50']}>
         as energy flows through the system, in the form of heat,
-        precipitation, biological activity, etc; soils weather, developing horizons and other distinct morphological
+        precipitation, biological activity, and more; soils weather developing horizons and other distinct morphological
         features. the formation of soil over time is called pedogenesis. 
       </Text>
       <div className='border border-solid border-gray-500 max-h-[calc(100vh-60px)] sm:max-h-[calc(100vh-80px)]'>
