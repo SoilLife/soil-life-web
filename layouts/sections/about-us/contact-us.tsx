@@ -37,10 +37,10 @@ export function ContactUsSection() {
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 
-             We would like to acknowldege the following for their contributions and inspiration -- <br/>
+             We would like to acknowldege the following for their contributions and inspiration: <br/>
                 </Text>
               <Text type='p' weight='regular' size='xs'>
-                   Adapted Figures: 
+                   Adapted Figures
               </Text>
               <Text type='p' weight='thin' size='xs'>
                 The Nature and Property of Soils by Nyle Brady & Ray Weil 
@@ -50,7 +50,7 @@ export function ContactUsSection() {
                 <br/>
                     </Text>
               <Text type='p' weight='regular' size='xs'>  
-                Photo Credits: 
+                Photo Credits 
                  </Text>
               <Text type='p' weight='thin' size='xs'> 
                 Jim Richardson - National Geographic
