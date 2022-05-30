@@ -39,7 +39,7 @@ export function ContactUsSection() {
                 
              We would like to acknowldege the following for their contributions and inspiration: <br/>
                 </Text>
-              <Text type='p' weight='regular' size='xs'> <Text style={styles.underline}>
+              <Text type='p' weight='regular' size='xs' className='underline w-full'>
                    Adapted Figures
               </Text>
               <Text type='p' weight='thin' size='xs'>
