@@ -29,10 +29,7 @@ export function ContactUsSection() {
             </Text>
             <div className='space-y-2 xl:space-y-2'>
               <Text type='p' weight='thin' size='xs'>  
-                e-mail:  
-              </Text>
-              <Text type='p' weight='thin' size='xs' className='underline w-full'>  
-                <a href="mailto:jessica@soillife.org?subject=Soil Life Web Contact">jessica@soillife.org</a>          
+                e-mail:  </Text> <Text type='p' weight='thin' size='xs' color='blue' className='underline w-full'> <a href="mailto:jessica@soillife.org?subject=Soil Life Web Contact">jessica@soillife.org</a>          
               </Text>
              
                <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
