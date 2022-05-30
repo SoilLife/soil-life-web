@@ -9,27 +9,11 @@ import { GenericModal } from 'design-system/components/soil-101-modals/generic-m
 
 // assets
 import ClaySvg from 'public/images/soil-101/physics/exchange_capacity_clay.svg';
-import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
-import AnionExchangeSvg from 'public/images/soil-101/physics/anion_exchange_capacity.svg';
 import SomSvg from 'public/images/soil-101/physics/som_cation_anion.svg';
 
 import styles from '../soil-101.module.css';
 
 const modalTypeMap = {
-  'cation exchange': {
-    title: 'cation exchange capacity',
-    image: { type: 'svg', element: <CationExchangeSvg className='mx-auto sm:w-1/2' /> },
-    description:
-      'cations are positively charged ions. cation exchange capacity is the number of negatively charged sites (on clays or organic matter) that can hold onto these ions.',
-    reverseContent: true,
-  },
-  'metal oxide exchange': {
-    title: 'anion exchange capacity',
-    image: { type: 'svg', element: <AnionExchangeSvg className='mx-auto sm:w-1/2' /> },
-    description:
-      'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions',
-    reverseContent: true,
-   },
   'anion exchange': {
     title: 'cation & anion exchange capacity',
     image: { type: 'svg', element: <SomSvg className='mx-auto sm:w-1/2' /> },
@@ -76,31 +60,9 @@ export const ExchangeCapacitySection = () => {
   return (
     <>
       <div ref={sectionRef} className={styles['section']}>
-        <Text type='h1' weight='bold' size='4xl' color='yellow' className={styles['heading']}>
+        <Text type='h1' weight='light' size='4xl' color='yellow' className={styles['heading']}>
           exchange capacity
         </Text>
-        <div
-          className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
-        >
-          <ClaySvg className='sm:w-1/2' />
-          <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-            the large, negatively charged surface area of clays holds on to important plant nutrients, called cations,
-            preserving them against losses due to gravity (leaching).
-          </Text>
-        </div>
-        <div
-          className={`flex flex-col-reverse items-center justify-center sm:flex-row sm:space-x-16 ${styles['p-48']}`}
-        >
-          <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-            iron/aluminum oxides carry a positive charge (oxidation is a loss of electrons!!), instead, providing anion exchange
-            capacity (i.e. NO<sub>3</sub><sup>-</sup>, BO<sub>3</sub><sup>-</sup>, Cl<sup>-</sup>).
-          </Text>
-          <img
-            src='/images/soil-101/physics/exchange_capacity_metal_oxides.png'
-            className='cursor-pointer hover:opacity-50 active:opacity-100 mb-4 sm:mb-0 sm:w-1/2'
-            onClick={openModal('metal oxide exchange')}
-          />
-        </div>
         <div
           className={`flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-16 sm:space-y-0 sm:text-right ${styles['p-48']}`}
         >
@@ -111,7 +73,7 @@ export const ExchangeCapacitySection = () => {
           />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
             som also has large surface area and charge, holding on to both positive and negatively charged ions
-            (depending on pH) and contributing significantly to water holding capacity.
+            (depending on pH) and both absorbing and adsorbing water; contributing significantly to water holding capacity.
           </Text>
         </div>
       </div>
