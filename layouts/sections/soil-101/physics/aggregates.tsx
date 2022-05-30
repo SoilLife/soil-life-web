@@ -61,7 +61,7 @@ export const AggregatesSection = (props: { assignRef: (el: null | HTMLDivElement
           color='yellow'
           className={`${styles['anchor']} ${styles['heading']}`}
         >
-          aggregates
+          aggregation
         </Text>
         <AggregationSvg />
       </div>
