@@ -23,9 +23,11 @@ export function ContactUsSection() {
           sm:shadow-none
           `}
           >
+            <div className='space-y-2 xl:space-y-2'>
             <Text type='h1' weight='regular' size='3xl' color='teal' className='mb-4 xl:mb-10'>
               contact us
             </Text>
+            <div className='space-y-2 xl:space-y-2'>
               <Text type='p' weight='thin' size='xs'>  
                 e-mail:  <a href="mailto:jessica@soillife.org?subject=Soil Life Web Contact">jessica@soillife.org</a>          
               </Text>
@@ -67,6 +69,7 @@ export function ContactUsSection() {
                   All other photos were licensed from Adobe Stock or sourced under creative commons.  All content is protected under fair use, as this website is 'not-for-profit' and intended for educational purposes only. 
               
                   </Text>{' '}
+            </div>
           </div>
         </div>
       </div>
