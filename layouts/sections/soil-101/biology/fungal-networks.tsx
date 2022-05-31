@@ -75,11 +75,15 @@ export const FungalNetworksSection = () => {
         </Text>
 
         <div className='text-center pt-4'>
-          <Text type='p' weight='light' size='lg' className={styles['p-70']}>
-            microbes also release a variety of
+           <Text type='span' weight='bold' size='lg' color='pink'>
+            plant growth promoters
           </Text>
-          <Text type='p' weight='bold' size='lg' className={styles['p-70']}>
-            plant growth promoting compounds
+          <Text type='p' weight='light' size='lg' className={styles['p-70']}>
+            certain types of bacteria and fungi release {' '}
+          <Text type='span' weight='bold' size='lg' className={styles['p-70']}>
+            organic compounds
+            </Text>{' '}
+            that promote plant growth, regulate plant hormones, and protect against disease and stress.
           </Text>
         </div>
 
