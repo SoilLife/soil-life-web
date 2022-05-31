@@ -95,8 +95,7 @@ export const OrganicMatterSection = () => {
           organic matter
         </Text>
         <Text type='p' weight='thin' size='md' className={`text-center ${styles['p-48']}`}>
-          the supra-molecular aggregation of plant, animal, and microbially-based compounds. organic matter in soil exists in various stages of
-          decomposition (or break down), when bound to a clay or trapped inside an aggregate, it can last in the soil for 100's to 1000's of years.
+          the supra-molecular aggregation of plant, animal, and microbially-based compounds. as microbes (free living or in the guts of insects) break down (or decompose) organic materials in the soil, some is converted to biomass, sticky exudates, and other compounds that bind together with minerals and can stick around for 100's to 1000's of years. soil organic matter is, on average, 58% carbon.
         </Text>
         <OrganicMatterSvg className='mx-auto max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)]' />
       </div>
