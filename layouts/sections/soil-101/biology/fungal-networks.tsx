@@ -74,12 +74,16 @@ export const FungalNetworksSection = () => {
           water, nitrogen, phosphorus, and other nutrients.
         </Text>
 
-        <div className='text-center pt-4'>
-          <Text type='p' weight='light' size='lg' className={styles['p-70']}>
-            microbes also release a variety of
+      <div ref={sectionRef} className={styles['section']}> 
+         <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
+            plant growth promoters
           </Text>
-          <Text type='p' weight='bold' size='lg' className={styles['p-70']}>
-            plant growth promoting compounds
+          <Text type='p' weight='light' size='lg' className={styles['p-70']}>
+            certain types of bacteria and fungi release other {' '}
+          <Text type='span' weight='bold' size='lg' className={styles['p-70']}>
+            organic compounds
+            </Text>{' '}
+            that promote plant growth, regulate hormones, and protect against disease and stress.
           </Text>
         </div>
 
