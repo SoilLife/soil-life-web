@@ -8,7 +8,6 @@ import { Text } from 'design-system/atoms';
 import { GenericModal } from 'design-system/components/soil-101-modals/generic-modal';
 
 // assets
-import ClaySvg from 'public/images/soil-101/physics/exchange_capacity_clay.svg';
 import SomSvg from 'public/images/soil-101/physics/som_cation_anion.svg';
 
 import styles from '../soil-101.module.css';
