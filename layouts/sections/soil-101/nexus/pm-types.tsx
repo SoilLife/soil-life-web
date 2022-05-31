@@ -98,7 +98,6 @@ export const PmTypesSection = () => {
           </Text>
           <Text type='p' weight='thin' size='xs' className={styles['p-60']}>
             - rocks are composed of different types of minerals that  
-            </Text>{' '}
             <Text type='span' weight='bold' size='xs'>
              weather 
             </Text>{' '}
