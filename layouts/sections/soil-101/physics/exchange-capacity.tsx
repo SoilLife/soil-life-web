@@ -35,7 +35,7 @@ export const ExchangeCapacitySection = () => {
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    const svgs: [string, typeof modalType][] = [['#exchange_capacity_clay_svg__Layer_2', 'cation exchange']];
+    const svgs: [string, typeof modalType][] = [['#exchange_capacity_clay_svg__Layer_2', 'anion exchange']];
     const sectionContainer = sectionRef.current;
 
     const interactiveSvgs = svgs.map(([id, type]) =>
