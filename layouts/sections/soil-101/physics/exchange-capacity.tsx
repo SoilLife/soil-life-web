@@ -17,7 +17,7 @@ const modalTypeMap = {
     title: 'cation & anion exchange capacity',
     image: { type: 'svg', element: <SomSvg className='mx-auto sm:w-1/2' /> },
     description:
-      'soil organic matter is composed of a diversity of complex molecules that have both positively and negatively charged sites and can hold onto both negatively and positively charged ions!',
+      'soil organic matter is composed of a diversity of complex organic molecules that have both positively and negatively charged sites (called functional groups) and can hold onto both negatively and positively charged ions!',
     reverseContent: true,
   },
 } as const;
@@ -71,7 +71,7 @@ export const ExchangeCapacitySection = () => {
             onClick={openModal('anion exchange')}
           />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-            som also has large surface area and charge, contributing significantly to a soil's water and nutrient-holding capacity.
+            som also has large surface area and charge (varies with pH), contributing significantly to a soil's water and nutrient-holding capacity.
           </Text>
         </div>
       </div>
