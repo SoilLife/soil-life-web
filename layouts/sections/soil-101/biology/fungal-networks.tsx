@@ -81,7 +81,7 @@ export const FungalNetworksSection = () => {
           <Text type='p' weight='light' size='lg' className={`text-center ${styles['p-70']}`}>
             certain types of bacteria and fungi release other {' '}
           <Text type='span' weight='bold' size='lg' className={styles['p-70']}>
-            organic compounds
+            organic compounds 
             </Text>{' '}
             that promote plant growth, regulate hormones, and protect against disease and stress.
           </Text>
