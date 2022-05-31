@@ -66,21 +66,21 @@ export const FungalNetworksSection = () => {
           <Text type='span' weight='bold' size='md' color='pink'>
             mycorrhizal fungi
           </Text>
-          , stimulating the growth of thread-like hyphae, which connect within or outside the roots, extending them{' '}
+          , stimulating the growth of thread-like hyphae, which connect within or outside the roots, extending their reach{' '}
           <Text type='span' weight='bold' size='md'>
             100-1000x
           </Text>
-          . the root provides sugars to feed the fungus and in turn, its hyphae spread throughout the soil in search of
+          . the root provides sugars which feed the fungus and in turn, its hyphae spread throughout the soil in search of
           water, nitrogen, phosphorus, and other nutrients. <br/>
           <br/>
         </Text>
 
       <div ref={sectionRef} className={styles['section']}> 
          <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
-            plant growth promoters
+            plant growth promotion
           </Text>
           <Text type='p' weight='light' size='md' className={styles['p-70']}>
-            some bacteria and fungi in the rhizosphere release {' '}
+            different bacteria and fungi release different types of {' '}
           <Text type='span' weight='bold' size='md' color='teal' className={styles['p-70']}>
             organic compounds
             </Text>{' '}
