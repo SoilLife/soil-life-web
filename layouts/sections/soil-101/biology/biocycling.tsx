@@ -144,19 +144,19 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
         >
           biocycling
         </Text>
-        <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>
           plants combine carbon from the atmosphere with water and nutrients from soil to form the building blocks of
-          life -- carbohydrates, proteins, lipids, and nucleic acids. plants use these molecules to build their leaves, seeds, stems, roots, and fruits.
+          life: carbohydrates, proteins, lipids, and nucleic acids, which they use to build their leaves, seeds, stems, roots, and fruits.
         </Text>
 
         <div className='relative' ref={svgContainerRef}>
           <Biocycling className='mx-auto lg:max-w-[50vw]' />
           {popup && <Popup {...popupMap[popup]} title={popup} />}
         </div>
-        <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
-          these organic materials move up and down the food chain — plant biomass is eaten and excreted by microbes, insects and animals, 
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>
+          these organic materials move up and down the food chain — eaten and excreted by microbes, insects and animals, 
           which are eaten and excreted by other organisms.
-          as things die or decompose, nutrients are made available for new growth and the cycle continues.
+          as things decompose, nutrients are made available for new growth and the cycle continues.
         </Text>
       </div>
     </>
