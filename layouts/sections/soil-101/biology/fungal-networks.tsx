@@ -74,16 +74,16 @@ export const FungalNetworksSection = () => {
           water, nitrogen, phosphorus, and other nutrients.
         </Text>
 
-        <div ref={sectionRef} className={styles['section']}>
-          <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
+        <div className='text-center pt-4'>
+           <Text type='span' weight='bold' size='lg' color='pink'>
             plant growth promoters
           </Text>
-          <Text type='p' weight='light' size='lg' className={`text-center ${styles['p-70']}`}>
-            certain types of bacteria and fungi release other {' '}
+          <Text type='p' weight='light' size='lg' className={styles['p-70']}>
+            certain types of bacteria and fungi release {' '}
           <Text type='span' weight='bold' size='lg' className={styles['p-70']}>
-            organic compounds 
+            organic compounds
             </Text>{' '}
-            that promote plant growth, regulate hormones, and protect against disease and stress.
+            that promote plant growth, regulate plant hormones, and protect against disease and stress.
           </Text>
         </div>
 
@@ -101,4 +101,3 @@ export const FungalNetworksSection = () => {
     </>
   );
 };
-  
