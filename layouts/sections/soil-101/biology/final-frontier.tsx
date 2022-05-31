@@ -10,7 +10,7 @@ export const FinalFrontierSection = (props: { assignRef: (el: null | HTMLDivElem
   return (
     <div ref={props.assignRef} className={styles['section']}>
       {/* <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
-        soil: the final frontier
+        soil: the final frontier 
       </Text>
 
       <Text type='p' weight='light' size='md' className={styles['p-80']}>
