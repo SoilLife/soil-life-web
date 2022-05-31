@@ -71,8 +71,7 @@ export const ExchangeCapacitySection = () => {
             onClick={openModal('anion exchange')}
           />
           <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-            som also has large surface area and charge, holding on to both positive and negatively charged ions
-            (depending on pH) and both absorbing and adsorbing water; contributing significantly to water holding capacity.
+            som also has large surface area and charge, contributing significantly to a soil's water and nutrient-holding capacity.
           </Text>
         </div>
       </div>
