@@ -75,19 +75,15 @@ export const FungalNetworksSection = () => {
         </Text>
 
         <div className='text-center pt-4'>
-         <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
-            plant growth promoters
-          </Text>
           <Text type='p' weight='light' size='lg' className={styles['p-70']}>
-            certain types of bacteria and fungi release other {' '}
-          <Text type='span' weight='bold' size='lg' className={styles['p-70']}>
-            organic compounds
-            </Text>{' '}
-            that promote plant growth, regulate hormones, and protect against disease and stress.
+            microbes also release a variety of
+          </Text>
+          <Text type='p' weight='bold' size='lg' className={styles['p-70']}>
+            plant growth promoting compounds
           </Text>
         </div>
-        
-       <PlantGrowthPromoting className='mx-auto' />
+
+        <PlantGrowthPromoting className='mx-auto' />
       </div>
       {isModalOpen && (
         <FullImage
@@ -101,5 +97,3 @@ export const FungalNetworksSection = () => {
     </>
   );
 };
-
-       
