@@ -118,7 +118,7 @@ export const StructureSection = (props: { assignRef: (el: null | HTMLDivElement)
           structure
         </Text>
         <Text type='p' weight='thin' size='md' className={styles['p-60']}>
-          the way that individual soil particles (mineral and/or organic) stack together determines the size and shape of soil aggregates and the space between them; or what is known as soil structure. this is a more dynamic property of soil and can change over relatively short time periods.
+          the way that individual soil particles (mineral and/or organic) stack together determines the size and shape of soil aggregates and the space between them; or what is known as soil structure. this is a more dynamic property that can change over short time periods.
         </Text>
         <StructureSvg className='mx-auto max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)]' />
       </div>
