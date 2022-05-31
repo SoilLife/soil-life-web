@@ -59,7 +59,7 @@ export const FungalNetworksSection = () => {
 
         <Text type='p' weight='light' size='md' className={`text-center ${styles['p-70']}`}>
           plants release{' '}
-          <Text type='span' weight='bold' size='md' color='blue'>
+          <Text type='span' weight='bold' size='md' color='yellow'>
             compounds
           </Text>{' '}
           to attract{' '}
@@ -80,7 +80,7 @@ export const FungalNetworksSection = () => {
             plant growth promoters
           </Text>
           <Text type='p' weight='light' size='md' className={styles['p-70']}>
-            some bacteria and fungi in the root zone release {' '}
+            some bacteria and fungi in the rhizosphere release {' '}
           <Text type='span' weight='bold' size='md' color='teal' className={styles['p-70']}>
             organic compounds
             </Text>{' '}
