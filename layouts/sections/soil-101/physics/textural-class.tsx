@@ -58,7 +58,9 @@ export const TexturalClassSection = () => {
         textural class
       </Text>
       <Text type='p' weight='thin' size='md' className='ml-8'>
-        soils are grouped into 12 different textural classes (based on ranges of sand, silt, and clay) that behave similarly. enter percentages (equal to 100) in the boxes below to see what textural class it falls in!
+        soils are grouped into 12 different textural classes (based on ranges of sand, silt, and clay) that behave similarly. 
+         </Text>
+      <Text type='p' weight='thin' size='xs' className='ml-8'> enter numbers (equal to 100) in the boxes below to see what the textural class will be: <br/>
       </Text>
       <div className='sm:grid sm:grid-cols-2'>
         <div className='mb-10 sm:mb-0'>
