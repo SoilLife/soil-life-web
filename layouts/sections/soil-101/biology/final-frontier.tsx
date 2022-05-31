@@ -14,17 +14,13 @@ export const FinalFrontierSection = (props: { assignRef: (el: null | HTMLDivElem
       </Text>
 
       <Text type='p' weight='light' size='md' className={styles['p-80']}>
-        soil is home to{' '}
-        <Text type='span' weight='bold' size='md' color='teal'>
-          1/4 of the world’s biodiversity
-        </Text>{' '}
-        with billions of microscopic organisms in a single teaspoon.{' '}
-        <Text type='span' weight='bold' size='md' color='teal'>
-          95-99%
-        </Text>{' '}
-        of these{' '}
+        only 1-5% of soil{' '}
         <Text type='span' weight='bold' size='md' color='teal'>
           microorganisms
+        </Text>{' '} 
+        have been discovered. {' '}
+        <Text type='span' weight='bold' size='md' color='teal'>
+          95-99%
         </Text>{' '}
         have yet to be discovered, making soils a major frontier in
         <Text type='span' weight='bold' size='md' color='teal'>
