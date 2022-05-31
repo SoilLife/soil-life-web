@@ -62,6 +62,9 @@ export const TexturalClassSection = () => {
          </Text>
       <Text type='p' weight='thin' size='xs' className='ml-8'> enter numbers (equal to 100) in the boxes below to see what the textural class would be: <br/>
       </Text>
+        <Text type='p' weight='thin' size='md' className='ml-8'>
+             
+         </Text>
       <div className='sm:grid sm:grid-cols-2'>
         <div className='mb-10 sm:mb-0'>
           <div ref={imageContainer} className='relative'>
