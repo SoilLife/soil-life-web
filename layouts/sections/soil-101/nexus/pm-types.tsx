@@ -103,7 +103,7 @@ export const PmTypesSection = () => {
              weather 
             </Text>{' '}
             at different rates
-          </Text>{' '}
+          </Text>
         </div>
         <PmTypesSvg className='mx-auto h-full max-h-[683px]' />
       </div>
