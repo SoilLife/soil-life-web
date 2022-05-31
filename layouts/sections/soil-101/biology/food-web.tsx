@@ -135,7 +135,7 @@ export const FoodWebSection = () => {
         <Text type='h1' weight='bold' size='4xl' color='teal' className={styles['heading']}>
           soil food web
         </Text>
-        <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-50']}`}>
           soil is home to 1/4 of the world's biodiversity with billions of organisms -- 10's of 1,000's of species -- in a single teaspoon. the soil food web serves as the foundation of every (terrestrial) food web on the planet!
         </Text>
         <FoodWebSvg />
