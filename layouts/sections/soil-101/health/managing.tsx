@@ -157,7 +157,7 @@ export const ManagingSection = (props: {
         {headerSvgMap[activeHeader]}
         {popup && (
           <div
-            className="space-y-4 bg-white absolute p-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-solid border-blue-550 w-full"
+            className="space-y-4 bg-white absolute p-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-solid border-blue-500 w-full"
             tabIndex={0}
             onClick={() => {
               setPopup(null);
