@@ -146,7 +146,7 @@ export const BiocyclingSection = (props: { assignRef: (el: null | HTMLDivElement
         </Text>
         <Text type='p' weight='light' size='sm' className={`text-center ${styles['p-50']}`}>
           plants combine carbon from the atmosphere with water and nutrients from soil to form the building blocks of
-          life -- carbohydrates, proteins, and lipids that form plant leaves, stems, roots, and fruits.
+          life -- carbohydrates, proteins, lipids, and nucleic acids. plants use these molecules to build their leaves, seeds, stems, roots, and fruits.
         </Text>
 
         <div className='relative' ref={svgContainerRef}>
