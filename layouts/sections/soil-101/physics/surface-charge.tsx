@@ -29,7 +29,7 @@ const modalMap = {
   'high surface area': {
     title: 'surface area',
     description:
-      'the smaller the particles, the greater the surface area. the smallest particles, clays, not only have high surface area, but carry an electrical charge, as well.',
+      'clays are the smallest particle size, but because so many more particles can fit in a given volume of soil, the same amount of space filled with clay has 1000x the surface area as a space filled with sand.',
     image: {
       type: 'svg',
       element: <SurfaceAreaSvg className='mx-auto max-h-[457px] sm:w-1/2' />,
@@ -39,7 +39,7 @@ const modalMap = {
   'water holding capacity': {
     title: 'water holding capacity',
     description:
-      'the amount of water that a soil can hold against gravity -- water molecules are attracted to negatively charged particles (on clays and organic matter).',
+      'the amount of water that a soil can hold against gravity -- water molecules are attracted to negatively charged particles on clays (and organic matter).',
     image: {
       type: 'img',
       url: '/images/soil-101/physics/water_holding.png',
@@ -117,14 +117,14 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
         </Text>
         <Text type='p' weight='thin' size='md' className='text-center'>
           clays are considered the “active” portion of soil. they have higher total surface
-          area and, like magnets, are often electrically charged, allowing physical and chemical reactions to occur on their surfaces.
+          area and are often electrically charged (like magnets), allowing physical and chemical reactions to occur on their surfaces.
         </Text>
 
         <div ref={imgRef}>
           <SurfaceAreaChargedSvg />
         </div>
         <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
-          the large, charged surface of clays creates nutrient and water-holding capacity that can hold onto these valuable resources; preventing their loss to gravity (or leaching).
+          the large, charged surface of clays can hold onto water and nutrients; preventing their loss to gravity (or leaching).
         </Text>
         <div className='flex flex-col space-between gap-10 sm:gap-20 sm:flex-row'>
           <div className='flex-grow'>
