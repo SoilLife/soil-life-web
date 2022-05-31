@@ -57,17 +57,17 @@ export const FungalNetworksSection = () => {
 
         <MycorrhizalFungiSvg className='mx-auto max-h-[80vh]' />
 
-        <Text type='p' weight='light' size='lg' className={`text-center ${styles['p-70']}`}>
+        <Text type='p' weight='light' size='md' className={`text-center ${styles['p-70']}`}>
           plants release{' '}
-          <Text type='span' weight='bold' size='lg' color='blue'>
+          <Text type='span' weight='bold' size='md' color='blue'>
             compounds
           </Text>{' '}
           to attract{' '}
-          <Text type='span' weight='bold' size='lg' color='pink'>
+          <Text type='span' weight='bold' size='md' color='pink'>
             mycorrhizal fungi
           </Text>
           , stimulating the growth of thread-like hyphae, which connect within or outside the roots, extending them{' '}
-          <Text type='span' weight='bold' size='lg'>
+          <Text type='span' weight='bold' size='md'>
             100-1000x
           </Text>
           . the root provides sugars to feed the fungus and in turn, its hyphae spread throughout the soil in search of
@@ -79,9 +79,9 @@ export const FungalNetworksSection = () => {
          <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
             plant growth promoters
           </Text>
-          <Text type='p' weight='light' size='lg' className={styles['p-70']}>
-            certain types of bacteria and fungi release {' '}
-          <Text type='span' weight='bold' size='lg' className={styles['p-70']}>
+          <Text type='p' weight='light' size='md' className={styles['p-70']}>
+            some bacteria and fungi in the root zone release {' '}
+          <Text type='span' weight='bold' size='md' color='teal' className={styles['p-70']}>
             organic compounds
             </Text>{' '}
             that promote plant growth, regulate hormones, and protect against disease and stress.
