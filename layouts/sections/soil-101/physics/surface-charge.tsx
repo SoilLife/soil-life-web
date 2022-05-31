@@ -29,7 +29,7 @@ const modalMap = {
   'high surface area': {
     title: 'surface area',
     description:
-      'clays are the smallest particle size, but because so many more particles can fit in a given volume of soil, the same amount of space filled with clay has 1000x the surface area as a space filled with sand.',
+      'clays are the smallest particle size, but because so many more clay particles can fit in a given volume of soil, a space filled with clay has 1000x the surface area as the same amount of space filled with sand.',
     image: {
       type: 'svg',
       element: <SurfaceAreaSvg className='mx-auto max-h-[457px] sm:w-1/2' />,
@@ -123,7 +123,7 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
         <div ref={imgRef}>
           <SurfaceAreaChargedSvg />
         </div>
-        <Text type='p' weight='thin' size='md' className='sm:w-1/2'>
+        <Text type='p' weight='thin' size='md' className='text-center'>
           the large, charged surface of clays can hold onto water and nutrients; preventing their loss to gravity (or leaching).
         </Text>
         <div className='flex flex-col space-between gap-10 sm:gap-20 sm:flex-row'>
