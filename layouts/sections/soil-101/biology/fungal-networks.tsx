@@ -73,11 +73,12 @@ export const FungalNetworksSection = () => {
           . the root provides sugars to feed the fungus and in turn, its hyphae spread throughout the soil in search of
           water, nitrogen, phosphorus, and other nutrients.
         </Text>
-       <div ref={sectionRef} className={styles['section']}>
-            <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
+
+        <div ref={sectionRef} className={styles['section']}>
+          <Text type='h1' weight='light' size='4xl' color='teal' className={styles['heading']}>
             plant growth promoters
           </Text>
-          <Text type='p' weight='light' size='lg' className={styles['p-70']}>
+          <Text type='p' weight='light' size='lg' className={`text-center ${styles['p-70']}`}>
             certain types of bacteria and fungi release other {' '}
           <Text type='span' weight='bold' size='lg' className={styles['p-70']}>
             organic compounds
@@ -100,3 +101,4 @@ export const FungalNetworksSection = () => {
     </>
   );
 };
+  
