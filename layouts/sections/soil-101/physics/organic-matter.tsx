@@ -95,7 +95,7 @@ export const OrganicMatterSection = () => {
           organic matter
         </Text>
         <Text type='p' weight='thin' size='md' className={`text-center ${styles['p-48']}`}>
-          the supra-molecular aggregation of plant, animal, and microbially-based compounds. organic materials in soil are in various stages of decomposition (or break down). microbes convert these materials into biomass, sticky exudates, and other compounds that bind together with minerals and can stick around for 100's to 1000's of years.
+          the supra-molecular aggregation of plant, animal, and microbially-based compounds. organic materials in soil are in various stages of decomposition (or break down). some is converted into stable organic matter that is on average 58% carbon and can stick around for 100's to 1000's of years.
         </Text>
         <OrganicMatterSvg className='mx-auto max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)]' />
       </div>
