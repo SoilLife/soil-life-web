@@ -40,7 +40,7 @@ const modalTypeMap = {
 
 export const PoreSpaceSection = (props: { assignRef: (el: null | HTMLDivElement) => void }) => {
   useFullpageOverflow();
-  const isMobile = useMedia('(max-width: 640px)');
+  const isMobile = useMedia('(max-width: 680px)');
   const [modalType, setModalType] = useState<null | keyof typeof modalTypeMap>(null);
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
