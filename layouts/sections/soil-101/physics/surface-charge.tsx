@@ -149,7 +149,23 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
             </button>
            <br/>
           <br/> 
-          </div>
+            
+         <div ref={props.assignRef} className={styles['section']}>
+        <Text
+          id='charge'
+          type='h1'
+          weight='light'
+          size='4xl'
+          color='yellow'
+          className={styles['heading']}
+         
+        >
+          metal oxides
+           </Text>
+        <Text type='p' weight='thin' size='md' className='text-center'>
+          iron, aluminum, and other metal oxides in soil also carry a charge; but a positive charge, instead!
+        </Text>
+<div className='flex flex-col space-between gap-10 sm:gap-20 sm:flex-row'>           
           <div className='flex-grow'>
             <button onClick={openModal('anion exchange')} className='h-full w-full hover:opacity-50'>
               <img src='/images/soil-101/physics/metaloxide_aec.svg' />
