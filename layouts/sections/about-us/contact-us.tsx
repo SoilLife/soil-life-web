@@ -46,7 +46,7 @@ export function ContactUsSection() {
                 The Nature and Property of Soils by Nyle Brady & Ray Weil 
                 </Text>
               <Text type='p' weight='thin' size='2xs'>
-                (Soil 101/Nexus/Soil Forming Factors; Soil 101/Diversity/Pedogenesis, Soil 101/Physics/Organic Matter) 
+                (Soil 101 - Nexus/Soil Forming Factors, Soil Processes; Soil 101/Diversity/Pedogenesis; Soil 101/Physics/Organic Matter) 
                 <br/>
                     </Text>
               <Text type='p' weight='light' size='xs'>  
