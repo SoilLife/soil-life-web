@@ -12,6 +12,7 @@ import SurfaceAreaSvg from 'public/images/soil-101/physics/surface_area.svg';
 import SurfaceAreaChargedSvg from 'public/images/soil-101/physics/surface_area_charged.svg';
 import PermanentChargeSvg from 'public/images/soil-101/physics/permanent_charge.svg';
 import CationExchangeSvg from 'public/images/soil-101/physics/cation_exchange_capacity.svg';
+import AnionExchangeSvg from 'public/images/soil-101/physics/anion_exchange_capacity.svg';
 
 import styles from '../soil-101.module.css';
 
@@ -23,6 +24,16 @@ const modalMap = {
     image: {
       type: 'svg',
       element: <CationExchangeSvg className='mx-auto sm:w-1/2' />,
+    },
+    reverseContent: true,
+  },
+  'anion exchange': {
+    title: 'anion exchange',
+    description:
+      'anions are negatively charged ions. anion exchange capacity is the number of positively charged sites (on metal oxides or organic matter) that can hold onto these ions.',
+    image: {
+      type: 'svg',
+      element: <AnionExchangeSvg className='mx-auto sm:w-1/2' />,
     },
     reverseContent: true,
   },
@@ -136,8 +147,18 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
             <button onClick={openModal('water holding capacity')} className='h-full w-full hover:opacity-50'>
               <img src='/images/soil-101/physics/clay_whc.svg' />
             </button>
+           <br/>
+          <br/> 
           </div>
-        </div>
+          <Text type='p' weight='thin' size='md' className='text-center'>
+          iron, aluminum, and other metal oxides in soil also carry a charge; but a positive charge, instead!
+        </Text>
+          <div className='flex-grow'>
+            <button onClick={openModal('anion exchange')} className='h-full w-full hover:opacity-50'>
+              <img src='/images/soil-101/physics/metaloxide_aec.svg' />
+            </button>
+          </div>
+          </div>
       </div>
 
       {type && <GenericModal {...modalMap[type]} onClose={handleModalClose} />}
