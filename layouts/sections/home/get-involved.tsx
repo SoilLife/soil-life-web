@@ -14,7 +14,7 @@ export function GetInvolvedSection() {
         <div
           className='px-10 absolute bottom-10 left-0 w-full flex flex-col
         md:bottom-20 md:space-y-10 md:items-center md:justify-center
-        xl:space-y-0 xl:justify-between xl:flex-row'
+        xl:space-y-10 xl:justify-between xl:flex-row'
         >
           <div className='mb-6 lg:mb-0 xl:w-full'>
             <Text
