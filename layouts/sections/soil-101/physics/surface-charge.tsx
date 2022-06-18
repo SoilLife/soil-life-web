@@ -128,17 +128,17 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
         <Text type='p' weight='thin' size='md' className='text-center'>
           the large, charged surface of clays can hold onto water and nutrients; preventing their loss to gravity (or leaching). the amount and type of clays in a given soil largely determines its water and nutrient holding (or cation exchange) capacity.
         </Text>
+          <div className='flex-grow'>
+            <button onClick={openModal('water holding capacity')} className='h-full w-full hover:opacity-50'>
+              <img src='/images/soil-101/physics/clay_whc.svg' />
+            </button>
+           </div>
         <div className='flex flex-col space-between gap-10 sm:gap-20 sm:flex-row'>
           <div className='flex-grow'>
             <button onClick={openModal('cation exchange')} className='h-full w-full hover:opacity-50'>
               <img src='/images/soil-101/physics/clay_cec.svg' />
             </button>
           </div>
-          <div className='flex-grow'>
-            <button onClick={openModal('water holding capacity')} className='h-full w-full hover:opacity-50'>
-              <img src='/images/soil-101/physics/clay_whc.svg' />
-            </button>
-           </div>
           </div>
       </div>
 
