@@ -113,7 +113,7 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
           className={styles['heading']}
          
         >
-          exchange capacity
+          clay properties
         </Text>
         <Text type='p' weight='thin' size='md' className='text-center'>
           clays are considered the “active” portion of soil. they have higher total surface
@@ -123,8 +123,10 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
         <div ref={imgRef}>
           <SurfaceAreaChargedSvg />
         </div>
+        
+        
         <Text type='p' weight='thin' size='md' className='text-center'>
-          the large, charged surface of clays can hold onto water and nutrients; preventing their loss to gravity (or leaching).
+          the large, charged surface of clays can hold onto water and nutrients; preventing their loss to gravity (or leaching). the amount and type of clays in a given soil largely determines its water and nutrient holding (or cation exchange) capacity.
         </Text>
         <div className='flex flex-col space-between gap-10 sm:gap-20 sm:flex-row'>
           <div className='flex-grow'>
