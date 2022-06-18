@@ -113,7 +113,7 @@ export const SurfaceChargeSection = (props: { assignRef: (el: null | HTMLDivElem
           className={styles['heading']}
          
         >
-          clay properties
+          exchange capacity
         </Text>
         <Text type='p' weight='thin' size='md' className='text-center'>
           clays are considered the “active” portion of soil. they have higher total surface
