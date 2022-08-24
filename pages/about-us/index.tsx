@@ -10,6 +10,7 @@ import {
   OurTeamSection,
   OurValuesSection,
   OurVisionSection,
+  CreditsSection
 } from 'layouts/sections/about-us';
 import { Footer } from 'design-system/templates/footer';
 import { useAppContext } from 'context';
@@ -40,6 +41,7 @@ export default function AboutUsPage() {
       <OurValuesSection />
       <OurTeamSection />
       <ContactUsSection />
+      <CreditsSection />
       <Footer />
     </FullPage>
   );
