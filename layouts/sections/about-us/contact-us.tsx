@@ -3,12 +3,12 @@ import { Section, Image, Text } from "design-system/atoms";
 export function ContactUsSection() {
   return (
     <Section>
-      <div className="h-full flex flex-col">
+      <div className="h-full flex flex-col md:flex-row">
         <Image
           className="object-cover"
           url="/About_Us/About_Us_Contact_Us_qr_gIU5QC.jpeg"
         />
-        <div className="px-4 py-8 items-center w-full max-w-[400px]">
+        <div className="px-4 py-8 text-center w-full max-w-[400px]">
           <Text type="h1" weight="regular" size="3xl" color="teal" className="mb-4 xl:mb-10">
             contact us
           </Text>
