@@ -112,8 +112,8 @@ export const IntroSection = (props: { assignRef: (el: null | HTMLDivElement) => 
           </Text>
         </div>
         <div className='flex flex-col gap-6 sm:flex-row'>
-          <NexusIntro />
-          <AirWaterMineralOrganic />
+          <NexusIntro className="w-full h-full max-w-full" />
+          <AirWaterMineralOrganic className="w-full h-full max-w-full" />
         </div>
       </div>
       {modalType && (
