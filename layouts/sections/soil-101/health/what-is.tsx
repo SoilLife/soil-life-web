@@ -171,15 +171,15 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <Text type='span' weight='bold' size='sm' color='blue'>
             vital, living ecosystem
           </Text>{' '}
-          that sustains plants, animals, and humans. many soil properties are{' '}
+          that sustains plants, animals, and humans. while many soil properties are{' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
             inherent
           </Text>{' '}
-          and can't change on a human time scale (i.e. texture). others are{' '}
+          and can't change on a human time scale (i.e. texture), others are{' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
             dynamic
           </Text>{' '}
-          and can be directly influenced by management (i.e structure, organic matter).
+          and are directly influenced by management (i.e structure, organic matter).
         </Text>
         <div className='flex flex-col-reverse items-center justify-center gap-10 sm:flex-row sm:space-x-4 sm:space-y-4'>
           <Text type='p' size='md' weight='light' className={`text-center max-w-[311px] ${styles['p-60']}`}>
@@ -207,12 +207,12 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <Text type='span' weight='bold' size='md' color='blue'>
           organs 
            </Text>{' '}
-          provide important functions that keep us {' '}
+          perform vital functions that keep us {' '}
           <Text type='span' weight='bold' size='md' color='blue'>
           healthy
-          </Text>, healthy soil provides important {' '}
+          </Text>, healthy soil performs important {' '}
           <Text type='span' weight='bold' size='md' color='blue'>
-           ecosystem functions
+          functions
           </Text>{' '}
           that promote a healthy environment!
         </Text>
@@ -225,20 +225,20 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
             size='sm'
             className={`text-center row-start-4 col-span-2 xl:row-start-auto xl:w-2/5 ${styles['p-60']}`}
           >
-            just like we inherit{' '}
+            just like the{' '}
             <Text type='span' weight='bold' size='sm' color='blue'>
               genetic material
             </Text>{' '}
-            from our parents, soils inherit certain properties from their{' '}
+            we inherit from our parents, soils inherit properties from their{' '}
             <Text type='span' weight='bold' size='sm' color='blue'>
               parent material
             </Text>{' '}
-            that can't easily be changed (i.e. texture, mineralogy), but just like{' '}
+            that can't be changed (i.e. texture, mineralogy), but just like{' '}
             <Text type='span' weight='bold' size='sm' color='blue'>
-              diet and lifestyle
+              diet and exercise
             </Text>{' '}
             have the power to modify our DNA and promote overall health, the way we manage soil has a
-            major impact on soil organic matter, soil structure, and overall soil health!
+            major impact on soil health!
           </Text>
 
           <SoilProfileSvg className='w-full mx-auto row-span-3 col-start-2 max-h-[800px] lg:w-auto xl:col-start-auto ' />
@@ -249,11 +249,11 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <Text type='span' weight='bold' size='sm' color='blue'>
           sandy soils
           </Text>
-          , increasing soil organic matter (SOM) improves soil structure by {' '}
+          , increasing soil organic matter (SOM) helps particles {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
-          sticking particles 
+          stick together 
           </Text>{' '}
-          together; while in {' '}
+          together, improving soil structure. in {' '}
           <Text type='span' weight='bold' size='sm' color='blue'>
           clayey soils
            </Text>
@@ -261,7 +261,7 @@ export const WhatIsSection = (props: { assignRef: (el: null | HTMLDivElement) =>
           <Text type='span' weight='bold' size='sm' color='blue'>
           pore space
           </Text>
-          . while many conservation practices can improve soil structure, the ability to build and store SOM may be limited in some soils or climates.  
+          . while many conservation practices improve soil structure, the ability to build and store SOM may be limited in some soils or climates.  
         </Text>
         <CarbonSequestSvg />
 
