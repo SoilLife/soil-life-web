@@ -71,7 +71,7 @@ export default function SoilNexusPage() {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Soil Nexus">
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-pink-500' />
       <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>

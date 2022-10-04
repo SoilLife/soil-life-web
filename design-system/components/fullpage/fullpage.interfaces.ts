@@ -18,6 +18,7 @@ export type FullPageProps = React.PropsWithChildren<
       subHeaderProps: SubHeaderProps;
     }
 > & {
+  title: string,
   afterLoad?: (
     ref: React.MutableRefObject<null | { fullpageApi: any }>
   ) => (origin: FullpageSection, destination: FullpageSection, direction: 'down' | 'up') => void;

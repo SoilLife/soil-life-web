@@ -1,17 +1,17 @@
-import React, { useRef, useState, useEffect } from 'react';
-import ReactFullpage from '@fullpage/react-fullpage';
+import React, { useRef, useState, useEffect } from "react";
+import ReactFullpage from "@fullpage/react-fullpage";
 
-import { useAppContext } from 'context';
+import { useAppContext } from "context";
 // layout
-import { DefaultLayout } from 'layouts';
+import { DefaultLayout } from "layouts";
 
 // components
-import { Header } from 'design-system/templates';
+import { Header } from "design-system/templates";
 
 // interfaces
-import { FullPageProps } from './fullpage.interfaces';
+import { FullPageProps } from "./fullpage.interfaces";
 
-export function FullPage({ type, subHeaderProps, children, afterLoad }: FullPageProps) {
+export function FullPage({ title, type, subHeaderProps, children, afterLoad }: FullPageProps) {
   const { state, dispatch } = useAppContext();
   const fullPageRef = useRef<any>(null);
   const [hideHeader, setHideHeader] = useState(false);
@@ -19,23 +19,23 @@ export function FullPage({ type, subHeaderProps, children, afterLoad }: FullPage
   useEffect(() => {
     if (!state.fullpageRef && fullPageRef.current) {
       dispatch({
-        type: 'SET_FULL_PAGE_REF',
+        type: "SET_FULL_PAGE_REF",
         payload: fullPageRef.current,
       });
     }
   }, [state.fullpageRef, fullPageRef.current]);
 
-  const handleSectionLeave = (_origin: any, _destination: any, direction: 'up' | 'down') => {
-    if (direction === 'up' && hideHeader) {
+  const handleSectionLeave = (_origin: any, _destination: any, direction: "up" | "down") => {
+    if (direction === "up" && hideHeader) {
       setHideHeader(false);
-    } else if (direction === 'down' && !hideHeader) {
+    } else if (direction === "down" && !hideHeader) {
       setHideHeader(true);
     }
   };
 
   return (
-    <DefaultLayout>
-      {type === 'home' ? (
+    <DefaultLayout title={title}>
+      {type === "home" ? (
         <Header.Main fullpageRef={fullPageRef} hideHeader={hideHeader} />
       ) : (
         subHeaderProps && <Header.Sub hideHeader={hideHeader} {...subHeaderProps} />
@@ -48,7 +48,7 @@ export function FullPage({ type, subHeaderProps, children, afterLoad }: FullPage
         verticalCentered={false}
         navigation={false}
         showActiveTooltip
-        loading='lazy'
+        loading="lazy"
         onLeave={handleSectionLeave}
         render={() => {
           return <ReactFullpage.Wrapper>{children}</ReactFullpage.Wrapper>;

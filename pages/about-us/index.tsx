@@ -33,7 +33,7 @@ export default function AboutUsPage() {
   }, [isMobile, fullpageRef]);
 
   return (
-    <FullPage type='home'>
+    <FullPage title='About Us' type='home'>
       <OurStorySection ref={ourStorySectionRef} />
       <OurStory2Section ref={ourStory2SectionRef} />
       <OurMissionSection />

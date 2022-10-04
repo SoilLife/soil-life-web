@@ -69,7 +69,7 @@ export default function SoilDiversityPage() {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Soil Diversity">
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-gray-500' />
       <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>

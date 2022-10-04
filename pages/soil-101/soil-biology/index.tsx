@@ -71,7 +71,7 @@ export default function SoilBiologyPage() {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Soil Biology">
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-teal-500' />
       <HeroSection onDownArrowClick={handleDownArrowClick} />
       <div className='container'>
