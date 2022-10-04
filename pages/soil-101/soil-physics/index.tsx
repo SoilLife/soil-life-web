@@ -68,7 +68,7 @@ export default function SoilPhysicsPage() {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Soil Physics">
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-yellow-500' />
       <HeroSection />
       <div className='container'>

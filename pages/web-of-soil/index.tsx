@@ -366,7 +366,7 @@ export default function WebOfSoilPage() {
 
   return (
     <>
-      <DefaultLayout>
+      <DefaultLayout title="Web of Soil">
         <header
           className={`fixed z-20 w-full transition-all ease-in-out duration-200 ${getBgColorFromActiveHeader(
             activeHeader

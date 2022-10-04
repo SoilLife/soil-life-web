@@ -60,7 +60,7 @@ export default function MediaPage() {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Media">
       <Header.Main fullpageRef={{ current: null }} hideHeader={false} />
       <div className='mt-28 mb-8'>
         <div className='container flex flex-col justify-between gap-4 lg:flex-row'>

@@ -67,7 +67,7 @@ export default function SoilChemistryPage() {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Soil Chemistry">
       <Header.Sub headings={soil101Subheadings} pathName='soil-101' className='bg-orange-500' />
       <HeroSection />
       <div className='container'>

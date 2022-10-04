@@ -4,7 +4,7 @@ import { Header } from 'design-system/templates';
 
 export default function NotFoundPage() {
   return (
-    <DefaultLayout>
+    <DefaultLayout title='Not Found'>
       <Header.Main fullpageRef={{ current: null }} hideHeader={false} />
       <section className='container flex flex-col items-center justify-center h-full min-h-screen'>
         <p className='h-full max-w-2xl mx-auto mb-8 text-5xl text-center'>
