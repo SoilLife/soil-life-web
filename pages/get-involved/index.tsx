@@ -19,6 +19,7 @@ const mergedData = getInvolvedHeadings.map((heading, index) => ({
 export default function GetInvolvedPage() {
   return (
     <FullPage
+      title="Get Involved"
       type="main"
       subHeaderProps={{
         headings: getInvolvedHeadings,

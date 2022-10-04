@@ -26,6 +26,7 @@ export default function IndexPage() {
 
   return (
     <FullPage
+      title="Soil Life"
       type='home'
       afterLoad={(fullpageRef) => (_origin, destination) => {
         function autoslide() {
