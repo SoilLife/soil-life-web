@@ -31,6 +31,7 @@
     "next": "^12.1.5",
     "next-favicon-loader": "^3.0.5",
     "next-seo": "^5.4.0",
+    "nextjs-google-analytics": "^2.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modal": "^3.14.3",
