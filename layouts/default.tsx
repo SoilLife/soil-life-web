@@ -1,6 +1,5 @@
-import React, {useEffect} from "react";
+import React from "react";
 import Head from "next/head";
-import { initGoogleAnalytics, GOOGLE_ANALYTICS_ID } from "helpers/google-analytics";
 
 export function DefaultLayout({
   title,
@@ -10,9 +9,6 @@ export function DefaultLayout({
   title: string;
   description?: string;
 }>) {
-  useEffect(() => {
-    initGoogleAnalytics()
-  }, [])
   return (
     <>
       <Head>
@@ -40,7 +36,6 @@ export function DefaultLayout({
         <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
         {description && <meta name="description" content={description} />}
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}></script>
         <title>{title}</title>
       </Head>
       {children}
