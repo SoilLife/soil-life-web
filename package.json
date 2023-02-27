@@ -26,7 +26,6 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@fullpage/react-fullpage": "^0.1.19",
     "feather-icons-react": "^0.4.3",
-    "imagekitio-react": "^1.1.0",
     "lodash": "^4.17.21",
     "next": "^12.1.5",
     "next-favicon-loader": "^3.0.5",
