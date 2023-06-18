@@ -1,4 +1,4 @@
-import { ButtonProps } from 'design-system/atoms/button/button.interfaces';
+import { ButtonProps } from 'ui/atoms/button/button.interfaces';
 
 const colorMap = {
   blue: {

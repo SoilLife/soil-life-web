@@ -1,9 +1,1 @@
-@import '../styles/global.css';
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--acre-regular);
-}
+@import "../styles/global.css";

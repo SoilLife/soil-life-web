@@ -9,7 +9,13 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+
   body {
     color: var(--gray-500);
+    font-family: var(--acre-regular);
   }
 }
