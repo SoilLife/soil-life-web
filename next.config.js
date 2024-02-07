@@ -2,7 +2,8 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
   images: {
-    domains: process.env.NODE_ENV === 'production' ? ['thesoillife.org', 'netlify.com'] : ['localhost'],
+    domains: ['img.youtube.com', 'www.youtube.com', 'vimeo.com', 'www.facebook.com', 'www.soils4teachers.org', 'soils.org', 'www.soils4kids.org',...(process.env.NODE_ENV === 'production' ? ['thesoillife.org', 'netlify.com', ] : ['localhost'])],
+    unoptimized: true
   },
   webpack(config) {
     config.module.rules.push({
@@ -20,7 +21,13 @@ module.exports = {
         destination: '/soil-101/soil-nexus',
         permanent: true,
       },
+      {
+        source: '/web-of-soil',
+        destination: '/web-of-soil/food',
+        permanent: true,
+      }
     ];
   },
-  trailingSlash: true,
+  trailingSlash: false,
+  
 };

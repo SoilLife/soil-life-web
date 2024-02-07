@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { uniqBy } from 'lodash';
 
-const spreadsheetId = '1GjpYaQbXVWIEn68iYyW0XiEQKJD6sL_4WJYI0ZSbE4s';
+let spreadsheetId = '1GjpYaQbXVWIEn68iYyW0XiEQKJD6sL_4WJYI0ZSbE4s';
+if(process.env.NODE_ENV === 'development') {
+  spreadsheetId = '1PqNOCtAiG1DIU6w3-nERYbE-EmVWBuhyFtXT6WIQA6E'
+}
 
 export type Node = {
   id: string;
@@ -29,7 +32,8 @@ export function useWebOfSoils(
     | 'foundations data structure'
     | 'fiber data structure'
     | 'fun data structure'
-    | 'farmaceuticals data structure'
+    | 'farmaceuticals data structure',
+    imagePath: string
 ) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -102,21 +106,11 @@ export function useWebOfSoils(
                       node.link = cell;
                       break;
                     case 'image':
-                      const regexp = new RegExp(/^https|^http/i);
-                      if (regexp.test(cell)) {
-                        if (/imagekit.io/gim.test(cell)) {
-                          const url = new URL(cell);
-                          url.searchParams.set('tr', 'q-80,w-200,c-at_max,pr-true');
-                          node.image = url.toString();
-                        } else {
-                          node.image = cell;
-                        }
-                      }
+                      node.image = location.origin + imagePath + cell;
                       break;
                     case 'to':
                       const toEdges = cell?.split(',')?.map((value: string) => value.toLowerCase().trim()) ?? [];
                       node.to = toEdges;
-
                       for (const to of toEdges) {
                         const edge: typeof graph['edges'][0] = {
                           from: node.id,

@@ -9,11 +9,15 @@ export type Media = {
   Tags: null | string[];
   Title: null | string;
   URL: null | string;
-  mediaType: 'video' | 'pdf' | 'link' | 'image' | 'imagekit';
+  mediaType: 'video' | 'pdf' | 'link' | 'image' | 'local-image'
   thumbnail?: string;
 };
 
-const spreadsheetId = '1SCLiaORvOlBbYYFUF-4qqMjZkfEHvB_qkHXThiYz_2g';
+let spreadsheetId = '1SCLiaORvOlBbYYFUF-4qqMjZkfEHvB_qkHXThiYz_2g';
+
+if(process.env.NODE_ENV === 'development') {
+  spreadsheetId = '1JvDhTR3MhWz5xB2j-T3DNmAr7rLQYW8M8ZTQAk3xJzk'
+}
 
 export function useMediaHub() {
   const [isLoading, setIsLoading] = useState(false);
@@ -86,22 +90,23 @@ export function useMediaHub() {
                             console.log(url);
                           }
                         }
-                      } else if (/imagekit.io$/i.test(url.hostname)) {
-                        row['mediaType'] = 'imagekit';
-                        const pathname = url.pathname
-                          .split('/')
-                          .filter((_, index) => index != 1)
-                          .join('/');
-                        row['URL'] = pathname;
                       } else {
                         const pathname = url.pathname;
-                        if (/.pdf$|.png$|.gif$/i.test(pathname)) {
+                        if (/.png$|.gif$/i.test(pathname)) {
                           row['mediaType'] = 'image';
                         } else if (/.pdf$/i.test(pathname)) {
                           row['mediaType'] = 'pdf';
                         } else {
                           row['mediaType'] = 'link';
                         }
+                      }
+                    } else if(header === 'URL' && cell?.startsWith('/images')){
+                      if(/.pdf$/i.test(cell)) {
+                        row['mediaType'] = 'pdf'
+                        row['URL'] = cell;
+                      } else {
+                        row['mediaType'] = 'local-image';
+                        row['URL'] = cell;
                       }
                     }
                   });

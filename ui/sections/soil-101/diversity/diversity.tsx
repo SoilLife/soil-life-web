@@ -1,0 +1,58 @@
+// components
+import { Text } from "ui/atoms";
+import Image from "next/image";
+
+import styles from "../soil-101.module.css";
+
+export const DiversitySection = (props: {
+  assignRef: (el: null | HTMLDivElement) => void;
+}) => {
+  return (
+    <div ref={props.assignRef} className={styles["section"]}>
+      <Text
+        id="soil-diversity"
+        type="h1"
+        weight="bold"
+        size="4xl"
+        className={`${styles["anchor"]} ${styles["heading"]}`}
+      >
+        soil diversity
+      </Text>
+      <Text
+        type="p"
+        weight="light"
+        size="sm"
+        className={`text-center ${styles["p-50"]}`}
+      >
+        the{" "}
+        <Text type="span" weight="bold" size="sm">
+          diversity of soils
+        </Text>{" "}
+        beneath our feet gives rise to the diversity of{" "}
+        <Text type="span" weight="bold" size="sm">
+          plants
+        </Text>
+        ,{" "}
+        <Text type="span" weight="bold" size="sm">
+          animals
+        </Text>
+        , and{" "}
+        <Text type="span" weight="bold" size="sm">
+          ecosystems
+        </Text>{" "}
+        on earth, which in turn, influence the development and diversity of
+        soils.{" "}
+        <Text type="span" weight="bold" size="sm">
+          it's all connected!
+        </Text>
+        .
+      </Text>
+      <Image
+        fill
+        src="/images/soil-101/diversity/soil_diversity_1_QomzKR0K5.png"
+        alt=""
+        className="object-fit"
+      />
+    </div>
+  );
+};

@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { createCtx } from 'helpers/create-ctx';
-import { appReducer } from './app.reducer';
-import { App } from './app.interfaces';
+import { useContext } from "react";
+import { createCtx } from "helpers/create-ctx";
+import { appReducer } from "./app.reducer";
+import { App } from "./app.interfaces";
 
 const initialState: App.State = {
-  fullpageRef: null,
   isMenuOpen: false,
 };
 
