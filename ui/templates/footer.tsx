@@ -14,7 +14,7 @@ export function Footer({ className }: { className?: string }) {
           <div className="relative">
             <Image
               src={soilImg}
-              alt=""
+              alt="cartoon illustration of the earth covered in pink mushrooms"
               className="h-full ml-0 object-contain w-auto max-h-[200px] sm:max-h-[382px] lg:ml-20"
               placeholder="blur"
             />

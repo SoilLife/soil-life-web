@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Link from "next/link";
 
 // components
 import Image from "next/image";
@@ -43,7 +44,10 @@ export function HealthySoilsSection() {
   }
 
   return (
-    <div className="relative h-screen snap-start overflow-hidden">
+    <div
+      id="healthy-soil"
+      className="relative h-screen snap-start overflow-hidden"
+    >
       <div className="absolute top-1/2 -translate-y-1/2 z-10 w-full flex justify-between pl-2 pr-4 max-w-[100vw]">
         <button
           className="transition-transform ease-out duration-300 transform cursor-pointer hover:scale-105"
@@ -76,12 +80,9 @@ export function HealthySoilsSection() {
             />
           </div>
           <div className="hidden absolute top-[62%] left-1/2 -translate-x-1/2 text-center sm:block">
-            <Button
-              label="find out how"
-              type="neutral"
-              size="md"
-              onClick={() => {}}
-            />
+            <Link href="/soil-101/soil-nexus">
+              <Button label="find out how" type="neutral" size="md" />
+            </Link>
           </div>
         </div>
         <div className="relative w-full flex-shrink-0 flex flex-col sm:grid sm:grid-cols-3 snap-start overflow-hidden">
@@ -100,7 +101,7 @@ export function HealthySoilsSection() {
               <Image
                 fill
                 src={soilBg}
-                alt=""
+                alt="a man holding a flashlight looking at a large wall of soil"
                 loading="lazy"
                 className="object-cover object-right"
                 placeholder="blur"
@@ -121,7 +122,7 @@ export function HealthySoilsSection() {
             <Image
               fill
               src={soilBg}
-              alt=""
+              alt="a man holding a flashlight looking at a large wall of soil"
               loading="lazy"
               className="object-cover object-right"
               placeholder="blur"
@@ -144,7 +145,7 @@ export function HealthySoilsSection() {
               <Image
                 fill
                 src={plantBg}
-                alt=""
+                alt="a close up picture of an avocado hanging from a tree"
                 loading="lazy"
                 className="object-cover object-left"
                 placeholder="blur"
@@ -166,7 +167,7 @@ export function HealthySoilsSection() {
             <Image
               fill
               src={plantBg}
-              alt=""
+              alt="a close up picture of an avocado hanging from a tree"
               loading="lazy"
               className="object-cover object-left"
               placeholder="blur"
@@ -189,7 +190,7 @@ export function HealthySoilsSection() {
               <Image
                 fill
                 src={peopleBg}
-                alt=""
+                alt="a woman in front of plants playing in a water spraying in the air"
                 loading="lazy"
                 className="object-cover object-right"
                 placeholder="blur"
@@ -210,7 +211,7 @@ export function HealthySoilsSection() {
             <Image
               fill
               src={peopleBg}
-              alt=""
+              alt="a woman in front of plants playing in a water spraying in the air"
               loading="lazy"
               className="object-cover object-right"
               placeholder="blur"
@@ -233,7 +234,7 @@ export function HealthySoilsSection() {
               <Image
                 fill
                 src={communitiesBg}
-                alt=""
+                alt="two kids smiling while they wash their hands"
                 loading="lazy"
                 className="object-cover object-right"
                 placeholder="blur"
@@ -255,7 +256,7 @@ export function HealthySoilsSection() {
             <Image
               fill
               src={communitiesBg}
-              alt=""
+              alt="two kids smiling while they wash their hands"
               loading="lazy"
               className="object-cover object-right"
               placeholder="blur"
@@ -278,7 +279,7 @@ export function HealthySoilsSection() {
               <Image
                 fill
                 src={economiesBg}
-                alt=""
+                alt="a jar of coins with a sprout growing from it"
                 loading="lazy"
                 className="object-cover object-left"
                 placeholder="blur"
@@ -300,7 +301,7 @@ export function HealthySoilsSection() {
             <Image
               fill
               src={economiesBg}
-              alt=""
+              alt="a jar of coins with a sprout growing from it"
               loading="lazy"
               className="object-cover object-left"
               placeholder="blur"
@@ -323,7 +324,7 @@ export function HealthySoilsSection() {
               <Image
                 fill
                 src={planetBg}
-                alt=""
+                alt="a view of the Milk Way with silhouettes of trees in the foreground"
                 loading="lazy"
                 className="object-cover scale-105 object-bottom"
                 placeholder="blur"
@@ -345,7 +346,7 @@ export function HealthySoilsSection() {
             <Image
               fill
               src={planetBg}
-              alt=""
+              alt="a view of the Milk Way with silhouettes of trees in the foreground"
               loading="lazy"
               className="object-cover scale-105 object-bottom"
               placeholder="blur"

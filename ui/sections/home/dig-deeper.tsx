@@ -12,7 +12,7 @@ export function DigDeeperSection() {
       <Image
         fill
         src={bgImg}
-        alt=""
+        alt="a man watering a wall of soil and roots in a pit"
         loading="lazy"
         className={`scale-150 object-cover sm:scale-100 ${styles["bg__img"]}`}
         placeholder="blur"

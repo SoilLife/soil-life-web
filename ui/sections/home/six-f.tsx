@@ -94,7 +94,7 @@ export function SixFSection() {
               <Image
                 fill
                 src={foodBg}
-                alt=""
+                alt="an aesthetic arrangement of red fruits and flowers"
                 className="object-cover object-left sm:scale-[2] sm:object-[300px,40%]"
                 placeholder="blur"
                 loading="lazy"
@@ -130,7 +130,7 @@ export function SixFSection() {
               <Image
                 fill
                 src={fiberBg}
-                alt=""
+                alt="a plant laid on a gray fabric"
                 className="object-cover object-[17%] sm:object-[300px] sm:scale-[1.75]"
                 placeholder="blur"
                 loading="lazy"
@@ -166,7 +166,7 @@ export function SixFSection() {
               <Image
                 fill
                 src={filterBg}
-                alt=""
+                alt="a clear view underwater of the ocean floor"
                 className="object-bottom object-cover"
                 placeholder="blur"
                 loading="lazy"
@@ -202,7 +202,7 @@ export function SixFSection() {
               <Image
                 fill
                 src={filterBg2}
-                alt=""
+                alt="a glass building sitting alone in a backdrop of clouds"
                 className="object-cover object-[-300px,-400px] sm:object-[0,-300px]"
                 placeholder="blur"
                 loading="lazy"
@@ -238,7 +238,7 @@ export function SixFSection() {
               <Image
                 fill
                 src={foundationBg}
-                alt=""
+                alt="a building with plants and trees on every level"
                 className="object-cover"
                 placeholder="blur"
                 loading="lazy"
@@ -274,7 +274,7 @@ export function SixFSection() {
               <Image
                 fill
                 src={farmeceuticalBg}
-                alt=""
+                alt="a cup of medical pills"
                 className="object-cover object-[-200px,-300px] sm:object-[-100px,-300px]"
                 placeholder="blur"
                 loading="lazy"
@@ -310,7 +310,7 @@ export function SixFSection() {
               <Image
                 fill
                 src={funBg}
-                alt=""
+                alt="a man running in a dry hillside"
                 className="object-cover object-[-200px,-200px] sm:object-center"
                 placeholder="blur"
                 loading="lazy"

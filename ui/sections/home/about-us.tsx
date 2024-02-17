@@ -20,7 +20,7 @@ export function AboutUsSection() {
           <Image
             fill
             src={grassRoots}
-            alt=""
+            alt="a patch of uprooted grass"
             className="object-contain"
             placeholder="blur"
             loading="lazy"
@@ -67,7 +67,7 @@ export function AboutUsSection() {
           <Image
             fill
             src={grassRoots}
-            alt=""
+            alt="a patch of uprooted grass"
             className="object-contain"
             placeholder="blur"
             loading="lazy"

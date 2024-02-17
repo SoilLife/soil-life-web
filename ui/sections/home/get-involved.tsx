@@ -12,7 +12,7 @@ export function GetInvolvedSection() {
       <Image
         fill
         src={bgImg}
-        alt=""
+        alt="dirty soles of the feet from walking in the dirt"
         className={`absolute scale-150 object-cover sm:scale-100 ${styles["bg__img"]}`}
         placeholder="blur"
         loading="lazy"
