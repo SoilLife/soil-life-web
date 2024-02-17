@@ -4,6 +4,7 @@ import { Text } from "ui/atoms";
 // assets
 import DownArrow from "public/images/down_arrow_white.svg";
 import bgImg from "public/images/home/natgeo5b_H4vFWWpPA.jpg";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -11,7 +12,7 @@ export function HeroSection() {
       <Image
         fill
         src={bgImg}
-        alt=""
+        alt="a picture showing plants and their roots in soil"
         className="mt-10 object-cover object-top h-full w-full"
         placeholder="blur"
       />
@@ -44,10 +45,9 @@ export function HeroSection() {
           connected
         </Text>
         <div className="flex justify-center">
-          <DownArrow
-            className="h-5 cursor-pointer hover:scale-105"
-            // onClick={handleDownArrowClick}
-          />
+          <Link href="#healthy-soil" className="cursor-pointer hover:scale-105">
+            <DownArrow class="h-5" />
+          </Link>
         </div>
       </div>
     </div>
